@@ -1,0 +1,12 @@
+@import '~normalize.css/normalize.css';
+
+@import '~helpers';
+
+$md-primary-color: $md-light-blue-500;
+$md-primary-color-hue-1: $md-light-blue-300;
+$md-secondary-color: $md-deep-orange-a-200;
+$md-secondary-color-base: $md-deep-orange-500;
+
+@import '~md-scss';
+
+@import 'pages/home';
