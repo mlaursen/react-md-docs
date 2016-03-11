@@ -1,0 +1,36 @@
+@import '~helpers';
+
+// Custom, iPhone Retina
+@media only screen and (min-width: 320px) {
+  .text-container {
+    width: 300px;
+  }
+}
+
+// Extra small devices, Phones
+@media only screen and (min-width: 480px) {
+  .text-container {
+    width: 460px;
+  }
+}
+
+// Small devices, tablets
+@media only screen and (min-width: 768px) {
+  .text-container {
+    width: 732px - $md-navigation-drawer-width;
+  }
+}
+
+// Medium devices, laptops
+@media only screen and (min-width: 992px) {
+  .text-container {
+    width: 952px - $md-navigation-drawer-width;
+  }
+}
+
+// Large devices, Wide screens
+@media only screen and (min-width: 1200px) {
+  .text-container {
+    width: 1152px - $md-navigation-drawer-width;
+  }
+}

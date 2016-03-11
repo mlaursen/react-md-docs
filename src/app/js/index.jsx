@@ -11,7 +11,7 @@ import configureStore from './stores/configureStore';
 
 WebFont.load({
   google: {
-    families: ['Roboto:300,400,500,700', 'Material Icons'],
+    families: ['Roboto:300,400,500,700', 'Material Icons', 'Source Code Pro'],
   },
 });
 

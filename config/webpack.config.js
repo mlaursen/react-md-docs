@@ -38,6 +38,10 @@ module.exports = {
       test: /\.(png|jpe?g|ico)$/,
       exclude: /node_modules/,
       loader: 'file?name=imgs/[name].[ext]',
+    }, {
+      test: /\.md/,
+      exclude: /node_modules/,
+      loader: 'raw',
     }],
   },
 
@@ -53,6 +57,7 @@ module.exports = {
       'react-dom': nodeModules + '/react-dom',
       'helpers': reactmd + '/src/scss/helpers/_all.scss',
       'md-scss': reactmd + '/src/scss/react-md.scss',
+      'md-src': reactmd + '/src/scss',
     },
   },
 

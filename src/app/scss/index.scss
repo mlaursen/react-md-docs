@@ -9,4 +9,7 @@ $md-secondary-color-base: $md-deep-orange-500;
 
 @import '~md-scss';
 
+@import 'layout';
+@import 'markdown';
+@import 'media-queries';
 @import 'pages/home';

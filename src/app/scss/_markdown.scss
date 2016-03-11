@@ -1,0 +1,55 @@
+@import '~helpers';
+
+$line-height: 20 / 14;
+
+%monospace {
+  font-family: 'Source Code Pro', monospace;
+  line-height: $line-height;
+}
+
+code,
+pre {
+  @extend %monospace;
+
+  * {
+    @extend %monospace;
+  }
+}
+
+.lang-css,
+.lang-scss,
+.lang-js {
+  color: $md-black-base;
+
+  .hljs-selector-class,
+  .hljs-attr,
+  .hljs-keyword {
+    color: $md-deep-orange-900;
+  }
+
+  .hljs-variable,
+  .hljs-attribute,
+  .hljs-class {
+    color: $md-deep-purple-900;
+  }
+
+  .hljs-string {
+    color: $md-green-900;
+  }
+
+  .hljs-comment {
+    color: $md-text-color;
+  }
+
+}
+
+blockquote {
+  border-left: 4px solid $md-border-color;
+  margin-left: 0;
+  padding-left: 1.5em;
+
+  p {
+    color: $md-secondary-text-color;
+    margin: 0;
+  }
+}
