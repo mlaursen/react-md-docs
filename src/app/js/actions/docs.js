@@ -1,9 +1,8 @@
-import { OPEN_DRAWER, CLOSE_DRAWER } from '../constants/ActionTypes';
+import { GET_COMPONENT_DOCS } from '../constants/ActionTypes';
 
-export function openDrawer() {
-  return { type: OPEN_DRAWER };
-}
-
-export function closeDrawer() {
-  return { type: CLOSE_DRAWER };
+export function getComponentDocs(component) {
+  return {
+    component,
+    type: GET_COMPONENT_DOCS,
+  };
 }

@@ -1,5 +1,6 @@
 import marked from 'marked';
-import { OPEN_DRAWER, CLOSE_DRAWER } from '../constants/ActionTypes';
+import { GET_COMPONENT_DOCS } from '../constants/ActionTypes';
+import { toDashedName, toTitle } from '../utils/StringUtils';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -13,25 +14,27 @@ marked.setOptions({
   highlight: (code, lang) => require('highlight.js').highlight(lang, code).value, // eslint-disable-line no-undef
 });
 
-function updateDrawer(state, isOpen) {
-  if(state.isDrawerOpen !== isOpen) {
-    return Object.assign({}, state, { isDrawerOpen: isOpen });
+
+function getComponentDocs(state, component) {
+  if(state.component === component) {
+    return state;
   }
 
-  return state;
+  return Object.assign({}, state, {
+    component,
+    sectionName: toTitle(component),
+  });
 }
 
 const initialState = {
   marked,
-  isDrawerOpen: false,
 };
 
 export default function docs(state = initialState, action) {
   switch(action.type) {
-    case OPEN_DRAWER:
-      return updateDrawer(state, true);
-    case CLOSE_DRAWER:
-      return updateDrawer(state, false);
-    default: return state;
+    case GET_COMPONENT_DOCS:
+      return getComponentDocs(state, action.component);
+    default:
+      return state;
   }
 }
