@@ -4,18 +4,20 @@ import { connect } from 'react-redux';
 
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
-import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
-import { openDrawer, closeDrawer } from '../actions/layout';
+import { openDrawer, closeDrawer, updateLayoutTitleTheme } from '../actions/layout';
 
 @connect(state => {
   return {
     marked: state.docs.marked,
     isOpen: state.layout.isDrawerOpen,
+    title: state.layout.title,
+    theme: state.layout.theme,
   };
 }, {
   openDrawer,
   closeDrawer,
+  updateLayoutTitleTheme,
 })
 export default class App extends Component {
   constructor(props) {
@@ -26,36 +28,36 @@ export default class App extends Component {
     // from redux
     marked: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    title: PropTypes.string,
+    theme: PropTypes.string,
     openDrawer: PropTypes.func.isRequired,
     closeDrawer: PropTypes.func.isRequired,
+    updateLayoutTitleTheme: PropTypes.func.isRequired,
 
     // from react-router
     children: PropTypes.node,
     location: PropTypes.object.isRequired,
   };
 
-  mapRouteToDrawerProps = () => {
-    const { pathname } = this.props.location;
-    let pageTitle, theme;
-    switch(pathname) {
-      case APP_URI_BASE:
-        // defaults
-        break;
-      default:
-        pageTitle = 'Components';
-    }
+  componentWillMount() {
+    const { updateLayoutTitleTheme, location } = this.props;
+    updateLayoutTitleTheme(location.pathname);
+  }
 
-    return { pageTitle, theme };
-  };
+  componentWillUpdate(nextProps) {
+    if(this.props.location.pathname !== nextProps.location.pathname) {
+      const { updateLayoutTitleTheme, location } = nextProps;
+      updateLayoutTitleTheme(location.pathname);
+    }
+  }
 
   render() {
-    const { isOpen, openDrawer, closeDrawer, location } = this.props;
-    const { theme, pageTitle } = this.mapRouteToDrawerProps();
+    const { isOpen, openDrawer, closeDrawer, location, title, theme } = this.props;
     return (
       <NavigationDrawer
-        className={classnames('react-md-docs', theme)}
+        containerClassName={classnames('react-md-docs', theme)}
         title="react-md"
-        toolbarTitle={pageTitle}
+        toolbarTitle={title}
         isOpen={isOpen}
         openDrawer={openDrawer}
         closeDrawer={closeDrawer}

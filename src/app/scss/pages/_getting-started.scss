@@ -1,0 +1,5 @@
+@import '~helpers';
+
+.react-md-docs.theme-getting-started {
+  @include md-theme-most($md-indigo-500, $md-indigo-300, $md-pink-a-200);
+}

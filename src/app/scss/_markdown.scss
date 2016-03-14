@@ -1,10 +1,8 @@
 @import '~helpers';
 
-$line-height: 20 / 14;
-
 %monospace {
   font-family: 'Source Code Pro', monospace;
-  line-height: $line-height;
+  line-height: $md-line-height;
 }
 
 code,
@@ -49,7 +47,26 @@ blockquote {
   padding-left: 1.5em;
 
   p {
-    color: $md-secondary-text-color;
+    @extend %md-secondary-text;
     margin: 0;
+  }
+}
+
+.text-container {
+
+  h1 {
+    @extend %md-display-1;
+  }
+
+  h3 {
+    @extend %md-headline;
+  }
+
+  h4 {
+    @extend %md-title;
+  }
+
+  p {
+    @extend %md-body-1;
   }
 }

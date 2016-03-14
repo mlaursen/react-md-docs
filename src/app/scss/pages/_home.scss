@@ -1,9 +1,35 @@
 @import '~helpers';
 
+.banner {
+  align-items: center;
+  background: $md-primary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 400px;
+  padding: 2em;
+
+  .md-subheading-2,
+  .md-display-2 {
+    color: $md-white-base;
+  }
+}
+
 .getting-started {
+  justify-content: center;
 
   .md-card {
     max-width: 355px;
     text-decoration: none;
+  }
+}
+
+.about {
+  margin-bottom: 2em;
+  padding: 1em 0;
+
+  p {
+    @extend %md-title;
+    white-space: normal;
   }
 }

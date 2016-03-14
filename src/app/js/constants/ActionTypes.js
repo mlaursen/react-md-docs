@@ -1,4 +1,5 @@
 export const OPEN_DRAWER = 'OPEN_DRAWER';
 export const CLOSE_DRAWER = 'CLOSE_DRAWER';
+export const UPDATE_TITLE_THEME = 'UPDATE_TITLE_THEME';
 
 export const GET_COMPONENT_DOCS = 'GET_COMPONENT_DOCS';

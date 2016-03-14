@@ -41,28 +41,26 @@ export default class Home extends Component {
           </h4>
           <RaisedButton onClick={this.viewDemo} label="View Demo" secondary />
         </section>
-        <Markdown markdown={about} />
-        <section className="getting-started">
-          <div className="md-card-list">
-            <ImgCard
-              to="getting-started"
-              src={gettingStarted}
-              alt="A person figure sitting at a desk looking at a laptop."
-              title="Getting Started"
-            />
-            <ImgCard
-              to="customization"
-              src={customization}
-              alt="A person figure painting on a canvas."
-              title="Customization"
-            />
-            <ImgCard
-              to="components"
-              src={components}
-              alt="Two person figures carrying a material item shaped like a pipe."
-              title="Components"
-            />
-          </div>
+        <Markdown markdown={about} className="about container text-container" />
+        <section className="getting-started md-card-list">
+          <ImgCard
+            to="getting-started"
+            src={gettingStarted}
+            alt="A person figure sitting at a desk looking at a laptop."
+            title="Getting Started"
+          />
+          <ImgCard
+            to="customization"
+            src={customization}
+            alt="A person figure painting on a canvas."
+            title="Customization"
+          />
+          <ImgCard
+            to="components"
+            src={components}
+            alt="Two person figures carrying a material item shaped like a pipe."
+            title="Components"
+          />
         </section>
       </div>
     );

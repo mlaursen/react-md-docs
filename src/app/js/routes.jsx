@@ -6,6 +6,7 @@ import App from './containers/App';
 import Home from './components/Home';
 import GettingStarted from './components/GettingStarted';
 import Customization from './components/Customization';
+import Typography from './components/Typography';
 import DocPage from './containers/DocPage';
 
 export default (
@@ -13,6 +14,7 @@ export default (
     <IndexRoute component={Home} />
     <Route path="getting-started" component={GettingStarted} />
     <Route path="customization" component={Customization} />
+    <Route path="typography" component={Typography} />
     <Route path="components/:component(/:subcomponent)" component={DocPage} />
   </Route>
 );

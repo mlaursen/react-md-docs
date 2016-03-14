@@ -37,7 +37,7 @@ ${media}
 
 export default function Customization() {
   return (
-    <div className="text-container">
+    <div className="container text-container">
       <Markdown markdown={markdown} />
       <Markdown markdown={mediaQueries} />
       <Markdown markdown={defaultTheme} />

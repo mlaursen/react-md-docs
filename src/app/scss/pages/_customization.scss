@@ -1,0 +1,5 @@
+@import '~helpers';
+
+.react-md-docs.theme-customization {
+  @include md-theme-most($md-pink-700, $md-pink-300, $md-purple-a-200);
+}
