@@ -2,15 +2,18 @@ function capitalizeFirst(s) {
   return s.charAt(0).toUpperCase() + s.substring(1, s.length);
 }
 
-export function toTitle(s) {
-  const joined = s.split('-').reduce((prev, curr) => {
+function reduce(s, split, joiner, fn) {
+  const reduced = s.split(split).reduce((curr, prev) => {
     if(prev) {
-      prev += ' ';
+      prev += joiner;
     }
 
-    curr = capitalizeFirst(curr);
+    curr = fn(curr);
     return prev ? prev + curr : curr;
   });
 
-  return capitalizeFirst(joined);
+  return fn(reduced);
 }
+
+export const toTitle = s => reduce(s, '-', ' ', capitalizeFirst);
+export const toClassName = s => reduce(s, ' ', '-', s => s.toLowerCase());

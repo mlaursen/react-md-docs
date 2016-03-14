@@ -7,7 +7,7 @@ import Home from './components/Home';
 import GettingStarted from './components/GettingStarted';
 import Customization from './components/Customization';
 import Typography from './components/Typography';
-import DocPage from './containers/DocPage';
+import AvatarDocs from './components/avatars/AvatarDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -15,6 +15,6 @@ export default (
     <Route path="getting-started" component={GettingStarted} />
     <Route path="customization" component={Customization} />
     <Route path="typography" component={Typography} />
-    <Route path="components/:component(/:subcomponent)" component={DocPage} />
+    <Route path="components/avatars" component={AvatarDocs} />
   </Route>
 );

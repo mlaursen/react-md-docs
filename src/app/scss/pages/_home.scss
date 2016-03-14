@@ -33,3 +33,11 @@
     white-space: normal;
   }
 }
+
+.react-md-docs {
+  .md-navigation-drawer-toolbar {
+    &.inactive {
+      box-shadow: none;
+    }
+  }
+}

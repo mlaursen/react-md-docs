@@ -1,16 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 import Divider from 'react-md/lib/Dividers';
 
-import { getComponentDocs } from '../actions/docs';
+import { toClassName } from '../utils/StringUtils';
 import Markdown from '../containers/Markdown';
+import DocExample from './DocExample';
 
-@connect(state => {
-  return state.docs;
-}, {
-  getComponentDocs,
-})
 export default class DocPage extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +19,7 @@ export default class DocPage extends Component {
       PropTypes.arrayOf(PropTypes.string),
       PropTypes.node,
     ]),
-    sectionName: PropTypes.string,
+    sectionName: PropTypes.string.isRequired,
     examples: PropTypes.arrayOf(PropTypes.shape({
       sectionName: PropTypes.string,
       code: PropTypes.string.isRequired,
@@ -44,40 +39,17 @@ export default class DocPage extends Component {
         required: PropTypes.bool,
       })),
     })),
-    // from react-router
-    params: PropTypes.object,
   };
 
   static defaultProps = {
+    examples: [],
     components: [],
     text: '',
   };
 
-  componentWillMount() {
-    this.updateDocs(this.props);
-  }
-
-  componentWillUpdate(nextProps) {
-    if(this.props.params.component !== nextProps.params.component) {
-      this.updateDocs(nextProps);
-    }
-  }
-
-  updateDocs = ({ params, getComponentDocs }) => {
-    let next;
-    if(params.subcomponent) {
-      next = params.subcomponent + '-' + params.component;
-    } else {
-      next = params.component;
-    }
-    getComponentDocs(next);
-  };
-
   render() {
-    const { sectionName, text } = this.props;
+    const { sectionName, text, examples } = this.props;
 
-    const componentName = sectionName;
-    const title = sectionName;
     let details;
     if(React.isValidElement(text)) {
       details = text;
@@ -86,12 +58,13 @@ export default class DocPage extends Component {
       details = details.map((md, i) => <Markdown key={i} markdown={md} />);
     }
     return (
-      <div className={`react-doc doc-component-${componentName}`}>
+      <div className={`react-doc doc-component-${toClassName(sectionName)}`}>
         <header className="component-info">
-          <h1 className="md-display-1">{title}</h1>
+          <h1 className="md-display-1">{sectionName}</h1>
           <Divider />
           {details}
         </header>
+        {examples.map((example, key) => <DocExample {...example} key={key} />)}
       </div>
     );
   }

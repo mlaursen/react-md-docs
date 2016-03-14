@@ -32,6 +32,35 @@ export default class Home extends Component {
     router: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.updateToolbar);
+    this.updateToolbar();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.updateToolbar);
+    this.updateToolbar(true);
+  }
+
+  updateToolbar = (remove) => {
+    const scrollDistance = Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+
+    const content = document.querySelector('.react-md-docs .md-navigation-drawer-content');
+    const toolbar = content.querySelector('.md-navigation-drawer-toolbar');
+
+    if(scrollDistance <= 400) {
+      content.classList.add('inactive');
+      toolbar.classList.add('inactive');
+    } else if(content.classList.contains('inactive') || (typeof remove === 'boolean' && remove)) {
+      content.classList.remove('inactive');
+      toolbar.classList.remove('inactive');
+    }
+  };
+
   viewDemo = () => {
     this.context.router.push(FIRST_COMPONENT_LINK);
   };

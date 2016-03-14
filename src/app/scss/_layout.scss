@@ -1,3 +1,30 @@
+@import '~helpers';
+
 .container {
   margin: 0 auto;
+}
+
+.middle-align {
+  align-items: center;
+  display: flex;
+}
+
+.doc-component-avatars {
+  .middle-align {
+    padding-bottom: 1em;
+    padding-top: 1em;
+
+    > span {
+      padding-left: 2em;
+    }
+  }
+}
+
+.react-doc > .md-card {
+  margin: 1em 0;
+}
+
+.example-code {
+  background: $md-background-color;
+  border-top: 1px solid $md-divider-color;
 }

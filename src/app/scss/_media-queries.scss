@@ -5,6 +5,14 @@
   .container {
     width: 300px;
   }
+
+  .component-info {
+    padding: 1em;
+  }
+
+  .react-doc {
+    margin: 4px;
+  }
 }
 
 // Extra small devices, Phones
@@ -25,6 +33,14 @@
 @media only screen and (min-width: 992px) {
   .container {
     width: 952px - $md-navigation-drawer-width;
+  }
+
+  .component-info {
+    padding: 1em 2em;
+  }
+
+  .react-doc {
+    margin: 1em 2em;
   }
 }
 

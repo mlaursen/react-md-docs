@@ -145,3 +145,15 @@ const navItems = [{
 export function getNavItems(pathname) {
   return navItems.map(opts => mapItemsToNavParts(opts, pathname));
 }
+
+// When webpack 2.x.x is released
+//
+// export function getComponent(location, cb) {
+//   System.import('../' + location.pathname.replace(APP_URI_BASE + '/', ''))
+//     .then(() => {
+//       return module => cb(null, module.default);
+//     })
+//     .catch(err => {
+//       console.error('Dynamic page loading failed', err);
+//     });
+// }
