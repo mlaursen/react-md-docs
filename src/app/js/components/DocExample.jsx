@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import { Card, CardTitle, CardText } from 'react-md/lib/Cards';
 import Markdown from '../containers/Markdown';
+import { toClassName } from '../utils/StringUtils';
 
 export default class DocExample extends Component {
   constructor(props) {
@@ -18,10 +19,11 @@ export default class DocExample extends Component {
     name: PropTypes.string,
     code: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
+    fallbackId: PropTypes.string.isRequired,
   };
 
   render() {
-    const { code, children, className, name, ...props } = this.props;
+    const { code, children, className, name, fallbackId, ...props } = this.props;
     const markdown = `
 \`\`\`js
 ${code}
@@ -34,6 +36,7 @@ ${code}
         className={classnames('component-example', className)}
         raise={false}
         iconChildren="code"
+        id={name ? toClassName(name) : fallbackId}
       >
         <CardTitle title={name || 'Examples'} isExpander={true} />
         <Markdown expandable={true} markdown={markdown} className="md-card-text example-code" />

@@ -1,4 +1,4 @@
-function capitalizeFirst(s) {
+export function capitalizeFirst(s) {
   return s.charAt(0).toUpperCase() + s.substring(1, s.length);
 }
 

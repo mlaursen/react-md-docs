@@ -20,6 +20,7 @@ export default class AvatarDocs extends Component {
   render() {
     return (
       <DocPage
+        {...this.props}
         text="Avatars can be used to symbolize people or objects."
         sectionName="Avatars"
         examples={[{
