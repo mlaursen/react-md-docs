@@ -7,6 +7,7 @@ import ImgCard from './ImgCard';
 import customization from '../../imgs/components.jpg';
 import gettingStarted from '../../imgs/getting-started.jpg';
 import components from '../../imgs/components.jpg';
+import { FIRST_COMPONENT_LINK } from '../utils/RouteUtils';
 
 const about = `
 This project was created because I learn by doing and I wanted to learn Material Design.
@@ -26,9 +27,13 @@ export default class Home extends Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
-  static propTypes = {
+  static contextTypes = {
     // from react-router
-    history: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+  };
+
+  viewDemo = () => {
+    this.context.router.push(FIRST_COMPONENT_LINK);
   };
 
   render() {
