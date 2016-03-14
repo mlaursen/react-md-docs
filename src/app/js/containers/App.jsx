@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
+import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
-import { openDrawer, closeDrawer, updateLayoutTitleTheme } from '../actions/layout';
+import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
+import ThemeSwitcher from './ThemeSwitcher';
 
 @connect(state => {
   return {
@@ -17,7 +19,7 @@ import { openDrawer, closeDrawer, updateLayoutTitleTheme } from '../actions/layo
 }, {
   openDrawer,
   closeDrawer,
-  updateLayoutTitleTheme,
+  updateTitle,
 })
 export default class App extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ export default class App extends Component {
     theme: PropTypes.string,
     openDrawer: PropTypes.func.isRequired,
     closeDrawer: PropTypes.func.isRequired,
-    updateLayoutTitleTheme: PropTypes.func.isRequired,
+    updateTitle: PropTypes.func.isRequired,
 
     // from react-router
     children: PropTypes.node,
@@ -40,33 +42,40 @@ export default class App extends Component {
   };
 
   componentWillMount() {
-    const { updateLayoutTitleTheme, location } = this.props;
-    updateLayoutTitleTheme(location.pathname);
+    const { updateTitle, location } = this.props;
+    updateTitle(location.pathname);
   }
 
   componentWillUpdate(nextProps) {
     if(this.props.location.pathname !== nextProps.location.pathname) {
-      const { updateLayoutTitleTheme, location } = nextProps;
-      updateLayoutTitleTheme(location.pathname);
+      const { updateTitle, location } = nextProps;
+      updateTitle(location.pathname);
     }
   }
 
   render() {
     const { isOpen, openDrawer, closeDrawer, location, title, theme } = this.props;
     return (
-      <NavigationDrawer
-        containerClassName={classnames('react-md-docs', theme)}
-        title="react-md"
-        toolbarTitle={title}
-        isOpen={isOpen}
-        openDrawer={openDrawer}
-        closeDrawer={closeDrawer}
-        navItems={getNavItems(location.pathname)}
-      >
-        <main>
-          {React.cloneElement(this.props.children, { key: location.pathname })}
-        </main>
-      </NavigationDrawer>
+      <div className={theme}>
+        <NavigationDrawer
+          containerClassName={classnames('react-md-docs', theme)}
+          title="react-md"
+          toolbarTitle={title}
+          isOpen={isOpen}
+          openDrawer={openDrawer}
+          closeDrawer={closeDrawer}
+          navItems={getNavItems(location.pathname)}
+          navHeaderChildren={<ThemeSwitcher />}
+        >
+          <main
+            className={classnames({
+              'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== APP_URI_BASE + '/',
+            })}
+          >
+            {React.cloneElement(this.props.children, { key: location.pathname })}
+          </main>
+        </NavigationDrawer>
+      </div>
     );
   }
 }

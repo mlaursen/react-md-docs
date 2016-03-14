@@ -28,3 +28,8 @@
   background: $md-background-color;
   border-top: 1px solid $md-divider-color;
 }
+
+.md-navigation-drawer-content > .text-page {
+  background: $md-white-base;
+  padding: 2em 0;
+}
