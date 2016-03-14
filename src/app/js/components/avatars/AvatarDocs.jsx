@@ -20,6 +20,7 @@ export default class AvatarDocs extends Component {
   render() {
     return (
       <DocPage
+        {...this.props}
         text="Avatars can be used to symbolize people or objects."
         sectionName="Avatars"
         examples={[{
@@ -28,6 +29,7 @@ export default class AvatarDocs extends Component {
         }]}
         components={[{
           name: 'Avatar',
+          children: false,
           props: [{
             name: 'src',
             desc: 'The image source for the avatar if you want to use an image.',
@@ -48,7 +50,7 @@ export default class AvatarDocs extends Component {
             name: 'random',
             desc: `A boolean that enables adding a random material design color from the available
             avatar css color classes.`,
-            type: 'boolean',
+            type: 'bool',
           }, {
             name: 'suffix',
             desc: 'The max color number that can be used when generating a random color for the avatar.',

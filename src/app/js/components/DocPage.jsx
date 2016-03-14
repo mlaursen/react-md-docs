@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Divider from 'react-md/lib/Dividers';
 
-import { toClassName } from '../utils/StringUtils';
+import { APP_URI_BASE } from '../utils';
+import { toClassName, capitalizeFirst } from '../utils/StringUtils';
 import Markdown from '../containers/Markdown';
 import DocExample from './DocExample';
+import DocPropTypes from './DocPropTypes';
 
 export default class DocPage extends Component {
   constructor(props) {
@@ -12,6 +14,10 @@ export default class DocPage extends Component {
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
+
+  static context = {
+    router: PropTypes.object.isRequired,
+  };
 
   static propTypes = {
     text: PropTypes.oneOfType([
@@ -39,6 +45,9 @@ export default class DocPage extends Component {
         required: PropTypes.bool,
       })),
     })),
+
+    // from react-router
+    location: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -48,7 +57,8 @@ export default class DocPage extends Component {
   };
 
   render() {
-    const { sectionName, text, examples } = this.props;
+    const { sectionName, text, examples, components, location } = this.props;
+    const componentSectionName = capitalizeFirst(location.pathname.replace(APP_URI_BASE + '/components/', ''));
 
     let details;
     if(React.isValidElement(text)) {
@@ -64,7 +74,8 @@ export default class DocPage extends Component {
           <Divider />
           {details}
         </header>
-        {examples.map((example, key) => <DocExample {...example} key={key} />)}
+        {examples.map((example, key) => <DocExample {...example} key={key} fallbackId={`example-${key}`} />)}
+        {components.map((component, key) => <DocPropTypes sectionName={componentSectionName} {...component} key={key} />)}
       </div>
     );
   }
