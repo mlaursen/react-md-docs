@@ -1,6 +1,6 @@
 import marked from 'marked';
 import { GET_COMPONENT_DOCS } from '../constants/ActionTypes';
-import { toDashedName, toTitle } from '../utils/StringUtils';
+import { toTitle } from '../utils/StringUtils';
 
 marked.setOptions({
   renderer: new marked.Renderer(),

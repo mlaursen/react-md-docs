@@ -31,7 +31,7 @@ function mapComponentRoutes(component, prefix = '') {
     nestedItems: realNestedItems && realNestedItems.map(c => mapComponentRoutes(c, realPath)),
     path: `components/${prefix}${realPath}`,
     primaryText: toTitle(realPath),
-  }
+  };
 }
 
 const components = [
@@ -89,10 +89,12 @@ function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, p
   }
 
   const isHome = path === '';
-  let className;
-  if((!isHome && pathname.indexOf(path) !== -1) || (isHome && pathname === APP_URI_BASE) || (primaryText === 'Components' && pathname.indexOf('components') !== -1)) {
-    className = 'active';
-  }
+  const isHomeActive = isHome && pathname === `${APP_URI_BASE}/`;
+  const isSubsActive = !isHome && pathname.indexOf(path) !== -1;
+  const isCompActive = primaryText === 'Components' && pathname.indexOf('components') !== -1;
+  // can't use activeClassName since it doesn't update correctly with PureRenderMixin
+  const className = isHomeActive || isSubsActive || isCompActive ? 'active' : null;
+
   return {
     ...props,
     to,

@@ -25,7 +25,6 @@ export default class DocPage extends Component {
       PropTypes.node,
     ]),
     sectionName: PropTypes.string,
-    components: PropTypes.array,
     examples: PropTypes.arrayOf(PropTypes.shape({
       sectionName: PropTypes.string,
       code: PropTypes.string.isRequired,
@@ -45,6 +44,8 @@ export default class DocPage extends Component {
         required: PropTypes.bool,
       })),
     })),
+    // from react-router
+    params: PropTypes.object,
   };
 
   static defaultProps = {
@@ -56,7 +57,7 @@ export default class DocPage extends Component {
     this.updateDocs(this.props);
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps) {
     if(this.props.params.component !== nextProps.params.component) {
       this.updateDocs(nextProps);
     }
@@ -73,7 +74,7 @@ export default class DocPage extends Component {
   };
 
   render() {
-    const { sectionName, text, components } = this.props;
+    const { sectionName, text } = this.props;
 
     const componentName = sectionName;
     const title = sectionName;

@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
-import Avatar from 'react-md/lib/Avatars';
-import FontIcon from 'react-md/lib/FontIcons';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
 import { APP_URI_BASE } from '../utils';

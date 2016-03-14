@@ -40,7 +40,8 @@ export default function Customization() {
     <div className="text-container">
       <Markdown markdown={markdown} />
       <Markdown markdown={mediaQueries} />
+      <Markdown markdown={defaultTheme} />
       <Markdown markdown={defaultMedia} />
     </div>
-  )
+  );
 }

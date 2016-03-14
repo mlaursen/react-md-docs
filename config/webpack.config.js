@@ -27,12 +27,11 @@ module.exports = {
   },
 
   module: {
-    // This version of eslint is broken right now.
-    //preLoaders: [{
-    //  test: /\.jsx?$/,
-    //  loader: 'eslint',
-    //  exclude: /node_modules|react-md\/lib/,
-    //}],
+    preLoaders: [{
+      test: /\.jsx?$/,
+      loader: 'eslint',
+      exclude: /node_modules|react-md\/lib/,
+    }],
 
     loaders: [{
       test: /\.(png|jpe?g|ico)$/,

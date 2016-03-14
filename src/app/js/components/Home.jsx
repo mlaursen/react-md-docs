@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { Link } from 'react-router';
 import { RaisedButton } from 'react-md/lib/Buttons';
 
 import Markdown from '../containers/Markdown';
