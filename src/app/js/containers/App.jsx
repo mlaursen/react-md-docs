@@ -8,6 +8,7 @@ import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
 import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
 import ThemeSwitcher from './ThemeSwitcher';
+import AppFooter from '../components/AppFooter';
 
 @connect(state => {
   return {
@@ -74,6 +75,7 @@ export default class App extends Component {
           >
             {React.cloneElement(this.props.children, { key: location.pathname })}
           </main>
+          <AppFooter />
         </NavigationDrawer>
       </div>
     );

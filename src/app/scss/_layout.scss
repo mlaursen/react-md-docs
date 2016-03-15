@@ -20,6 +20,23 @@
   }
 }
 
+.react-doc-footer {
+  background: $md-grey-900;
+  color: $md-white-base;
+  margin-top: 5em;
+  min-height: 220px;
+  padding: 2em;
+
+  .md-title {
+    color: inherit;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .react-doc > .md-card {
   margin: 1em 0;
 }
