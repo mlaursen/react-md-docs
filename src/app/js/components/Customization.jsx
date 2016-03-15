@@ -1,10 +1,10 @@
 import React from 'react';
 import Markdown from '../containers/Markdown';
 
-import markdown from '../../markdown/Customization.md';
-import theme from '!!raw!md-src/_theme.scss';
-import themeMixin from '!!raw!md-src/helpers/mixins/_theme.scss';
-import media from '!!raw!md-src/_media-queries.scss';
+import markdown from '../../markdown/Customization';
+import theme from '!!raw!md-src/_theme';
+import themeMixin from '!!raw!md-src/helpers/mixins/_theme';
+import media from '!!raw!md-src/_media-queries';
 
 const defaultTheme = `
 #### Default theme

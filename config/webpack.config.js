@@ -49,7 +49,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss'],
+    extensions: ['', '.js', '.jsx', '.scss', '.md'],
     alias: {
       // prevents multiple react versions when linked
       'react': nodeModules + '/react',

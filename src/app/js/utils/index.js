@@ -24,3 +24,14 @@ export function randomImages(amt, options = { width: 40 }) {
 export function randomAvatars(amt) {
   return randomImages(amt).map(src => <Avatar key={src} src={src} />);
 }
+
+export function getViewSize() {
+  const w = window;
+  const d = document;
+  const e = d.documentElement;
+  const b = document.getElementsByTagName('body')[0];
+  return {
+    width: w.innerWidth || e.clientWidth || b.clientWidth,
+    height: w.innerHeight || e.clientHeight || b.clientHeight,
+  };
+}

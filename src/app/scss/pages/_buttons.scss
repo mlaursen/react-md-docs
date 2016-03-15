@@ -1,9 +1,30 @@
+%doc-btn {
+  margin: 1em;
+  vertical-align: top;
+}
+
 .doc-component-buttons-flat,
 .doc-component-buttons-raised,
-.doc-component-buttons-floating,
 .doc-component-buttons-icon {
   .md-card-text .md-btn {
-    margin: 1em;
-    vertical-align: top;
+    @extend %doc-btn;
+  }
+}
+
+.floating-btn-examples .md-btn {
+  @extend %doc-btn;
+}
+
+.md-speed-dial {
+  &.moving {
+    position: absolute;
+    transition-duration: .45s;
+    transition-property: left, top;
+  }
+
+  &.inactive {
+    @extend %doc-btn;
+
+    position: static;
   }
 }
