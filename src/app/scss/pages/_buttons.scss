@@ -1,0 +1,9 @@
+.doc-component-buttons-flat,
+.doc-component-buttons-raised,
+.doc-component-buttons-floating,
+.doc-component-buttons-icon {
+  .md-card-text .md-btn {
+    margin: 1em;
+    vertical-align: top;
+  }
+}

@@ -8,6 +8,7 @@ import GettingStarted from './components/GettingStarted';
 import Customization from './components/Customization';
 import Typography from './components/Typography';
 import AvatarDocs from './components/avatars/AvatarDocs';
+import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -16,5 +17,6 @@ export default (
     <Route path="customization" component={Customization} />
     <Route path="typography" component={Typography} />
     <Route path="components/avatars" component={AvatarDocs} />
+    <Route path="components/buttons/flat" component={FlatButtonDocs} />
   </Route>
 );
