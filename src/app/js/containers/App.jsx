@@ -58,7 +58,7 @@ export default class App extends Component {
     return (
       <div className={theme}>
         <NavigationDrawer
-          containerClassName={classnames('react-md-docs', theme)}
+          containerClassName="react-md-docs"
           title="react-md"
           toolbarTitle={title}
           isOpen={isOpen}

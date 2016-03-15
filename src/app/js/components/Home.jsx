@@ -51,13 +51,12 @@ export default class Home extends Component {
 
     const content = document.querySelector('.react-md-docs .md-navigation-drawer-content');
     const toolbar = content.querySelector('.md-navigation-drawer-toolbar');
-
-    if(scrollDistance <= 400) {
-      content.classList.add('inactive');
-      toolbar.classList.add('inactive');
-    } else if(content.classList.contains('inactive') || (typeof remove === 'boolean' && remove)) {
+    if((typeof remove === 'boolean' && remove) || scrollDistance > 400) {
       content.classList.remove('inactive');
       toolbar.classList.remove('inactive');
+    } else {
+      content.classList.add('inactive');
+      toolbar.classList.add('inactive');
     }
   };
 

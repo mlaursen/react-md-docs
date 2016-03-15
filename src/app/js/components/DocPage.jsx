@@ -41,7 +41,7 @@ export default class DocPage extends Component {
         name: PropTypes.string.isRequired,
         desc: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
-        defaultValue: PropTypes.string,
+        defaultValue: PropTypes.any,
         required: PropTypes.bool,
       })),
     })),
