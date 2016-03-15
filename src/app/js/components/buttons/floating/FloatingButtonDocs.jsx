@@ -98,6 +98,59 @@ export default class FloatingButtonDocs extends Component {
             desc: 'An optional className to apply to the tooltip.',
             type: 'string',
           }],
+        }, {
+          name: 'Speed Dial',
+          others: false,
+          props: [{
+            name: 'fabs',
+            desc: `A list of \`FloatingButton\` or props to generate the \`FloatingButton\` for when
+            the SpeedDial is open. They will automatically be converted to the \`mini\` FAB type.`,
+            type: 'arrayOf(node || { ...fabProps })',
+            required: true,
+          }, {
+            name: 'isOpen',
+            desc: 'An optional boolean if the speed dial is open (and a controlled component)',
+            type: 'bool',
+          }, {
+            name: 'initiallyOpen',
+            desc: 'Boolean if the uncontrolled SpeedDial is open by default.',
+            type: 'bool',
+            defaultValue: false,
+          }, {
+            name: 'onClick',
+            desc: 'A function to call whenever the main FAB is clicked.',
+            type: 'func',
+          }, {
+            name: 'onPassiveClick',
+            desc: 'A function to call only when the Speed Dial is not open and the main FAB is clicked.',
+            type: 'func',
+          }, {
+            name: 'onActiveClick',
+            desc: 'A function to call only when the Speed Dial is open and the main FAB is clicked.',
+            type: 'func',
+          }, {
+            name: 'passiveIconChildren',
+            desc: 'The children to use to display the icon when the Speed Dial is not open.',
+            type: 'node',
+          }, {
+            name: 'passiveIconClassName',
+            desc: 'The icon className to use to display the icon when the Speed Dial is not open.',
+            type: 'string',
+            defaultValue: 'material-icons',
+          }, {
+            name: 'activeIconChildren',
+            desc: 'The children to use to display the icon when the Speed Dial is open.',
+            type: 'node',
+          }, {
+            name: 'activeIconClassName',
+            desc: 'The icon className to use to display the icon when the Speed Dial is open.',
+            type: 'string',
+            defaultValue: 'material-icons',
+          }, {
+            name: 'containerProps',
+            desc: 'Any props that you want to apply to the speed dial component itself instead of the FAB.',
+            type: 'object',
+          }],
         }]}
       />
     );

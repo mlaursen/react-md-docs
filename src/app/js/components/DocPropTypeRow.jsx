@@ -26,7 +26,7 @@ export default class DocPropTypeRow extends Component {
       dv = (
         <span className="prop-default">
           {'default: '}
-          <code>{defaultValue === null ? 'null' : defaultValue}</code>
+          <code>{defaultValue === null ? 'null' : defaultValue.toString()}</code>
         </span>
       );
     }
