@@ -9,6 +9,7 @@ import Customization from './components/Customization';
 import Typography from './components/Typography';
 import AvatarDocs from './components/avatars/AvatarDocs';
 import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
+import RaisedButtonDocs from './components/buttons/raised/RaisedButtonDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -18,5 +19,6 @@ export default (
     <Route path="typography" component={Typography} />
     <Route path="components/avatars" component={AvatarDocs} />
     <Route path="components/buttons/flat" component={FlatButtonDocs} />
+    <Route path="components/buttons/raised" component={RaisedButtonDocs} />
   </Route>
 );
