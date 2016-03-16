@@ -57,6 +57,7 @@ module.exports = {
       'helpers': reactmd + '/src/scss/helpers/_all.scss',
       'md-scss': reactmd + '/src/scss/react-md.scss',
       'md-src': reactmd + '/src/scss',
+      'react-doc-page': js + '/components/DocPage.jsx',
     },
   },
 

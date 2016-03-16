@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import DocPage from '../../DocPage';
+import DocPage from 'react-doc-page';
 import IconButtonExamples from './IconButtonExamples';
 import IconButtonExamplesRaw from '!!raw!./IconButtonExamples';
 

@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import DocPage from '../DocPage';
+import DocPage from 'react-doc-page';
 import AvatarExamples from './AvatarExamples';
 import AvatarExamplesRaw from '!!raw!./AvatarExamples';
 
@@ -11,11 +11,6 @@ export default class AvatarDocs extends Component {
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-  };
 
   render() {
     return (

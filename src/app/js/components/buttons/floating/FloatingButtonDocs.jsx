@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import DocPage from '../../DocPage';
+import DocPage from 'react-doc-page';
 import FloatingButtonExamples from './FloatingButtonExamples';
 import FloatingButtonExamplesRaw from '!!raw!./FloatingButtonExamples';
 import SpeedDialExample from './SpeedDialExample';
