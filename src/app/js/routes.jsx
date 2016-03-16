@@ -12,6 +12,7 @@ import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
 import RaisedButtonDocs from './components/buttons/raised/RaisedButtonDocs';
 import FloatingButtonDocs from './components/buttons/floating/FloatingButtonDocs';
 import IconButtonDocs from './components/buttons/icon/IconButtonDocs';
+import CardDocs from './components/cards/CardDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -24,5 +25,6 @@ export default (
     <Route path="components/buttons/raised" component={RaisedButtonDocs} />
     <Route path="components/buttons/floating" component={FloatingButtonDocs} />
     <Route path="components/buttons/icon" component={IconButtonDocs} />
+    <Route path="components/cards" component={CardDocs} />
   </Route>
 );

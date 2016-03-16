@@ -35,6 +35,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .contact {
+    flex-shrink: 0;
+    padding-right: 2em;
+  }
 }
 
 .react-doc > .md-card {
@@ -99,4 +104,8 @@
     content: '(isRequired)';
     padding-left: .5em;
   }
+}
+
+.justify-between {
+  justify-content: space-between;
 }
