@@ -14,6 +14,7 @@ import FloatingButtonDocs from './components/buttons/floating/FloatingButtonDocs
 import IconButtonDocs from './components/buttons/icon/IconButtonDocs';
 import CardDocs from './components/cards/CardDocs';
 import ChipDocs from './components/chips/ChipDocs';
+import DialogDocs from './components/dialogs/DialogDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -28,5 +29,6 @@ export default (
     <Route path="components/buttons/icon" component={IconButtonDocs} />
     <Route path="components/cards" component={CardDocs} />
     <Route path="components/chips" component={ChipDocs} />
+    <Route path="components/dialogs" component={DialogDocs} />
   </Route>
 );
