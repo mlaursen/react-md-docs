@@ -15,6 +15,7 @@ import IconButtonDocs from './components/buttons/icon/IconButtonDocs';
 import CardDocs from './components/cards/CardDocs';
 import ChipDocs from './components/chips/ChipDocs';
 import DialogDocs from './components/dialogs/DialogDocs';
+import DividerDocs from './components/dividers/DividerDocs';
 import FontIconDocs from './components/font-icons/FontIconDocs';
 
 export default (
@@ -31,6 +32,7 @@ export default (
     <Route path="components/cards" component={CardDocs} />
     <Route path="components/chips" component={ChipDocs} />
     <Route path="components/dialogs" component={DialogDocs} />
+    <Route path="components/dividers" component={DividerDocs} />
     <Route path="components/font-icons" component={FontIconDocs} />
   </Route>
 );
