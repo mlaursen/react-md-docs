@@ -142,7 +142,6 @@ export default class CardDocs extends Component {
           }],
         }, {
           name: 'CardActions',
-          desc: ``,
           props: [{
             name: 'centered',
             desc: 'Boolean if the children should be centered in the action area.',
