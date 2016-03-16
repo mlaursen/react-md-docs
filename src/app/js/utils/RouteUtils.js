@@ -104,6 +104,7 @@ function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, p
     nestedItems: nestedItems && nestedItems.map(c => mapItemsToNavParts(c, pathname)),
     leftIcon: left,
     primaryText: primaryText || toTitle(path),
+    initiallyOpen: nestedItems && className === 'active',
   };
 }
 
