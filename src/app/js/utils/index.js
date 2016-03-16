@@ -6,12 +6,19 @@ import Avatar from 'react-md/lib/Avatars';
 export const APP_URI_BASE = process.env.APP_URI_BASE; //eslint-disable-line no-undef
 export const GITHUB_LINK = 'https://github.com/mlaursen/react-md';
 
-export function randomImage({ width, height, time } = { width: 40 }) {
+export function randomImage({ width, height, time, section } = { width: 40 }) {
   width = !width ? 40 : width;
   height = !height ? width : height;
+  section = !section ? '' : section;
   time = typeof time === 'undefined' ? Date.now() : time;
 
-  return `https://unsplash.it/${width}/${height}/?random&time=${time}`;
+
+  const size = `${width}/${height}`;
+  if(section) {
+    return `http://lorempixel.com/${size}/${section}`;
+  } else {
+    return `https://unsplash.it/${width}/${height}/?random&time=${time}`;
+  }
 }
 
 export function randomImages(amt, options = { width: 40 }) {
