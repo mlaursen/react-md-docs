@@ -6,7 +6,9 @@ import DividerExamples from './DividerExamples';
 import DividerExamplesRaw from '!!raw!./DividerExamples';
 
 const text = `
-fdsf
+Dividers group and separate content within lists and page layouts.
+The divider is a thin rule, lightweight yet sufficient to distinguish
+content visually and spatially.
 `;
 
 export default class DividerDocs extends Component {
