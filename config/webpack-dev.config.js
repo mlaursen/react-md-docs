@@ -10,14 +10,14 @@ const config = require('./webpack.config.js');
 config.cache = true;
 config.devServer = {
   contentBase: config.__buildFolder,
-  devtool: 'eval',
+  devtool: '#eval-source-map',
   historyApiFallback: {
     index: `/${config.__publicPath}/`,
   },
   hot: true,
   port: port,
 };
-config.devtool = 'eval';
+config.devtool = '#eval-source-map';
 config.entry = [
   `webpack-dev-server/client?${devUrl}`,
   'webpack/hot/only-dev-server',
