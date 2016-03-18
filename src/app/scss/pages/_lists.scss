@@ -1,0 +1,25 @@
+@import '~helpers';
+
+.doc-component-lists {
+  div > .md-list {
+    @include md-box-shadow(1);
+
+    display: inline-block;
+    margin: 1em;
+    max-width: 280px;
+    vertical-align: top;
+    width: 100%;
+  }
+
+  .md-avatar .md-icon {
+    color: $md-white-base;
+  }
+
+  .avatar-blue {
+    background: $md-light-blue-500;
+  }
+
+  .avatar-amber {
+    background: $md-amber-500;
+  }
+}

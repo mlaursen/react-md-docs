@@ -17,6 +17,7 @@ import ChipDocs from './components/chips/ChipDocs';
 import DialogDocs from './components/dialogs/DialogDocs';
 import DividerDocs from './components/dividers/DividerDocs';
 import FontIconDocs from './components/font-icons/FontIconDocs';
+import ListDocs from './components/lists/ListDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -34,5 +35,6 @@ export default (
     <Route path="components/dialogs" component={DialogDocs} />
     <Route path="components/dividers" component={DividerDocs} />
     <Route path="components/font-icons" component={FontIconDocs} />
+    <Route path="components/lists" component={ListDocs} />
   </Route>
 );
