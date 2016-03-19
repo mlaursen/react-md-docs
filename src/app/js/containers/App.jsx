@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
+import Snackbar from 'react-md/lib/Snackbars';
 
 import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
 import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
+import { dismissToast } from '../actions/docs';
 import ThemeSwitcher from './ThemeSwitcher';
 import AppFooter from '../components/AppFooter';
 
@@ -17,11 +18,13 @@ import AppFooter from '../components/AppFooter';
     title: state.layout.title,
     theme: state.layout.theme,
     drawerType: state.layout.drawerType,
+    toasts: state.docs.toasts,
   };
 }, {
   openDrawer,
   closeDrawer,
   updateTitle,
+  dismissToast,
 })
 export default class App extends Component {
   constructor(props) {
@@ -35,9 +38,11 @@ export default class App extends Component {
     title: PropTypes.string,
     theme: PropTypes.string,
     drawerType: PropTypes.string.isRequired,
+    toasts: PropTypes.array.isRequired,
     openDrawer: PropTypes.func.isRequired,
     closeDrawer: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
+    dismissToast: PropTypes.func.isRequired,
 
     // from react-router
     children: PropTypes.node,
@@ -65,6 +70,8 @@ export default class App extends Component {
       title,
       theme,
       drawerType,
+      toasts,
+      dismissToast,
     } = this.props;
 
     let navHeaderChildren;
@@ -94,6 +101,7 @@ export default class App extends Component {
             {React.cloneElement(this.props.children, { key: location.pathname })}
           </main>
           <AppFooter />
+          <Snackbar toasts={toasts} dismiss={dismissToast} />
         </NavigationDrawer>
       </div>
     );
