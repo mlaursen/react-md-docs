@@ -42,10 +42,15 @@
   }
 }
 
-.react-doc > .md-card {
-  margin-bottom: 1em;
-  margin-top: 1em;
+.react-doc {
+  overflow-x: hidden;
+
+  > .md-card {
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
 }
+
 
 .example-code {
   background: $md-background-color;
