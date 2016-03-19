@@ -42,3 +42,18 @@ export function getViewSize() {
     height: w.innerHeight || e.clientHeight || b.clientHeight,
   };
 }
+
+export function polyfillIntlLang(lang) {
+  /*eslint-env node*/
+  require(`intl/locale-data/jsonp/${lang}`);
+}
+
+export function polyfillIntlOSLang() {
+  let lang = window.navigator.userLanguage || window.navigator.language;
+  const [prefix, suffix] = lang.split('-');
+  if(suffix) {
+    lang = `${prefix}-${suffix.toUpperCase()}`;
+  }
+
+  polyfillIntlLang(lang);
+}

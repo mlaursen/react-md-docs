@@ -70,6 +70,9 @@ module.exports = {
       template: 'src/app/index.html',
       inject: 'body',
     }),
+    new webpack.ProvidePlugin({
+      'Intl': 'exports?global.Intl!intl',
+    }),
     new webpack.DefinePlugin({
       'process.env.APP_URI_BASE': `'/${publicPath}'`,
     }),

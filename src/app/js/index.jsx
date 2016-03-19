@@ -6,6 +6,8 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import WebFont from 'webfontloader';
 
+import { polyfillIntlLang, polyfillIntlOSLang } from './utils';
+
 import Root from './containers/Root';
 import configureStore from './stores/configureStore';
 
@@ -18,6 +20,9 @@ WebFont.load({
     urls: ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'],
   },
 });
+
+polyfillIntlOSLang();
+polyfillIntlLang('da-DK');
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
