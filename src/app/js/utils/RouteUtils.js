@@ -52,7 +52,7 @@ const components = [
     nestedItems: ['date', 'time'],
   }, {
     path: 'progress',
-    nestedItems: ['linear', 'circuluar'],
+    nestedItems: ['circular', 'linear'],
   }, {
     path: 'selection-controls',
     nestedItems: ['checkboxes', 'radios', 'switches'],
