@@ -43,7 +43,8 @@
 }
 
 .react-doc > .md-card {
-  margin: 1em 0;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .example-code {
@@ -99,7 +100,7 @@
     padding-right: 1em;
   }
 
-  .prop-required:before {
+  .prop-required::before {
     color: $md-secondary-text-color;
     content: '(isRequired)';
     padding-left: .5em;

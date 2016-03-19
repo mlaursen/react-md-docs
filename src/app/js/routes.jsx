@@ -20,6 +20,7 @@ import FontIconDocs from './components/font-icons/FontIconDocs';
 import ListDocs from './components/lists/ListDocs';
 import MenuDocs from './components/menus/MenuDocs';
 import NavigationDrawerDocs from './components/navigation-drawers/NavigationDrawerDocs';
+import PaperDocs from './components/papers/PaperDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -40,5 +41,6 @@ export default (
     <Route path="components/lists" component={ListDocs} />
     <Route path="components/menus" component={MenuDocs} />
     <Route path="components/navigation-drawers" component={NavigationDrawerDocs} />
+    <Route path="components/papers" component={PaperDocs} />
   </Route>
 );
