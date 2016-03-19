@@ -21,6 +21,7 @@ import ListDocs from './components/lists/ListDocs';
 import MenuDocs from './components/menus/MenuDocs';
 import NavigationDrawerDocs from './components/navigation-drawers/NavigationDrawerDocs';
 import PaperDocs from './components/papers/PaperDocs';
+import DatePickerDocs from './components/pickers/date/DatePickerDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -42,5 +43,6 @@ export default (
     <Route path="components/menus" component={MenuDocs} />
     <Route path="components/navigation-drawers" component={NavigationDrawerDocs} />
     <Route path="components/papers" component={PaperDocs} />
+    <Route path="components/pickers/date" component={DatePickerDocs} />
   </Route>
 );
