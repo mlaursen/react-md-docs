@@ -24,6 +24,7 @@ import PaperDocs from './components/papers/PaperDocs';
 import DatePickerDocs from './components/pickers/date/DatePickerDocs';
 import TimePickerDocs from './components/pickers/time/TimePickerDocs';
 import CircularProgressDocs from './components/progress/circular/CircularProgressDocs';
+import LinearProgressDocs from './components/progress/linear/LinearProgressDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -48,5 +49,6 @@ export default (
     <Route path="components/pickers/date" component={DatePickerDocs} />
     <Route path="components/pickers/time" component={TimePickerDocs} />
     <Route path="components/progress/circular" component={CircularProgressDocs} />
+    <Route path="components/progress/linear" component={LinearProgressDocs} />
   </Route>
 );
