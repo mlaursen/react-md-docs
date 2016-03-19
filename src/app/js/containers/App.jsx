@@ -16,6 +16,7 @@ import AppFooter from '../components/AppFooter';
     isOpen: state.layout.isDrawerOpen,
     title: state.layout.title,
     theme: state.layout.theme,
+    drawerType: state.layout.drawerType,
   };
 }, {
   openDrawer,
@@ -33,6 +34,7 @@ export default class App extends Component {
     isOpen: PropTypes.bool.isRequired,
     title: PropTypes.string,
     theme: PropTypes.string,
+    drawerType: PropTypes.string.isRequired,
     openDrawer: PropTypes.func.isRequired,
     closeDrawer: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
@@ -55,7 +57,21 @@ export default class App extends Component {
   }
 
   render() {
-    const { isOpen, openDrawer, closeDrawer, location, title, theme } = this.props;
+    const {
+      isOpen,
+      openDrawer,
+      closeDrawer,
+      location,
+      title,
+      theme,
+      drawerType,
+    } = this.props;
+
+    let navHeaderChildren;
+    if([NavigationDrawer.DrawerType.PERSISTENT, NavigationDrawer.DrawerType.PERSISTENT_MINI].indexOf(drawerType) === -1) {
+      navHeaderChildren = <ThemeSwitcher />;
+    }
+
     return (
       <div className={theme}>
         <NavigationDrawer
@@ -66,7 +82,8 @@ export default class App extends Component {
           openDrawer={openDrawer}
           closeDrawer={closeDrawer}
           navItems={getNavItems(location.pathname)}
-          navHeaderChildren={<ThemeSwitcher />}
+          drawerType={drawerType}
+          navHeaderChildren={navHeaderChildren}
         >
           <main
             className={classnames({

@@ -19,6 +19,7 @@ import DividerDocs from './components/dividers/DividerDocs';
 import FontIconDocs from './components/font-icons/FontIconDocs';
 import ListDocs from './components/lists/ListDocs';
 import MenuDocs from './components/menus/MenuDocs';
+import NavigationDrawerDocs from './components/navigation-drawers/NavigationDrawerDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -38,5 +39,6 @@ export default (
     <Route path="components/font-icons" component={FontIconDocs} />
     <Route path="components/lists" component={ListDocs} />
     <Route path="components/menus" component={MenuDocs} />
+    <Route path="components/navigation-drawers" component={NavigationDrawerDocs} />
   </Route>
 );

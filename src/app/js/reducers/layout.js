@@ -1,7 +1,8 @@
-import { OPEN_DRAWER, CLOSE_DRAWER, UPDATE_TITLE, UPDATE_THEME } from '../constants/ActionTypes';
+import { OPEN_DRAWER, CLOSE_DRAWER, UPDATE_TITLE, UPDATE_THEME, UPDATE_DRAWER_TYPE } from '../constants/ActionTypes';
 import { APP_URI_BASE } from '../utils';
 import { toTitle } from '../utils/StringUtils';
 import themes from '../constants/themes';
+import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
 function updateDrawer(state, isOpen) {
   if(state.isDrawerOpen !== isOpen) {
@@ -34,9 +35,16 @@ function updateTheme(state, theme) {
   return Object.assign({}, state, { theme });
 }
 
+function updateDrawerType(state, drawerType) {
+  if(state.drawerType === drawerType) { return state; }
+
+  return Object.assign({}, state, { drawerType });
+}
+
 const initialState = {
   isDrawerOpen: false,
-  theme: typeof Storage !== 'undefined' ? localStorage.getItem('theme') : themes[0],
+  theme: typeof Storage !== 'undefined' && localStorage.getItem('theme') || themes[1],
+  drawerType: NavigationDrawer.DrawerType.FULL_HEIGHT,
 };
 
 export default function layout(state = initialState, action) {
@@ -49,6 +57,8 @@ export default function layout(state = initialState, action) {
       return updateTitle(state, action.route);
     case UPDATE_THEME:
       return updateTheme(state, action.theme);
+    case UPDATE_DRAWER_TYPE:
+      return updateDrawerType(state, action.drawerType);
     default: return state;
   }
 }
