@@ -3,9 +3,8 @@
   vertical-align: top;
 }
 
-.doc-component-buttons-flat,
-.doc-component-buttons-raised,
-.doc-component-buttons-icon {
+.doc-component-flat-buttons,
+.doc-component-raised-buttons {
   .md-card-text .md-btn {
     @extend %doc-btn;
   }
