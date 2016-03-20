@@ -53,11 +53,10 @@ const components = [
   }, {
     path: 'progress',
     nestedItems: ['circular', 'linear'],
-  }, {
+  }, 'select-fields', {
     path: 'selection-controls',
     nestedItems: ['checkboxes', 'radios', 'switches'],
   },
-  'select-fields',
   'sliders',
   'snackbars',
   'tabs',

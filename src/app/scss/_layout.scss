@@ -20,6 +20,13 @@
   }
 }
 
+.md-drawer-header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .react-doc-footer {
   background: $md-grey-900;
   color: $md-white-base;

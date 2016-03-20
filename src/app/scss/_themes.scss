@@ -42,10 +42,6 @@
 
 .theme-switcher {
   height: $md-toolbar-desktop-height;
-
-  &.focus {
-    box-shadow: none;
-  }
 }
 
 @media only screen and (orientation: portrait) and (max-width: 599px) {

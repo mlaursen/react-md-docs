@@ -25,12 +25,13 @@ export default class ThemeSwitcher extends Component {
     const { theme, updateTheme } = this.props;
     return (
       <SelectField
-        below
         label="Theme"
         className="theme-switcher"
         value={theme}
         onChange={updateTheme}
         menuItems={themes}
+        position={SelectField.Positions.TOP_LEFT}
+        noAutoAdjust={true}
       />
     );
   }
