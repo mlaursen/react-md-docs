@@ -26,6 +26,7 @@ import TimePickerDocs from './components/pickers/time/TimePickerDocs';
 import CircularProgressDocs from './components/progress/circular/CircularProgressDocs';
 import LinearProgressDocs from './components/progress/linear/LinearProgressDocs';
 import SelectFieldDocs from './components/select-fields/SelectFieldDocs';
+import CheckboxDocs from './components/selection-controls/checkboxes/CheckboxDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -52,5 +53,6 @@ export default (
     <Route path="components/progress/circular" component={CircularProgressDocs} />
     <Route path="components/progress/linear" component={LinearProgressDocs} />
     <Route path="components/select-fields" component={SelectFieldDocs} />
+    <Route path="components/selection-controls/checkboxes" component={CheckboxDocs} />
   </Route>
 );
