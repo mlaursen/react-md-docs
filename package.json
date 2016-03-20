@@ -4,12 +4,10 @@
   "description": "",
   "main": "src/app/js/index.jsx",
   "scripts": {
-    "start": "npm run browser:dev",
-    "start:prod": "node server.js",
-    "browser:dev": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline",
+    "start": "npm run build && node server.js",
     "prebuild": "rimraf src/www/**/*!\\(\\.gitignore\\)",
     "build": "webpack -p --config config/webpack-prod.config.js --progress --colors",
-    "build:dev": "webpack --config config/webpack-dev.config.js --progress --colors --inline"
+    "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline"
   },
   "license": "MIT",
   "repository": {
