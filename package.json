@@ -5,10 +5,11 @@
   "main": "src/app/js/index.jsx",
   "scripts": {
     "start": "npm run browser:dev",
+    "start:prod": "node server.js",
     "browser:dev": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline",
-    "prebuild": "rimraf src/www/**/*",
-    "build:dev": "webpack --config config/webpack-dev.config.js --progress --colors --inline",
-    "build:prod": "webpack -p --config config/webpack-prod.config.js --progress --colors --inline"
+    "prebuild": "rimraf src/www/**/!(\\.gitignore)",
+    "build": "webpack -p --config config/webpack-prod.config.js --progress --colors",
+    "build:dev": "webpack --config config/webpack-dev.config.js --progress --colors --inline"
   },
   "license": "MIT",
   "repository": {
@@ -22,6 +23,8 @@
   "dependencies": {
     "babel-polyfill": "^6.6.1",
     "classnames": "^2.2.3",
+    "express": "^4.13.4",
+    "express-history-api-fallback": "^2.0.0",
     "highlight.js": "^9.2.0",
     "intl": "^1.1.0",
     "marked": "^0.3.5",
@@ -64,6 +67,7 @@
     "redux-devtools": "^3.1.1",
     "redux-devtools-dock-monitor": "^1.1.0",
     "redux-devtools-log-monitor": "^1.0.5",
+    "rimraf": "^2.5.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",

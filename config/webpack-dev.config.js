@@ -34,7 +34,6 @@ config.module.loaders = config.module.loaders.concat([{
 }]);
 
 config.output.filename = 'bundle.js';
-config.output.publicPath = `/${config.__publicPath}/`;
 
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),

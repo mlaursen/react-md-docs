@@ -63,6 +63,7 @@ module.exports = {
 
   output: {
     path: buildFolder,
+    publicPath: `/${publicPath}/`,
   },
 
   plugins: [

@@ -5,6 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = require('./webpack.config.js');
 
+config.devtool = '#cheap-module-source-map';
+
 config.module.loaders = config.module.loaders.concat([{
   test: /\.jsx?$/,
   exclude: /node_modules/,
@@ -27,6 +29,7 @@ config.plugins = config.plugins.concat([
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
     compress: { warnings: false },
     output: { comments: false },
   }),
