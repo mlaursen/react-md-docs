@@ -1,6 +1,7 @@
 @import '~helpers';
 
-.container {
+.container,
+.small-container {
   margin: 0 auto;
 }
 
@@ -145,4 +146,8 @@
 
   margin: 1em auto;
   max-width: 220px;
+}
+
+.small-container {
+  max-width: 260px;
 }
