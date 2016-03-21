@@ -5,8 +5,8 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const buildFolder = path.resolve(__dirname, '../src/www');
-const js = path.resolve(__dirname, '../src/app/js');
+const buildFolder = path.resolve(__dirname, '../dist');
+const js = path.resolve(__dirname, '../src/js');
 const nodeModules = path.resolve(__dirname, '../node_modules');
 const reactmd = nodeModules + '/react-md';
 
@@ -68,7 +68,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/app/index.html',
+      template: 'src/index.html',
       inject: 'body',
     }),
     new webpack.ProvidePlugin({

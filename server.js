@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 const router = express.Router();
-const root = path.resolve(__dirname, 'src/www');
+const root = path.resolve(__dirname, 'dist');
 
 router.use(express.static(root));
 router.use(fallback('index.html', { root: root }));
