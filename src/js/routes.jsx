@@ -33,6 +33,7 @@ import SliderDocs from './components/sliders/SliderDocs';
 import SnackbarDocs from './components/snackbars/SnackbarDocs';
 //import TabDocs from './components/tabs/TabDocs';
 import TextFieldDocs from './components/text-fields/TextFieldDocs';
+import ToolbarDocs from './components/toolbars/ToolbarDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -66,5 +67,6 @@ export default (
     <Route path="components/snackbars" component={SnackbarDocs} />
     {/*<Route path="components/tabs" component={TabDocs} />*/}
     <Route path="components/text-fields" component={TextFieldDocs} />
+    <Route path="components/toolbars" component={ToolbarDocs} />
   </Route>
 );
