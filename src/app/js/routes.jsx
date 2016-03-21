@@ -27,6 +27,7 @@ import CircularProgressDocs from './components/progress/circular/CircularProgres
 import LinearProgressDocs from './components/progress/linear/LinearProgressDocs';
 import SelectFieldDocs from './components/select-fields/SelectFieldDocs';
 import CheckboxDocs from './components/selection-controls/checkboxes/CheckboxDocs';
+import RadioDocs from './components/selection-controls/radios/RadioDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -54,5 +55,6 @@ export default (
     <Route path="components/progress/linear" component={LinearProgressDocs} />
     <Route path="components/select-fields" component={SelectFieldDocs} />
     <Route path="components/selection-controls/checkboxes" component={CheckboxDocs} />
+    <Route path="components/selection-controls/radios" component={RadioDocs} />
   </Route>
 );
