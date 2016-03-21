@@ -31,7 +31,7 @@ import RadioDocs from './components/selection-controls/radios/RadioDocs';
 import SwitchDocs from './components/selection-controls/switches/SwitchDocs';
 import SliderDocs from './components/sliders/SliderDocs';
 import SnackbarDocs from './components/snackbars/SnackbarDocs';
-//import TabDocs from './components/tabs/TabDocs';
+import TabDocs from './components/tabs/TabDocs';
 import TextFieldDocs from './components/text-fields/TextFieldDocs';
 import ToolbarDocs from './components/toolbars/ToolbarDocs';
 import TooltipDocs from './components/tooltips/TooltipDocs';
@@ -66,7 +66,7 @@ export default (
     <Route path="components/selection-controls/switches" component={SwitchDocs} />
     <Route path="components/sliders" component={SliderDocs} />
     <Route path="components/snackbars" component={SnackbarDocs} />
-    {/*<Route path="components/tabs" component={TabDocs} />*/}
+    <Route path="components/tabs" component={TabDocs} />
     <Route path="components/text-fields" component={TextFieldDocs} />
     <Route path="components/toolbars" component={ToolbarDocs} />
     <Route path="components/tooltips" component={TooltipDocs} />

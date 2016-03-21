@@ -1,7 +1,8 @@
 @import '~helpers';
 
 .container,
-.small-container {
+.small-container,
+.phone-size-container {
   margin: 0 auto;
 }
 
@@ -150,4 +151,9 @@
 
 .small-container {
   max-width: 260px;
+}
+
+.phone-size-container {
+  @include md-tab-mobile();
+  max-width: 360px;
 }
