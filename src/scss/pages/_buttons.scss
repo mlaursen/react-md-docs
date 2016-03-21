@@ -31,3 +31,7 @@
     position: static;
   }
 }
+
+.doc-component-tooltips .md-tooltip-container {
+  @extend %doc-btn;
+}
