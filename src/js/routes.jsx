@@ -30,6 +30,7 @@ import CheckboxDocs from './components/selection-controls/checkboxes/CheckboxDoc
 import RadioDocs from './components/selection-controls/radios/RadioDocs';
 import SwitchDocs from './components/selection-controls/switches/SwitchDocs';
 import SliderDocs from './components/sliders/SliderDocs';
+import SnackbarDocs from './components/snackbars/SnackbarDocs';
 
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
@@ -60,5 +61,6 @@ export default (
     <Route path="components/selection-controls/radios" component={RadioDocs} />
     <Route path="components/selection-controls/switches" component={SwitchDocs} />
     <Route path="components/sliders" component={SliderDocs} />
+    <Route path="components/snackbars" component={SnackbarDocs} />
   </Route>
 );

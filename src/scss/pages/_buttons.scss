@@ -14,6 +14,10 @@
   @extend %doc-btn;
 }
 
+.doc-component-snackbars .md-raised-btn {
+  @extend %doc-btn;
+}
+
 .md-speed-dial {
   &.moving {
     position: absolute;
