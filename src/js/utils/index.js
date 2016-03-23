@@ -57,3 +57,17 @@ export function polyfillIntlOSLang() {
 
   polyfillIntlLang(lang);
 }
+
+export function smoothScroll(el, duration, to, interval = 10) {
+  if(duration < 0) { return; }
+
+  const difference = to - el.scrollTop;
+  const tick = difference / duration * interval;
+
+  setTimeout(() => {
+    el.scrollTop = el.scrollTop + tick;
+
+    if((el.scrollTop) === 0) { return; }
+    smoothScroll(el, duration - interval, to, interval);
+  }, interval);
+}

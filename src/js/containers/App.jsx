@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
@@ -92,14 +93,18 @@ export default class App extends Component {
           drawerType={drawerType}
           navHeaderChildren={navHeaderChildren}
         >
-          <main
+          <CSSTransitionGroup
+            component="main"
+            transitionName="page"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={300}
             className={classnames({
               'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== APP_URI_BASE + '/',
               'md-card-list': location.pathname.indexOf('components') !== -1,
             })}
           >
             {React.cloneElement(this.props.children, { key: location.pathname })}
-          </main>
+          </CSSTransitionGroup>
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
         </NavigationDrawer>

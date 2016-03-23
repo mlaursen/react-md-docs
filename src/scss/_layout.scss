@@ -190,3 +190,24 @@
     width: 100%;
   }
 }
+
+.page-enter {
+  background: $md-white-base;
+  position: absolute;
+  transform: translate3d(0, 100%, 0);
+  z-index: 999;
+
+  &.page-enter-active {
+    transform: translate3d(0, 0, 0);
+    transition: transform .3s;
+  }
+}
+
+.page-leave {
+  opacity: 1;
+
+  &.page-leave-active {
+    opacity: 0;
+    transition: opacity .3s;
+  }
+}
