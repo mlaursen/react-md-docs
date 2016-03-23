@@ -4,8 +4,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import ToolbarExamples from './ToolbarExamples';
 import ToolbarExamplesRaw from '!!raw!./ToolbarExamples';
-import FakeTextEditorExample from './FakeTextEditorExample';
-import FakeTextEditorExampleRaw from '!!raw!./FakeTextEditorExample';
+//import FakeTextEditorExample from './FakeTextEditorExample';
+//import FakeTextEditorExampleRaw from '!!raw!./FakeTextEditorExample';
 import ToolbarWithTabsExample from './ToolbarWithTabsExample';
 import ToolbarWithTabsExampleRaw from '!!raw!./ToolbarWithTabsExample';
 
@@ -33,10 +33,10 @@ export default class ToolbarDocs extends Component {
           name: 'Simple Example',
           code: ToolbarExamplesRaw,
           children: <ToolbarExamples />,
-        }, {
-          name: 'With desktop controls',
-          code: FakeTextEditorExampleRaw,
-          children: <FakeTextEditorExample />,
+          //}, {
+          //name: 'With desktop controls',
+          //code: FakeTextEditorExampleRaw,
+          //children: <FakeTextEditorExample />,
         }, {
           name: 'With Tabs',
           code: ToolbarWithTabsExampleRaw,
