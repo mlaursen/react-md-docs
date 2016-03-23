@@ -11,7 +11,7 @@ const nodeModules = path.resolve(__dirname, '../node_modules');
 const reactmd = nodeModules + '/react-md';
 
 // Change to your context
-const publicPath = 'react-md';
+const publicPath = 'react-md-docs';
 
 module.exports = {
   __buildFolder: buildFolder,

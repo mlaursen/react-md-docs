@@ -1,13 +1,16 @@
 {
-  "name": "react-md-docs",
-  "version": "0.0.6",
+  "name": "react-md",
+  "version": "0.0.7",
   "description": "",
   "main": "src/app/js/index.jsx",
+  "private": true,
   "scripts": {
     "start": "npm run build && node server.js",
     "prebuild": "rimraf dist",
     "build": "webpack --config config/webpack-prod.config.js --progress --colors",
-    "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline"
+    "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline",
+    "sassdoc": "sassdoc node_modules/react-md/src/scss -d dist/sassdoc",
+    "ghpages": "npm run build && npm run sassdoc && gh-pages -d dist"
   },
   "license": "MIT",
   "repository": {
@@ -33,6 +36,7 @@
     "react-addons-pure-render-mixin": "^0.14.7",
     "react-addons-transition-group": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-md": "0.0.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
@@ -57,6 +61,7 @@
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.9.0",
     "node-sass": "^3.4.2",
     "open-browser-webpack-plugin": "0.0.2",
@@ -68,6 +73,7 @@
     "redux-devtools-log-monitor": "^1.0.5",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.1.2",
+    "sassdoc": "^2.1.20",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
