@@ -57,6 +57,7 @@ const components = [
     path: 'selection-controls',
     nestedItems: ['checkboxes', 'radios', 'switches'],
   },
+  'sidebars',
   'sliders',
   'snackbars',
   'tabs',

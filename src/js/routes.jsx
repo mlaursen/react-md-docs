@@ -29,6 +29,7 @@ import SelectFieldDocs from './components/select-fields/SelectFieldDocs';
 import CheckboxDocs from './components/selection-controls/checkboxes/CheckboxDocs';
 import RadioDocs from './components/selection-controls/radios/RadioDocs';
 import SwitchDocs from './components/selection-controls/switches/SwitchDocs';
+import SidebarDocs from './components/sidebars/SidebarDocs';
 import SliderDocs from './components/sliders/SliderDocs';
 import SnackbarDocs from './components/snackbars/SnackbarDocs';
 import TabDocs from './components/tabs/TabDocs';
@@ -64,6 +65,7 @@ export default (
     <Route path="components/selection-controls/checkboxes" component={CheckboxDocs} />
     <Route path="components/selection-controls/radios" component={RadioDocs} />
     <Route path="components/selection-controls/switches" component={SwitchDocs} />
+    <Route path="components/sidebars" component={SidebarDocs} />
     <Route path="components/sliders" component={SliderDocs} />
     <Route path="components/snackbars" component={SnackbarDocs} />
     <Route path="components/tabs" component={TabDocs} />

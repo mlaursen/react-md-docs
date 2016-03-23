@@ -13,12 +13,18 @@
   justify-content: center;
 }
 
+%justify-between,
 .justify-between {
   justify-content: space-between;
 }
 
 .justify-end {
   @extend %auto-left;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
 }
 
 
@@ -210,4 +216,9 @@
     opacity: 0;
     transition: opacity .3s;
   }
+}
+
+.padded {
+  padding-left: $md-default-padding;
+  padding-right: $md-default-padding;
 }
