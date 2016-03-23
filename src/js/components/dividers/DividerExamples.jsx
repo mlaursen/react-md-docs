@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Divider from 'react-md/lib/Dividers';
 import TextField from 'react-md/lib/TextFields';
-import { List, ListItem, ListSubheader } from 'react-md/lib/Lists';
+import { List, ListItem } from 'react-md/lib/Lists';
+import Subheader from 'react-md/lib/Subheaders';
 
 import { randomAvatars } from '../../utils';
 
@@ -31,7 +32,7 @@ export default class DividerExamples extends Component {
         </form>
 
         <List className="divider-example-container">
-          <ListSubheader primaryText="Inset Example" />
+          <Subheader primaryText="Inset Example" />
           <ListItem primaryText="Item 1" leftAvatar={avatars[0]} />
           <ListItem primaryText="Item 2" leftAvatar={avatars[1]} />
           <Divider inset={true} />

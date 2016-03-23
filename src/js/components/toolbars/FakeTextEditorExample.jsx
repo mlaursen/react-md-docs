@@ -43,7 +43,7 @@ export default class FakeTextEditor extends Component {
     const { fontFamily, fontSize, fontWeight, fontStyle, textDecoration, textAlign } = this.state;
     return (
       <Paper>
-        <Toolbar className="fake-text-editor">
+        <Toolbar className="fake-text-editor" primary={false}>
           <SelectField
             menuItems={FONTS}
             itemValue="label"

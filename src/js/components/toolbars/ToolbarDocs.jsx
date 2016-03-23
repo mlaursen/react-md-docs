@@ -48,10 +48,7 @@ export default class ToolbarDocs extends Component {
             name: 'primary',
             desc: 'Boolean if the toolbar should be styled with the primary color.',
             type: 'bool',
-          }, {
-            name: 'secondary',
-            desc: `Boolean if the toolbar should be styled with the secondary color.`,
-            type: 'bool',
+            defaultValue: true,
           }, {
             name: 'actionLeft',
             desc: `Some actionable item that is to the left of the title. This is usually an icon button.`,
@@ -66,7 +63,7 @@ export default class ToolbarDocs extends Component {
             type: 'node',
           }, {
             name: 'fixed',
-            desc: `Booleanif the toolbar is fixed to the top of the page.`,
+            desc: `Boolean if the toolbar is fixed to the top of the page.`,
             type: 'bool',
           }, {
             name: 'children',

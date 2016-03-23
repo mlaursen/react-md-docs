@@ -156,7 +156,7 @@
   max-height: 165px;
 }
 
-.divider-example-container {
+.doc-component-dividers .divider-example-container {
   @include md-box-shadow(1);
 
   margin: 1em auto;
@@ -169,5 +169,24 @@
 
 .phone-size-container {
   @include md-tab-mobile();
-  max-width: 360px;
+
+  height: 600px;
+  overflow-y: auto;
+  position: relative;
+  width: 360px;
+
+  .md-toolbar-container {
+    position: relative;
+    z-index: 22;
+
+    &:not(.md-primary) {
+      background: $md-white-base;
+    }
+  }
+
+  .md-overlay {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
 }

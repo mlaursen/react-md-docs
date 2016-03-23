@@ -12,6 +12,8 @@ import InfoExamples from './InfoExamples';
 import InfoExamplesRaw from '!!raw!./InfoExamples';
 import FullWidthExamples from './FullWidthExamples';
 import FullWidthExamplesRaw from '!!raw!./FullWidthExamples';
+import InToolbarExample from './InToolbarExample';
+import InToolbarExampleRaw from '!!raw!./InToolbarExample';
 
 const text = `
 Text fields allow the user to input text, select text, and lookup data via auto-completion.
@@ -65,6 +67,10 @@ export default class TextFieldDocs extends Component {
           name: 'Full Width Examples',
           code: FullWidthExamplesRaw,
           children: <FullWidthExamples />,
+        }, {
+          name: 'In Toolbars',
+          code: InToolbarExampleRaw,
+          children: <InToolbarExample />,
         }]}
         components={[{
           name: 'TextField',
