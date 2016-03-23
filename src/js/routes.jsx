@@ -17,6 +17,7 @@ import ChipDocs from './components/chips/ChipDocs';
 import DialogDocs from './components/dialogs/DialogDocs';
 import DividerDocs from './components/dividers/DividerDocs';
 import FontIconDocs from './components/font-icons/FontIconDocs';
+import InkDocs from './components/inks/InkDocs';
 import ListDocs from './components/lists/ListDocs';
 import MenuDocs from './components/menus/MenuDocs';
 import NavigationDrawerDocs from './components/navigation-drawers/NavigationDrawerDocs';
@@ -53,6 +54,7 @@ export default (
     <Route path="components/dialogs" component={DialogDocs} />
     <Route path="components/dividers" component={DividerDocs} />
     <Route path="components/font-icons" component={FontIconDocs} />
+    <Route path="components/inks" component={InkDocs} />
     <Route path="components/lists" component={ListDocs} />
     <Route path="components/menus" component={MenuDocs} />
     <Route path="components/navigation-drawers" component={NavigationDrawerDocs} />

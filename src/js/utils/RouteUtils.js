@@ -45,6 +45,7 @@ const components = [
   'dividers',
   'font-icons',
   'lists',
+  'inks',
   'menus',
   'navigation-drawers',
   'papers', {
