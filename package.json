@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && node server.js",
     "prebuild": "rimraf dist",
-    "build": "webpack -p --config config/webpack-prod.config.js --progress --colors",
+    "build": "webpack --config config/webpack-prod.config.js --progress --colors",
     "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline"
   },
   "license": "MIT",
