@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { List, ListItem } from 'react-md/lib/Lists';
-import { IconButton } from 'react-md/lib/Buttons';
 import Avatar from 'react-md/lib/Avatars';
 import FontIcon from 'react-md/lib/FontIcons';
 import Divider from 'react-md/lib/Dividers';
@@ -9,7 +8,7 @@ import Subheader from 'react-md/lib/Subheaders';
 
 import { randomAvatars } from '../../utils';
 const InfoIcon = () => <FontIcon>info</FontIcon>;
-const StarButton = () => <IconButton>star</IconButton>;
+const StarIcon = () => <FontIcon>star</FontIcon>;
 const avatars = randomAvatars(3);
 
 export default class ListExamples extends Component {
@@ -22,7 +21,7 @@ export default class ListExamples extends Component {
   render() {
     return (
       <div>
-        <List textOnly={true} subheader="Text Only List">
+        <List subheader="Text Only List">
           <ListItem primaryText="Inbox" />
           <ListItem primaryText="Starred" />
           <ListItem primaryText="Sent Mail" />
@@ -66,24 +65,28 @@ export default class ListExamples extends Component {
         <List subheader="Three line example" primarySubheader={true}>
           <ListItem
             leftAvatar={avatars[0]}
-            rightIcon={<StarButton />}
+            rightIcon={<StarIcon />}
             primaryText="Brunch this weekend?"
             secondaryText="Ali Connors"
             secondaryText2="I'll be in your neighborhood sometime this week"
           />
           <ListItem
             leftAvatar={avatars[1]}
-            rightIcon={<StarButton />}
+            rightIcon={<StarIcon />}
             primaryText="Summer BBQ"
-            secondaryText="to Alex, Scott, Jennifer"
-            secondaryText2="Wish I could come, but I'm out of town this weekend."
+            secondaryText={(
+              <span>
+                <div>to Alex, Scott, Jennifer</div>
+                <span>Wish I could come, but I'm out of town this weekend.</span>
+              </span>
+            )}
           />
           <ListItem
             leftAvatar={avatars[2]}
-            rightIcon={<StarButton />}
+            rightIcon={<StarIcon />}
             primaryText="Oui Oui"
-            secondaryText="Sandra Adams - Do you have Paris"
-            secondaryText2="recommendations? Have you ever been?"
+            secondaryText="Sandra Adams - Do you have Paris recommendations? Have you ever been?"
+            threeLines={true}
           />
         </List>
       </div>

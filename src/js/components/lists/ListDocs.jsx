@@ -5,6 +5,8 @@ import DocPage from 'react-doc-page';
 import Markdown from '../../containers/Markdown';
 import ListExamples from './ListExamples';
 import ListExamplesRaw from '!!raw!./ListExamples';
+import ListControlsExamples from './ListControlsExamples';
+import ListControlsExamplesRaw from '!!raw!./ListControlsExamples';
 import UncontrolledNestedExample from './UncontrolledNestedExample';
 import UncontrolledNestedExampleRaw from '!!raw!./UncontrolledNestedExample';
 import ControlledNestedExample from './ControlledNestedExample';
@@ -46,6 +48,10 @@ export default class ListDocs extends Component {
           code: ListExamplesRaw,
           children: <ListExamples />,
         }, {
+          name: 'Lists with Controls',
+          code: ListControlsExamplesRaw,
+          children: <ListControlsExamples />,
+        }, {
           name: 'Uncontrolled Nested List Examples',
           code: UncontrolledNestedExampleRaw,
           children: (
@@ -80,10 +86,6 @@ export default class ListDocs extends Component {
             desc: `Boolean if this should be an ordered list. This will create an \`ol\` tag
             instead of an \`ul\` tag if set to true.`,
             type: 'bool',
-          }, {
-            name: 'textOnly',
-            desc: `Boolean if this is a list that only contains text.`,
-            type: 'bool',
           }],
         }, {
           name: 'List Item',
@@ -104,15 +106,21 @@ export default class ListDocs extends Component {
           }, {
             name: 'primaryText',
             desc: 'The primary text to display.',
-            type: 'string',
+            type: 'node',
           }, {
             name: 'secondaryText',
-            desc: `The secondary text to display in a 2-line list.`,
-            type: 'string',
+            desc: `The secondary text to display in a 2 or 3 line list. The text will automatically
+            be ellipsed if it expands more than one line. If the prop \`threeLines\` is set to true,
+            it will automatically be ellipsed after the second line. Since this is a node, you can force
+            different lines by any stylng.`,
+            type: 'node',
           }, {
-            name: 'secondaryText2',
-            desc: `The secondary text to dispay on the 3rd line in a 3-line list.`,
-            type: 'string',
+            name: 'threeLines',
+            desc: `Boolean if the secondary text should be truncated on after the second line
+            instead of the first line. It is considered three lines since the primary text
+            counts as a line`,
+            type: 'bool',
+            defaultValue: false,
           }, {
             name: 'leftIcon',
             desc: `An icon to display the the left of the primary text.`,
@@ -162,40 +170,37 @@ export default class ListDocs extends Component {
             desc: `The icon className to use for the expander icon.`,
             type: 'string',
             defaultValue: 'material-icons',
-          }, {
+          }],
+        }, {
+          name: 'ListItemControl',
+          props: [{
             name: 'primaryAction',
-            desc: `A function to call when a list item is clicked when the \`primaryActionNode\`
-            is a part of the list item. This should be a function that toggles the checkbox.
-
-> NOTE: Likely to change. Still in development
-            `,
-            type: 'func',
-          }, {
-            name: 'primaryActionNode',
-            desc: `An optional checkbox to display the the left of the primary text. This
-            will allow the \`ListItem\` to be a list with controls. The primary action
-            node can only be a checkbox according to the material design specs.
-
-> NOTE: Likely to change. Still in development
-            `,
-            type: 'node',
+            desc: `The primary action component to use. According to the specs at this time,
+            this can only be a \`Checkbox\` comonent.`,
+            type: 'element',
           }, {
             name: 'secondaryAction',
-            desc: `A function to call when a list item is clicked and there is not a primaryAction.
-            This should be a function to toggle the \`secondaryActionNode\`
-
-
-> NOTE: Likely to change. Still in development
-            `,
-            type: 'func',
+            desc: `The secondary action component to use. This can be a \`Switch\`, a
+            \`Reorder\`, or a \`Checkbox\`.`,
+            type: 'element',
           }, {
-            name: 'secondaryActionNode',
-            desc: `An optional component to display to the right of the primary text. This
-            should be a checkbox or a switch.
-
-> NOTE: Likely to change. Still in development
-            `,
+            name: 'primaryText',
+            desc: `The primary text for the List item. This value and the optional
+            prop \`secondaryText\` will be injected into the \`primaryAction\` or
+            \`secondaryAction\` component as a label.`,
             type: 'node',
+            required: true,
+          }, {
+            name: 'secondaryText',
+            desc: `The optional descondary text to display.`,
+            type: 'node',
+          }, {
+            name: 'threeLines',
+            desc: `Boolean if the secondary text should be truncated on after the second line
+            instead of the first line. It is considered three lines since the primary text
+            counts as a line`,
+            type: 'bool',
+            defaultValue: false,
           }],
         }]}
       />
