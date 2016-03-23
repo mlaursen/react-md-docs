@@ -1,9 +1,31 @@
 @import '~helpers';
 
+%centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%auto-left {
+  margin-left: auto;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  @extend %auto-left;
+}
+
+
 .container,
 .small-container,
 .phone-size-container {
-  margin: 0 auto;
+  @extend %centered;
 }
 
 .middle-align {
@@ -119,14 +141,6 @@
     content: '(isRequired)';
     padding-left: .5em;
   }
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.justify-end {
-  margin-left: auto;
 }
 
 .component-example .md-card-text {

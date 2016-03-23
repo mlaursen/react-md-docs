@@ -1,0 +1,6 @@
+.doc-component-cards .media-card {
+  @extend %centered;
+
+  display: block;
+  max-width: 600px;
+}
