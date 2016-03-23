@@ -69,6 +69,10 @@ export default class ToolbarDocs extends Component {
             name: 'children',
             desc: `Any children to display in the toolbar. This should really just be a tabs component.`,
             type: 'node',
+          }, {
+            name: 'containerClassName',
+            desc: `The optional className to apply to the container`,
+            type: 'string',
           }],
         }]}
       />
