@@ -32,8 +32,6 @@ defaults for this project are using [material-icons](https://design.google.com/i
 but any font library can be used. (Hopefully). There are some mixins
 for helping pull these font libraries in from a cdn or locally hosted.
 
-> There are mixins for hosting the font libraries locally.
-
 
 ### Usage
 

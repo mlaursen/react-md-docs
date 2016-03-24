@@ -28,7 +28,6 @@
 }
 
 
-.container,
 .small-container,
 .phone-size-container {
   @extend %centered;
@@ -70,6 +69,7 @@
 
   .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
@@ -96,6 +96,8 @@
 
 .md-navigation-drawer-content > .text-page {
   background: $md-white-base;
+  display: flex;
+  justify-content: center;
   padding: 2em 0;
 }
 
@@ -221,4 +223,9 @@
 .padded {
   padding-left: $md-default-padding;
   padding-right: $md-default-padding;
+}
+
+.ink-item {
+  overflow: hidden;
+  position: relative;
 }

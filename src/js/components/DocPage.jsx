@@ -68,7 +68,7 @@ export default class DocPage extends Component {
       details = details.map((md, i) => <Markdown key={i} markdown={md} />);
     }
     return (
-      <div className={`react-doc doc-component-${toClassName(sectionName)}`}>
+      <div className={`react-doc doc-component-${toClassName(sectionName)} md-card-list`}>
         <header className="component-info">
           <h1 className="md-display-1">{sectionName}</h1>
           <Divider />

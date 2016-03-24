@@ -100,7 +100,6 @@ export default class App extends Component {
             transitionLeaveTimeout={300}
             className={classnames({
               'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== APP_URI_BASE + '/',
-              'md-card-list': location.pathname.indexOf('components') !== -1,
             })}
           >
             {React.cloneElement(this.props.children, { key: location.pathname })}
