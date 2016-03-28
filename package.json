@@ -7,10 +7,10 @@
   "scripts": {
     "start": "npm run build && node server.js",
     "prebuild": "rimraf dist",
-    "build": "webpack --config config/webpack-prod.config.js --progress --colors",
+    "scripts": "webpack --config config/webpack-prod.config.js --progress --colors",
     "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline",
     "sassdoc": "sassdoc node_modules/react-md/src/scss -d dist/sassdoc",
-    "ghpages": "npm run build && npm run sassdoc && gh-pages -d dist"
+    "build": "npm run scripts && npm run sassdoc"
   },
   "license": "MIT",
   "repository": {

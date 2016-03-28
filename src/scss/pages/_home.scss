@@ -25,6 +25,8 @@
 }
 
 .about {
+  @extend %centered;
+
   margin-bottom: 2em;
   padding: 1em 0;
 

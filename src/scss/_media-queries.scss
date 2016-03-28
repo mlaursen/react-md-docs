@@ -29,7 +29,7 @@
 // Small devices, tablets
 @media only screen and (min-width: 768px) {
   .container {
-    width: 732px - $md-navigation-drawer-width;
+    width: 732px - $md-navigation-drawer-desktop-width;
   }
 
   .demo-list-card {
@@ -40,7 +40,7 @@
 // Medium devices, laptops
 @media only screen and (min-width: 992px) {
   .container {
-    width: 952px - $md-navigation-drawer-width;
+    width: 952px - $md-navigation-drawer-desktop-width;
   }
 
   .component-info {
@@ -55,6 +55,6 @@
 // Large devices, Wide screens
 @media only screen and (min-width: 1200px) {
   .container {
-    width: 1152px - $md-navigation-drawer-width;
+    width: 1152px - $md-navigation-drawer-desktop-width;
   }
 }

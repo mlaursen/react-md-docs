@@ -57,8 +57,9 @@ export default class App extends Component {
 
   componentWillUpdate(nextProps) {
     if(this.props.location.pathname !== nextProps.location.pathname) {
-      const { updateTitle, location } = nextProps;
+      const { updateTitle, location, closeDrawer } = nextProps;
       updateTitle(location.pathname);
+      closeDrawer();
     }
   }
 
@@ -73,6 +74,7 @@ export default class App extends Component {
       drawerType,
       toasts,
       dismissToast,
+      children,
     } = this.props;
 
     let navHeaderChildren;
@@ -102,7 +104,7 @@ export default class App extends Component {
               'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== APP_URI_BASE + '/',
             })}
           >
-            {React.cloneElement(this.props.children, { key: location.pathname })}
+            {React.cloneElement(children, { key: location.pathname })}
           </CSSTransitionGroup>
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
