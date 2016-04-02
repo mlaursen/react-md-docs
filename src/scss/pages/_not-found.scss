@@ -1,0 +1,12 @@
+.not-found-card {
+  @extend %centered;
+
+  display: block;
+  max-width: 600px;
+}
+
+.page-suggestions {
+  margin-top: 1em;
+  max-height: 180px;
+  overflow-y: auto;
+}

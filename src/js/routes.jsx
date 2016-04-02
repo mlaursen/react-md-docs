@@ -38,6 +38,8 @@ import TextFieldDocs from './components/text-fields/TextFieldDocs';
 import ToolbarDocs from './components/toolbars/ToolbarDocs';
 import TooltipDocs from './components/tooltips/TooltipDocs';
 
+import NotFound from './components/NotFound';
+
 export default (
   <Route path={`${APP_URI_BASE}/`} component={App}>
     <IndexRoute component={Home} />
@@ -74,5 +76,6 @@ export default (
     <Route path="components/text-fields" component={TextFieldDocs} />
     <Route path="components/toolbars" component={ToolbarDocs} />
     <Route path="components/tooltips" component={TooltipDocs} />
+    <Route path="*" component={NotFound} />
   </Route>
 );

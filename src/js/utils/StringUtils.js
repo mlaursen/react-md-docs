@@ -3,7 +3,7 @@ export function capitalizeFirst(s) {
 }
 
 function reduce(s, split, joiner, fn) {
-  const reduced = s.split(split).reduce((prev, curr) => {
+  const reduced = (Array.isArray(s) ? s : s.split(split)).reduce((prev, curr) => {
     if(prev) {
       prev += joiner;
     }

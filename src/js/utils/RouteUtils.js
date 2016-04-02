@@ -4,7 +4,7 @@ import FontIcon from 'react-md/lib/FontIcons';
 import { Link } from 'react-router';
 
 import { toTitle } from './StringUtils';
-import { APP_URI_BASE } from './index';
+import { APP_URI_BASE, flatten } from './index';
 
 import sassIcon from '../../imgs/sass-icon.png';
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
@@ -147,6 +147,29 @@ const navItems = [{
 export function getNavItems(pathname) {
   return navItems.map(opts => mapItemsToNavParts(opts, pathname));
 }
+
+function extractRouteData({ nestedItems, ...data }) {
+  if(nestedItems) {
+    return nestedItems.map(extractRouteData);
+  }
+
+  let searchName = data.primaryText;
+  if((data.href || data.to).match(/.*components\/.*\/.*$/g)) {
+    const to = data.to.replace(APP_URI_BASE + '/components/', '');
+    if(to.indexOf('selection-controls') !== -1) {
+      searchName = toTitle(to.replace('selection-controls/', ''));
+    } else {
+      searchName = toTitle(to.split('/').reverse());
+    }
+  }
+
+  return {
+    ...data,
+    primaryText: searchName,
+  };
+}
+
+export const routeData = flatten(getNavItems('').filter(item => !item.divider).map(extractRouteData));
 
 // When webpack 2.x.x is released
 //

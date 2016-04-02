@@ -71,3 +71,9 @@ export function smoothScroll(el, duration, to, interval = 10) {
     smoothScroll(el, duration - interval, to, interval);
   }, interval);
 }
+
+export function flatten(arr) {
+  return arr.reduce((flattened, toFlatten) => {
+    return flattened.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
