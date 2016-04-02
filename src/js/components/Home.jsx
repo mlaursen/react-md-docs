@@ -4,7 +4,7 @@ import { RaisedButton } from 'react-md/lib/Buttons';
 
 import Markdown from '../containers/Markdown';
 import ImgCard from './ImgCard';
-import customization from '../../imgs/components.jpg';
+import customization from '../../imgs/customization.jpg';
 import gettingStarted from '../../imgs/getting-started.jpg';
 import components from '../../imgs/components.jpg';
 import { FIRST_COMPONENT_LINK } from '../utils/RouteUtils';
