@@ -1,0 +1,19 @@
+.quick-search-menu {
+  left: 50vw;
+  max-height: calc(40vh - #{$md-toolbar-desktop-height});
+  overflow-y: auto;
+  position: fixed;
+  top: $md-toolbar-desktop-height;
+  width: 243px;
+  z-index: 999;
+}
+
+.quick-search {
+  left: 50vw;
+  position: fixed;
+  top: 0;
+}
+
+.quick-search-menu-container {
+  display: initial;
+}

@@ -8,6 +8,9 @@ export const UPDATE_DRAWER_TYPE = 'UPDATE_DRAWER_TYPE';
 // Documentation Constants
 export const OPEN_DOC_DIALOG = 'OPEN_DOC_DIALOG';
 export const CLOSE_DOC_DIALOG = 'CLOSE_DOC_DIALOG';
+export const SEARCH_FOR_COMPONENT = 'SEARCH_FOR_COMPONENT';
+export const START_QUICK_SEARCHING = 'START_QUICK_SEARCHING';
+export const STOP_QUICK_SEARCHING = 'STOP_QUICK_SEARCHING';
 
 
 // Toast Constants

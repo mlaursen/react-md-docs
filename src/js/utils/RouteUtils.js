@@ -165,6 +165,7 @@ function extractRouteData({ nestedItems, ...data }) {
 
   return {
     ...data,
+    key: data.href || data.to,
     primaryText: searchName,
   };
 }

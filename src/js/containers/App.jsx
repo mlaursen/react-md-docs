@@ -2,15 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+import Menu from 'react-md/lib/Menus';
+import { ListItem } from 'react-md/lib/Lists';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import Snackbar from 'react-md/lib/Snackbars';
 
 import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
 import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
-import { dismissToast } from '../actions/docs';
+import { dismissToast, stopQuickSearching } from '../actions/docs';
 import ThemeSwitcher from './ThemeSwitcher';
 import AppFooter from '../components/AppFooter';
+import QuickSearch from './QuickSearch';
 
 @connect(state => {
   return {
@@ -20,12 +23,15 @@ import AppFooter from '../components/AppFooter';
     theme: state.layout.theme,
     drawerType: state.layout.drawerType,
     toasts: state.docs.toasts,
+    matches: state.docs.matches,
+    isQuickSearching: state.docs.isQuickSearching,
   };
 }, {
   openDrawer,
   closeDrawer,
   updateTitle,
   dismissToast,
+  stopQuickSearching,
 })
 export default class App extends Component {
   constructor(props) {
@@ -44,6 +50,9 @@ export default class App extends Component {
     closeDrawer: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
     dismissToast: PropTypes.func.isRequired,
+    matches: PropTypes.array.isRequired,
+    isQuickSearching: PropTypes.bool.isRequired,
+    stopQuickSearching: PropTypes.func.isRequired,
 
     // from react-router
     children: PropTypes.node,
@@ -75,6 +84,9 @@ export default class App extends Component {
       toasts,
       dismissToast,
       children,
+      matches,
+      isQuickSearching,
+      stopQuickSearching,
     } = this.props;
 
     let navHeaderChildren;
@@ -88,6 +100,7 @@ export default class App extends Component {
           containerClassName="react-md-docs"
           title="react-md"
           toolbarTitle={title}
+          toolbarChildren={location.pathname !== APP_URI_BASE + '/' && <QuickSearch />}
           isOpen={isOpen}
           openDrawer={openDrawer}
           closeDrawer={closeDrawer}
@@ -95,6 +108,14 @@ export default class App extends Component {
           drawerType={drawerType}
           navHeaderChildren={navHeaderChildren}
         >
+          <Menu
+            isOpen={isQuickSearching && matches.length > 0}
+            position={Menu.Positions.TOP_LEFT}
+            className="quick-search-menu-container"
+            listClassName="quick-search-menu"
+          >
+            {matches.map(props => <ListItem {...props} onClick={stopQuickSearching} />)}
+          </Menu>
           <CSSTransitionGroup
             component="main"
             transitionName="page"
@@ -108,6 +129,14 @@ export default class App extends Component {
           </CSSTransitionGroup>
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
+          <CSSTransitionGroup
+            component="div"
+            transitionName="md-overlay"
+            transitionEnterTimeout={150}
+            transitionLeaveTimeout={150}
+          >
+            {isQuickSearching && <div key="overlay" className="md-overlay" onClick={stopQuickSearching} />}
+          </CSSTransitionGroup>
         </NavigationDrawer>
       </div>
     );
