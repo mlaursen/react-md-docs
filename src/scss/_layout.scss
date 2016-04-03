@@ -151,8 +151,12 @@
   }
 }
 
-.component-example .md-card-text {
-  color: $md-text-color;
+.component-example {
+  width: calc(100% - 8px);
+
+  .md-card-text {
+    color: $md-text-color;
+  }
 }
 
 

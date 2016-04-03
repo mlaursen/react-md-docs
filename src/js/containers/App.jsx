@@ -89,9 +89,13 @@ export default class App extends Component {
       stopQuickSearching,
     } = this.props;
 
-    let navHeaderChildren;
+    let navHeaderChildren, toolbarChildren;
     if([NavigationDrawer.DrawerType.PERSISTENT, NavigationDrawer.DrawerType.PERSISTENT_MINI].indexOf(drawerType) === -1) {
       navHeaderChildren = <ThemeSwitcher />;
+    }
+
+    if(location.pathname !== APP_URI_BASE + '/' && window.matchMedia('only screen and (min-width: 600px)').matches) {
+      toolbarChildren = <QuickSearch />;
     }
 
     return (
@@ -100,7 +104,7 @@ export default class App extends Component {
           containerClassName="react-md-docs"
           title="react-md"
           toolbarTitle={title}
-          toolbarChildren={location.pathname !== APP_URI_BASE + '/' && <QuickSearch />}
+          toolbarChildren={toolbarChildren}
           isOpen={isOpen}
           openDrawer={openDrawer}
           closeDrawer={closeDrawer}
