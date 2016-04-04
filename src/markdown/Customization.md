@@ -18,8 +18,8 @@ WebFont.load({
 
 If you would like to locally host fonts, there are two sass mixins for generating the needed `font-face`.
 
-See [host-google-font](https://mlaursen.github.io/react-md/sassdoc/#undefined-mixin-host-google-font)
-and [host-material-icons](https://mlaursen.github.io/react-md/sassdoc/#undefined-mixin-host-material-icons)
+See [host-google-font](http://mlaursen.com/react-md/sassdoc/#typography-mixin-host-google-font)
+and [host-material-icons](http://mlaursen.com/react-md/sassdoc/#typography-mixin-host-material-icons)
 for more information.
 
 
@@ -57,6 +57,6 @@ You can override these variables to style your app very quickly.
 
 If you would like more control, there are mixins with the prefix `md-theme-` that you can use
 to specifically style one component. The default theme is created from the
-[\_themes.scss](../master/src/scss/_theme.scss).
+[\_themes.scss](https://github.com/mlaursen/react-md/blob/master/src/scss/_theme.scss).
 
 Some components are joined with the their parent class, while others are not.
