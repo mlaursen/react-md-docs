@@ -6,8 +6,32 @@ import InkExamples from './InkExamples';
 import InkExamplesRaw from '!!raw!./InkExamples';
 
 const text = `
-Ink is used to wrap a single component with an ink affect. It adds touch and mouse listeners
-to the child component.
+Material design Ink is used to show that an element has been touched or has focus. You
+can add ink to any component by extending \`%md-ink-item\` (it just adds a relative position
+and hides overflow) from your scss and using the \`Higher Order Component\`: \`injectInk\`.
+
+\`injectInk\` will update your component with keyboard, mouse, and touch listeners to automatically
+add ink when the item has been interacted with. It will also pass a prop named \`ink\` which you should
+add to your component. It is required to add all the event listeners to your component as well.
+I recommend just adding \`{...this.props}\` for simplicity.
+
+The event listeners are:
+
+\`\`\`js
+// Keyboard events
+onKeyUp
+onBlur
+
+// Mouse events
+onMouseDown
+onMouseUp
+onMouseLeave
+
+// Touch events
+onTouchStart
+onTouchCancel
+onTouchLeave
+\`\`\`
 
 > Just a reminder that you should not have a clickable element inside of another clickable element.
 `;
@@ -30,13 +54,8 @@ export default class InkDocs extends Component {
           children: <InkExamples />,
         }]}
         components={[{
-          name: 'Ink',
+          name: 'injectInk',
           props: [{
-            name: 'children',
-            desc: 'A single react element to update with ink.',
-            type: 'element',
-            required: true,
-          }, {
             name: 'disabled',
             desc: `Boolean if the ink is disabled.`,
             type: 'bool',
