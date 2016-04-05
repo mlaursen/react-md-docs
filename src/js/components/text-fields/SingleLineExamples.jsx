@@ -18,6 +18,7 @@ export default class SingleLineExamples extends Component {
             containerClassName="md-title-text-field"
             size={10}
             floatingLabel={false}
+            lineDirection="right"
           />
         </div>
         <div>

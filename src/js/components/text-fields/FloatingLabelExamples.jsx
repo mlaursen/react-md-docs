@@ -20,7 +20,7 @@ export default class FloatingLabelExamples extends Component {
           />
         </div>
         <div>
-          <TextField label="Title" />
+          <TextField label="Title" lineDirection="center" />
         </div>
         <div>
           <TextField label="Type many letters" rows={2} maxRows={4} />
