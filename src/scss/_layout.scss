@@ -1,21 +1,11 @@
 @import '~helpers';
 
-%centered {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-%auto-left {
-  margin-left: auto;
-}
-
 .justify-center {
-  justify-content: center;
+  @extend %justify-center;
 }
 
-%justify-between,
 .justify-between {
-  justify-content: space-between;
+  @extend %justify-between;
 }
 
 .justify-end {
@@ -231,5 +221,10 @@
 
 .ink-item {
   overflow: hidden;
+  position: relative;
+}
+
+.inline-rel-container {
+  display: inline-block;
   position: relative;
 }

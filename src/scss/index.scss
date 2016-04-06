@@ -1,6 +1,7 @@
 @import '~normalize.css/normalize.css';
 @import '~md-scss';
 
+@import 'extenders';
 @import 'layout';
 @import 'markdown';
 @import 'themes';
@@ -13,4 +14,5 @@
 @import 'pages/lists';
 @import 'pages/menus';
 @import 'pages/papers';
+@import 'pages/tooltips';
 @import 'pages/not-found';

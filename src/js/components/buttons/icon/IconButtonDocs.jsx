@@ -60,7 +60,7 @@ export default class IconButtonDocs extends Component {
             desc: 'The icon className to use in the `FontIcon` component.',
             type: 'string',
           }, {
-            name: 'tooltip',
+            name: 'tooltipLabel',
             desc: `An optional tooltip to display on hover or on touch hold.`,
             type: 'string',
           }, {
@@ -68,10 +68,6 @@ export default class IconButtonDocs extends Component {
             desc: `The position of the tooltip.`,
             type: `one('top', 'right', 'bottom', 'left')`,
             defaultValue: 'bottom',
-          }, {
-            name: 'tooltipClassName',
-            desc: 'An optional className to apply to the tooltip.',
-            type: 'string',
           }],
         }]}
       />

@@ -1,8 +1,3 @@
-%doc-btn {
-  margin: 1em;
-  vertical-align: top;
-}
-
 .doc-component-flat-buttons,
 .doc-component-raised-buttons {
   .md-card-text .md-btn {
@@ -30,8 +25,4 @@
 
     position: static;
   }
-}
-
-.doc-component-tooltips .md-tooltip-container {
-  @extend %doc-btn;
 }

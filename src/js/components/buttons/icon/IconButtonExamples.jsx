@@ -33,7 +33,7 @@ export default class IconButtonExamples extends Component {
         </p>
         <IconButton href={GITHUB_LINK} iconClassName="fa fa-github" />
         <IconButton
-          tooltip="Click to favorite something imaginary"
+          tooltipLabel="Click to favorite something imaginary"
           children="favorite"
         />
       </div>
