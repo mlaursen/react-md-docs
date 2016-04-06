@@ -1,9 +1,6 @@
 import React from 'react';
 import Avatar from 'react-md/lib/Avatars';
 
-
-// Replaced at build time
-export const APP_URI_BASE = process.env.APP_URI_BASE; //eslint-disable-line no-undef
 export const GITHUB_LINK = 'https://github.com/mlaursen/react-md';
 
 export function randomImage({ width, height, time, section } = { width: 40 }) {

@@ -7,7 +7,6 @@ import { ListItem } from 'react-md/lib/Lists';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import Snackbar from 'react-md/lib/Snackbars';
 
-import { APP_URI_BASE } from '../utils';
 import { getNavItems } from '../utils/RouteUtils';
 import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
 import { dismissToast, stopQuickSearching } from '../actions/docs';
@@ -94,7 +93,7 @@ export default class App extends Component {
       navHeaderChildren = <ThemeSwitcher />;
     }
 
-    if(location.pathname !== APP_URI_BASE + '/' && window.matchMedia('only screen and (min-width: 600px)').matches) {
+    if(location.pathname !== '/' && window.matchMedia('only screen and (min-width: 600px)').matches) {
       toolbarChildren = <QuickSearch />;
     }
 
@@ -126,7 +125,7 @@ export default class App extends Component {
             transitionEnterTimeout={300}
             transitionLeaveTimeout={300}
             className={classnames({
-              'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== APP_URI_BASE + '/',
+              'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== '/',
             })}
           >
             {React.cloneElement(children, { key: location.pathname })}

@@ -18,8 +18,8 @@ WebFont.load({
 
 If you would like to locally host fonts, there are two sass mixins for generating the needed `font-face`.
 
-See [host-google-font](http://mlaursen.com/react-md/sassdoc/#typography-mixin-host-google-font)
-and [host-material-icons](http://mlaursen.com/react-md/sassdoc/#typography-mixin-host-material-icons)
+See [host-google-font](/sassdoc/#typography-mixin-host-google-font)
+and [host-material-icons](/sassdoc/#typography-mixin-host-material-icons)
 for more information.
 
 

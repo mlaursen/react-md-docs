@@ -12,7 +12,7 @@ config.devServer = {
   contentBase: config.__buildFolder,
   devtool: '#eval-source-map',
   historyApiFallback: {
-    index: `/${config.__publicPath}/`,
+    index: '/',
   },
   hot: true,
   port: port,
@@ -42,7 +42,7 @@ config.plugins = config.plugins.concat([
       NODE_ENV: JSON.stringify('development'),
     },
   }),
-  new OpenBrowserPlugin({ url: `${devUrl}/${config.__publicPath}/` }),
+  new OpenBrowserPlugin({ url: devUrl }),
 ]);
 
 module.exports = config;

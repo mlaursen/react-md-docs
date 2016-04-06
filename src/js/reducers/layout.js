@@ -1,5 +1,4 @@
 import { OPEN_DRAWER, CLOSE_DRAWER, UPDATE_TITLE, UPDATE_THEME, UPDATE_DRAWER_TYPE } from '../constants/ActionTypes';
-import { APP_URI_BASE } from '../utils';
 import { toTitle } from '../utils/StringUtils';
 import themes from '../constants/themes';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
@@ -13,7 +12,7 @@ function updateDrawer(state, isOpen) {
 }
 
 function updateTitle(state, route) {
-  const path = route.replace(APP_URI_BASE + '/', '');
+  const path = route.replace('/', '');
   const isComponents = path.indexOf('components') !== -1;
 
   const title = isComponents ? 'Components' : toTitle(path);

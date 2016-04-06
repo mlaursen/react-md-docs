@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Divider from 'react-md/lib/Dividers';
 
-import { APP_URI_BASE } from '../utils';
 import { toClassName, capitalizeFirst } from '../utils/StringUtils';
 import Markdown from '../containers/Markdown';
 import DocExample from './DocExample';
@@ -58,7 +57,7 @@ export default class DocPage extends Component {
 
   render() {
     const { sectionName, text, examples, components, location } = this.props;
-    const componentSectionName = capitalizeFirst(location.pathname.replace(APP_URI_BASE + '/components/', ''));
+    const componentSectionName = capitalizeFirst(location.pathname.replace('/components/', ''));
 
     let details;
     if(React.isValidElement(text)) {

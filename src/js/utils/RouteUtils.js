@@ -4,7 +4,7 @@ import FontIcon from 'react-md/lib/FontIcons';
 import { Link } from 'react-router';
 
 import { toTitle } from './StringUtils';
-import { APP_URI_BASE, flatten } from './index';
+import { flatten } from './index';
 
 import sassIcon from '../../imgs/sass-icon.png';
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
@@ -66,7 +66,7 @@ const components = [
   'toolbars',
   'tooltips',
 ].map(c => mapComponentRoutes(c));
-export const FIRST_COMPONENT_LINK = `${APP_URI_BASE}/${components[0].path}`;
+export const FIRST_COMPONENT_LINK = `/${components[0].path}`;
 
 function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, primaryText, ...props }, pathname) {
   if(props.subheader || props.divider) {
@@ -80,7 +80,7 @@ function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, p
     left = <Avatar {...avatarProps} className="fake-icon" />;
   }
 
-  const to = `${APP_URI_BASE}/${path}`;
+  const to = path;
   let componentToUse;
   if(component) {
     componentToUse = component;
@@ -91,7 +91,7 @@ function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, p
   }
 
   const isHome = path === '';
-  const isHomeActive = isHome && pathname === `${APP_URI_BASE}/`;
+  const isHomeActive = isHome && pathname === '/';
   const isSubsActive = !isHome && pathname.indexOf(path) !== -1;
   const isCompActive = primaryText === 'Components' && pathname.indexOf('components') !== -1;
   // can't use activeClassName since it doesn't update correctly with PureRenderMixin
@@ -123,7 +123,7 @@ const navItems = [{
   path: 'typography',
   icon: 'text_fields',
 }, {
-  href: `${APP_URI_BASE}/sassdoc`,
+  href: '/sassdoc',
   avatarProps: { src: sassIcon, alt: 'SASS icon' },
   primaryText: 'SASS Doc',
 }, {
@@ -155,7 +155,7 @@ function extractRouteData({ nestedItems, ...data }) {
 
   let searchName = data.primaryText;
   if((data.href || data.to).match(/.*components\/.*\/.*$/g)) {
-    const to = data.to.replace(APP_URI_BASE + '/components/', '');
+    const to = data.to.replace('/components/', '');
     if(to.indexOf('selection-controls') !== -1) {
       searchName = toTitle(to.replace('selection-controls/', ''));
     } else {
@@ -175,7 +175,7 @@ export const routeData = flatten(getNavItems('').filter(item => !item.divider).m
 // When webpack 2.x.x is released
 //
 // export function getComponent(location, cb) {
-//   System.import('../' + location.pathname.replace(APP_URI_BASE + '/', ''))
+//   System.import('../' + location.pathname.replace('/', ''))
 //     .then(() => {
 //       return module => cb(null, module.default);
 //     })

@@ -10,12 +10,8 @@ const js = path.resolve(__dirname, '../src/js');
 const nodeModules = path.resolve(__dirname, '../node_modules');
 const reactmd = nodeModules + '/react-md';
 
-// Change to your context
-const publicPath = 'react-md';
-
 module.exports = {
   __buildFolder: buildFolder,
-  __publicPath: publicPath,
 
   entry: [
     'babel-polyfill',
@@ -63,7 +59,7 @@ module.exports = {
 
   output: {
     path: buildFolder,
-    publicPath: `/${publicPath}/`,
+    publicPath: '/',
   },
 
   plugins: [
@@ -73,9 +69,6 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       'Intl': 'exports?global.Intl!intl',
-    }),
-    new webpack.DefinePlugin({
-      'process.env.APP_URI_BASE': `'/${publicPath}'`,
     }),
   ],
 

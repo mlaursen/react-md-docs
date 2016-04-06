@@ -10,7 +10,6 @@ import { FlatButton } from 'react-md/lib/Buttons';
 import FontIcon from 'react-md/lib/FontIcons';
 import TextField from 'react-md/lib/TextFields';
 
-import { APP_URI_BASE } from '../utils';
 import { routeData } from '../utils/RouteUtils';
 import { updateTitle } from '../actions/layout';
 
@@ -61,7 +60,7 @@ export default class NotFound extends Component {
   };
 
   navigateToHome = () => {
-    this.context.router.push(APP_URI_BASE + '/');
+    this.context.router.push('/');
   };
 
   render() {
