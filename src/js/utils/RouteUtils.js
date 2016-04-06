@@ -80,7 +80,7 @@ function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, p
     left = <Avatar {...avatarProps} className="fake-icon" />;
   }
 
-  const to = path;
+  const to = '/' + path;
   let componentToUse;
   if(component) {
     componentToUse = component;
