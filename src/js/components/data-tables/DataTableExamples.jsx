@@ -40,21 +40,23 @@ export default class DataTableExamples extends Component {
     });
 
     return (
-      <DataTable>
-        <TableHeaderRow onCheckboxClick={this.toggleAllCheckboxes} allChecked={this.state.allChecked}>
-          <TableHeader grow>Dessert (100g serving)</TableHeader>
-          <TableHeader numeric adjusted>Calories</TableHeader>
-          <TableHeader numeric adjusted>Fat (g)</TableHeader>
-          <TableHeader numeric adjusted>Carbs (g)</TableHeader>
-          <TableHeader numeric adjusted>Protein (g)</TableHeader>
-          <TableHeader numeric adjusted>Sodium (mg)</TableHeader>
-          <TableHeader numeric adjusted>Calcium (%)</TableHeader>
-          <TableHeader numeric>Iron (%)</TableHeader>
-        </TableHeaderRow>
-        <tbody>
-          {facts}
-        </tbody>
-      </DataTable>
+      <div className="md-data-table-container">
+        <DataTable>
+          <TableHeaderRow onCheckboxClick={this.toggleAllCheckboxes} allChecked={this.state.allChecked}>
+            <TableHeader grow>Dessert (100g serving)</TableHeader>
+            <TableHeader numeric adjusted>Calories</TableHeader>
+            <TableHeader numeric adjusted>Fat (g)</TableHeader>
+            <TableHeader numeric adjusted>Carbs (g)</TableHeader>
+            <TableHeader numeric adjusted>Protein (g)</TableHeader>
+            <TableHeader numeric adjusted>Sodium (mg)</TableHeader>
+            <TableHeader numeric adjusted>Calcium (%)</TableHeader>
+            <TableHeader numeric>Iron (%)</TableHeader>
+          </TableHeaderRow>
+          <tbody>
+            {facts}
+          </tbody>
+        </DataTable>
+      </div>
     );
   }
 }
