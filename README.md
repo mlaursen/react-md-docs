@@ -1,5 +1,5 @@
 # react-md-docs
-The documentation website for [react-md](https://github.com/mlaursen/react-md)
+The documentation website for [react-md](https://react-md.mlaursen.com)
 
 # Getting Started
 
