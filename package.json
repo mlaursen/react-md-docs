@@ -35,7 +35,7 @@
     "react-addons-pure-render-mixin": "^0.14.7",
     "react-addons-transition-group": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-md": "git://github.com/mlaursen/react-md.git#master",
+    "react-md": "latest",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
