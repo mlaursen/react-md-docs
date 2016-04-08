@@ -24,6 +24,8 @@
   "dependencies": {
     "babel-polyfill": "^6.6.1",
     "classnames": "^2.2.3",
+    "express": "^4.13.4",
+    "express-history-api-fallback": "^2.0.0",
     "fuse.js": "^2.2.0",
     "highlight.js": "^9.2.0",
     "intl": "^1.1.0",
