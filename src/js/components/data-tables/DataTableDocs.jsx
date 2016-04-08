@@ -6,7 +6,9 @@ import DataTableExamples from './DataTableExamples';
 import DataTableExamplesRaw from '!!raw!./DataTableExamples';
 
 const text = `
+#### STILL A WORK IN PROGRESS
 
+Should not use it at this time.
 `;
 
 export default class DataTableDocs extends Component {
