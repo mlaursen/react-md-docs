@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
+import { DataTable, TableRow, TableHeaderRow, TableHeader, TableData } from 'react-md/lib/DataTables';
 
 import nutritionFacts from './nutritionFacts';
 
@@ -10,7 +10,7 @@ export default class DataTableExamples extends Component {
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      allSelected: false,
+      allChecked: false,
     };
   }
 
@@ -20,43 +20,43 @@ export default class DataTableExamples extends Component {
   };
 
   toggleAllCheckboxes = () => {
-    this.setState({ allSelected: !this.state.allSelected });
+    this.setState({ allChecked: !this.state.allChecked });
   };
 
   render() {
     const facts = nutritionFacts.map(({ name, calories, fat, carbs, protein, sodium, calcium, iron }, key) => {
       return (
         <TableRow key={key}>
-          <TableColumn>{name}</TableColumn>
-          <TableColumn numeric={true}>{calories}</TableColumn>
-          <TableColumn numeric={true}>{fat}</TableColumn>
-          <TableColumn numeric={true}>{carbs}</TableColumn>
-          <TableColumn numeric={true}>{protein}</TableColumn>
-          <TableColumn numeric={true}>{sodium}</TableColumn>
-          <TableColumn numeric={true}>{calcium}%</TableColumn>
-          <TableColumn numeric={true}>{iron}%</TableColumn>
+          <TableData>{name}</TableData>
+          <TableData numeric adjusted>{calories}</TableData>
+          <TableData numeric adjusted>{fat}</TableData>
+          <TableData numeric adjusted>{carbs}</TableData>
+          <TableData numeric adjusted>{protein}</TableData>
+          <TableData numeric adjusted>{sodium}</TableData>
+          <TableData numeric adjusted>{calcium}%</TableData>
+          <TableData numeric>{iron}%</TableData>
         </TableRow>
       );
     });
 
     return (
-      <DataTable>
-        <TableHeader>
-          <TableRow>
-            <TableColumn header={true} grow={true}>Dessert (100g serving)</TableColumn>
-            <TableColumn header={true} numeric={true}>Calories</TableColumn>
-            <TableColumn header={true} numeric={true}>Fat (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Carbs (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Protein (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Sodium (mg)</TableColumn>
-            <TableColumn header={true} numeric={true}>Calcium (%)</TableColumn>
-            <TableColumn header={true} numeric={true}>Iron (%)</TableColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {facts}
-        </TableBody>
-      </DataTable>
+      <div className="md-data-table-container">
+        <DataTable>
+          <TableHeaderRow onCheckboxClick={this.toggleAllCheckboxes} allChecked={this.state.allChecked}>
+            <TableHeader grow>Dessert (100g serving)</TableHeader>
+            <TableHeader numeric adjusted>Calories</TableHeader>
+            <TableHeader numeric adjusted>Fat (g)</TableHeader>
+            <TableHeader numeric adjusted>Carbs (g)</TableHeader>
+            <TableHeader numeric adjusted>Protein (g)</TableHeader>
+            <TableHeader numeric adjusted>Sodium (mg)</TableHeader>
+            <TableHeader numeric adjusted>Calcium (%)</TableHeader>
+            <TableHeader numeric>Iron (%)</TableHeader>
+          </TableHeaderRow>
+          <tbody>
+            {facts}
+          </tbody>
+        </DataTable>
+      </div>
     );
   }
 }

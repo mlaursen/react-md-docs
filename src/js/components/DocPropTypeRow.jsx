@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { TableRow, TableColumn } from 'react-md/lib/DataTables';
 
 import Markdown from '../containers/Markdown';
 
@@ -33,17 +32,17 @@ export default class DocPropTypeRow extends Component {
     }
 
     return (
-      <TableRow>
-        <TableColumn className="prop-name">{name}</TableColumn>
-        <TableColumn className="prop-info">
+      <tr>
+        <td className="prop-name">{name}</td>
+        <td className="prop-info">
           <div>
             <span className="prop-type">{type}</span>
             {required && <span className="prop-required" />}
             {dv}
           </div>
           <Markdown markdown={desc} className="prop-desc" />
-        </TableColumn>
-      </TableRow>
+        </td>
+      </tr>
     );
   }
 }
