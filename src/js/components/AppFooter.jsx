@@ -18,7 +18,7 @@ export default class AppFooter extends Component {
         <div className="container">
           <div className="contact">
             <h4 className="md-title">Contact</h4>
-            <FlatButton primary={true} label="Mikkel Laursen" href="mailto:mlaursen03@gmail.com">
+            <FlatButton primary={true} label="Mikkel Laursen" href="mailto:mlaursen03@gmail.com" type={null}>
               <FontIcon>mail</FontIcon>
             </FlatButton>
           </div>
@@ -28,7 +28,7 @@ export default class AppFooter extends Component {
               This project is currently developed by a single persion. Feel free
               to contribute!
             </p>
-            <FlatButton secondary={true} label="Github" href={GITHUB_LINK}>
+            <FlatButton secondary={true} label="Github" href={GITHUB_LINK} type={null}>
               <FontIcon iconClassName="fa fa-github" />
             </FlatButton>
           </div>
