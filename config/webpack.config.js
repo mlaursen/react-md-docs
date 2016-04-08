@@ -55,6 +55,14 @@ module.exports = {
       'md-src': reactmd + '/src/scss',
       'react-doc-page': js + '/components/DocPage.jsx',
     },
+
+    // Fixes the npm link issue so that it doesn't search for modules in react-md
+    fallback: nodeModules,
+  },
+
+  // Fixes the npm link issue so that it doesn't search for modules in react-md
+  resolveLoader: {
+    fallback: nodeModules,
   },
 
   output: {
