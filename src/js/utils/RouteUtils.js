@@ -41,7 +41,6 @@ const components = [
   },
   'cards',
   'chips',
-  'data-tables',
   'dialogs',
   'dividers',
   'font-icons',

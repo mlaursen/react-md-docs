@@ -13,7 +13,6 @@ import FloatingButtonDocs from './components/buttons/floating/FloatingButtonDocs
 import IconButtonDocs from './components/buttons/icon/IconButtonDocs';
 import CardDocs from './components/cards/CardDocs';
 import ChipDocs from './components/chips/ChipDocs';
-import DataTableDocs from './components/data-tables/DataTableDocs';
 import DialogDocs from './components/dialogs/DialogDocs';
 import DividerDocs from './components/dividers/DividerDocs';
 import FontIconDocs from './components/font-icons/FontIconDocs';
@@ -53,7 +52,6 @@ export default (
     <Route path="components/buttons/icon" component={IconButtonDocs} />
     <Route path="components/cards" component={CardDocs} />
     <Route path="components/chips" component={ChipDocs} />
-    <Route path="components/data-tables" component={DataTableDocs} />
     <Route path="components/dialogs" component={DialogDocs} />
     <Route path="components/dividers" component={DividerDocs} />
     <Route path="components/font-icons" component={FontIconDocs} />
