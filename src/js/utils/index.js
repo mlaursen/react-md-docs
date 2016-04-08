@@ -60,3 +60,11 @@ export function flatten(arr) {
     return flattened.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
   }, []);
 }
+
+export function getRandomBoolean() {
+  return Math.random() < .5;
+}
+
+export function getRandomBooleans(size) {
+  return Array.apply(null, new Array(size)).map(() => getRandomBoolean());
+}

@@ -3,6 +3,10 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
 
 import nutritionFacts from './nutritionFacts';
+import { getRandomBooleans } from '../../utils';
+
+const defaultSelectedRows = getRandomBooleans(nutritionFacts.length);
+
 
 export default class DataTableExamples extends Component {
   constructor(props) {
@@ -11,16 +15,13 @@ export default class DataTableExamples extends Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       allSelected: false,
+      selected: nutritionFacts.map(() => false),
     };
   }
 
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
-  };
-
-  toggleAllCheckboxes = () => {
-    this.setState({ allSelected: !this.state.allSelected });
   };
 
   render() {
@@ -40,7 +41,7 @@ export default class DataTableExamples extends Component {
     });
 
     return (
-      <DataTable>
+      <DataTable className="nutrition-table" defaultSelectedRows={defaultSelectedRows}>
         <TableHeader>
           <TableRow>
             <TableColumn header={true} grow={true}>Dessert (100g serving)</TableColumn>
