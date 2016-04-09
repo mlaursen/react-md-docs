@@ -1,28 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
 
 import nutritionFacts from './nutritionFacts';
-import { getRandomBooleans } from '../../utils';
 
-const defaultSelectedRows = getRandomBooleans(nutritionFacts.length);
-
-
-export default class DataTableExamples extends Component {
+export default class DataTableExample extends Component {
   constructor(props) {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = {
-      allSelected: false,
-      selected: nutritionFacts.map(() => false),
-    };
   }
-
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-  };
 
   render() {
     const facts = nutritionFacts.map(({ name, calories, fat, carbs, protein, sodium, calcium, iron }, key) => {
@@ -41,17 +28,17 @@ export default class DataTableExamples extends Component {
     });
 
     return (
-      <DataTable className="nutrition-table" defaultSelectedRows={defaultSelectedRows}>
+      <DataTable className="nutrition-table">
         <TableHeader>
           <TableRow>
-            <TableColumn header={true} grow={true}>Dessert (100g serving)</TableColumn>
-            <TableColumn header={true} numeric={true}>Calories</TableColumn>
-            <TableColumn header={true} numeric={true}>Fat (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Carbs (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Protein (g)</TableColumn>
-            <TableColumn header={true} numeric={true}>Sodium (mg)</TableColumn>
-            <TableColumn header={true} numeric={true}>Calcium (%)</TableColumn>
-            <TableColumn header={true} numeric={true}>Iron (%)</TableColumn>
+            <TableColumn grow={true}>Dessert (100g serving)</TableColumn>
+            <TableColumn numeric={true}>Calories</TableColumn>
+            <TableColumn numeric={true}>Fat (g)</TableColumn>
+            <TableColumn numeric={true}>Carbs (g)</TableColumn>
+            <TableColumn numeric={true}>Protein (g)</TableColumn>
+            <TableColumn numeric={true}>Sodium (mg)</TableColumn>
+            <TableColumn numeric={true}>Calcium (%)</TableColumn>
+            <TableColumn numeric={true}>Iron (%)</TableColumn>
           </TableRow>
         </TableHeader>
         <TableBody>

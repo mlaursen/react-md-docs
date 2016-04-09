@@ -34,7 +34,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'file?name=imgs/[name].[ext]',
     }, {
-      test: /\.md/,
+      test: /\.md$/,
       exclude: /node_modules/,
       loader: 'raw',
     }],
