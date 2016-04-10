@@ -36,7 +36,7 @@ files=(
   #'Pickers/TimePickerContainer'
   #'Progress/CircularProgress'
   #'Progress/LinearProgress'
-  #'SelectFields/SelectField'
+  'SelectFields/SelectField'
   #'SelectionControls/Checkbox'
   #'SelectionControls/RadioGroup'
   #'SelectionControls/Radio'

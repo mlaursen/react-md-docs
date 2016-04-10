@@ -44,6 +44,14 @@ export default class SelectFieldExamples extends Component {
             menuItems={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
           />
         </div>
+        <h3 className="md-subheading-1" style={{ paddingTop: '2em' }}>Disabled</h3>
+        <div>
+          <SelectField
+            disabled
+            defaultValue={3}
+            menuItems={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+          />
+        </div>
       </div>
     );
   }
