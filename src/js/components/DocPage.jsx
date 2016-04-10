@@ -6,6 +6,7 @@ import { toClassName, capitalizeFirst } from '../utils/StringUtils';
 import Markdown from '../containers/Markdown';
 import DocExample from './DocExample';
 import DocPropTypes from './DocPropTypes';
+import DocgenPropTypes from './Docgen/DocgenPropTypes';
 
 export default class DocPage extends Component {
   constructor(props) {
@@ -30,6 +31,11 @@ export default class DocPage extends Component {
       code: PropTypes.string.isRequired,
       children: PropTypes.node.isRequired,
     })),
+    docgens: PropTypes.arrayOf(PropTypes.shape({
+      component: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      props: PropTypes.object.isRequired,
+    })),
     components: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       desc: PropTypes.oneOfType([
@@ -51,12 +57,13 @@ export default class DocPage extends Component {
 
   static defaultProps = {
     examples: [],
+    docgens: [],
     components: [],
     text: '',
   };
 
   render() {
-    const { sectionName, text, examples, components, location } = this.props;
+    const { sectionName, text, examples, components, location, docgens } = this.props;
     const componentSectionName = capitalizeFirst(location.pathname.replace('/components/', ''));
 
     let details;
@@ -74,7 +81,9 @@ export default class DocPage extends Component {
           {details}
         </header>
         {examples.map((example, key) => <DocExample {...example} key={key} fallbackId={`example-${key}`} />)}
+        <h2 className="md-headline">Prop Types</h2>
         {components.map((component, key) => <DocPropTypes sectionName={componentSectionName} {...component} key={key} />)}
+        {docgens.map((docgen, key) => <DocgenPropTypes key={key} {...docgen} />)}
       </div>
     );
   }

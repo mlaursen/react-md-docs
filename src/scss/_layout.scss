@@ -149,6 +149,24 @@
     content: '(isRequired)';
     padding-left: .5em;
   }
+
+  .prop-is-required {
+    @extend %md-secondary-text;
+  }
+}
+
+.prop-description {
+  p {
+    margin: 0;
+  }
+}
+
+.prop-default-value {
+  margin-bottom: .5em;
+
+  code {
+    margin-left: .5em;
+  }
 }
 
 .component-example {

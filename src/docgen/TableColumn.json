@@ -1,0 +1,114 @@
+  {
+    "component": "TableColumn",
+    "source": "src/js/DataTables/TableColumn.js",
+    "description": "A column in a table. This is either the `th` or `td` component.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The optional className for the table column"
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The children to display in the column."
+      },
+      "sorted": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the column is currently sorted. You should\nset this to true if you want a sortable column at first. You\nwill also need to add an onClick function that sorts the rows.\n\nThis value should really only be set in the `TableHeader` component."
+      },
+      "sortIconChildren": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The optional icon children to display in the sort icon.",
+        "defaultValue": {
+          "value": "'arrow_upward'",
+          "computed": false
+        }
+      },
+      "sortIconClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The icon className for the sort icon.",
+        "defaultValue": {
+          "value": "'material-icons'",
+          "computed": false
+        }
+      },
+      "numeric": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "A boolean if the column has numeric data. It will right-align the data."
+      },
+      "adjusted": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if this column should be adjusted with additional padding. This *should*\nbe handled automatically by the `TableRow` component."
+      },
+      "header": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": "Boolean if this is a `th` component. This value **should** be set\nautomatically for you if it is in the `TableHeader` component.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "tooltipLabel": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The optional tooltip to render on hover."
+      },
+      "tooltipPosition": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'top'",
+              "computed": false
+            },
+            {
+              "value": "'right'",
+              "computed": false
+            },
+            {
+              "value": "'bottom'",
+              "computed": false
+            },
+            {
+              "value": "'left'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "The position of the tooltip."
+      },
+      "tooltip": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The optionally injected tooltip from the `injectTooltip` higher order component."
+      }
+    }
+  }

@@ -31,7 +31,7 @@ export default class DataTableExample extends Component {
       <DataTable className="nutrition-table">
         <TableHeader>
           <TableRow>
-            <TableColumn grow={true}>Dessert (100g serving)</TableColumn>
+            <TableColumn>Dessert (100g serving)</TableColumn>
             <TableColumn numeric={true}>Calories</TableColumn>
             <TableColumn numeric={true}>Fat (g)</TableColumn>
             <TableColumn numeric={true}>Carbs (g)</TableColumn>

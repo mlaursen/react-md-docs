@@ -3,25 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, EditDialogColumn } from 'react-md/lib/DataTables';
 import { RadioGroup, Radio, Switch } from 'react-md/lib/SelectionControls';
 import FontIcon from 'react-md/lib/FontIcons';
-
-function sort(arr, key, ascending) {
-  const list = arr.slice();
-  const multiplier = ascending ? 1 : -1;
-
-  list.sort((prev, curr) => {
-    const v1 = prev[key];
-    const v2 = curr[key];
-
-    if(typeof v1 === 'number') {
-      return v1 < v2 ? 1 : -1;
-    } else {
-      return v1.localeCompare(v2) * multiplier;
-    }
-  });
-
-  return list;
-}
-
+import { sort } from '../../utils';
 
 const movies = [{
   title: 'Conan the Barbarian',
