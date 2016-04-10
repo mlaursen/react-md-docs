@@ -24,7 +24,7 @@
         "required": true,
         "description": "The transition duration when the dialog is moving from\nactive to inactive.",
         "defaultValue": {
-          "value": "150",
+          "value": "300",
           "computed": false
         }
       },
@@ -140,6 +140,24 @@
         "description": "The label to use for the Cancel button.",
         "defaultValue": {
           "value": "'Cancel'",
+          "computed": false
+        }
+      },
+      "onOutsideClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "An optional function to call when the edit dialog is open and the user clicks\nsomewhere else on the page."
+      },
+      "okOnOutsideClick": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": "A boolean if the action when the edit dialog is open and the user clicks somewhere\nelse on the page should be to confirm the current changes.\n\nIf this is set to `true`, `onOkClick` will be called. Otherwise `onCancelClick` will be called.",
+        "defaultValue": {
+          "value": "true",
           "computed": false
         }
       }
