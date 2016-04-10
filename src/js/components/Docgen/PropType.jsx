@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { TableColumn } from 'react-md/lib/DataTables';
 
-//import Markdown from '../../containers/Markdown';
+import Markdown from '../../containers/Markdown';
 
 export default class PropType extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ export default class PropType extends Component {
       name: PropTypes.string.isRequired,
       raw: PropTypes.string,
       value: PropTypes.oneOfType([
+        PropTypes.string,
         PropTypes.object,
         PropTypes.arrayOf(PropTypes.object),
       ]),
@@ -23,12 +24,36 @@ export default class PropType extends Component {
     required: PropTypes.bool,
   };
 
-  getFullName = ({ name, value }) => {
+  handleEnum = (value, computed) => {
+    let v;
+    if(computed) {
+      v = 'computed';
+    } else {
+      v = `[${value.map(v => v.value).join(', ')}]`;
+    }
+
+    return `oneOf(${v})`;
+  };
+
+  handleUnion = (value, computed) => {
+    let v;
+    if(computed) {
+      v = 'computed';
+    } else {
+      v = value.map(v => this.getFullName(v)).join(',\n  ');
+    }
+
+    return `oneOfType([\n  ${v}\n])`;
+  };
+
+  getFullName = ({ name, value, computed }) => {
     switch(name) {
+      case 'union':
+        return this.handleUnion(value, computed);
       case 'arrayOf':
         return `${name}(${this.getFullName(value)})`;
       case 'enum':
-        return `oneOf([${value.map(v => v.value).join(', ')}])`;
+        return this.handleEnum(value, computed);
       default:
         return name;
     }
@@ -37,9 +62,10 @@ export default class PropType extends Component {
   render() {
     const { type, required } = this.props;
 
+    const markdown = `\`\`\`js\n${this.getFullName(type) + (required ? ' *' : '')}\n\`\`\``;
     return (
-      <TableColumn className="prop-name prop-type" tooltipLabel={required ? 'Required' : null} tooltipPosition="top" tooltipDelay={300}>
-        {this.getFullName(type) + (required ? ' *' : '')}
+      <TableColumn className="prop-name justified" tooltipLabel={required ? 'Required' : null} tooltipPosition="top" tooltipDelay={300}>
+        <Markdown markdown={markdown} />
       </TableColumn>
     );
   }

@@ -25,6 +25,7 @@ export default class PropTypesRow extends Component {
       name: PropTypes.string.isRequired,
       raw: PropTypes.string,
       value: PropTypes.oneOfType([
+        PropTypes.string,
         PropTypes.object,
         PropTypes.arrayOf(PropTypes.object),
       ]),
@@ -33,15 +34,12 @@ export default class PropTypesRow extends Component {
 
   render() {
     const { description, required, type, name, defaultValue } = this.props;
-    if(!type) {
-      console.log(name);
-    }
 
     return (
       <TableRow autoAdjust={false}>
-        <TableColumn className="prop-name">{name}</TableColumn>
+        <TableColumn className="prop-name justified">{name}</TableColumn>
         <PropType type={type} required={required} />
-        <TableColumn className="prop-info">
+        <TableColumn className="prop-info grow">
           <DefaultValue defaultValue={defaultValue} />
           <Markdown markdown={description} className="prop-description" />
         </TableColumn>
