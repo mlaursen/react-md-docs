@@ -62,6 +62,7 @@ export default class ComplexDataTableComments extends Component {
       sortedMovies: sort(movies, 'title', true).map(movie => ({ ...movie, comment: '' })),
       titleSorted: true,
       yearSorted: null,
+      okOnOutsideClick: true,
     };
   }
 
@@ -95,8 +96,12 @@ export default class ComplexDataTableComments extends Component {
     this.setState({ sortedMovies });
   };
 
+  handleOutsideClickChange = () => {
+    this.setState({ okOnOutsideClick: !this.state.okOnOutsideClick });
+  };
+
   render() {
-    const { sortedMovies, titleSorted, yearSorted, large } = this.state;
+    const { sortedMovies, titleSorted, yearSorted, large, okOnOutsideClick } = this.state;
     const rows = sortedMovies.map(({ title, year, comment }, key) => {
       return (
         <TableRow key={key}>
@@ -108,6 +113,7 @@ export default class ComplexDataTableComments extends Component {
             title="Add a comment"
             large={large}
             value={comment}
+            okOnOutsideClick={okOnOutsideClick}
             onChange={this.handleCommentChange.bind(this, key)}
             onCancelClick={this.handleCommentChange.bind(this, key)}
           />
@@ -129,6 +135,10 @@ export default class ComplexDataTableComments extends Component {
           <div>
             {/* Set to inline flex so the label is a bit shorter so clicking anywhere in the line won't toggle. */}
             <Switch className="inline-flex" label="Use large Edit Dialog" onClick={this.handleDialogSizeChange} />
+          </div>
+          <div>
+            {/* Set to inline flex so the label is a bit shorter so clicking anywhere in the line won't toggle. */}
+            <Switch className="inline-flex" label="Save comment on outside click" toggled={okOnOutsideClick} onChange={this.handleOutsideClickChange} />
           </div>
         </div>
         <DataTable className="complex-table">
