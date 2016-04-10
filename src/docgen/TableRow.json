@@ -1,7 +1,7 @@
   {
     "component": "TableRow",
     "source": "src/js/DataTables/TableRow.js",
-    "description": "A component for displaying a row in a `DataTable`. This will\nautomatically add a `Checkbox` component to the row if it is not\na `plain` table.\n\nThis component will also automatically adjust the padding between\ncolumns based on the longest column if the `autoFindLongest` prop\nis set to true.",
+    "description": "A component for displaying a row in a `DataTable`. This will\nautomatically add a `Checkbox` component to the row if it is not\na `plain` table.\n\nThis component will also automatically adjust the padding between\ncolumns based on the longest column if the `autoAdjust` prop\nis set to true.",
     "props": {
       "selected": {
         "type": {
@@ -46,7 +46,7 @@
           "name": "bool"
         },
         "required": true,
-        "description": "A boolean if the row should automatically check all the `TableColumn`s in the row\nand add the className `grow` to the one that is the biggest.",
+        "description": "A boolean if the row should automatically check all the `TableColumn`s in the row\nand add the className `grow` to the one that is the biggest. You can also disable\nindividual columns by adding the className `.prevent-grow` to them.",
         "defaultValue": {
           "value": "true",
           "computed": false

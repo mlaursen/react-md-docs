@@ -1,7 +1,7 @@
   {
     "component": "TableColumn",
     "source": "src/js/DataTables/TableColumn.js",
-    "description": "A column in a table. This is either the `th` or `td` component.",
+    "description": "A column in a table. This is either the `th` or `td` component. This column\ncan be automatically configured to be adjusted with additional padding\nor auto expand to fill the remaining table space if the `TableRow` component\nhas `autoAdjust` set to `true`. If you would like to prevent this column\nfor being a candidate for auto expanding to remaining space, add the className\n`.prevent-grow`.",
     "props": {
       "className": {
         "type": {
@@ -22,7 +22,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Boolean if the column is currently sorted. You should\nset this to true if you want a sortable column at first. You\nwill also need to add an onClick function that sorts the rows.\n\nThis value should really only be set in the `TableHeader` component."
+        "description": "Boolean if the column is currently sorted. If this prop is not `undefined`,\nit will add the sort icon unto this column. You will also need to use the\n`onClick` function to toggle the `sorted` prop as well as handling the sorting\nof data.\n\nThis value should really only be set in the `TableHeader` component."
       },
       "sortIconChildren": {
         "type": {
@@ -58,7 +58,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Boolean if this column should be adjusted with additional padding. This *should*\nbe handled automatically by the `TableRow` component."
+        "description": "Boolean if this column should be adjusted with additional padding. This *should*\nbe handled automatically by the `TableRow` component but can be set manually as well."
       },
       "header": {
         "type": {

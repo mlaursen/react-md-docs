@@ -51,8 +51,6 @@ files=(
   #'Toolbars/Toolbar'
 )
 
-rm src/docgen/*
-
 for file in "${files[@]}"; do
   component=`echo $file | cut -d '/' -f 2`
   source=src/js/$file.js
