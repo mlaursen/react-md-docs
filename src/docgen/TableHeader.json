@@ -1,0 +1,22 @@
+  {
+    "component": "TableHeader",
+    "source": "src/js/DataTables/TableHeader.js",
+    "description": "A `thead` component ot use in the `DataTable` component. This\nwill automatically update the header row to check if it is selected\nand inject a function to toggle all rows selected if the row is\nuncontrolled. It will also automatically attempt to set the `TableColumn`\ncomponents to be the header type.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the table header"
+      },
+      "children": {
+        "type": {
+          "name": "custom",
+          "raw": "(props, propName, component) => {\n  try {\n    React.Children.only(props.children);\n  } catch(e) {\n    return new Error(`There must only be one child in a '${component}', but ${props.children ? props.children.length : 0} were given.`);\n  }\n}"
+        },
+        "required": false,
+        "description": "This should be a single `TableRow` component. The `custom` validation will\nwarn you if there are more than one children given or none at all."
+      }
+    }
+  }

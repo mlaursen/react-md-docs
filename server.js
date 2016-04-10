@@ -5,13 +5,10 @@ const fallback = require('express-history-api-fallback');
 const path = require('path');
 
 const app = express();
-const router = express.Router();
 const root = path.resolve(__dirname, 'dist');
 
-router.use(express.static(root));
-router.use(fallback('index.html', { root: root }));
-
-app.use('/react-md', router);
+app.use(express.static(root));
+app.use(fallback('index.html', { root: root }));
 
 app.listen(8080, function(err) {
   if(err) {

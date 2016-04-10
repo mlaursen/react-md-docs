@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import { Card, CardTitle, CardText } from 'react-md/lib/Cards';
+import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
 import { IconButton } from 'react-md/lib/Buttons';
 
 import { GITHUB_LINK } from '../utils';
@@ -85,17 +86,17 @@ export default class DocPropTypes extends Component {
         </CardTitle>
         {desc && <CardText><Markdown markdown={desc} /></CardText>}
         <CardText className="with-table">
-          <table className="md-data-table striped">
-            <thead>
-              <tr>
-                <th>Prop Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
+          <DataTable plain={true}>
+            <TableHeader>
+              <TableRow>
+                <TableColumn header={true}>Prop Name</TableColumn>
+                <TableColumn header={true}>Description</TableColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {rows}
-            </tbody>
-          </table>
+            </TableBody>
+          </DataTable>
         </CardText>
       </Card>
     );

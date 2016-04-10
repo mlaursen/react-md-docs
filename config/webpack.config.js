@@ -9,6 +9,7 @@ const buildFolder = path.resolve(__dirname, '../dist');
 const js = path.resolve(__dirname, '../src/js');
 const nodeModules = path.resolve(__dirname, '../node_modules');
 const reactmd = nodeModules + '/react-md';
+const docgen = path.resolve(__dirname, '../src/docgen');
 
 module.exports = {
   __buildFolder: buildFolder,
@@ -19,7 +20,7 @@ module.exports = {
   ],
 
   eslint: {
-    configFile: './.eslintrc',
+    configFile: path.resolve(__dirname, '../.eslintrc'),
   },
 
   module: {
@@ -34,9 +35,13 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'file?name=imgs/[name].[ext]',
     }, {
-      test: /\.md/,
+      test: /\.md$/,
       exclude: /node_modules/,
       loader: 'raw',
+    }, {
+      test: '/\.json$/',
+      exclude: /node_modules/,
+      loader: 'json',
     }],
   },
 
@@ -54,6 +59,7 @@ module.exports = {
       'md-scss': reactmd + '/src/scss/react-md.scss',
       'md-src': reactmd + '/src/scss',
       'react-doc-page': js + '/components/DocPage.jsx',
+      'docgen': docgen,
     },
 
     // Fixes the npm link issue so that it doesn't search for modules in react-md

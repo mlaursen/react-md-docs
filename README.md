@@ -1,17 +1,22 @@
 # react-md-docs
-The documentation website for [react-md](https://react-md.mlaursen.com)
+The documentation website for [react-md](https://github.com/mlaursen/react-md)
+
+This is done as a separate repositority as a lazy way of checking that the react-md works as an npm module.
 
 # Getting Started
+
+If you want to test most recent changes from the react-md it is ideal to follow the steps below
 
 
 ```bash
 $ git clone https://github.com/mlaursen/react-md
 $ git clone https://github.com/mlaursen/react-md-docs
 $ cd react-md && npm i && npm run build && npm link
-$ cd ../react-md-docs && npm i && npm link react-md
+# Optionally run this as well if you want live updates
+$ npm run scripts:watch
 
-# Until eslint gets fixed..
-$ npm i estraverse-fb
+# Documentation repo
+$ cd ../react-md-docs && npm i && npm link react-md
 
 # Finally start the docs dev server
 $ npm run browser
@@ -29,4 +34,4 @@ $ npm start         # builds and starts the production server
 $ npm run browser   # starts the dev server and watches for changes
 ```
 
-> Note: The prod server is actually run on apache, not mode
+> Note: The prod server is actually run on apache, not node

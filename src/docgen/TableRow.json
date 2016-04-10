@@ -1,0 +1,56 @@
+  {
+    "component": "TableRow",
+    "source": "src/js/DataTables/TableRow.js",
+    "description": "A component for displaying a row in a `DataTable`. This will\nautomatically add a `Checkbox` component to the row if it is not\na `plain` table.\n\nThis component will also automatically adjust the padding between\ncolumns based on the longest column if the `autoAdjust` prop\nis set to true.",
+    "props": {
+      "selected": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the row is currently selected. If this value will be\ninjected by the `TableHeader` or `TableBody` component."
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the row."
+      },
+      "children": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "node"
+          }
+        },
+        "required": true,
+        "description": "A list of `TableColumn` to display in the table.\n\n> There should be at least 3 columns in a Data table (non plain)"
+      },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "An optional onClick function to call when a row is clicked."
+      },
+      "onCheckboxClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "A function to call when the checkbox is clicked. This\nfunction will will be called with `(rowIndex, event)`. The\n`TableBody` and `TableHeader` components will automatically\nmerge in a function to goggle the checkbox."
+      },
+      "autoAdjust": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": "A boolean if the row should automatically check all the `TableColumn`s in the row\nand add the className `grow` to the one that is the biggest. You can also disable\nindividual columns by adding the className `.prevent-grow` to them.",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      }
+    }
+  }
