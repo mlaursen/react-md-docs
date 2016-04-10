@@ -37,6 +37,7 @@ ${code}
         raise={false}
         iconChildren="code"
         id={name ? toClassName(name) : fallbackId}
+        expanderTooltipLabel="View the source code for this example"
       >
         <CardTitle title={name || 'Examples'} isExpander={true} />
         <Markdown expandable={true} markdown={markdown} className="md-card-text example-code" />
