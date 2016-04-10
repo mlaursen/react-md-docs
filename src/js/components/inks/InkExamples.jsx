@@ -16,17 +16,17 @@ class TerriblyInaccessibleFakeButton extends Component {
     disabled: PropTypes.bool,
 
     // Injected from injectInk
-    ink: PropTypes.node.isRequired,
+    ink: PropTypes.node,
     // It is required to pass all these event listeners onto your component to
     // get the full ink effect
-    onMouseDown: PropTypes.func.isRequired,
-    onMouseUp: PropTypes.func.isRequired,
-    onMouseLeave: PropTypes.func.isRequired,
-    onKeyUp: PropTypes.func.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onTouchStart: PropTypes.func.isRequired,
-    onTouchEnd: PropTypes.func.isRequired,
-    onTouchCancel: PropTypes.func.isRequired,
+    onMouseDown: PropTypes.func,
+    onMouseUp: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onKeyUp: PropTypes.func,
+    onBlur: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    onTouchEnd: PropTypes.func,
+    onTouchCancel: PropTypes.func,
   };
 
   render() {

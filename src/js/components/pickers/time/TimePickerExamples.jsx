@@ -18,7 +18,7 @@ export default class TimePickerExamples extends Component {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = { toasts: [], undo: false, time: null };
+    this.state = { toasts: [], undo: false };
   }
 
   static propTypes = {

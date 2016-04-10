@@ -30,7 +30,7 @@ export default class ThemeSwitcher extends Component {
         value={theme}
         onChange={updateTheme}
         menuItems={themes}
-        position={SelectField.Positions.TOP_LEFT}
+        position={SelectField.Positions.BELOW}
         noAutoAdjust={true}
       />
     );

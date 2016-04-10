@@ -151,7 +151,7 @@
           "value": "Object.keys(SelectField.Positions).map(key => SelectField.Positions[key])"
         },
         "required": false,
-        "description": "The position that the menu should appear from. This should be one of:\n\n```js\nSelectField.Positions.TOP_LEFT,\nSelectField.Positions.TOP_RIGHT,\nSelectField.Positions.BOTTOM\n```"
+        "description": "The position that the menu should appear from. This should be one of:\n\n```js\nSelectField.Positions.TOP_LEFT,\nSelectField.Positions.TOP_RIGHT,\nSelectField.Positions.BELOW\n```"
       },
       "noAutoAdjust": {
         "type": {
