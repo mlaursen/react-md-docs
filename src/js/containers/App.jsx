@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+
+import { TAB } from 'react-md/lib/constants/keyCodes';
 import Menu from 'react-md/lib/Menus';
 import { ListItem } from 'react-md/lib/Lists';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
@@ -71,6 +73,12 @@ export default class App extends Component {
     }
   }
 
+  handleItemKeyDown = (e) => {
+    if((e.which || e.keyCode) === TAB) {
+      this.props.stopQuickSearching();
+    }
+  };
+
   render() {
     const {
       isOpen,
@@ -118,7 +126,7 @@ export default class App extends Component {
             className="quick-search-menu-container"
             listClassName="quick-search-menu"
           >
-            {matches.map(props => <ListItem {...props} onClick={stopQuickSearching} />)}
+            {matches.map((props, i) => <ListItem {...props} onClick={stopQuickSearching} onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null} />)}
           </Menu>
           <CSSTransitionGroup
             component="main"
