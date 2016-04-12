@@ -4,6 +4,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import SelectFieldExamples from './SelectFieldExamples';
 import SelectFieldExamplesRaw from '!!raw!./SelectFieldExamples';
+import SelectFieldButtonExamples from './SelectFieldButtonExamples';
+import SelectFieldButtonExamplesRaw from '!!raw!./SelectFieldButtonExamples';
 
 import SelectField from '!!json!docgen/SelectField.json';
 
@@ -35,8 +37,13 @@ export default class SelectFieldDocs extends Component {
         text={text}
         sectionName="Select Fields"
         examples={[{
+          name: 'Simple Examples',
           code: SelectFieldExamplesRaw,
           children: <SelectFieldExamples />,
+        }, {
+          name: 'Select Field Button Examples',
+          code: SelectFieldButtonExamplesRaw,
+          children: <SelectFieldButtonExamples />,
         }]}
         docgens={[SelectField]}
       />
