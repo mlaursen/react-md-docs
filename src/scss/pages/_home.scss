@@ -1,5 +1,15 @@
 @import '~helpers';
 
+.logo {
+  padding-bottom: 2em;
+}
+
+.img-card {
+  .md-ink {
+    background: rgba($md-white-base, .12);
+  }
+}
+
 .banner {
   align-items: center;
   background: $md-primary-color;

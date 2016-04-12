@@ -88,17 +88,18 @@ export default class App extends Component {
       stopQuickSearching,
     } = this.props;
 
+    const isHome = location.pathname === '/';
     let navHeaderChildren, toolbarChildren;
-    if([NavigationDrawer.DrawerType.PERSISTENT, NavigationDrawer.DrawerType.PERSISTENT_MINI].indexOf(drawerType) === -1) {
+    if([NavigationDrawer.DrawerType.PERSISTENT, NavigationDrawer.DrawerType.PERSISTENT_MINI].indexOf(drawerType) === -1 && !isHome) {
       navHeaderChildren = <ThemeSwitcher />;
     }
 
-    if(location.pathname !== '/' && window.matchMedia('only screen and (min-width: 600px)').matches) {
+    if(!isHome && window.matchMedia('only screen and (min-width: 600px)').matches) {
       toolbarChildren = <QuickSearch />;
     }
 
     return (
-      <div className={theme}>
+      <div className={isHome ? 'theme-1' : theme}>
         <NavigationDrawer
           containerClassName="react-md-docs"
           title="react-md"

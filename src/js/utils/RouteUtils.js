@@ -67,7 +67,7 @@ const components = [
   'toolbars',
   'tooltips',
 ].map(c => mapComponentRoutes(c));
-export const FIRST_COMPONENT_LINK = `/${components[0].path}`;
+export const FIRST_COMPONENT_LINK = components[0].path;
 
 function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, primaryText, ...props }, pathname) {
   if(props.subheader || props.divider) {

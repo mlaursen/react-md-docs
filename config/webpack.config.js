@@ -31,7 +31,7 @@ module.exports = {
     }],
 
     loaders: [{
-      test: /\.(png|jpe?g|ico)$/,
+      test: /\.(png|jpe?g|ico|svg)$/,
       exclude: /node_modules/,
       loader: 'file?name=imgs/[name].[ext]',
     }, {

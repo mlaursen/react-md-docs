@@ -10,34 +10,18 @@
 
 .theme-2 {
   @include md-theme-most($md-purple-500, $md-purple-300, $md-light-green-a-700);
-
-  .banner {
-    background: $md-purple-500;
-  }
 }
 
 .theme-3 {
   @include md-theme-most($md-blue-500, $md-blue-300, $md-amber-a-200);
-
-  .banner {
-    background: $md-blue-500;
-  }
 }
 
 .theme-4 {
   @include md-theme-most($md-cyan-500, $md-cyan-300, $md-yellow-a-700);
-
-  .banner {
-    background: $md-cyan-500;
-  }
 }
 
 .theme-5 {
   @include md-theme-most($md-orange-500, $md-orange-300, $md-deep-purple-a-200);
-
-  .banner {
-    background: $md-orange-500;
-  }
 }
 
 .theme-switcher {

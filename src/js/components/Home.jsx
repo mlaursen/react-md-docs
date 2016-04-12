@@ -4,9 +4,10 @@ import { RaisedButton } from 'react-md/lib/Buttons';
 
 import Markdown from '../containers/Markdown';
 import ImgCard from './ImgCard';
-import customization from '../../imgs/customization.jpg';
-import gettingStarted from '../../imgs/getting-started.jpg';
-import components from '../../imgs/components.jpg';
+import customization from '../../imgs/customization.svg';
+import gettingStarted from '../../imgs/getting-started.svg';
+import components from '../../imgs/components.svg';
+import logo from '../../imgs/logo.png';
 import { FIRST_COMPONENT_LINK } from '../utils/RouteUtils';
 
 const about = `
@@ -61,13 +62,14 @@ export default class Home extends Component {
   };
 
   viewDemo = () => {
-    this.context.router.push(FIRST_COMPONENT_LINK);
+    this.context.router.push(`/${FIRST_COMPONENT_LINK}`);
   };
 
   render() {
     return (
       <div className="home">
         <section className="banner">
+          <img src={logo} alt="react-md logo" className="logo" />
           <h1 className="md-display-2">react-md</h1>
           <h4 className="md-subheading-2">
             Material Design inspired React components built with sass
@@ -89,7 +91,7 @@ export default class Home extends Component {
             title="Customization"
           />
           <ImgCard
-            to="components"
+            to={FIRST_COMPONENT_LINK}
             src={components}
             alt="Two person figures carrying a material item shaped like a pipe."
             title="Components"

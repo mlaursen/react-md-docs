@@ -26,7 +26,7 @@ export default class QuickSearch extends Component {
         fullWidth={true}
         onFocus={startQuickSearching}
         onChange={searchForComponent}
-        containerClassName="quick-search"
+        className="quick-search"
       />
     );
   }
