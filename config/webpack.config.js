@@ -31,9 +31,13 @@ module.exports = {
     }],
 
     loaders: [{
-      test: /\.(png|jpe?g|ico|svg)$/,
+      test: /\.ico$/,
       exclude: /node_modules/,
-      loader: 'file?name=imgs/[name].[ext]',
+      loader: 'file?name=[name].ext',
+    }, {
+      test: /\.(png|jpe?g|svg)$/,
+      exclude: /node_modules/,
+      loader: 'file?name=imgs/[hash].[ext]',
     }, {
       test: /\.md$/,
       exclude: /node_modules/,
@@ -80,6 +84,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: 'body',
+      favicon: path.resolve(__dirname, '../src/imgs/favicon.ico'),
     }),
     new webpack.ProvidePlugin({
       'Intl': 'exports?global.Intl!intl',
