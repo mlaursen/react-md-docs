@@ -70,8 +70,14 @@ const components = [
 export const FIRST_COMPONENT_LINK = components[0].path;
 
 function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, primaryText, ...props }, pathname) {
-  if(props.subheader || props.divider) {
+  if(props.divider) {
     return props;
+  } else if(props.subheader) {
+    return {
+      ...props,
+      subheader: true,
+      primaryText,
+    };
   }
 
   let left;
@@ -132,17 +138,23 @@ const navItems = [{
   primaryText: 'Components',
   nestedItems: components,
 }, { divider: true }, {
+  subheader: true,
+  primaryText: 'References',
+}, {
   href: 'https://facebook.github.io/react/',
   avatarProps: { src: reactLogo, alt: 'React Logo' },
   primaryText: 'React',
+  target: '_blank',
 }, {
   href: 'https://www.google.com/design/spec/material-design/introduction.html',
   avatarProps: { src: googleLogo, alt: 'Google Logo' },
   primaryText: 'Material Design',
+  target: '_blank',
 }, {
   href: 'https://design.google.com/icons/',
   avatarProps: { src: googleLogo, alt: 'Google Logo' },
   primaryText: 'Material Icons',
+  target: '_blank',
 }];
 
 export function getNavItems(pathname) {
@@ -171,7 +183,7 @@ function extractRouteData({ nestedItems, ...data }) {
   };
 }
 
-export const routeData = flatten(getNavItems('').filter(item => !item.divider).map(extractRouteData));
+export const routeData = flatten(getNavItems('').filter(item => !item.divider && !item.subheader).map(extractRouteData));
 
 // When webpack 2.x.x is released
 //

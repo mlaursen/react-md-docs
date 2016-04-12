@@ -11,14 +11,9 @@ import logo from '../../imgs/logo.png';
 import { FIRST_COMPONENT_LINK } from '../utils/RouteUtils';
 
 const about = `
-This project was created because I learn by doing and I wanted to learn Material Design.
-There are already some other projects out there that are a lot farther along, so
-those might be a better choice for you. I do think the other projects are set up
-on inline styling, which I am not a fan of personally.
-
-The eventual goal of this project is to be able to quickly set up a material design
-website by changing a few variables or using the given sass mixins/functions for
-fine tuning.
+This project's goal is to be able to quickly style and set up a material design react website
+through sass and css instead of inline styling. This is a web based library and not meant to
+be used with React Native.
 `;
 
 export default class Home extends Component {
@@ -69,11 +64,8 @@ export default class Home extends Component {
     return (
       <div className="home">
         <section className="banner">
-          <img src={logo} alt="react-md logo" className="logo" />
           <h1 className="md-display-2">react-md</h1>
-          <h4 className="md-subheading-2">
-            Material Design inspired React components built with sass
-          </h4>
+          <img src={logo} alt="react-md logo" className="logo" />
           <RaisedButton onClick={this.viewDemo} label="View Demo" secondary />
         </section>
         <Markdown markdown={about} className="about container text-container" />
