@@ -10,7 +10,7 @@ import sassIcon from '../../imgs/sass-icon.png';
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
 const googleLogo = 'https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg';
 
-function mapComponentRoutes(component, prefix = '') {
+function mapNestedRoutes(component, base, prefix = '') {
   let realPath, options, realNestedItems;
   if(typeof component === 'string') {
     realPath = component;
@@ -28,8 +28,8 @@ function mapComponentRoutes(component, prefix = '') {
 
   return {
     ...options,
-    nestedItems: realNestedItems && realNestedItems.map(c => mapComponentRoutes(c, realPath)),
-    path: `components/${prefix}${realPath}`,
+    nestedItems: realNestedItems && realNestedItems.map(c => mapNestedRoutes(c, base, realPath)),
+    path: `${base}/${prefix}${realPath}`,
     primaryText: toTitle(realPath),
   };
 }
@@ -66,7 +66,7 @@ const components = [
   'text-fields',
   'toolbars',
   'tooltips',
-].map(c => mapComponentRoutes(c));
+].map(c => mapNestedRoutes(c, 'components'));
 export const FIRST_COMPONENT_LINK = components[0].path;
 
 function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, primaryText, ...props }, pathname) {
@@ -123,9 +123,18 @@ const navItems = [{
 }, {
   path: 'getting-started',
   icon: 'info_outline',
+  nestedItems: [
+    'prerequisites',
+    'installation',
+  ].map(p => mapNestedRoutes(p, 'getting-started')),
 }, {
   path: 'customization',
   icon: 'color_lens',
+  nestedItems: [
+    'colors',
+    'themes',
+    'typography',
+  ].map(item => mapNestedRoutes(item, 'customization')),
 }, {
   path: 'typography',
   icon: 'text_fields',

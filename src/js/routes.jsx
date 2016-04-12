@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './containers/App';
 import Home from './components/Home';
-import GettingStarted from './components/GettingStarted';
+import Prerequisites from './components/getting-started/Prerequisites';
+import Installation from './components/getting-started/Installation';
 import Customization from './components/Customization';
 import Typography from './components/Typography';
 import AvatarDocs from './components/avatars/AvatarDocs';
@@ -43,7 +44,9 @@ import NotFound from './components/NotFound';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
-    <Route path="getting-started" component={GettingStarted} />
+    <Redirect from="getting-started" to="getting-started/prerequisites" />
+    <Route path="getting-started/prerequisites" component={Prerequisites} />
+    <Route path="getting-started/installation" component={Installation} />
     <Route path="customization" component={Customization} />
     <Route path="typography" component={Typography} />
     <Route path="components/avatars" component={AvatarDocs} />
