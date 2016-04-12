@@ -29,7 +29,7 @@ export default class PropType extends Component {
     if(computed) {
       v = 'computed';
     } else {
-      v = `[${value.map(v => v.value).join(', ')}]`;
+      v = `[\n  ${value.map(v => v.value).join(',\n  ')}\n]`;
     }
 
     return `oneOf(${v})`;

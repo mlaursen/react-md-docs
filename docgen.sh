@@ -47,7 +47,7 @@ files=(
   #'Subheaders/Subheader'
   #'Tabs/Tab'
   #'Tabs/Tabs'
-  #'TextFields/TextField'
+  'TextFields/TextField'
   #'Toolbars/Toolbar'
 )
 

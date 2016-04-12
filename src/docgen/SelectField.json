@@ -158,7 +158,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Boolean if the drop down menu shold not automatically attempt to change the top position to match a\nselected item. This should really just be used if the opened menu expands past the top of the screen.",
+        "description": "Boolean if the drop down menu should not automatically attempt to change the top position to match a\nselected item. This should really just be used if the opened menu expands past the top of the screen.",
         "defaultValue": {
           "value": "false",
           "computed": false
