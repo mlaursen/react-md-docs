@@ -15,7 +15,7 @@ export default class SingleLineExamples extends Component {
         <div>
           <TextField
             label="Title"
-            containerClassName="md-title-text-field"
+            className="md-title-text-field"
             size={10}
             floatingLabel={false}
             lineDirection="right"
