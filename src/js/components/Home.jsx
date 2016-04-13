@@ -57,7 +57,7 @@ export default class Home extends Component {
   };
 
   viewDemo = () => {
-    this.context.router.push(`/${FIRST_COMPONENT_LINK}`);
+    this.context.router.push(FIRST_COMPONENT_LINK);
   };
 
   render() {

@@ -5,8 +5,10 @@ import App from './containers/App';
 import Home from './components/Home';
 import Prerequisites from './components/getting-started/Prerequisites';
 import Installation from './components/getting-started/Installation';
-import Customization from './components/Customization';
-import Typography from './components/Typography';
+import Colors from './components/customization/Colors';
+import MediaQueries from './components/customization/MediaQueries';
+import Themes from './components/customization/Themes';
+import Typography from './components/customization/Typography';
 import AvatarDocs from './components/avatars/AvatarDocs';
 import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
 import RaisedButtonDocs from './components/buttons/raised/RaisedButtonDocs';
@@ -47,8 +49,14 @@ export default (
     <Redirect from="getting-started" to="getting-started/prerequisites" />
     <Route path="getting-started/prerequisites" component={Prerequisites} />
     <Route path="getting-started/installation" component={Installation} />
-    <Route path="customization" component={Customization} />
-    <Route path="typography" component={Typography} />
+
+    <Redirect from="customization" to="customization/colors" />
+    <Route path="customization/colors" component={Colors} />
+    <Route path="customization/media-queries" component={MediaQueries} />
+    <Route path="customization/themes" component={Themes} />
+    <Route path="customization/typography" component={Typography} />
+    <Redirect from="typography" to="customization/typography" />
+
     <Route path="components/avatars" component={AvatarDocs} />
     <Route path="components/buttons/flat" component={FlatButtonDocs} />
     <Route path="components/buttons/raised" component={RaisedButtonDocs} />

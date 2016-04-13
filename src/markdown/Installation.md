@@ -23,13 +23,15 @@ or by locally hosting and using the provided sass mixins to include them. The
 example below will include the fonts with the WebFontLoader.
 
 
-### Example
+### Webpack Example
 
 ```js
 /* index.jsx */
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import WebFontLoader from 'webfontloader';
+
+import 'index.scss';
 import { Card, CardTitle, CardText, CardActions } from 'react-md/lib/Cards';
 import { FlatButton } from 'react-md/lib/Buttons';
 
@@ -59,4 +61,25 @@ class App extends Component {
 }
 
 render(document.getElementById('app'), <App />);
+```
+
+```scss
+// index.scss
+@import '~normalize.css';
+
+// Include all components and defaults
+@import '~react-md/src/scss/react-md';
+
+// If you want to reduce bundle size, you can include specific components instead:
+@import '~react-md/src/scss/helpers/all';
+@import '~react-md/src/scss/typography';
+@import '~react-md/src/scss/components/cards';
+@import '~react-md/src/scss/components/buttons';
+@import '~react-md/src/scss/components/inks';
+
+@import '~react-md/src/scss/media-queries';
+
+.md-primary {
+  @include md-theme-buttons($md-primary-color);
+}
 ```

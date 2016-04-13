@@ -2,7 +2,8 @@ import { DISMISS_TOAST, ADD_TOAST, SEARCH_FOR_COMPONENT, START_QUICK_SEARCHING, 
 import marked from 'marked';
 import Fuse from 'fuse.js';
 
-import { routeData } from '../utils/RouteUtils';
+import { flatten } from '../utils';
+import { routes } from '../utils/RouteUtils';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -14,22 +15,6 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
   highlight: (code, lang) => require('highlight.js').highlight(lang, code).value, // eslint-disable-line no-undef
-});
-
-const fuse = new Fuse(routeData, {
-  keys: [{
-    name: 'to',
-    weight: 0.35,
-  }, {
-    name: 'href',
-    weight: 0.35,
-  }, {
-    name: 'searchName',
-    weight: 0.2,
-  }, {
-    name: 'primaryText',
-    weight: 0.1,
-  }],
 });
 
 const initialState = {
@@ -55,10 +40,36 @@ function dismissToast(state) {
   return Object.assign({}, state, { toasts });
 }
 
+function extractRoutes(route) {
+  return route.nestedItems ? route.nestedItems.map(extractRoutes) : {
+    key: route.key || route.to,
+    to: route.to,
+    primaryText: route.primaryText,
+  };
+}
+
+let fuse;
+function initializeFuse() {
+  const searchableRoutes = flatten(routes.map(extractRoutes)).filter(route => !!route.key);
+
+  fuse = new Fuse(searchableRoutes, {
+    keys: [{
+      name: 'primaryText',
+      weight: 0.95,
+    }, {
+      name: 'to',
+      weight: 0.05,
+    }],
+  });
+}
+
 function searchForComponent(state, query) {
   if(!query && state.matches.length === 0) {
     return state;
   }
+
+  // lazy load
+  !fuse && initializeFuse();
 
   return Object.assign({}, state, { matches: fuse.search(query) });
 }
