@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
+import ColorPalette from './ColorPalette';
+
 export default class Colors extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,9 @@ export default class Colors extends Component {
 
   render() {
     return (
-      <div />
+      <div>
+        <ColorPalette />
+      </div>
     );
   }
 }
