@@ -126,7 +126,7 @@ export default class App extends Component {
             className="quick-search-menu-container"
             listClassName="quick-search-menu"
           >
-            {matches.map((props, i) => <ListItem {...props} onClick={stopQuickSearching} onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null} />)}
+            {matches.map((props, i) => <ListItem {...props} tabIndex={0} onClick={stopQuickSearching} onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null} />)}
           </Menu>
           <CSSTransitionGroup
             component="main"
