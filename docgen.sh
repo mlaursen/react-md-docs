@@ -4,7 +4,7 @@
 # to run against..
 
 files=(
-  #'Avatars/Avatar'
+  'Avatars/Avatar'
   #'Buttons/FlatButton'
   #'Buttons/FloatingButton'
   #'Buttons/IconButton'
