@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import Markdown from '../../containers/Markdown';
-import ColorPalette from './ColorPalette';
+import ColorPalette from '../../containers/ColorPalette';
 
 import markdown from '../../../markdown/Colors';
 

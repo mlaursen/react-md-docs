@@ -1,4 +1,11 @@
-import { ADD_TOAST, DISMISS_TOAST, SEARCH_FOR_COMPONENT, START_QUICK_SEARCHING, STOP_QUICK_SEARCHING } from '../constants/ActionTypes';
+import {
+  ADD_TOAST,
+  DISMISS_TOAST,
+  SEARCH_FOR_COMPONENT,
+  START_QUICK_SEARCHING,
+  STOP_QUICK_SEARCHING,
+  INITIALIZE_COLORS,
+} from '../constants/ActionTypes';
 
 export function addToast(toast) {
   return {
@@ -24,4 +31,8 @@ export function startQuickSearching() {
 
 export function stopQuickSearching() {
   return { type: STOP_QUICK_SEARCHING };
+}
+
+export function initializeColors() {
+  return { type: INITIALIZE_COLORS };
 }

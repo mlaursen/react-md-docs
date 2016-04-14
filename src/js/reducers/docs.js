@@ -1,4 +1,11 @@
-import { DISMISS_TOAST, ADD_TOAST, SEARCH_FOR_COMPONENT, START_QUICK_SEARCHING, STOP_QUICK_SEARCHING } from '../constants/ActionTypes';
+import {
+  DISMISS_TOAST,
+  ADD_TOAST,
+  SEARCH_FOR_COMPONENT,
+  START_QUICK_SEARCHING,
+  STOP_QUICK_SEARCHING,
+  INITIALIZE_COLORS,
+} from '../constants/ActionTypes';
 import marked from 'marked';
 import Fuse from 'fuse.js';
 
@@ -19,6 +26,7 @@ marked.setOptions({
 
 const initialState = {
   marked,
+  colors: [],
   toasts: [],
   matches: [],
   isQuickSearching: false,
@@ -48,11 +56,11 @@ function extractRoutes(route) {
   };
 }
 
-let fuse;
-function initializeFuse() {
+let routesFuse;
+function initializeRoutesFuse() {
   const searchableRoutes = flatten(routes.map(extractRoutes)).filter(route => !!route.key);
 
-  fuse = new Fuse(searchableRoutes, {
+  routesFuse = new Fuse(searchableRoutes, {
     keys: [{
       name: 'primaryText',
       weight: 0.95,
@@ -69,9 +77,9 @@ function searchForComponent(state, query) {
   }
 
   // lazy load
-  !fuse && initializeFuse();
+  !routesFuse && initializeRoutesFuse();
 
-  return Object.assign({}, state, { matches: fuse.search(query) });
+  return Object.assign({}, state, { matches: routesFuse.search(query) });
 }
 
 function toggleSwitchSearching(state, isQuickSearching) {
@@ -79,6 +87,47 @@ function toggleSwitchSearching(state, isQuickSearching) {
     return state;
   }
   return Object.assign({}, state, { isQuickSearching });
+}
+
+function initializeColors(state) {
+  const primaries = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+  const accents = [100, 200, 400, 700];
+  const colors = [
+    { color: 'red', p: 300, a: 100 },
+    { color: 'pink', p: 200, a: 100 },
+    { color: 'purple', p: 200, a: 100 },
+    { color: 'deep-purple', p: 200, a: 100 },
+    { color: 'indigo', p: 200, a: 100 },
+    { color: 'blue', p: 400, a: 100 },
+    { color: 'light-blue', p: 500, a: 400 },
+    { color: 'cyan', p: 600 },
+    { color: 'teal', p: 400 },
+    { color: 'green', p: 500 },
+    { color: 'light-green', p: 600 },
+    { color: 'lime', p: 800 },
+    { color: 'yellow' },
+    { color: 'amber' },
+    { color: 'orange', p: 700 },
+    { color: 'deep-orange', p: 400, a: 200 },
+    { color: 'brown', p: 200, a: null },
+    { color: 'grey', p: 200, a: null },
+    { color: 'blue-grey', p: 200, a: null },
+  ].map(({ color, p, a }) => {
+    return primaries.concat(a === null ? [] : accents).map((weight, i) => {
+      const isAccent = i > primaries.length - 1;
+      const name = `md-${color}-${isAccent ? 'a-' : ''}${weight}`;
+      const comparator = isAccent ? a : p;
+      const isLight = !comparator || weight <= comparator;
+
+      return {
+        color,
+        name,
+        isLight,
+      };
+    });
+  });
+
+  return Object.assign({}, state, { colors });
 }
 
 export default function docs(state = initialState, action) {
@@ -93,6 +142,8 @@ export default function docs(state = initialState, action) {
       return toggleSwitchSearching(state, true);
     case STOP_QUICK_SEARCHING:
       return toggleSwitchSearching(state, false);
+    case INITIALIZE_COLORS:
+      return initializeColors(state);
     default:
       return state;
   }
