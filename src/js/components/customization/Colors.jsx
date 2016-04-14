@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
+import Markdown from '../../containers/Markdown';
 import ColorPalette from './ColorPalette';
+
+import markdown from '../../../markdown/Colors';
 
 export default class Colors extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ export default class Colors extends Component {
   render() {
     return (
       <div className="container text-container">
+        <Markdown markdown={markdown} />
         <ColorPalette />
       </div>
     );
