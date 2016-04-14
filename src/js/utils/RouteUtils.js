@@ -144,7 +144,29 @@ export const routes = [{
   target: '_blank',
 }].map(route => mapToNavItems(route));
 
-function getRouteClassName(route, pathname) {
+/**
+ * Checks if any of the nested items are currently active.
+ *
+ * @param {array} nestedItems the nested items to compare
+ * @param {string} pathname the current pathname to compare to
+ * @return true if one of the nested items are active.
+ */
+function isNestedItemActive(nestedItems, pathname) {
+  if(!nestedItems) { return false; }
+
+  return nestedItems.some(({ to, nestedItems }) => isNestedItemActive(nestedItems, pathname) || to === pathname);
+}
+
+/**
+ * Checks if a given route is active by comparing to the given pathname.
+ * A route is active if one of the nested items are equal to the pathname
+ * or the current route equals the pathname.
+ *
+ * @param {Object} route the current route properties to check against
+ * @param {string} pathname the current pathname to compare against.
+ * @return a route poperties object
+ */
+function updateActiveRoutes(route, pathname) {
   if(route.divider || route.subheader) {
     return route;
   }
@@ -153,13 +175,26 @@ function getRouteClassName(route, pathname) {
   return {
     ...props,
     to,
-    nestedItems: nestedItems && nestedItems.map(route => getRouteClassName(route, pathname)),
+    initiallyOpen: isNestedItemActive(nestedItems, pathname),
+    nestedItems: nestedItems && nestedItems.map(route => updateActiveRoutes(route, pathname)),
     className: pathname === to ? 'active' : null,
   };
 }
 
+/**
+ * Gets all the routes as navigation items. This will be all the routes
+ * with the correct component and any additional props needed to display
+ * in the navigation drawer.
+ *
+ * It will also update the active className and if the item is currently
+ * open if it contains nested items.
+ *
+ * @param {string} pathname? the pathname to compare against. Defaults to
+ *    the empty string if omitted.
+ * @return an array or ListItem props for the Navigation Drawer.
+ */
 export function getNavItems(pathname = '') {
-  return routes.map(route => getRouteClassName(route, pathname));
+  return !pathname || pathname === '' ? routes : routes.map(route => updateActiveRoutes(route, pathname));
 }
 
 // When webpack 2.x.x is released
