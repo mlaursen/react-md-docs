@@ -67,7 +67,7 @@ function mapToNavItems(route, parents = []) {
 }
 
 
-export const FIRST_COMPONENT_LINK = '/components/avatars';
+export const FIRST_COMPONENT_LINK = 'components/avatars';
 export const routes = [{
   path: '',
   primaryText: 'Home',
@@ -88,6 +88,10 @@ export const routes = [{
       primaryText: 'SASS Doc',
     },
   ],
+}, {
+  path: 'discover-more',
+  icon: 'search',
+  nestedItems: ['community', 'contributing'],
 }, {
   icon: 'build',
   path: 'components',
@@ -172,12 +176,13 @@ function updateActiveRoutes(route, pathname) {
   }
 
   const { to, nestedItems, ...props } = route;
+  const isActive = to === pathname || isNestedItemActive(nestedItems, pathname);
   return {
     ...props,
     to,
-    initiallyOpen: isNestedItemActive(nestedItems, pathname),
+    initiallyOpen: nestedItems && isActive,
     nestedItems: nestedItems && nestedItems.map(route => updateActiveRoutes(route, pathname)),
-    className: pathname === to ? 'active' : null,
+    className: isActive ? 'active' : null,
   };
 }
 

@@ -3,12 +3,18 @@ import { Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './containers/App';
 import Home from './components/Home';
+
 import Prerequisites from './components/getting-started/Prerequisites';
 import Installation from './components/getting-started/Installation';
+
 import Colors from './components/customization/Colors';
 import MediaQueries from './components/customization/MediaQueries';
 import Themes from './components/customization/Themes';
 import Typography from './components/customization/Typography';
+
+import Community from './components/discover-more/Community';
+import Contributing from './components/discover-more/Contributing';
+
 import AvatarDocs from './components/avatars/AvatarDocs';
 import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
 import RaisedButtonDocs from './components/buttons/raised/RaisedButtonDocs';
@@ -56,6 +62,9 @@ export default (
     <Route path="customization/themes" component={Themes} />
     <Route path="customization/typography" component={Typography} />
     <Redirect from="typography" to="customization/typography" />
+
+    <Route path="discover-more/community" component={Community} />
+    <Route path="discover-more/contributing" component={Contributing} />
 
     <Route path="components/avatars" component={AvatarDocs} />
     <Route path="components/buttons/flat" component={FlatButtonDocs} />

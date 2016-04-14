@@ -15,4 +15,6 @@ So if you wanted to use purple as a primary clor, you could reference it as:
 background: $md-purple-500;
 ```
 
+You can use the select field in the navigation drawer to quickly change between a few themes.
+
 All the colors are displayed below.
