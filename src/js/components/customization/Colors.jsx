@@ -17,7 +17,7 @@ export default class Colors extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container text-container">
         <ColorPalette />
       </div>
     );

@@ -2,27 +2,29 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classnames from 'classnames';
 
-const noAccents = ['brown', 'grey', 'blue-grey'];
 const primaries = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-const accents = [100, 200, 400, 700].map(i => `a-${i}`);
+const accents = [100, 200, 400, 700];
 const colors = [
-  'red',
-  'pink',
-  'purple',
-  'deep-purple',
-  'indigo',
-  'blue',
-  'light-blue',
-  'cyan',
-  'teal',
-  'green',
-  'light-green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'deep-orange',
-].concat(noAccents);
+  { color: 'red', p: 300, a: 100 },
+  { color: 'pink', p: 200, a: 100 },
+  { color: 'purple', p: 200, a: 100 },
+  { color: 'deep-purple', p: 200, a: 100 },
+  { color: 'indigo', p: 200, a: 100 },
+  { color: 'blue', p: 400, a: 100 },
+  { color: 'light-blue', p: 500, a: 400 },
+  { color: 'cyan', p: 600 },
+  { color: 'teal', p: 400 },
+  { color: 'green', p: 500 },
+  { color: 'light-green', p: 600 },
+  { color: 'lime', p: 800 },
+  { color: 'yellow' },
+  { color: 'amber' },
+  { color: 'orange', p: 700 },
+  { color: 'deep-orange', p: 400, a: 200 },
+  { color: 'brown', p: 200, a: null },
+  { color: 'grey', p: 200, a: null },
+  { color: 'blue-grey', p: 200, a: null },
+];
 
 export default class ColorPalette extends Component {
   constructor(props) {
@@ -37,16 +39,17 @@ export default class ColorPalette extends Component {
   };
 
   render() {
-    const palette = colors.map(color => {
-      const colorBlocks = primaries.concat(noAccents.indexOf(color) === -1 ? accents : [])
-        .map(suffix => {
-          const name = `md-${color}-${suffix}`;
+    const palette = colors.map(({ color, p, a }) => {
+      const colorBlocks = primaries.concat(a === null ? [] : accents)
+        .map((weight, i) => {
+          const isAccent = i > primaries.length - 1;
+          const name = `md-${color}-${isAccent ? 'a-' : ''}${weight}`;
 
           return (
             <div
               key={name}
               className={classnames('color-block', name, {
-                'light-color': suffix < 300 || ['yellow', 'amber'].indexOf(color) !== -1 || suffix === 'a-100',
+                'light-color': (!isAccent && (!p || weight <= p)) || (isAccent && (!a || weight <= a)),
               })}
             >
                {name}
@@ -54,10 +57,15 @@ export default class ColorPalette extends Component {
           );
         });
 
-      return <div key={color} className="color-block-container">{colorBlocks}</div>;
+      return (
+        <div key={color} className="color-block-container">
+          {colorBlocks}
+        </div>
+      );
     });
     return (
       <div className="color-palette">
+        <h1 className="md-display-1">Color Palette</h1>
         {palette}
       </div>
     );

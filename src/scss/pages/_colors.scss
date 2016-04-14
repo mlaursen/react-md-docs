@@ -274,9 +274,17 @@ $colors: (
 );
 
 .color-palette {
+  @extend %centered;
+
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 2em;
+
+  .md-display-1 {
+    width: 100%;
+  }
 }
 
 .color-block-container {
@@ -284,7 +292,7 @@ $colors: (
 
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  margin: 1em 0;
 }
 
 
@@ -295,7 +303,7 @@ $colors: (
   height: 50px;
   padding: 16px 0;
   text-align: center;
-  width: 200px;
+  width: 260px;
 
   @each $name, $color in $colors {
     &.#{$name} {
