@@ -24,7 +24,8 @@ export default class QuickSearch extends Component {
   };
 
   handleKeyDown = (e) => {
-    if((e.keyCode || e.which) === TAB && !this.props.matches.length) {
+    const isTab = (e.which || e.keyCode) === TAB;
+    if((e.shiftKey && isTab) || (isTab && !this.props.matches.length)) {
       this.props.stopQuickSearching();
     }
   };

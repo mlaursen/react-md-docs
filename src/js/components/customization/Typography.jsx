@@ -1,5 +1,5 @@
 import React from 'react';
-import Markdown from '../containers/Markdown';
+import Markdown from '../../containers/Markdown';
 
 const markdown = `
 ### Material Design Typography

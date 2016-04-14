@@ -1,4 +1,5 @@
 @import '~helpers';
+$footer-min-height: 220px;
 
 .justify-center {
   @extend %justify-center;
@@ -16,7 +17,6 @@
   display: flex;
   justify-content: space-around;
 }
-
 
 .small-container,
 .phone-size-container {
@@ -49,8 +49,7 @@
 .react-doc-footer {
   background: $md-grey-900;
   color: $md-white-base;
-  margin-top: 5em;
-  min-height: 220px;
+  min-height: $footer-min-height;
   padding: 2em;
 
   .md-title {

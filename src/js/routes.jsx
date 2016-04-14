@@ -1,11 +1,20 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './containers/App';
 import Home from './components/Home';
-import GettingStarted from './components/GettingStarted';
-import Customization from './components/Customization';
-import Typography from './components/Typography';
+
+import Prerequisites from './components/getting-started/Prerequisites';
+import Installation from './components/getting-started/Installation';
+
+import Colors from './components/customization/Colors';
+import MediaQueries from './components/customization/MediaQueries';
+import Themes from './components/customization/Themes';
+import Typography from './components/customization/Typography';
+
+import Community from './components/discover-more/Community';
+import Contributing from './components/discover-more/Contributing';
+
 import AvatarDocs from './components/avatars/AvatarDocs';
 import FlatButtonDocs from './components/buttons/flat/FlatButtonDocs';
 import RaisedButtonDocs from './components/buttons/raised/RaisedButtonDocs';
@@ -43,9 +52,20 @@ import NotFound from './components/NotFound';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
-    <Route path="getting-started" component={GettingStarted} />
-    <Route path="customization" component={Customization} />
-    <Route path="typography" component={Typography} />
+    <Redirect from="getting-started" to="getting-started/prerequisites" />
+    <Route path="getting-started/prerequisites" component={Prerequisites} />
+    <Route path="getting-started/installation" component={Installation} />
+
+    <Redirect from="customization" to="customization/colors" />
+    <Route path="customization/colors" component={Colors} />
+    <Route path="customization/media-queries" component={MediaQueries} />
+    <Route path="customization/themes" component={Themes} />
+    <Route path="customization/typography" component={Typography} />
+    <Redirect from="typography" to="customization/typography" />
+
+    <Route path="discover-more/community" component={Community} />
+    <Route path="discover-more/contributing" component={Contributing} />
+
     <Route path="components/avatars" component={AvatarDocs} />
     <Route path="components/buttons/flat" component={FlatButtonDocs} />
     <Route path="components/buttons/raised" component={RaisedButtonDocs} />

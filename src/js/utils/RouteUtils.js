@@ -4,139 +4,130 @@ import FontIcon from 'react-md/lib/FontIcons';
 import { Link } from 'react-router';
 
 import { toTitle } from './StringUtils';
-import { flatten } from './index';
 
-import sassIcon from '../../imgs/sass-icon.png';
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
 const googleLogo = 'https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg';
 
-function mapComponentRoutes(component, prefix = '') {
-  let realPath, options, realNestedItems;
-  if(typeof component === 'string') {
-    realPath = component;
-    options = {};
-  } else {
-    const { path, nestedItems, ...remaining } = component;
-    realPath = path;
-    realNestedItems = nestedItems;
-    options = remaining;
-  }
-
-  if(prefix) {
-    prefix += '/';
-  }
-
-  return {
-    ...options,
-    nestedItems: realNestedItems && realNestedItems.map(c => mapComponentRoutes(c, realPath)),
-    path: `components/${prefix}${realPath}`,
-    primaryText: toTitle(realPath),
-  };
-}
-
-const components = [
-  'avatars', {
-    path: 'buttons',
-    nestedItems: ['flat', 'raised', 'floating', 'icon'],
-  },
-  'cards',
-  'chips',
-  'data-tables',
-  'dialogs',
-  'dividers',
-  'font-icons',
-  'lists',
-  'inks',
-  'menus',
-  'navigation-drawers',
-  'papers', {
-    path: 'pickers',
-    nestedItems: ['date', 'time'],
-  }, {
-    path: 'progress',
-    nestedItems: ['circular', 'linear'],
-  }, 'select-fields', {
-    path: 'selection-controls',
-    nestedItems: ['checkboxes', 'radios', 'switches'],
-  },
-  'sidebars',
-  'sliders',
-  'snackbars',
-  'tabs',
-  'text-fields',
-  'toolbars',
-  'tooltips',
-].map(c => mapComponentRoutes(c));
-export const FIRST_COMPONENT_LINK = components[0].path;
-
-function mapItemsToNavParts({ component, icon, avatarProps, path, nestedItems, primaryText, ...props }, pathname) {
-  if(props.divider) {
-    return props;
-  } else if(props.subheader) {
+function mapToNavItems(route, parents = []) {
+  const prefix = (parents.length ? '/' + parents.join('/') : '') + '/';
+  if(typeof route === 'string') {
     return {
-      ...props,
-      subheader: true,
-      primaryText,
+      component: Link,
+      to: `${prefix}${route}`,
+      primaryText: toTitle(route),
     };
   }
 
-  let left;
+  const { divider, subheader, path, primaryText, icon, avatarProps, nestedItems, component, ...props } = route;
+  if(divider) {
+    return { divider, ...props };
+  } else if(subheader) {
+    return {
+      primaryText,
+      subheader,
+      ...props,
+    };
+  }
+
+  let resolvedNestedItems, resolvedIcon, resolvedAvatar, resolvedComponent;
+  if(nestedItems) {
+    resolvedNestedItems = nestedItems.map(route => mapToNavItems(route, parents.length ? [...parents, path] : [path]));
+  }
+
   if(icon) {
-    left = <FontIcon>{icon}</FontIcon>;
-  } else if(avatarProps) {
-    left = <Avatar {...avatarProps} className="fake-icon" />;
+    resolvedIcon = <FontIcon>{icon}</FontIcon>;
   }
 
-  const to = '/' + path;
-  let componentToUse;
+  if(avatarProps) {
+    resolvedAvatar = <Avatar {...avatarProps} className="fake-icon" />;
+  }
+
   if(component) {
-    componentToUse = component;
+    resolvedComponent = component;
   } else if(props.href) {
-    componentToUse = 'a';
+    resolvedComponent = 'a';
   } else if(!nestedItems) {
-    componentToUse = Link;
+    resolvedComponent = Link;
   }
 
-  const isHome = path === '';
-  const isHomeActive = isHome && pathname === '/';
-  const isSubsActive = !isHome && pathname.indexOf(path) !== -1;
-  const isCompActive = primaryText === 'Components' && pathname.indexOf('components') !== -1;
-  // can't use activeClassName since it doesn't update correctly with PureRenderMixin
-  const className = isHomeActive || isSubsActive || isCompActive ? 'active' : null;
+  let to;
+  if(typeof path !== 'undefined' && !nestedItems) {
+    to = `${prefix}${path}`;
+  }
 
   return {
     ...props,
     to,
-    className,
-    component: componentToUse,
-    nestedItems: nestedItems && nestedItems.map(c => mapItemsToNavParts(c, pathname)),
-    leftIcon: left,
+    component: resolvedComponent,
+    leftIcon: resolvedIcon,
+    leftAvatar: resolvedAvatar,
+    nestedItems: resolvedNestedItems,
     primaryText: primaryText || toTitle(path),
-    initiallyOpen: nestedItems && className === 'active',
   };
 }
 
-const navItems = [{
+
+export const FIRST_COMPONENT_LINK = 'components/avatars';
+export const routes = [{
   path: '',
-  icon: 'home',
   primaryText: 'Home',
+  icon: 'home',
 }, {
   path: 'getting-started',
   icon: 'info_outline',
+  nestedItems: ['prerequisites', 'installation'],
 }, {
   path: 'customization',
   icon: 'color_lens',
+  nestedItems: [
+    'colors',
+    'themes',
+    'media-queries',
+    'typography', {
+      href: '/sassdoc',
+      primaryText: 'SASS Doc',
+    },
+  ],
 }, {
-  path: 'typography',
-  icon: 'text_fields',
-}, {
-  href: '/sassdoc',
-  avatarProps: { src: sassIcon, alt: 'SASS icon' },
-  primaryText: 'SASS Doc',
+  path: 'discover-more',
+  icon: 'search',
+  nestedItems: ['community', 'contributing'],
 }, {
   icon: 'build',
-  primaryText: 'Components',
-  nestedItems: components,
+  path: 'components',
+  nestedItems: [
+    'avatars', {
+      path: 'buttons',
+      nestedItems: ['flat', 'raised', 'floating', 'icon'],
+    },
+    'cards',
+    'chips',
+    'data-tables',
+    'dialogs',
+    'dividers',
+    'font-icons',
+    'lists',
+    'inks',
+    'menus',
+    'navigation-drawers',
+    'papers', {
+      path: 'pickers',
+      nestedItems: ['date', 'time'],
+    }, {
+      path: 'progress',
+      nestedItems: ['circular', 'linear'],
+    }, 'select-fields', {
+      path: 'selection-controls',
+      nestedItems: ['checkboxes', 'radios', 'switches'],
+    },
+    'sidebars',
+    'sliders',
+    'snackbars',
+    'tabs',
+    'text-fields',
+    'toolbars',
+    'tooltips',
+  ],
 }, { divider: true }, {
   subheader: true,
   primaryText: 'References',
@@ -155,35 +146,61 @@ const navItems = [{
   avatarProps: { src: googleLogo, alt: 'Google Logo' },
   primaryText: 'Material Icons',
   target: '_blank',
-}];
+}].map(route => mapToNavItems(route));
 
-export function getNavItems(pathname) {
-  return navItems.map(opts => mapItemsToNavParts(opts, pathname));
+/**
+ * Checks if any of the nested items are currently active.
+ *
+ * @param {array} nestedItems the nested items to compare
+ * @param {string} pathname the current pathname to compare to
+ * @return true if one of the nested items are active.
+ */
+function isNestedItemActive(nestedItems, pathname) {
+  if(!nestedItems) { return false; }
+
+  return nestedItems.some(({ to, nestedItems }) => isNestedItemActive(nestedItems, pathname) || to === pathname);
 }
 
-function extractRouteData({ nestedItems, ...data }) {
-  if(nestedItems) {
-    return nestedItems.map(extractRouteData);
+/**
+ * Checks if a given route is active by comparing to the given pathname.
+ * A route is active if one of the nested items are equal to the pathname
+ * or the current route equals the pathname.
+ *
+ * @param {Object} route the current route properties to check against
+ * @param {string} pathname the current pathname to compare against.
+ * @return a route poperties object
+ */
+function updateActiveRoutes(route, pathname) {
+  if(route.divider || route.subheader) {
+    return route;
   }
 
-  let searchName = data.primaryText;
-  if((data.href || data.to).match(/.*components\/.*\/.*$/g)) {
-    const to = data.to.replace('/components/', '');
-    if(to.indexOf('selection-controls') !== -1) {
-      searchName = toTitle(to.replace('selection-controls/', ''));
-    } else {
-      searchName = toTitle(to.split('/').reverse());
-    }
-  }
-
+  const { to, nestedItems, ...props } = route;
+  const isActive = to === pathname || isNestedItemActive(nestedItems, pathname);
   return {
-    ...data,
-    key: data.href || data.to,
-    primaryText: searchName,
+    ...props,
+    to,
+    initiallyOpen: nestedItems && isActive,
+    nestedItems: nestedItems && nestedItems.map(route => updateActiveRoutes(route, pathname)),
+    className: isActive ? 'active' : null,
   };
 }
 
-export const routeData = flatten(getNavItems('').filter(item => !item.divider && !item.subheader).map(extractRouteData));
+/**
+ * Gets all the routes as navigation items. This will be all the routes
+ * with the correct component and any additional props needed to display
+ * in the navigation drawer.
+ *
+ * It will also update the active className and if the item is currently
+ * open if it contains nested items.
+ *
+ * @param {string} pathname? the pathname to compare against. Defaults to
+ *    the empty string if omitted.
+ * @return an array or ListItem props for the Navigation Drawer.
+ */
+export function getNavItems(pathname = '') {
+  return !pathname || pathname === '' ? routes : routes.map(route => updateActiveRoutes(route, pathname));
+}
 
 // When webpack 2.x.x is released
 //

@@ -13,9 +13,11 @@ function updateDrawer(state, isOpen) {
 
 function updateTitle(state, route) {
   const path = route.replace('/', '');
-  const isComponents = path.indexOf('components') !== -1;
-
-  const title = isComponents ? 'Components' : toTitle(path);
+  let title = 'Components';
+  if(path.indexOf('components') === -1) {
+    const split = path.split('/');
+    title = toTitle(split[Math.max(0, split.length - 1)]);
+  }
 
   if(state.title === title) {
     return state;
