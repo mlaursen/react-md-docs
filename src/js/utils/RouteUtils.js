@@ -81,8 +81,8 @@ export const routes = [{
   icon: 'color_lens',
   nestedItems: [
     'colors',
-    'media-queries',
     'themes',
+    'media-queries',
     'typography', {
       href: '/sassdoc',
       primaryText: 'SASS Doc',

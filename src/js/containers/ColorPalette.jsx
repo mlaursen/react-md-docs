@@ -26,7 +26,7 @@ export default class ColorPalette extends Component {
     const palette = this.props.colors.map(colorHues => {
       const colorBlocks = colorHues.map(({ name, isLight}) => (
         <div key={name} className={classnames('color-block', name, { 'light-color': isLight })}>
-          {name}
+          ${name}
         </div>
       ));
 

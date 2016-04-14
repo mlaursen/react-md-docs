@@ -90,6 +90,8 @@ function toggleSwitchSearching(state, isQuickSearching) {
 }
 
 function initializeColors(state) {
+  if(state.colors.length) { return state; }
+
   const primaries = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
   const accents = [100, 200, 400, 700];
   const colors = [
