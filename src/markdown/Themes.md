@@ -40,4 +40,30 @@ If you would like to do it at a section level, you can use the
 }
 ```
 
+#### Updating Theme Component at a Time
+If you are not using all the components, it is recommended to not import the
+entire `rect-md.scss` file. You will then need to include the specific components
+and utilities you will be using.
 
+If a component is styled based on the theme, there will be a mixin named `md-theme-COMPONENT`.
+
+```scss
+@import '~react-md/src/scss/helpers/all';
+@import '~react-md/src/scss/utils';
+@import '~react-md/src/scss/typography';
+@import '~react-md/src/scss/components/buttons';
+@import '~react-md/src/scss/components/inks';
+@import '~react-md/src/scss/components/pickers';
+@import '~react-md/src/scss/components/text-fields';
+
+$md-primary-color: $md-deep-orange-500;
+$md-primary-color-hue-1: $md-deep-orange-a-100;
+$md-secondary-color: $md-light-blue-a-400;
+$md-secondary-color-hue-1: $md-light-blue-a-200;
+
+@include md-theme-pickers($md-primary-color, $md-primary-color-hue-1);
+
+.md-secondary {
+  @include md-theme-buttons($md-primary-color);
+}
+```
