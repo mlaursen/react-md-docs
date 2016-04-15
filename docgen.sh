@@ -15,7 +15,7 @@ files=(
   #'Cards/CardMedia'
   #'Cards/CardText'
   #'Cards/CardTitle'
-  #'Chips/Chip'
+  'Chips/Chip'
   'DataTables/DataTable'
   'DataTables/TableBody'
   'DataTables/TableColumn'
