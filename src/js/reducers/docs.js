@@ -119,12 +119,13 @@ function initializeColors(state) {
       const isAccent = i > primaries.length - 1;
       const name = `md-${color}-${isAccent ? 'a-' : ''}${weight}`;
       const comparator = isAccent ? a : p;
-      const isLight = !comparator || weight <= comparator;
+      const light = !comparator || weight <= comparator;
 
       return {
         color,
         name,
-        isLight,
+        light,
+        divide: i === primaries.length,
       };
     });
   });

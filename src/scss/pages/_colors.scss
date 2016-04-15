@@ -280,41 +280,55 @@ $colors: (
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
-  .md-display-1 {
-    width: 100%;
-  }
 }
 
-.color-block-container {
+.color-list {
   @include md-box-shadow(1);
 
-  display: flex;
-  flex-direction: column;
-  margin: 1em 0;
+  display: block;
+  list-style: none;
+  margin-bottom: 40px;
+  padding-left: 0;
+  width: 360px;
 }
 
-
-.color-block {
+.color {
   color: $md-white-base;
-  display: block;
-  font-weight: bold;
-  height: 50px;
-  padding: 16px 0;
-  text-align: center;
-  width: 260px;
+
+  font-weight: 500;
+  padding: 15px;
 
   @each $name, $color in $colors {
     &.#{$name} {
       background: $color;
+
+      .sass-variable::after {
+        content: '#{$color}';
+      }
     }
   }
 
-  &.light-color {
+  &.light {
     color: $md-black-base;
   }
 
-  &:nth-child(11) {
+  &.divide {
     margin-top: 4px;
+  }
+}
+
+.color-name {
+  margin-bottom: 60px;
+  text-transform: capitalize;
+}
+
+.sass-variable {
+  &::before {
+    content: '$';
+  }
+
+  &::after {
+    float: right;
+    text-transform: uppercase;
   }
 }

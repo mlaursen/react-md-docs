@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { initializeColors } from '../actions/docs';
 
+const PRIMARY_INDEX = 5;
+
 @connect(state => ({ colors: state.docs.colors }), { initializeColors })
 export default class ColorPalette extends Component {
   constructor(props) {
@@ -24,23 +26,28 @@ export default class ColorPalette extends Component {
 
   render() {
     const palette = this.props.colors.map(colorHues => {
-      const colorBlocks = colorHues.map(({ name, isLight}) => (
-        <div key={name} className={classnames('color-block', name, { 'light-color': isLight })}>
-          ${name}
-        </div>
+      const primary = colorHues[PRIMARY_INDEX];
+
+      const colorBlocks = colorHues.map(({ name, light, divide }) => (
+        <li key={name} className={classnames('color', name, { light, divide })}>
+          <div className="sass-variable">{name}</div>
+        </li>
       ));
 
       return (
-        <div key={colorHues[0].color} className="color-block-container">
+        <ul key={colorHues[0].color} className="color-list">
+          <li key="primary" className={classnames('color primary', primary.name, { 'light': primary.light})}>
+            <div className="color-name">{primary.color.replace(/-/g, ' ')}</div>
+            <div className="sass-variable">{primary.name}</div>
+          </li>
           {colorBlocks}
-        </div>
+        </ul>
       );
     });
     return (
-      <div className="color-palette">
-        <h1 className="md-display-1">Color Palette</h1>
+      <section className="color-palette">
         {palette}
-      </div>
+      </section>
     );
   }
 }
