@@ -5,6 +5,8 @@ import DocPage from 'react-doc-page';
 import DividerExamples from './DividerExamples';
 import DividerExamplesRaw from '!!raw!./DividerExamples';
 
+import Divider from '!!json!docgen/Divider.json';
+
 const text = `
 Dividers group and separate content within lists and page layouts.
 The divider is a thin rule, lightweight yet sufficient to distinguish
@@ -28,20 +30,7 @@ export default class DividerDocs extends Component {
           code: DividerExamplesRaw,
           children: <DividerExamples />,
         }]}
-        components={[{
-          name: 'Divider',
-          props: [{
-            name: 'inset',
-            desc: `Boolean if the divider should be inset. This will
-            use relative components to calculate the inset distance.`,
-            type: 'bool',
-          }, {
-            name: 'vertical',
-            desc: `Boolean if the divider should be displayed vertically instead of
-            horizontally.`,
-            type: 'bool',
-          }],
-        }]}
+        docgens={[Divider]}
       />
     );
   }

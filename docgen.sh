@@ -23,7 +23,7 @@ files=(
   'DataTables/TableRow'
   'DataTables/EditDialogColumn'
   #'Dialogs/DialogContainer'
-  #'Dividers/Divider'
+  'Dividers/Divider'
   #'FABTransitions/SpeedDial'
   #'FontIcons/FontIcon'
   #'Lists/List'
@@ -70,4 +70,5 @@ for file in "${files[@]}"; do
   sed -i -e 's/^  {/  {\'$'\n    "component": "'$component'",/' $out
   echo Created docgen at $out
 done
-rm src/docgen/*-e
+
+#rm src/docgen/*-e
