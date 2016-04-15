@@ -25,7 +25,7 @@ files=(
   #'Dialogs/DialogContainer'
   'Dividers/Divider'
   #'FABTransitions/SpeedDial'
-  #'FontIcons/FontIcon'
+  'FontIcons/FontIcon'
   #'Lists/List'
   #'Lists/ListItem'
   #'Lists/ListItemControl'

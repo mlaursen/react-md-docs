@@ -5,6 +5,8 @@ import DocPage from 'react-doc-page';
 import FontIconExamples from './FontIconExamples';
 import FontIconExamplesRaw from '!!raw!./FontIconExamples';
 
+import FontIcon from '!!json!docgen/FontIcon.json';
+
 const text = `
 The \`FontIcon\` component is used to render different font libraries
 with the material design specs. The default font icon library used
@@ -28,19 +30,7 @@ export default class FontIconDocs extends Component {
           code: FontIconExamplesRaw,
           children: <FontIconExamples />,
         }]}
-        components={[{
-          name: 'FontIcon',
-          props: [{
-            name: 'iconClassName',
-            desc: 'The icon font library className.',
-            type: 'string',
-            defaultValue: 'material-icons',
-          }, {
-            name: 'children',
-            desc: `Any children used to render the Font Icon.`,
-            type: 'node',
-          }],
-        }]}
+        docgens={[FontIcon]}
       />
     );
   }
