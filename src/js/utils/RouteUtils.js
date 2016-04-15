@@ -182,7 +182,7 @@ function updateActiveRoutes(route, pathname) {
     to,
     initiallyOpen: nestedItems && isActive,
     nestedItems: nestedItems && nestedItems.map(route => updateActiveRoutes(route, pathname)),
-    className: isActive ? 'active' : null,
+    tileClassName: isActive ? 'active' : null,
   };
 }
 
