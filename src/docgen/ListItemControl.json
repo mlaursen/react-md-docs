@@ -1,0 +1,54 @@
+  {
+    "component": "ListItemControl",
+    "source": "src/js/Lists/ListItemControl.js",
+    "description": "A `ListItemControl` component has either a `primaryAction` or a `secondaryAction`.\nThe `primaryAction` can **only** be a `Checkbox`. A `secondaryAction` can either be\na `Checkbox`, `Switch`, or a `Reorder` icon.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the list item."
+      },
+      "primaryText": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The primary text to display in the item."
+      },
+      "secondaryText": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "An optional secondary text to display below the `primaryText`. This can\nbe an additional 1 or 2 lines. The text will automatically be ellipsed\nif it spans more than one line. If the prop `threeLines` is set to true,\nthen the text will automatically be ellipsed if it spans more than two lines."
+      },
+      "threeLines": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the `ListItem` should allow three lines of text including\nthe `primaryText`.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "primaryAction": {
+        "type": {
+          "name": "custom",
+          "raw": "(props, propName, component) => {\n  const primaryAction = props[propName];\n  const secondaryAction = props.secondaryAction;\n  if(primaryAction && !secondaryAction) {\n    return PropTypes.element(props, propName, component);\n  } else if(!primaryAction && !secondaryAction) {\n    return new Error(`Missing required prop 'primaryAction' or 'secondaryAction' for the component '${component}'.`);\n  } else if(primaryAction && secondaryAction) {\n    return new Error(`You can not have a 'primaryAction' and a 'secondaryAction' prop for the component '${component}'.`);\n  }\n}"
+        },
+        "required": false,
+        "description": "The primary action element for the `ListItemControl`. This should be a `Checkbox`\ncomponent.\n\nThe custom validation will warn you about missing both a `primaryAction` and\na `secondaryAction` or if you have both a `primaryAction` and a `secondaryAction`."
+      },
+      "secondaryAction": {
+        "type": {
+          "name": "element"
+        },
+        "required": false,
+        "description": "A secondary action element. This should be either a `Checkbox`, `Switch`, or a\n`Reorder` icon."
+      }
+    }
+  }

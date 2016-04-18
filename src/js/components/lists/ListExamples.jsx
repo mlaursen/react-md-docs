@@ -67,19 +67,15 @@ export default class ListExamples extends Component {
             leftAvatar={avatars[0]}
             rightIcon={<StarIcon />}
             primaryText="Brunch this weekend?"
-            secondaryText="Ali Connors"
-            secondaryText2="I'll be in your neighborhood sometime this week"
+            secondaryText={'Ali Connors\nI\'ll be in your neighborhood sometime this week'}
+            threeLines={true}
           />
           <ListItem
             leftAvatar={avatars[1]}
             rightIcon={<StarIcon />}
             primaryText="Summer BBQ"
-            secondaryText={(
-              <span>
-                <div>to Alex, Scott, Jennifer</div>
-                <span>Wish I could come, but I'm out of town this weekend.</span>
-              </span>
-            )}
+            secondaryText={'to Alex, Scott, Jennifer\nWish I could come, but I\'m out of town this weekend.'}
+            threeLines={true}
           />
           <ListItem
             leftAvatar={avatars[2]}
