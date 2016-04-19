@@ -29,6 +29,10 @@ $footer-min-height: 220px;
 }
 
 .doc-component-avatars {
+  .md-avatar {
+    flex-shrink: 0;
+  }
+
   .middle-align {
     padding-bottom: 1em;
     padding-top: 1em;
