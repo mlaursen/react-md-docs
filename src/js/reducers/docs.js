@@ -9,6 +9,7 @@ import {
 import marked from 'marked';
 import Fuse from 'fuse.js';
 
+import { Link } from 'react-router';
 import { flatten } from '../utils';
 import { routes } from '../utils/RouteUtils';
 
@@ -50,6 +51,7 @@ function dismissToast(state) {
 
 function extractRoutes(route) {
   return route.nestedItems ? route.nestedItems.map(extractRoutes) : {
+    component: Link,
     key: route.key || route.to,
     to: route.to,
     primaryText: route.primaryText,
