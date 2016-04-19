@@ -1,41 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 import Dialog from 'react-md/lib/Dialogs';
 import { RaisedButton } from 'react-md/lib/Buttons';
 
-import { openDialog, closeDialog } from '../../actions/dialogs';
-import { MODAL } from '../../constants/dialogs';
-
-@connect(state => ({
-  isOpen: state.dialogs.modalOpen,
-}), {
-  openDialog,
-  closeDialog,
-})
 export default class ModalDialogExamples extends Component {
   constructor(props) {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = { isOpen: false };
   }
 
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    openDialog: PropTypes.func.isRequired,
-    closeDialog: PropTypes.func.isRequired,
-  };
-
   openDialog = () => {
-    this.props.openDialog(MODAL);
+    this.setState({ isOpen: true });
   };
 
   closeDialog = () => {
-    this.props.closeDialog(MODAL);
+    this.setState({ isOpen: false });
   };
 
   render() {
-    const { isOpen } = this.props;
+    const { isOpen } = this.state;
     return (
       <div>
         <p>

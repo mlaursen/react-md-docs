@@ -5,7 +5,7 @@ import SelectField from 'react-md/lib/SelectFields';
 import { connect } from 'react-redux';
 
 import Markdown from '../../containers/Markdown';
-import { updateDrawerType } from '../../actions/layout';
+import { updateDrawerType } from '../../actions/ui';
 const DrawerType = NavigationDrawer.DrawerType;
 
 const menuItems = [{
@@ -42,7 +42,7 @@ persistent.
 > of the navigaiton drawer.
 `;
 
-@connect(state => ({ drawerType: state.layout.drawerType }), {
+@connect(state => ({ drawerType: state.ui.drawerType }), {
   updateDrawerType,
 })
 export default class NavigationDrawerDemo extends Component {

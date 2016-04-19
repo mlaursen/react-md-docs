@@ -1,38 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 import Dialog from 'react-md/lib/Dialogs';
 import { RaisedButton } from 'react-md/lib/Buttons';
 import { List, ListItem } from 'react-md/lib/Lists';
 
-import { openDialog, closeDialog } from '../../actions/dialogs';
-import { SIMPLE } from '../../constants/dialogs';
-
-@connect(state => ({
-  isOpen: state.dialogs.simpleOpen,
-}), {
-  openDialog,
-  closeDialog,
-})
 export default class SimpleDialogExamples extends Component {
   constructor(props) {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = { isOpen: false };
   }
 
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    openDialog: PropTypes.func.isRequired,
-    closeDialog: PropTypes.func.isRequired,
-  };
-
   openDialog = () => {
-    this.props.openDialog(SIMPLE);
+    this.setState({ isOpen: true });
   };
 
   closeDialog = () => {
-    this.props.closeDialog(SIMPLE);
+    this.setState({ isOpen: false });
   };
 
   handleItemClick = () => {
@@ -43,7 +28,7 @@ export default class SimpleDialogExamples extends Component {
   };
 
   render() {
-    const { isOpen } = this.props;
+    const { isOpen } = this.state;
 
     const items = [
       'Single line text goes here',

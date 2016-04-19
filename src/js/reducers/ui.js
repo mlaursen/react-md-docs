@@ -1,7 +1,16 @@
-import { OPEN_DRAWER, CLOSE_DRAWER, UPDATE_TITLE, UPDATE_THEME, UPDATE_DRAWER_TYPE } from '../constants/ActionTypes';
-import { toTitle } from '../utils/StringUtils';
+import {
+  UI_OPEN_DRAWER,
+  UI_CLOSE_DRAWER,
+  UI_UPDATE_TITLE,
+  UI_UPDATE_THEME,
+  UI_UPDATE_DRAWER_TYPE,
+  UI_SHOW_OVERLAY,
+  UI_HIDE_OVERLAY,
+} from '../constants/ActionTypes';
 import themes from '../constants/themes';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
+
+import { toTitle } from '../utils/StringUtils';
 
 function updateDrawer(state, isOpen) {
   if(state.isDrawerOpen !== isOpen) {
@@ -11,8 +20,8 @@ function updateDrawer(state, isOpen) {
   return state;
 }
 
-function updateTitle(state, route) {
-  const path = route.replace('/', '');
+function updateTitle(state, pathname) {
+  const path = pathname.replace('/', '');
   let title = 'Components';
   if(path.indexOf('components') === -1) {
     const split = path.split('/');
@@ -21,9 +30,9 @@ function updateTitle(state, route) {
 
   if(state.title === title) {
     return state;
+  } else {
+    return Object.assign({}, state, { title });
   }
-
-  return Object.assign({}, state, { title });
 }
 
 function updateTheme(state, theme) {
@@ -42,24 +51,36 @@ function updateDrawerType(state, drawerType) {
   return Object.assign({}, state, { drawerType });
 }
 
+function updateOverlay(state, isOverlayVisible) {
+  return state.isOverlayVisible === isOverlayVisible
+    ? state
+    : Object.assign({}, state, { isOverlayVisible });
+}
+
 const initialState = {
   isDrawerOpen: false,
   theme: typeof Storage !== 'undefined' && localStorage.getItem('theme') || themes[1],
   drawerType: NavigationDrawer.DrawerType.FULL_HEIGHT,
+  isOverlayVisible: false,
 };
 
-export default function layout(state = initialState, action) {
+export default function ui(state = initialState, action) {
   switch(action.type) {
-    case OPEN_DRAWER:
+    case UI_OPEN_DRAWER:
       return updateDrawer(state, true);
-    case CLOSE_DRAWER:
+    case UI_CLOSE_DRAWER:
       return updateDrawer(state, false);
-    case UPDATE_TITLE:
-      return updateTitle(state, action.route);
-    case UPDATE_THEME:
+    case UI_UPDATE_TITLE:
+      return updateTitle(state, action.pathname);
+    case UI_UPDATE_THEME:
       return updateTheme(state, action.theme);
-    case UPDATE_DRAWER_TYPE:
+    case UI_UPDATE_DRAWER_TYPE:
       return updateDrawerType(state, action.drawerType);
-    default: return state;
+    case UI_SHOW_OVERLAY:
+      return updateOverlay(state, true);
+    case UI_HIDE_OVERLAY:
+      return updateOverlay(state, false);
+    default:
+      return state;
   }
 }

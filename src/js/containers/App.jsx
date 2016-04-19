@@ -3,15 +3,13 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
-import { TAB } from 'react-md/lib/constants/keyCodes';
-import Menu from 'react-md/lib/Menus';
-import { ListItem } from 'react-md/lib/Lists';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import Snackbar from 'react-md/lib/Snackbars';
 
 import { getNavItems } from '../utils/RouteUtils';
-import { openDrawer, closeDrawer, updateTitle } from '../actions/layout';
-import { dismissToast, stopQuickSearching } from '../actions/docs';
+import { openDrawer, closeDrawer, updateTitle } from '../actions/ui';
+import { dismissToast } from '../actions/docs';
+import { hideOverlay } from '../actions/ui';
 import ThemeSwitcher from './ThemeSwitcher';
 import AppFooter from '../components/AppFooter';
 import QuickSearch from './QuickSearch';
@@ -19,20 +17,19 @@ import QuickSearch from './QuickSearch';
 @connect(state => {
   return {
     marked: state.docs.marked,
-    isOpen: state.layout.isDrawerOpen,
-    title: state.layout.title,
-    theme: state.layout.theme,
-    drawerType: state.layout.drawerType,
+    isOpen: state.ui.isDrawerOpen,
+    title: state.ui.title,
+    theme: state.ui.theme,
+    drawerType: state.ui.drawerType,
     toasts: state.docs.toasts,
-    matches: state.docs.matches,
-    isQuickSearching: state.docs.isQuickSearching,
+    isOverlayVisible: state.ui.isOverlayVisible,
   };
 }, {
   openDrawer,
   closeDrawer,
   updateTitle,
   dismissToast,
-  stopQuickSearching,
+  hideOverlay,
 })
 export default class App extends Component {
   constructor(props) {
@@ -51,9 +48,8 @@ export default class App extends Component {
     closeDrawer: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
     dismissToast: PropTypes.func.isRequired,
-    matches: PropTypes.array.isRequired,
-    isQuickSearching: PropTypes.bool.isRequired,
-    stopQuickSearching: PropTypes.func.isRequired,
+    isOverlayVisible: PropTypes.bool.isRequired,
+    hideOverlay: PropTypes.func.isRequired,
 
     // from react-router
     children: PropTypes.node,
@@ -73,12 +69,6 @@ export default class App extends Component {
     }
   }
 
-  handleItemKeyDown = (e) => {
-    if((e.which || e.keyCode) === TAB) {
-      this.props.stopQuickSearching();
-    }
-  };
-
   render() {
     const {
       isOpen,
@@ -91,9 +81,8 @@ export default class App extends Component {
       toasts,
       dismissToast,
       children,
-      matches,
-      isQuickSearching,
-      stopQuickSearching,
+      isOverlayVisible,
+      hideOverlay,
     } = this.props;
 
     const isHome = location.pathname === '/';
@@ -104,6 +93,11 @@ export default class App extends Component {
 
     if(!isHome && window.matchMedia('only screen and (min-width: 600px)').matches) {
       toolbarChildren = <QuickSearch />;
+    }
+
+    let overlay;
+    if(isOverlayVisible) {
+      overlay = <div key="overlay" className="md-overlay" onClick={hideOverlay} />;
     }
 
     return (
@@ -120,14 +114,6 @@ export default class App extends Component {
           drawerType={drawerType}
           navHeaderChildren={navHeaderChildren}
         >
-          <Menu
-            isOpen={isQuickSearching && matches.length > 0}
-            position={Menu.Positions.TOP_LEFT}
-            className="quick-search-menu-container"
-            listClassName="quick-search-menu"
-          >
-            {matches.map((props, i) => <ListItem {...props} tabIndex={0} onClick={stopQuickSearching} onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null} />)}
-          </Menu>
           <CSSTransitionGroup
             component="main"
             transitionName="page"
@@ -142,12 +128,11 @@ export default class App extends Component {
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
           <CSSTransitionGroup
-            component="div"
             transitionName="md-overlay"
             transitionEnterTimeout={150}
             transitionLeaveTimeout={150}
           >
-            {isQuickSearching && <div key="overlay" className="md-overlay" onClick={stopQuickSearching} />}
+            {overlay}
           </CSSTransitionGroup>
         </NavigationDrawer>
       </div>

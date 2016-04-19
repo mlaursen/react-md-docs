@@ -3,10 +3,10 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 import SelectField from 'react-md/lib/SelectFields';
 
-import { updateTheme } from '../actions/layout';
+import { updateTheme } from '../actions/ui';
 import themes from '../constants/themes';
 
-@connect(state => ({ theme: state.layout.theme }), {
+@connect(state => ({ theme: state.ui.theme }), {
   updateTheme,
 })
 export default class ThemeSwitcher extends Component {

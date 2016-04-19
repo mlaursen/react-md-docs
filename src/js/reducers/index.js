@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import dialogs from './dialogs';
+import ui from './ui';
 import docs from './docs';
-import layout from './layout';
 
 const rootReducer = combineReducers({
-  dialogs,
+  ui,
   docs,
-  layout,
   routing: routerReducer,
 });
 

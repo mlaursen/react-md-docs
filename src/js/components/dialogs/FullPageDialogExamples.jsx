@@ -1,14 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { connect } from 'react-redux';
 import Dialog from 'react-md/lib/Dialogs';
 import { RaisedButton, IconButton, FlatButton } from 'react-md/lib/Buttons';
 import Divider from 'react-md/lib/Dividers';
 import TextField from 'react-md/lib/TextFields';
 
 import Markdown from '../../containers/Markdown';
-import { openDialog, closeDialog } from '../../actions/dialogs';
-import { FULL_PAGE } from '../../constants/dialogs';
 
 const markdown = `
 A \`Full Page Dialog\` is what it says: a full page dialog.. This
@@ -21,39 +18,25 @@ When opened, the dialog will consist of an app bar with the given \`title\`,
 \`.md-dialog-content\`.
 `;
 
-@connect(state => ({
-  isOpen: state.dialogs[`${FULL_PAGE}Open`],
-  pageX: state.dialogs[`${FULL_PAGE}PageX`],
-  pageY: state.dialogs[`${FULL_PAGE}PageY`],
-}), {
-  openDialog,
-  closeDialog,
-})
 export default class FullPageDialogExamples extends Component {
   constructor(props) {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = { isOpen: false };
   }
 
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    openDialog: PropTypes.func.isRequired,
-    closeDialog: PropTypes.func.isRequired,
-    pageX: PropTypes.number,
-    pageY: PropTypes.number,
-  };
-
   openDialog = (e) => {
-    this.props.openDialog(FULL_PAGE, e);
+    const { pageX, pageY } = e.changedTouches ? e.changedTouches[0] : e;
+    this.setState({ isOpen: true, pageX, pageY });
   };
 
   closeDialog = () => {
-    this.props.closeDialog(FULL_PAGE);
+    this.setState({ isOpen: false });
   };
 
   render() {
-    const { isOpen, pageX, pageY } = this.props;
+    const { isOpen, pageX, pageY } = this.state;
     const actionLeft = <IconButton onClick={this.closeDialog}>close</IconButton>;
     const actionRight = <FlatButton label="Save" onClick={this.closeDialog} className="justify-end md-toolbar-item" />;
 

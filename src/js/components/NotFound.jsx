@@ -11,7 +11,7 @@ import FontIcon from 'react-md/lib/FontIcons';
 import TextField from 'react-md/lib/TextFields';
 
 import { routeData } from '../utils/RouteUtils';
-import { updateTitle } from '../actions/layout';
+import { updateTitle } from '../actions/ui';
 
 const fuse = new Fuse(routeData, {
   keys: [{
