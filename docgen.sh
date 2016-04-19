@@ -5,10 +5,10 @@
 
 files=(
   'Avatars/Avatar'
-  #'Buttons/FlatButton'
-  #'Buttons/FloatingButton'
-  #'Buttons/IconButton'
-  #'Buttons/RaisedButton'
+  'Buttons/FlatButton'
+  'Buttons/FloatingButton'
+  'Buttons/IconButton'
+  'Buttons/RaisedButton'
   #'Cards/Card'
   #'Cards/CardActionOverlay'
   #'Cards/CardActions'
@@ -24,7 +24,7 @@ files=(
   'DataTables/EditDialogColumn'
   #'Dialogs/DialogContainer'
   'Dividers/Divider'
-  #'FABTransitions/SpeedDial'
+  'FABTransitions/SpeedDial'
   'FontIcons/FontIcon'
   'Lists/List'
   'Lists/ListItem'
