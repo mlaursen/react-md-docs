@@ -86,9 +86,6 @@ module.exports = {
       inject: 'body',
       favicon: path.resolve(__dirname, '../src/imgs/favicon.ico'),
     }),
-    new webpack.ProvidePlugin({
-      'Intl': 'exports?global.Intl!intl',
-    }),
   ],
 
   postcss: function() {

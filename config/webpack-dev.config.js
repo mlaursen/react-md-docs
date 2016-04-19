@@ -33,7 +33,7 @@ config.module.loaders = config.module.loaders.concat([{
   loader: 'style!css!postcss!sass?outputStyle=expanded&sourceMap=true',
 }]);
 
-config.output.filename = 'bundle.js';
+config.output.filename = '[name].js';
 
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),

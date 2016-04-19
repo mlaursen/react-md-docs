@@ -17,7 +17,7 @@ config.module.loaders = config.module.loaders.concat([{
   loader: ExtractTextPlugin.extract('style', 'css!postcss!sass?outputStyle=compressed'),
 }]);
 
-config.output.filename = 'bundle.min.js';
+config.output.filename = '[name].min.js';
 
 config.plugins = config.plugins.concat([
   new ExtractTextPlugin('[name].min.css'),

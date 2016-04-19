@@ -6,8 +6,6 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import WebFont from 'webfontloader';
 
-import { polyfillIntlLang, polyfillIntlOSLang } from './utils';
-
 import Root from './containers/Root';
 import configureStore from './stores/configureStore';
 
@@ -21,10 +19,16 @@ WebFont.load({
   },
 });
 
-polyfillIntlOSLang();
-polyfillIntlLang('da-DK');
-
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
+
+/*eslint-env node*/
+if(!global.Intl) {
+  require.ensure([], require => {
+    require('intl');
+    require('intl/locale-data/jsonp/en-US');
+    require('intl/locale-data/jsonp/da-DK');
+  });
+}
 
 render(<Root store={store} history={history} />, document.getElementById('app'));

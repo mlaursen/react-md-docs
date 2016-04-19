@@ -17,3 +17,4 @@ function reduce(s, split, joiner, fn) {
 
 export const toTitle = s => reduce(s, '-', ' ', capitalizeFirst);
 export const toClassName = s => reduce(s, ' ', '-', s => s.toLowerCase());
+export const toPageName = s => reduce(s, '-', '', capitalizeFirst);

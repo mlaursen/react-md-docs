@@ -40,21 +40,6 @@ export function getViewSize() {
   };
 }
 
-export function polyfillIntlLang(lang) {
-  /*eslint-env node*/
-  require(`intl/locale-data/jsonp/${lang}`);
-}
-
-export function polyfillIntlOSLang() {
-  let lang = window.navigator.userLanguage || window.navigator.language;
-  const [prefix, suffix] = lang.split('-');
-  if(suffix) {
-    lang = `${prefix}-${suffix.toUpperCase()}`;
-  }
-
-  polyfillIntlLang(lang);
-}
-
 export function flatten(arr) {
   return arr.reduce((flattened, toFlatten) => {
     return flattened.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
