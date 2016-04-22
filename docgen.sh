@@ -29,7 +29,7 @@ files=(
   'Lists/List'
   'Lists/ListItem'
   'Lists/ListItemControl'
-  #'Menus/Menu'
+  'Menus/Menu'
   #'NavigationDrawers/NavigationDrawer'
   #'Papers/Paper'
   #'Pickers/DatePickerContainer'

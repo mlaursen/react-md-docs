@@ -46,7 +46,23 @@ export default class PropType extends Component {
     return `oneOfType([\n  ${v}\n])`;
   };
 
+  handleComputed = (name, value) => {
+    const computed = eval(value);
+    switch(name) {
+      case 'enum':
+        return this.handleEnum(computed.map(v => ({ value: `'${v}'`})));
+      case 'union':
+        return computed;
+      default:
+        return computed;
+    }
+  };
+
   getFullName = ({ name, value, computed }) => {
+    if(computed) {
+      return this.handleComputed(name, value);
+    }
+
     switch(name) {
       case 'union':
         return this.handleUnion(value, computed);

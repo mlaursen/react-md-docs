@@ -20,6 +20,7 @@ export default class DefaultValue extends Component {
     if(!defaultValue) {
       return null;
     }
+
     return (
       <div className="prop-default-value">
         default:
