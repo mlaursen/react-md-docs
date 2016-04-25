@@ -18,12 +18,14 @@ The theme can be changed at a global level or at a section level. To override
 the theme at a global level, you can do the following:
 
 ```scss
-@import '~react-md/src/scss/react-md';
+@import '~react-md/src/scss/helpers/all';
 
 $md-primary-color: $md-teal-500;
 $md-primary-color-hue-1: $md-teal-700;
 $md-secondary-color: $md-lime-a-400;
 $md-secondary-color-hue-1: $md-lime-a-200;
+
+@import '~react-md/src/scss/react-md';
 ```
 
 Your application should now be using `teal` as a primary color and `lime` as
