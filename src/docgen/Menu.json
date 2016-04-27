@@ -33,10 +33,18 @@
       },
       "children": {
         "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "element"
-          }
+          "name": "union",
+          "value": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "element"
+              }
+            }
+          ]
         },
         "required": false,
         "description": "An array of `ListItem`, `ListItemControl`, `Divider`, `Subheader`, or react element\nto display when the menu is open."

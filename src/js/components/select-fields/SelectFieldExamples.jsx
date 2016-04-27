@@ -35,7 +35,14 @@ export default class SelectFieldExamples extends Component {
         />
         <SelectField
           defaultValue={1}
-          menuItems={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+          menuItems={[1, 2, 3, 0, 4, 5, 6, 7, 8, 9]}
+        />
+        <SelectField
+          label="Disabled"
+          floatingLabel={true}
+          disabled={true}
+          defaultValue={1}
+          menuItems={[1, 2, 3, 0, 4, 5, 6, 7, 8, 9]}
         />
       </div>
     );

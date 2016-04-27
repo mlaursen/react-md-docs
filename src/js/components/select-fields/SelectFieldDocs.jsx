@@ -8,6 +8,7 @@ import SelectFieldButtonExamples from './SelectFieldButtonExamples';
 import SelectFieldButtonExamplesRaw from '!!raw!./SelectFieldButtonExamples';
 
 import SelectField from '!!json!docgen/SelectField.json';
+window.SelectField = require('react-md/lib/SelectFields'); //eslint-disable-line no-undef
 
 const text = `
 A select field is called a Dropdown Button in the

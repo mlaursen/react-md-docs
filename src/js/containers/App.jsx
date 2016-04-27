@@ -23,6 +23,7 @@ import QuickSearch from './QuickSearch';
     drawerType: state.ui.drawerType,
     toasts: state.docs.toasts,
     isOverlayVisible: state.ui.isOverlayVisible,
+    isMobile: state.ui.isMobile,
   };
 }, {
   openDrawer,
@@ -40,6 +41,7 @@ export default class App extends Component {
     // from redux
     marked: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired,
     title: PropTypes.string,
     theme: PropTypes.string,
     drawerType: PropTypes.string.isRequired,
@@ -72,6 +74,7 @@ export default class App extends Component {
   render() {
     const {
       isOpen,
+      isMobile,
       openDrawer,
       closeDrawer,
       location,
@@ -113,6 +116,7 @@ export default class App extends Component {
           navItems={getNavItems(location.pathname)}
           drawerType={drawerType}
           navHeaderChildren={navHeaderChildren}
+          isMobile={isMobile}
         >
           <CSSTransitionGroup
             component="main"

@@ -62,6 +62,7 @@ const initialState = {
   theme: typeof Storage !== 'undefined' && localStorage.getItem('theme') || themes[1],
   drawerType: NavigationDrawer.DrawerType.FULL_HEIGHT,
   isOverlayVisible: false,
+  isMobile: window.matchMedia('only screen and (max-width: 599px)').matches,
 };
 
 export default function ui(state = initialState, action) {

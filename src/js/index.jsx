@@ -31,4 +31,7 @@ if(!global.Intl) {
   });
 }
 
+/*eslint-env node*/
+window.Perf = require('react-addons-perf');
+
 render(<Root store={store} history={history} />, document.getElementById('app'));
