@@ -1,0 +1,60 @@
+  {
+    "component": "CardTitle",
+    "source": "src/js/Cards/CardTitle.js",
+    "description": "The `CardTitle` component is used to display the main content title for the card.\n\nThis can include an optional `Avatar` to display before the title as well as\nan optional subtitle.\n\nThis component can also act as an expander which will inject the `CardExpander`.",
+    "props": {
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The main title to display."
+      },
+      "subtitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional subtitle."
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The optional className to apply."
+      },
+      "avatar": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "An optional `Avatar` to display before the titles.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any additional children to display after the titles."
+      },
+      "isExpander": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if this should act as an expander. This will inject the\n`CardExpander` after the titles and optional children."
+      },
+      "expandable": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if this component should be expandable when there is a `CardExpander`\nabove it in the `Card`."
+      }
+    }
+  }

@@ -1,0 +1,35 @@
+  {
+    "component": "CardActions",
+    "source": "src/js/Cards/CardActions.js",
+    "description": "The `CardActions` component is used for adding actions on your card.\nThe actions should be `FlatButton`s or `IconButton`s.\n\nThis component can act as a `CardExpander`.",
+    "props": {
+      "isExpander": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if this component should act as an expander and inject the\n`CardExpander`."
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the actions container."
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "An actions to display."
+      },
+      "centered": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the actions should be centered."
+      }
+    }
+  }

@@ -25,7 +25,7 @@ export default class CardExamples extends Component {
       </CardTitle>
     );
     return (
-      <Card isExpandable={true} className="media-card">
+      <Card className="media-card">
         <CardMedia overlay={overlay}>
           <img
             src={randomImage({ width: 600, height: 337, section: 'nature' })}

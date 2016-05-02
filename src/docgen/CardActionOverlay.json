@@ -1,0 +1,44 @@
+  {
+    "component": "CardActionOverlay",
+    "source": "src/js/Cards/CardActionOverlay.js",
+    "description": "The `CardActionOverlay` component is a simple wrapper for generating an overlay\nfor the `CardMedia` component by having a `CardTitle` and an array of props\nfor generating `FlatButton` for the `CardActions` component.",
+    "props": {
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The title to use."
+      },
+      "subtitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The optional subtitle to use."
+      },
+      "actions": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "label": {
+                "name": "string",
+                "required": true
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "An array of flat button props."
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any children to display in the `CardTitle` component."
+      }
+    }
+  }

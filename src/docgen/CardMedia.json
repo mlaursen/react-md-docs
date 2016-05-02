@@ -1,0 +1,67 @@
+  {
+    "component": "CardMedia",
+    "source": "src/js/Cards/CardMedia.js",
+    "description": "The `CardMedia` component is used to display images or some sort\nmedia.\n\nThe media can be forced to be 1:1 aspect ratio or a 16:9 aspect ratio.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the card media component."
+      },
+      "overlay": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "An optional overlay component to be rendered over the media. This *should*\nbe A `CardTitle`, `CardActions` or both."
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any media to display."
+      },
+      "forceAspect": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the aspect ratio should be forced.",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "aspectRatio": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "CardMedia.aspect.equal",
+              "computed": true
+            },
+            {
+              "value": "CardMedia.aspect.wide",
+              "computed": true
+            }
+          ]
+        },
+        "required": true,
+        "description": "The aspect ratio to use.",
+        "defaultValue": {
+          "value": "CardMedia.aspect.wide",
+          "computed": true
+        }
+      },
+      "expandable": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if this component should be expandable when there is a `CardExpander`\nabove it in the `Card`."
+      }
+    }
+  }
