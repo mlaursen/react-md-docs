@@ -1,15 +1,9 @@
-/*eslint-env node*/
-if(typeof require.ensure !== 'function') {
-  require.ensure = (d, c) => c(require);
-}
-
 import React from 'react';
 import Avatar from 'react-md/lib/Avatars';
 import FontIcon from 'react-md/lib/FontIcons';
 import { Link } from 'react-router';
 
-import { toTitle, toPageName } from './StringUtils';
-import { flatten } from './index';
+import { toTitle } from './StringUtils';
 
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
 const googleLogo = 'https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg';
@@ -206,77 +200,6 @@ function updateActiveRoutes(route, pathname) {
  */
 export function getNavItems(pathname = '') {
   return !pathname || pathname === '' ? routes : routes.map(route => updateActiveRoutes(route, pathname));
-}
-
-/**
- * Extracts a route's to parameter. If it includes nested items, it returns
- * the nested item's routes instead.
- *
- * @param {Object} route the route to extract data from
- * @return the path or a list of paths.
- */
-function extractRoute(route) {
-  if(route.nestedItems) {
-    return route.nestedItems.map(extractRoute);
-  } else {
-    return route.to;
-  }
-}
-
-let validRoutes;
-/**
- * Initializes the validRoutes variable.
- */
-function initializeValidRoutes() {
-  validRoutes = flatten(routes.map(extractRoute)).filter(route => route && route !== '/');
-}
-
-/**
- * Extracts the page name from the current pathname to convert
- * to a component.
- *
- * @param {String} pathname the current pathname.
- * @return a path to a component.
- */
-function extractPageName(pathname) {
-  if(validRoutes.indexOf(pathname) === -1) {
-    return '/NotFound';
-  } else if(pathname.indexOf('components') === -1) {
-    const i = pathname.lastIndexOf('/') + 1;
-    const section = pathname.substring(i, pathname.length);
-    return pathname.substring(0, i) + toPageName(section);
-  }
-
-  const base = pathname.replace('/components', '');
-  const parts = base.split('/').filter(p => !!p).reverse();
-
-  let section = toPageName(toPageName(parts).split('-'));
-
-  // Strip last 's' if not progress
-  if(pathname.indexOf('progress') === -1) {
-    section = section.substring(0, section.length - 1);
-  }
-  section = section + 'Docs';
-
-  return base + '/' + section.replace(/e?sSelectionControl/, '');
-}
-
-/**
- * A function to get the component for a route. Semi-lazy loading.
- *
- * @param {Object} location the current location object.
- * @param {Function} cb the callback function to call to get the component.
- */
-export function getComponent(location, cb) {
-  if(!validRoutes) {
-    initializeValidRoutes();
-  }
-
-  const { pathname } = location;
-  require.ensure([], require => {
-    const component = require('../components' + extractPageName(pathname)).default;
-    cb(null, component);
-  });
 }
 
 // When webpack 2.x.x is released
