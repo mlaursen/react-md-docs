@@ -125,6 +125,7 @@ export default class App extends Component {
             transitionLeaveTimeout={300}
             className={classnames({
               'text-page': location.pathname.indexOf('components') === -1 && location.pathname !== '/',
+              'not-found': title && title.match('Not Found'),
             })}
           >
             {React.cloneElement(children, { key: location.pathname })}
