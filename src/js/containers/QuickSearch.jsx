@@ -54,7 +54,7 @@ export default class QuickSearch extends Component {
       <span>
         <TextField
           label="Quick Search..."
-          fullWidth={true}
+          block={true}
           onFocus={showOverlay}
           onKeyDown={this.handleKeyDown}
           onChange={searchForComponent}

@@ -51,7 +51,7 @@ export default class InToolbarExample extends Component {
             value={value}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            fullWidth={true}
+            block={true}
           />
           <IconButton className="md-toolbar-item" onClick={this.resetValue}>close</IconButton>
         </Toolbar>

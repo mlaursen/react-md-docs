@@ -25,9 +25,9 @@ export default class DividerExamples extends Component {
     return (
       <div>
         <form className="divider-example-container">
-          <TextField label="Something" fullWidth={true} floatingLabel={false} />
+          <TextField label="Something" block={true} floatingLabel={false} />
           <Divider />
-          <TextField label="Something else" fullWidth={true} floatingLabel={false} />
+          <TextField label="Something else" block={true} floatingLabel={false} />
           <Divider />
         </form>
 

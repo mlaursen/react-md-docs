@@ -3,12 +3,26 @@
     "source": "src/js/DataTables/EditDialogColumn.js",
     "description": "A Text Edit dialog for tables. This can either be a small\nversion which only has the text field or a large version\nthat includes a title with a save and cancel action buttons.",
     "props": {
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The optional style to apply to the edit dialog."
+      },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
         "description": "The optional className to apply to the edit dialog."
+      },
+      "columnStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The optional style to apply to the column."
       },
       "columnClassName": {
         "type": {
@@ -104,11 +118,7 @@
           "name": "func"
         },
         "required": false,
-        "description": "An optional function to call when the OK button is clicked.\nIt is called with `(textFieldValue, clickEvent)`. This function\nwill also be called when a user pressed the enter key.",
-        "defaultValue": {
-          "value": "() => {}",
-          "computed": false
-        }
+        "description": "An optional function to call when the OK button is clicked.\nIt is called with `(textFieldValue, clickEvent)`. This function\nwill also be called when a user pressed the enter key."
       },
       "okLabel": {
         "type": {
@@ -126,11 +136,7 @@
           "name": "func"
         },
         "required": false,
-        "description": "An optional function to call when the Cancel button is clicked.\nIt is called with `(textFieldValueBeforeEdit, clickEvent)`. This\nfunction will also be called when the user presses the escape key.",
-        "defaultValue": {
-          "value": "() => {}",
-          "computed": false
-        }
+        "description": "An optional function to call when the Cancel button is clicked.\nIt is called with `(textFieldValueBeforeEdit, clickEvent)`. This\nfunction will also be called when the user presses the escape key."
       },
       "cancelLabel": {
         "type": {

@@ -57,19 +57,19 @@ export default class FullPageDialogExamples extends Component {
             <TextField
               label="Email"
               defaultValue="heyfromjonathan@gmail.com"
-              fullWidth={true}
+              block={true}
               floatingLabel={false}
             />
             <Divider />
             <TextField
               label="Event name"
-              fullWidth={true}
+              block={true}
               floatingLabel={false}
             />
             <Divider />
             <TextField
               placeholder="Description"
-              fullWidth={true}
+              block={true}
               rows={4}
               maxRows={-1}
             />

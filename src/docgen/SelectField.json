@@ -192,6 +192,13 @@
           "value": "'arrow_drop_down'",
           "computed": false
         }
+      },
+      "fullWidth": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the this select field should span the full width of a parent"
       }
     }
   }

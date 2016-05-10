@@ -16,7 +16,7 @@ export default class FullWidthExamples extends Component {
   render() {
     return (
       <div>
-        <p>Floating labels are automatically disabled for fullWidth text fields.</p>
+        <p>Floating labels are automatically disabled for fullWidth text fields. Use the <code>block</code> prop to enable fullWidth text fields.</p>
         <Paper className="small-container">
           <Toolbar
             secondary
@@ -28,26 +28,26 @@ export default class FullWidthExamples extends Component {
             <TextField
               label="From"
               type="email"
-              fullWidth
+              block={true}
             />
             <Divider />
             <TextField
               label="To"
               type="email"
-              fullWidth
+              block={true}
             />
             <Divider />
             <TextField
               label="Subject"
               maxLength={80}
-              fullWidth
+              block={true}
             />
             <Divider />
             <TextField
               placeholder="Message"
               rows={2}
               maxRows={-1}
-              fullWidth
+              block={true}
               maxLength={120}
             />
           </form>

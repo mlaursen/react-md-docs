@@ -259,12 +259,19 @@
         "required": false,
         "description": "An optional size for the text field."
       },
-      "fullWidth": {
+      "block": {
         "type": {
           "name": "bool"
         },
         "required": false,
         "description": "Boolean if this text field should be styled as a full width text field.\nFloating labels and the text field indicator will be removed automatically."
+      },
+      "fullWidth": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Boolean if the this text field should span the full width of a parent."
       }
     }
   }
