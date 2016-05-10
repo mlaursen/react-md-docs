@@ -4,6 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import InkExamples from './InkExamples';
 import InkExamplesRaw from '!!raw!./InkExamples';
+import Ink from '!!json!docgen/Ink.json';
 
 const text = `
 Material design Ink is used to show that an element has been touched or has focus. You
@@ -13,25 +14,8 @@ and hides overflow) from your scss and using the \`Higher Order Component\`: \`i
 \`injectInk\` will update your component with keyboard, mouse, and touch listeners to automatically
 add ink when the item has been interacted with. It will also pass a prop named \`ink\` which you should
 add to your component. It is required to add all the event listeners to your component as well.
-I recommend just adding \`{...this.props}\` for simplicity.
-
-The event listeners are:
-
-\`\`\`js
-// Keyboard events
-onKeyUp
-onBlur
-
-// Mouse events
-onMouseDown
-onMouseUp
-onMouseLeave
-
-// Touch events
-onTouchStart
-onTouchCancel
-onTouchLeave
-\`\`\`
+I recommend just adding \`{...this.props}\` for simplicity. The table below lists all the required
+event listeners.
 
 > Just a reminder that you should not have a clickable element inside of another clickable element.
 `;
@@ -53,14 +37,7 @@ export default class InkDocs extends Component {
           code: InkExamplesRaw,
           children: <InkExamples />,
         }]}
-        components={[{
-          name: 'injectInk',
-          props: [{
-            name: 'disabled',
-            desc: `Boolean if the ink is disabled.`,
-            type: 'bool',
-          }],
-        }]}
+        docgens={[Ink]}
       />
     );
   }

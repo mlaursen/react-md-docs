@@ -27,6 +27,7 @@ files=(
   'Dividers/Divider'
   'FABTransitions/SpeedDial'
   'FontIcons/FontIcon'
+  'Inks/Ink'
   'Lists/List'
   'Lists/ListItem'
   'Lists/ListItemControl'
@@ -56,6 +57,12 @@ for file in "${files[@]}"; do
   component=`echo $file | cut -d '/' -f 2`
   source=src/js/$file.js
   out=src/docgen/$component.json
+
+  # Composed component.. Cheat a bit
+  if [[ $component =~ Ink$ ]]; then
+    cp ../react-md/src/js/Inks/injectInk.js ../react-md/$source
+    sed -i 's/ComposedComponent => //' ../react-md/$source
+  fi
   react-docgen ../react-md/$source --pretty --resolver findAllComponentDefinitions -o $out
 
   # Remove first line '['
@@ -70,6 +77,11 @@ for file in "${files[@]}"; do
   # Insert component name after first '{'
   sed -i -e 's/^  {/  {\'$'\n    "component": "'$component'",/' $out
   echo Created docgen at $out
+
+  # Clean up temp files
+  if [[ $component =~ Ink ]]; then
+    rm ../react-md/$source
+  fi
 done
 
 #rm src/docgen/*-e
