@@ -130,6 +130,8 @@ $footer-min-height: 220px;
 
 .phone-size-container {
   @include md-tab-mobile();
+  @include md-text-field-mobile();
+  @include md-lists-mobile();
 
   height: 600px;
   overflow-y: auto;
@@ -138,9 +140,11 @@ $footer-min-height: 220px;
 
   .md-toolbar-container {
     position: relative;
-    z-index: 22;
+    z-index: $md-overlay-z-index - 5;
 
     &:not(.md-primary) {
+      @include md-theme-placeholders($md-secondary-text-color);
+
       background: $md-white-base;
     }
   }
@@ -149,6 +153,7 @@ $footer-min-height: 220px;
     height: 100%;
     position: absolute;
     width: 100%;
+    z-index: $md-toolbar-z-index - 6;
   }
 }
 

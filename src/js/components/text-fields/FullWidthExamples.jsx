@@ -17,7 +17,7 @@ export default class FullWidthExamples extends Component {
     return (
       <div>
         <p>Floating labels are automatically disabled for fullWidth text fields. Use the <code>block</code> prop to enable fullWidth text fields.</p>
-        <Paper className="small-container">
+        <Paper className="phone-size-container">
           <Toolbar
             secondary
             title="Compose"

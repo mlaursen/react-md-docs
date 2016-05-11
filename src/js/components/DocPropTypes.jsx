@@ -80,7 +80,7 @@ export default class DocPropTypes extends Component {
           <IconButton
             href={`${GITHUB_LINK}/blob/master/src/js/${sectionName ? sectionName + '/' : ''}${name}.js`}
             iconClassName="fa fa-github"
-            tooltip={`Github source of ${name}`}
+            tooltipLabel={`Github source of ${name}`}
             tooltipPosition="left"
           />
         </CardTitle>

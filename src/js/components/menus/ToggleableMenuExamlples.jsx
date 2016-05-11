@@ -52,7 +52,7 @@ export default class ToggleableMenuExamlples extends Component {
         <Menu
           isOpen={this.state.open2}
           toggle={(
-            <IconButton onClick={this.toggle2} tooltip="More options">{kebabMenu}</IconButton>
+            <IconButton onClick={this.toggle2} tooltipLabel="More options">{kebabMenu}</IconButton>
           )}
           close={this.close2}
         >

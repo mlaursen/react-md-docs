@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import Snackbar from 'react-md/lib/Snackbars';
 
+import Overlay from 'react-md/lib/Transitions/Overlay';
 import { getNavItems } from '../utils/RouteUtils';
 import { openDrawer, closeDrawer, updateTitle } from '../actions/ui';
 import { dismissToast } from '../actions/docs';
@@ -98,11 +99,6 @@ export default class App extends Component {
       toolbarChildren = <QuickSearch />;
     }
 
-    let overlay;
-    if(isOverlayVisible) {
-      overlay = <div key="overlay" className="md-overlay" onClick={hideOverlay} />;
-    }
-
     return (
       <div className={isHome ? 'theme-1' : theme}>
         <NavigationDrawer
@@ -132,13 +128,7 @@ export default class App extends Component {
           </CSSTransitionGroup>
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
-          <CSSTransitionGroup
-            transitionName="md-overlay"
-            transitionEnterTimeout={150}
-            transitionLeaveTimeout={150}
-          >
-            {overlay}
-          </CSSTransitionGroup>
+          <Overlay isOpen={isOverlayVisible} onClick={hideOverlay} className="quick-search" />
         </NavigationDrawer>
       </div>
     );

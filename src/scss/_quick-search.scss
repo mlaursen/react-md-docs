@@ -17,3 +17,7 @@
 .quick-search-menu-container {
   display: initial;
 }
+
+.md-overlay.quick-search {
+  z-index: $md-overlay-z-index - 5;
+}
