@@ -51,6 +51,7 @@ files=(
   #'Tabs/Tabs'
   'TextFields/TextField'
   #'Toolbars/Toolbar'
+  'Tooltips/Tooltip'
 )
 
 for file in "${files[@]}"; do
@@ -59,8 +60,8 @@ for file in "${files[@]}"; do
   out=src/docgen/$component.json
 
   # Composed component.. Cheat a bit
-  if [[ $component =~ Ink$ ]]; then
-    cp ../react-md/src/js/Inks/injectInk.js ../react-md/$source
+  if [[ $component =~ ^(Ink|Tooltip) ]]; then
+    cp ../react-md/src/js/${component}s/inject$component.js ../react-md/$source
     sed -i 's/ComposedComponent => //' ../react-md/$source
   fi
   react-docgen ../react-md/$source --pretty --resolver findAllComponentDefinitions -o $out
@@ -79,7 +80,7 @@ for file in "${files[@]}"; do
   echo Created docgen at $out
 
   # Clean up temp files
-  if [[ $component =~ Ink ]]; then
+  if [[ $component =~ ^(Ink|Tooltip) ]]; then
     rm ../react-md/$source
   fi
 done

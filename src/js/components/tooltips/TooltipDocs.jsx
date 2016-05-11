@@ -4,6 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import TooltipExamples from './TooltipExamples';
 import TooltipExamplesRaw from '!!raw!./TooltipExamples';
+import Tooltip from '!!json!docgen/Tooltip.json';
 
 const text = `
 Tooltips are labels that appear on hover and focus when the user hovers
@@ -31,33 +32,7 @@ export default class TooltipDocs extends Component {
           code: TooltipExamplesRaw,
           children: <TooltipExamples />,
         }]}
-        components={[{
-          name: 'Tooltip',
-          props: [{
-            name: 'text',
-            desc: `The text to display in the tooltip.`,
-            type: 'string',
-            required: true,
-          }, {
-            name: 'children',
-            desc: `A single element to create a tooltip for.`,
-            type: 'element',
-            required: true,
-          }, {
-            name: 'position',
-            desc: `The position of the tooltip.`,
-            type: 'oneOf(Tooltip.TOP, Tooltip.RIGHT, Tooltip.BOTTOM, Tooltip.LEFT)',
-            required: true,
-            defaultValue: 'Tooltip.BOTTOM',
-          }, {
-            name: 'delay',
-            desc: `The time it will take for the tooltip to appear/disappear while hovering
-            or touch activing.`,
-            type: 'number',
-            required: true,
-            defaultValue: 0,
-          }],
-        }]}
+        docgens={[Tooltip]}
       />
     );
   }
