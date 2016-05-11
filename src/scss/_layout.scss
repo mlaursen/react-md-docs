@@ -129,6 +129,7 @@ $footer-min-height: 220px;
 }
 
 .phone-size-container {
+  @include md-typography-mobile();
   @include md-tab-mobile();
   @include md-text-field-mobile();
   @include md-lists-mobile();
