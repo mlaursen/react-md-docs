@@ -23,7 +23,7 @@ files=(
   'DataTables/TableHeader'
   'DataTables/TableRow'
   'DataTables/EditDialogColumn'
-  #'Dialogs/DialogContainer'
+  'Dialogs/DialogContainer'
   'Dividers/Divider'
   'FABTransitions/SpeedDial'
   'FontIcons/FontIcon'

@@ -30,7 +30,7 @@ export default class ModalDialogExamples extends Component {
         <RaisedButton onClick={this.openDialog} label="Open Modal Dialog" />
         <Dialog
           isOpen={isOpen}
-          className="speed-boost"
+          dialogClassName="speed-boost"
           contentClassName="speed-boost-content"
           title="Use Google's location service?"
           close={this.closeDialog}

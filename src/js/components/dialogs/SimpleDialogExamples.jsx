@@ -51,7 +51,7 @@ export default class SimpleDialogExamples extends Component {
           isOpen={isOpen}
           title="Simple Title"
           close={this.closeDialog}
-          style={{ maxWidth: 320 }}
+          dialogStyle={{ maxWidth: 320 }}
         >
           <List>
             {items}
