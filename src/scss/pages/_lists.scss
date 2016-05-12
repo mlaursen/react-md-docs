@@ -1,6 +1,7 @@
 @import '~helpers';
 
-.doc-component-lists {
+.doc-component-lists,
+.doc-component-subheaders {
   div > .md-list {
     @include md-box-shadow(1);
 

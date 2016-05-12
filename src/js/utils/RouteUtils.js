@@ -123,6 +123,7 @@ export const routes = [{
     'sidebars',
     'sliders',
     'snackbars',
+    'subheaders',
     'tabs',
     'text-fields',
     'toolbars',

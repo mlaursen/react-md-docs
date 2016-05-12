@@ -36,6 +36,7 @@ export default {
         require('./components/sidebars').default,
         require('./components/sliders').default,
         require('./components/snackbars').default,
+        require('./components/subheaders').default,
         require('./components/tabs').default,
         require('./components/text-fields').default,
         require('./components/toolbars').default,

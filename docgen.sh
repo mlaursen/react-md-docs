@@ -46,7 +46,7 @@ files=(
   #'Sidebars/Sidebar'
   #'Sliders/Slider'
   #'Snackbars/Snackbar'
-  #'Subheaders/Subheader'
+  'Subheaders/Subheader'
   #'Tabs/Tab'
   #'Tabs/Tabs'
   'TextFields/TextField'
