@@ -1,7 +1,7 @@
   {
     "component": "Tooltip",
     "source": "src/js/Tooltips/Tooltip.js",
-    "description": "Takes any component and injects a tooltip when the user hovers\nover the component or touch holds it on a mobile device. It also\ninjects the event listeners and a `tooltip` prop to be added to\nthe `ComposedComponent`.\n\n```js\n@param ComposedComponent the component to compose with the tooltip functionality.\n@return the ComposedComponent with a tooltip.\n```",
+    "description": "Takes any component and injects a tooltip when the user hovers\nover the component or touch holds it on a mobile device. It also\ninjects the event listeners and a `tooltip` prop to be added to\nthe `ComposedComponent`.\n\nIf the `tooltipLabel` prop is omitted, the tooltip and event listeners will not\nbe included.\n\n```js\n@param ComposedComponent the component to compose with the tooltip functionality.\n@return the ComposedComponent with a tooltip.\n```",
     "props": {
       "tooltipLabel": {
         "type": {

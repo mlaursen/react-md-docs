@@ -61,7 +61,7 @@ export default class QueryIndeterminateExample extends Component {
   };
 
   updateProgress = (increment) => {
-    const progress = this.state.progress + increment;
+    const progress = Math.min(this.state.progress + increment, 100);
     const state = { progress };
     if(progress >= 100) {
       state.interval = null;
