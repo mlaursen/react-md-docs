@@ -5,6 +5,8 @@ import DocPage from 'react-doc-page';
 import SwitchExamples from './SwitchExamples';
 import SwitchExamplesRaw from '!!raw!./SwitchExamples';
 
+import Switch from '!!json!docgen/Switch.json';
+
 const text = `
 On/off switches toggle the state of a single settings option. The option that the switch
 controls, as well as the state it’s in, should be made clear from the corresponding inline
@@ -28,36 +30,7 @@ export default class SwitchDocs extends Component {
           code: SwitchExamplesRaw,
           children: <SwitchExamples />,
         }]}
-        components={[{
-          name: 'Switch',
-          props: [{
-            name: 'defaultToggled',
-            desc: `Boolean if the switch is toggled by default.`,
-            type: 'bool',
-          }, {
-            name: 'disabled',
-            desc: `Boolean if the switch is disabled.`,
-            type: 'bool',
-          }, {
-            name: 'toggled',
-            desc: `Boolean if the switch is toggled. This will also make
-            the Switch into a controlled component.`,
-            type: 'bool',
-          }, {
-            name: 'onChange',
-            desc: `The function to call when the switch is clicked.`,
-            type: 'func',
-          }, {
-            name: 'label',
-            desc: 'The optional label to display with the switch.',
-            type: 'string',
-          }, {
-            name: 'labelBefore',
-            desc: `Boolean if the label appears before the switch.`,
-            type: 'bool',
-            defaultValue: false,
-          }],
-        }]}
+        docgens={[Switch]}
       />
     );
   }

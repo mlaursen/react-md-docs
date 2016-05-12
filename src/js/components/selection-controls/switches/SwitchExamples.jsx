@@ -7,7 +7,12 @@ export default class SwitchExamples extends Component {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = { toggled: false };
   }
+
+  handleChange = (toggled, event) => { // eslint-disable-line no-unused-vars
+    this.setState({ toggled });
+  };
 
   render() {
     return (
@@ -15,6 +20,7 @@ export default class SwitchExamples extends Component {
         <Switch />
         <Switch label="Turn the lights on" defaultToggled={true} />
         <Switch label="Power outage" disabled />
+        <Switch label="I am controlled" toggled={this.state.toggled} onChange={this.handleChange} />
       </div>
     );
   }

@@ -11,8 +11,8 @@ export default class CheckboxExamples extends Component {
     this.state = { checked: false };
   }
 
-  handleChange = () => {
-    this.setState({ checked: !this.state.checked });
+  handleChange = (checked, value, event) => { // eslint-disable-line no-unused-vars
+    this.setState({ checked });
   };
 
   render() {
@@ -31,6 +31,7 @@ export default class CheckboxExamples extends Component {
           onChange={this.handleChange}
           checkedIcon={<FontIcon>favorite</FontIcon>}
           uncheckedIcon={<FontIcon>favorite_border</FontIcon>}
+          value="favorite"
         />
       </div>
     );
