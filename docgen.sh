@@ -35,7 +35,7 @@ files=(
   #'NavigationDrawers/NavigationDrawer'
   'Papers/Paper'
   'Pickers/DatePickerContainer'
-  #'Pickers/TimePickerContainer'
+  'Pickers/TimePickerContainer'
   'Progress/CircularProgress'
   'Progress/LinearProgress'
   'SelectFields/SelectField'
