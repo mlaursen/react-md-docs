@@ -21,6 +21,8 @@ export default class PropType extends Component {
         PropTypes.object,
         PropTypes.arrayOf(PropTypes.object),
       ]),
+      description: PropTypes.string,
+      computed: PropTypes.bool,
     }).isRequired,
     required: PropTypes.bool,
   };

@@ -17,6 +17,17 @@
   .demo-list-card {
     max-width: 50%;
   }
+
+  .text-container,
+  .prop-description {
+    p {
+      font-size: $md-body-mobile-font-size;
+    }
+
+    h5 {
+      font-size: $md-subheading-mobile-font-size;
+    }
+  }
 }
 
 // Extra small devices, Phones
@@ -49,6 +60,17 @@
 
   .react-doc {
     margin: 1em 2em;
+  }
+
+  .text-container,
+  .prop-description {
+    p {
+      font-size: $md-body-desktop-font-size;
+    }
+
+    h5 {
+      font-size: $md-subheading-desktop-font-size;
+    }
   }
 }
 

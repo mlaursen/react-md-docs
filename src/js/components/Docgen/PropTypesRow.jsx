@@ -5,6 +5,7 @@ import { TableRow, TableColumn } from 'react-md/lib/DataTables';
 import Markdown from '../../containers/Markdown';
 import PropType from './PropType';
 import DefaultValue from './DefaultValue';
+import { getAdditionalPropTypeDescriptions } from '../../utils/StringUtils';
 
 export default class PropTypesRow extends Component {
   constructor(props) {
@@ -35,13 +36,14 @@ export default class PropTypesRow extends Component {
   render() {
     const { description, required, type, name, defaultValue } = this.props;
 
+    const additionalDescriptions = getAdditionalPropTypeDescriptions(type, name);
     return (
       <TableRow autoAdjust={false}>
         <TableColumn className="prop-name justified">{name}</TableColumn>
         <PropType type={type} required={required} />
         <TableColumn className="prop-info grow">
           <DefaultValue defaultValue={defaultValue} />
-          <Markdown markdown={description} className="prop-description" />
+          <Markdown markdown={description + additionalDescriptions} className="prop-description" />
         </TableColumn>
       </TableRow>
     );

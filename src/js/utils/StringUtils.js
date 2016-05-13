@@ -66,6 +66,7 @@ function getComputedPropType(name, value) {
  *
  * @param {Object} docgen The docgen object.
  * @param {Number} tabs? The current number of tabs.
+ * @return {String} a formatted markdown string to represent the prop type.
  */
 export function getPropTypeString({ name, value, computed }, tabs = 0) {
   if(computed) {
@@ -84,4 +85,48 @@ export function getPropTypeString({ name, value, computed }, tabs = 0) {
     default:
       return name;
   }
+}
+
+function extractNestedPropTypeDescriptions({ name, value, description, computed }, propName, descriptions) {
+  switch(name) {
+    case 'shape':
+      Object.keys(value).forEach(key => {
+        extractNestedPropTypeDescriptions(value[key], key, descriptions);
+      });
+      break;
+    case 'union':
+    case 'arrayOf':
+    case 'enum':
+      extractNestedPropTypeDescriptions(value, propName, descriptions);
+      break;
+    default:
+  }
+
+  if(propName && description) {
+    descriptions.push({
+      propName,
+      description,
+    });
+  }
+
+  return descriptions;
+}
+
+/**
+ * Takes a docgen propType and attempts to find any nested descriptions of a prop.
+ * This really only happens when there is a nested shape at this time.
+ *
+ * @param {Object} propType The docgen propType.
+ * @param {String} propName The initial propName.
+ * @return {String} a markdown string to use.
+ */
+export function getAdditionalPropTypeDescriptions(propType, propName) {
+  const descriptions = extractNestedPropTypeDescriptions(propType, propName, []);
+  if(!descriptions.length) {
+    return '';
+  }
+
+  return descriptions.reduce((prev, { propName, description }) => {
+    return prev + `\`${propName}\`: ${description}\n\n`;
+  }, '\n\n');
 }
