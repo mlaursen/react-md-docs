@@ -23,8 +23,10 @@ export const tab = (amount = 1) => ' '.repeat(amount);
 /*eslint-disable no-use-before-define*/
 
 function getOneOfPropType(value, tabs) {
-  const values = tab(tabs) + value.reduce((prev, curr) => {
-    return prev + curr.value + ',\n' + tab(tabs);
+  const l = value.length - 1;
+  const values = tab(tabs) + value.reduce((prev, curr, i) => {
+    const v = prev + curr.value;
+    return v + (i < l ? ',\n' + tab(tabs) : '');
   }, '');
 
   return `oneOf([\n${values}\n])`;
@@ -82,6 +84,8 @@ export function getPropTypeString({ name, value, computed }, tabs = 0) {
       return getOneOfPropType(value, tabs + 1);
     case 'shape':
       return getShapePropType(value, tabs + 1);
+    case 'instanceOf':
+      return `${name}(${value})`;
     default:
       return name;
   }

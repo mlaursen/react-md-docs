@@ -22,6 +22,11 @@ pre {
 .lang-js {
   color: $md-black-base;
 
+  // scss-lint:disable SelectorFormat
+  .hljs-built_in {
+    color: $md-red-900;
+  }
+
   .hljs-selector-class,
   .hljs-attr,
   .hljs-keyword {
