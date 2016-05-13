@@ -44,7 +44,7 @@ files=(
   'SelectionControls/Radio'
   'SelectionControls/Switch'
   #'Sidebars/Sidebar'
-  #'Sliders/Slider'
+  'Sliders/Slider'
   'Snackbars/Snackbar'
   'Subheaders/Subheader'
   'Tabs/Tab'

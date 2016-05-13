@@ -6,6 +6,7 @@ import ContinuousSliderExamples from './ContinuousSliderExamples';
 import ContinuousSliderExamplesRaw from '!!raw!./ContinuousSliderExamples';
 import DiscreteSliderExamples from './DiscreteSliderExamples';
 import DiscreteSliderExamplesRaw from '!!raw!./DiscreteSliderExamples';
+import Slider from '!!json!docgen/Slider.json';
 
 const text = `
 Sliders let users select a value from a continuous or discrete range of
@@ -38,54 +39,7 @@ export default class SliderDocs extends Component {
           code: DiscreteSliderExamplesRaw,
           children: <DiscreteSliderExamples />,
         }]}
-        components={[{
-          name: 'Slider',
-          props: [{
-            name: 'defaultValue',
-            desc: 'The default value for the slider.',
-            type: 'number',
-            defaultValue: 'this.props.min',
-          }, {
-            name: 'value',
-            desc: `An optional value to use if the slider should be controlled.`,
-            type: 'number',
-          }, {
-            name: 'min',
-            desc: `The min value for the slider. It only seems to work
-            with a value of 0 or 1 at this time.`,
-            type: 'number',
-            required: true,
-            defaultValue: 0,
-          }, {
-            name: 'max',
-            desc: `The max value for the slider. Most reliable as 10 or 100.`,
-            type: 'number',
-            required: true,
-            defaultValue: 100,
-          }, {
-            name: 'onChange',
-            desc: `An optional function to call when the slider's value
-            changes. The function is called with \`onChange(newValue, event)\``,
-            type: 'func',
-          }, {
-            name: 'onDragChange',
-            desc: `An optional function to vall when the slider's value has changed
-            when the user is dragging. This will be every tick instead of just at the end.
-            The function is called with \`onDragChange(newValue, event)\`.`,
-            type: 'func',
-          }, {
-            name: 'step',
-            desc: `Any number to use for converting the slider into a discrete slider.
-            This will be how many units the slider moves for each tick. Only tested with
-            a value of 1.`,
-            type: 'number',
-          }, {
-            name: 'stepPrecision',
-            desc: `The number of decimal places to round to for the new step.`,
-            type: 'number',
-            defaultValue: 2,
-          }],
-        }]}
+        docgens={[Slider]}
       />
     );
   }
