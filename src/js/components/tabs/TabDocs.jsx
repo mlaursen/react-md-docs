@@ -7,6 +7,9 @@ import TabExamplesRaw from '!!raw!./TabExamples';
 import TabInToolbarExample from './TabInToolbarExample';
 import TabInToolbarExampleRaw from '!!raw!./TabInToolbarExample';
 
+import Tabs from '!!json!docgen/Tabs.json';
+import Tab from '!!json!docgen/Tab.json';
+
 const text = `
 Tabs make it easy to explore and switch between different views or functional aspects of an app or to browse categorized data sets.
 `;
@@ -32,10 +35,7 @@ export default class TabDocs extends Component {
           code: TabInToolbarExampleRaw,
           children: <TabInToolbarExample />,
         }]}
-        components={[{
-          name: 'Tab',
-          props: [],
-        }]}
+        docgens={[Tabs, Tab]}
       />
     );
   }
