@@ -1,5 +1,5 @@
   {
-    "component": "DialogContainer",
+    "component": "Dialog",
     "source": "src/js/Dialogs/DialogContainer.js",
     "description": "This component renders a `Dialog` when the `isOpen` prop is set to true.\nIt will manage the css transitions between the open and closed states.",
     "props": {

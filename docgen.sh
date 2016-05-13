@@ -34,7 +34,7 @@ files=(
   'Menus/Menu'
   #'NavigationDrawers/NavigationDrawer'
   'Papers/Paper'
-  #'Pickers/DatePickerContainer'
+  'Pickers/DatePickerContainer'
   #'Pickers/TimePickerContainer'
   'Progress/CircularProgress'
   'Progress/LinearProgress'
@@ -63,6 +63,15 @@ for file in "${files[@]}"; do
   if [[ $component =~ ^(Ink|Tooltip) ]]; then
     cp ../react-md/src/js/${component}s/inject$component.js ../react-md/$source
     sed -i 's/ComposedComponent => //' ../react-md/$source
+  elif [[ $component =~ Picker ]]; then
+    # Make a temp without the Container
+    source=src/js/Pickers/.${component%Container}.js
+    out=src/docgen/${component%Container}.json
+
+    cp ../react-md/src/js/Pickers/${component}.js ../react-md/$source
+
+    # Hack out DateTimeFormat since it doesn't like it for docgen
+    sed -i 's/DateTimeFormat: DateTimeFormat,//' ../react-md/$source
   fi
   react-docgen ../react-md/$source --pretty --resolver findAllComponentDefinitions -o $out
 
@@ -76,11 +85,11 @@ for file in "${files[@]}"; do
   sed -i -e 's#^  {#  {\'$'\n    "source": "'$source'",#' $out
 
   # Insert component name after first '{'
-  sed -i -e 's/^  {/  {\'$'\n    "component": "'$component'",/' $out
+  sed -i -e 's/^  {/  {\'$'\n    "component": "'${component%Container}'",/' $out
   echo Created docgen at $out
 
   # Clean up temp files
-  if [[ $component =~ ^(Ink|Tooltip) ]]; then
+  if [[ $component =~ (Ink|Tooltip|Picker) ]]; then
     rm ../react-md/$source
   fi
 done
