@@ -50,7 +50,7 @@ files=(
   #'Tabs/Tab'
   #'Tabs/Tabs'
   'TextFields/TextField'
-  #'Toolbars/Toolbar'
+  'Toolbars/Toolbar'
   'Tooltips/Tooltip'
 )
 
