@@ -45,7 +45,7 @@ files=(
   'SelectionControls/Switch'
   #'Sidebars/Sidebar'
   #'Sliders/Slider'
-  #'Snackbars/Snackbar'
+  'Snackbars/Snackbar'
   'Subheaders/Subheader'
   #'Tabs/Tab'
   #'Tabs/Tabs'

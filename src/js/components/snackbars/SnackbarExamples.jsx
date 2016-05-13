@@ -58,8 +58,6 @@ export default class SnackbarExamples extends Component {
   render() {
     const { toasts, autohide } = this.state;
 
-    // Pretty legit.. Should be handled automatically at some point.
-    const multiline = toasts[0] && toasts[0].text.length > 60;
     return (
       <div>
         <RaisedButton
@@ -81,7 +79,6 @@ export default class SnackbarExamples extends Component {
         <Snackbar
           toasts={toasts}
           dismiss={this.dismissToast}
-          multiline={multiline}
           autohide={autohide}
         />
       </div>
