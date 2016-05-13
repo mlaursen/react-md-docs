@@ -5,15 +5,10 @@ import DocPage from 'react-doc-page';
 import PaperExamples from './PaperExamples';
 import PaperExamplesRaw from '!!raw!./PaperExamples';
 
+import Paper from '!!json!docgen/Paper.json';
 const text = `
 Paper is a wrapper component you can use to add the correct box
 shadow to different components.
-
-You can also use the sass mixin
-
-\`\`\`scss
-@include md-box-shadow(NUMBER);
-\`\`\`
 `;
 
 export default class PaperDocs extends Component {
@@ -33,14 +28,7 @@ export default class PaperDocs extends Component {
           code: PaperExamplesRaw,
           children: <PaperExamples />,
         }]}
-        components={[{
-          name: 'Paper',
-          props: [{
-            name: 'zDepth',
-            desc: `The zDepth of paper.`,
-            type: 'oneOf([0, 1, 2, 3, 4, 5])',
-          }],
-        }]}
+        docgens={[Paper]}
       />
     );
   }
