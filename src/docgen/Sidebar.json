@@ -8,11 +8,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Boolean if the overlay should appear when opened.",
-        "defaultValue": {
-          "value": "true",
-          "computed": false
-        }
+        "description": "Boolean if the overlay should appear when opened."
       },
       "isOpen": {
         "type": {
