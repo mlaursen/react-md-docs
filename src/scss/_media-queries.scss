@@ -28,6 +28,10 @@
       font-size: $md-subheading-mobile-font-size;
     }
   }
+
+  .list-dialog-fix .md-list-tile {
+    height: $md-list-mobile-height;
+  }
 }
 
 // Extra small devices, Phones
@@ -45,6 +49,11 @@
 
   .demo-list-card {
     max-width: 220px;
+  }
+
+  .md-toolbar-container ~ * .md-sidebar-container .md-sidebar {
+    margin-top: $md-toolbar-height;
+    max-height: calc(100vh - #{$md-toolbar-height});
   }
 }
 
@@ -71,6 +80,10 @@
     h5 {
       font-size: $md-subheading-desktop-font-size;
     }
+  }
+
+  .list-dialog-fix .md-list-tile {
+    height: $md-list-desktop-height;
   }
 }
 

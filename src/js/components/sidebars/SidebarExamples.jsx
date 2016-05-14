@@ -63,7 +63,7 @@ export default class SidebarExamples extends Component {
       return <ListItem {...props} />;
     });
     return (
-      <div className="flex-around">
+      <div className="flex-around sidebar-fixed-example">
         <RaisedButton label="Toggled Fixed Sidebar Left" onClick={this.toggleOpenLeft} />
         <RaisedButton label="Toggled Fixed Sidebar Right" onClick={this.toggleOpenRight} />
         <Sidebar

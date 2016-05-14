@@ -15,6 +15,7 @@ $footer-min-height: 220px;
 
 .flex-around {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 

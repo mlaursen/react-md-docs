@@ -19,9 +19,17 @@
       },
       "component": {
         "type": {
-          "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "func"
+            }
+          ]
         },
-        "required": false,
+        "required": true,
         "description": "The component to render as.",
         "defaultValue": {
           "value": "'section'",
