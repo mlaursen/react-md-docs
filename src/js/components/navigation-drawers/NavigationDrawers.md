@@ -1,8 +1,3 @@
-Navigation drawers are an excellent component to use to set up
-the initial layout of your application. This component combines
-a Navigation drawer (a sidebar of nav items), an app bar,
-and displays any additional content.
-
 Navigation drawers have 7 types:
 
 ```js

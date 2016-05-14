@@ -1,0 +1,235 @@
+  {
+    "component": "NavigationDrawer",
+    "source": "src/js/NavigationDrawers/NavigationDrawer.js",
+    "description": "Navigation drawers are an excellent component to use to set up the initial\nlayout of your application. This component combines a Navigation drawer\n(a sidebar of nav items), an app bar, and displays any additional content.",
+    "props": {
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the navigation drawer itself."
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the navigation drawer iteself."
+      },
+      "containerStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the navigation drawer container."
+      },
+      "containerClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the navigation drawer container."
+      },
+      "contentStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the main content."
+      },
+      "contentClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the main content."
+      },
+      "toolbarStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the main toolbar."
+      },
+      "toolbarClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to applt to the main toolbar."
+      },
+      "isOpen": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": "Boolean if the navigation drawer is currently open."
+      },
+      "isMobile": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": "Boolean if the current device is mobile.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional title to display in the navigation drawer header."
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The main content to display."
+      },
+      "menuIconClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The icon className to use for the main menu icon."
+      },
+      "menuIconChildren": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any children required to render the main menu icon.",
+        "defaultValue": {
+          "value": "'menu'",
+          "computed": false
+        }
+      },
+      "closeIconClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The icon className to use for closing a persistent navigation drawer."
+      },
+      "closeIconChildren": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any children required to render the close icon for a persistent navigation drawer.",
+        "defaultValue": {
+          "value": "'keyboard_arrow_left'",
+          "computed": false
+        }
+      },
+      "openDrawer": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "A function to call that will open the navigation drawer. This will\nbe applied to the main menu button."
+      },
+      "closeDrawer": {
+        "type": {
+          "name": "custom",
+          "raw": "(props, propName, component) => {\n  const { PERSISTENT, PERSISTENT_MINI } = NavigationDrawer.DrawerType;\n  const { drawerType } = props;\n  if(drawerType !== PERSISTENT && drawerType !== PERSISTENT_MINI) {\n    return;\n  }\n\n  return PropTypes.func.isRequired(props, propName, component)\n    || PropTypes.string.isRequired(props, 'closeIconClassName', component)\n    || PropTypes.node(props, 'closeIconChildren', component);\n}"
+        },
+        "required": false,
+        "description": "A function to call that will close the navigation drawer. If the drawer\nis persistent or persistent mini, this function is required."
+      },
+      "navItems": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "union",
+            "value": [
+              {
+                "name": "node"
+              },
+              {
+                "name": "shape",
+                "value": {
+                  "divider": {
+                    "name": "bool",
+                    "description": "Boolean if this item should be rendered as a divider.",
+                    "required": false
+                  },
+                  "subheader": {
+                    "name": "bool",
+                    "description": "Boolean if this item should be rendered as a subheader.",
+                    "required": false
+                  },
+                  "component": {
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "string"
+                      },
+                      {
+                        "name": "func"
+                      }
+                    ],
+                    "description": "An optional component to render the `ListItem` as.",
+                    "required": false
+                  },
+                  "primaryText": {
+                    "name": "string",
+                    "description": "The main text to be displayed in a `Subheader` or a `ListItem`.",
+                    "required": false
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": true,
+        "description": "A list of items to render in the navigation drawer. If an item\nis a prop object, all props will be passed to either a `ListItem`,\n`Divider`, or `Subheader` component.\n\n##### Additional Info"
+      },
+      "drawerType": {
+        "type": {
+          "name": "enum",
+          "computed": true,
+          "value": "Object.keys(NavigationDrawer.DrawerType).map(k => NavigationDrawer.DrawerType[k])"
+        },
+        "required": false,
+        "description": "The drawer type to use.",
+        "defaultValue": {
+          "value": "NavigationDrawer.DrawerType.FULL_HEIGHT",
+          "computed": true
+        }
+      },
+      "toolbarChildren": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any additional children to display in the main toolbar."
+      },
+      "toolbarTitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional title to display in the main toolbar."
+      },
+      "navHeader": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "An optional header to display in the navigation drawer. This will be rendered\nbefore the `navItems`. This will replace the generated header if you gave the\n`title` prop."
+      },
+      "navHeaderChildren": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Any additional children to display in the navigation drawer's header after the\n`title`."
+      }
+    }
+  }

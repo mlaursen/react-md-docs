@@ -32,7 +32,7 @@ files=(
   'Lists/ListItem'
   'Lists/ListItemControl'
   'Menus/Menu'
-  #'NavigationDrawers/NavigationDrawer'
+  'NavigationDrawers/NavigationDrawer'
   'Papers/Paper'
   'Pickers/DatePickerContainer'
   'Pickers/TimePickerContainer'
