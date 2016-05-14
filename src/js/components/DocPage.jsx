@@ -2,10 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Divider from 'react-md/lib/Dividers';
 
-import { toClassName, capitalizeFirst } from '../utils/StringUtils';
+import { toClassName } from '../utils/StringUtils';
 import Markdown from '../containers/Markdown';
 import DocExample from './DocExample';
-import DocPropTypes from './DocPropTypes';
 import DocgenPropTypes from './Docgen/DocgenPropTypes';
 
 export default class DocPage extends Component {
@@ -36,35 +35,16 @@ export default class DocPage extends Component {
       description: PropTypes.string,
       props: PropTypes.object.isRequired,
     })),
-    components: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      desc: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-      ]),
-      props: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        desc: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        defaultValue: PropTypes.any,
-        required: PropTypes.bool,
-      })),
-    })),
-
-    // from react-router
-    location: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
     examples: [],
     docgens: [],
-    components: [],
     text: '',
   };
 
   render() {
-    const { sectionName, text, examples, components, location, docgens } = this.props;
-    const componentSectionName = capitalizeFirst(location.pathname.replace('/components/', ''));
+    const { sectionName, text, examples, docgens } = this.props;
 
     let details;
     if(React.isValidElement(text)) {
@@ -82,7 +62,6 @@ export default class DocPage extends Component {
         </header>
         {examples.map((example, key) => <DocExample {...example} key={key} fallbackId={`example-${key}`} />)}
         <h2 className="md-headline">Prop Types</h2>
-        {components.map((component, key) => <DocPropTypes sectionName={componentSectionName} {...component} key={key} />)}
         {docgens.map((docgen, key) => <DocgenPropTypes key={key} {...docgen} />)}
       </div>
     );
