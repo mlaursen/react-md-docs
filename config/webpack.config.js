@@ -31,10 +31,6 @@ module.exports = {
     }],
 
     loaders: [{
-      test: /\.ico$/,
-      exclude: /node_modules/,
-      loader: 'file?name=[name].ext',
-    }, {
       test: /\.(png|jpe?g|svg)$/,
       exclude: /node_modules/,
       loader: 'file?name=imgs/[hash].[ext]',
