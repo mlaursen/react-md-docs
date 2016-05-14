@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Markdown from '../../containers/Markdown';
 import ColorPalette from '../../containers/ColorPalette';
 
-import markdown from '../../../markdown/Colors';
+import markdown from './Colors.md';
 
 export default class Colors extends Component {
   constructor(props) {

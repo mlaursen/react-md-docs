@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import DocPage from 'react-doc-page';
-import about from '../../../markdown/NavigationDrawers';
+import about from './NavigationDrawers.md';
 import AppRaw from '!!raw!../../containers/App';
 import NavigationDrawerDemo from './NavigationDrawerDemo';
 

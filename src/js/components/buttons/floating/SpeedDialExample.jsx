@@ -8,7 +8,7 @@ import { getOffset } from 'react-md/lib/utils';
 
 import { getViewSize } from '../../../utils';
 import Markdown from '../../../containers/Markdown';
-import markdown from '../../../../markdown/SpeedDialMarkdown';
+import markdown from './SpeedDialMarkdown.md';
 
 export default class SpeedDialExample extends Component {
   constructor(props) {

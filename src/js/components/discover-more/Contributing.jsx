@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import Markdown from '../../containers/Markdown';
-import markdown from '../../../markdown/Contributing';
+import markdown from './Contributing.md';
 
 export default class Contributing extends Component {
   constructor(props) {
