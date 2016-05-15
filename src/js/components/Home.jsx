@@ -71,13 +71,13 @@ export default class Home extends Component {
         <Markdown markdown={about} className="about container text-container" />
         <section className="getting-started md-card-list">
           <ImgCard
-            to="getting-started"
+            to="getting-started/prerequisites"
             src={gettingStarted}
             alt="A person figure sitting at a desk looking at a laptop."
             title="Getting Started"
           />
           <ImgCard
-            to="customization"
+            to="customization/colors"
             src={customization}
             alt="A person figure painting on a canvas."
             title="Customization"
