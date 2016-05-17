@@ -44,7 +44,10 @@ export default class QuickSearch extends Component {
         <ListItem
           tabIndex={0}
           {...props}
-          onClick={hideOverlay}
+          onClick={() => {
+            console.log('props:', props);
+            hideOverlay();
+          }}
           onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null}
         />
       ));

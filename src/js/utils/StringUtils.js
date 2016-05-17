@@ -19,6 +19,14 @@ export const toTitle = s => reduce(s, '-', ' ', capitalizeFirst);
 export const toClassName = s => reduce(s, ' ', '-', s => s.toLowerCase());
 export const toPageName = s => reduce(s, '-', '', capitalizeFirst);
 export const tab = (amount = 1) => ' '.repeat(amount);
+export function toPropTypeId(s) {
+  const id = s.split(/(?=[A-Z])/).map(s => s.toLowerCase()).join('-').replace(/ /g, '');
+  if(id.charAt(id.length - 1) === 's') {
+    return id.substring(0, id.length - 1);
+  } else {
+    return id;
+  }
+}
 
 /*eslint-disable no-use-before-define*/
 

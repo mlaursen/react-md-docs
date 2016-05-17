@@ -11,6 +11,7 @@ import Fuse from 'fuse.js';
 
 import { Link } from 'react-router';
 import { flatten } from '../utils';
+import { toPropTypeId } from '../utils/StringUtils';
 import { routes } from '../utils/RouteUtils';
 
 marked.setOptions({
@@ -61,8 +62,29 @@ function extractRoutes(route) {
 let routesFuse;
 function initializeRoutesFuse() {
   const searchableRoutes = flatten(routes.map(extractRoutes)).filter(route => !!route.key);
+  const propTypes = [];
+  searchableRoutes.forEach(({ to, primaryText }) => {
+    if(!to || to.indexOf('components') === -1) {
+      return;
+    }
 
-  routesFuse = new Fuse(searchableRoutes, {
+    const key = `pt-${primaryText}`;
+    switch(primaryText) {
+      default:
+        propTypes.push({
+          key,
+          component: Link,
+          to: {
+            pathname: to,
+            hash: '#prop-types-' + toPropTypeId(primaryText),
+          },
+          primaryText: `${primaryText} Prop Types`,
+        });
+    }
+  });
+  console.log('propTypes:', propTypes);
+
+  routesFuse = new Fuse(searchableRoutes.concat(propTypes), {
     keys: [{
       name: 'primaryText',
       weight: 0.95,

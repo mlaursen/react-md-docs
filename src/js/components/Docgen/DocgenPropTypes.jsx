@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { IconButton } from 'react-md/lib/Buttons';
 import { Card, CardTitle } from 'react-md/lib/Cards';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
 
 import { sort, GITHUB_LINK } from '../../utils';
+import { toPropTypeId } from '../../utils/StringUtils';
 import Markdown from '../../containers/Markdown';
 import PropTypesRow from './PropTypesRow';
 
@@ -29,6 +31,16 @@ export default class DocgenPropTypes extends Component {
     props: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    if(window.location.hash === `#prop-types-${toPropTypeId(this.props.component)}`) {
+      setTimeout(() => {
+        const { offsetHeight } = document.querySelector('.md-navigation-drawer-toolbar');
+        const { offsetTop } = findDOMNode(this);
+        window.scrollTo(0, offsetTop - offsetHeight);
+      }, 1000);
+    }
+  }
+
   sort = () => {
     const ascending = !this.state.ascending;
     this.setState({
@@ -45,7 +57,7 @@ export default class DocgenPropTypes extends Component {
 
     return (
       <Card
-        id={`prop-types-${name}`}
+        id={`prop-types-${toPropTypeId(component)}`}
         className="component-prop-types"
         raise={false}
       >
