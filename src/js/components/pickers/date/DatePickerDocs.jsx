@@ -7,7 +7,7 @@ import DatePickerExamplesRaw from '!!raw!./DatePickerExamples';
 import DatePicker from '!!json!docgen/DatePicker.json';
 DatePicker.props.DateTimeFormat.defaultValue = {
   computed: false,
-  value: `Intl.DateTimeFormat || (locales, options) => date => date`,
+  value: `Intl.DateTimeFormat || (locales, options) => { format: date => date }`,
 };
 
 const text = `

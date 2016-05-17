@@ -7,7 +7,7 @@ import TimePickerExamplesRaw from '!!raw!./TimePickerExamples';
 import TimePicker from '!!json!docgen/TimePicker.json';
 TimePicker.props.DateTimeFormat.defaultValue = {
   computed: false,
-  value: `Intl.DateTimeFormat || (locales, options) => date => date`,
+  value: `Intl.DateTimeFormat || (locales, options) => { format: date => date }`,
 };
 
 const text = `

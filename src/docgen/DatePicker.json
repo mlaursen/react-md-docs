@@ -1,6 +1,6 @@
   {
     "component": "DatePicker",
-    "source": "src/js/Pickers/.DatePicker.js",
+    "source": "src/js/Pickers/DatePickerContainer.js",
     "description": "",
     "props": {
       "className": {

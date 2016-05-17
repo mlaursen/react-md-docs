@@ -1,6 +1,6 @@
   {
     "component": "Ink",
-    "source": "src/js/Inks/Ink.js",
+    "source": "src/js/Inks/injectInk.js",
     "description": "Takes any component and injects an ink container along with event\nlisteners for handling those inks. It also injects a prop\nnamed `ink` which needs to be added to the `ComposedComponent`.\n\n```js\n@param ComposedComponent the component to compose with the ink functionality.\n@return the ComposedComponent with inks.\n```",
     "props": {
       "onMouseUp": {

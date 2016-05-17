@@ -1,6 +1,6 @@
   {
     "component": "TimePicker",
-    "source": "src/js/Pickers/.TimePicker.js",
+    "source": "src/js/Pickers/TimePickerContainer.js",
     "description": "",
     "props": {
       "className": {

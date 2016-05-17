@@ -57,10 +57,12 @@ files=(
 for file in "${files[@]}"; do
   component=`echo $file | cut -d '/' -f 2`
   source=src/js/$file.js
+  filesource=$source
   out=src/docgen/$component.json
 
   # Composed component.. Cheat a bit
   if [[ $component =~ ^(Ink|Tooltip) ]]; then
+    filesource=src/js/${component}s/inject$component.js
     cp ../react-md/src/js/${component}s/inject$component.js ../react-md/$source
     sed -i 's/ComposedComponent => //' ../react-md/$source
   elif [[ $component =~ Picker ]]; then
@@ -82,7 +84,7 @@ for file in "${files[@]}"; do
   sed -i -e '$ d' $out
 
   # Insert file path after first '{'
-  sed -i -e 's#^  {#  {\'$'\n    "source": "'$source'",#' $out
+  sed -i -e 's#^  {#  {\'$'\n    "source": "'$filesource'",#' $out
 
   # Insert component name after first '{'
   sed -i -e 's/^  {/  {\'$'\n    "component": "'${component%Container}'",/' $out
