@@ -192,6 +192,13 @@
         "required": false,
         "description": "An optional function to call when text in the text field has been selected."
       },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "An optional function to call when the text field is clicked."
+      },
       "style": {
         "type": {
           "name": "object"

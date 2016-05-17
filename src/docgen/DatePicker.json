@@ -3,7 +3,28 @@
     "source": "src/js/Pickers/DatePickerContainer.js",
     "description": "",
     "props": {
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the date picker's container."
+      },
       "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the date picker's container."
+      },
+      "pickerStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the date picker."
+      },
+      "pickerClassName": {
         "type": {
           "name": "string"
         },

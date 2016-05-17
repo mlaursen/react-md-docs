@@ -5,6 +5,15 @@ import { TimePicker } from 'react-md/lib/Pickers';
 
 import { addToast, dismissToast } from '../../../actions/docs';
 
+/*eslint-env node*/
+if(!global.Intl) {
+  require.ensure([], require => {
+    require('intl');
+    require('intl/locale-data/jsonp/en-US');
+    require('intl/locale-data/jsonp/da-DK');
+  });
+}
+
 const todayAt1522 = new Date();
 todayAt1522.setHours(15);
 todayAt1522.setMinutes(22);
@@ -18,7 +27,7 @@ export default class TimePickerExamples extends Component {
     super(props);
 
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = { toasts: [], undo: false };
+    this.state = { undo: false };
   }
 
   static propTypes = {
@@ -27,11 +36,15 @@ export default class TimePickerExamples extends Component {
   };
 
   componentWillUpdate(nextProps, nextState) {
-    if(this.state.time !== nextState.time && !nextState.undo) {
+    const { time } = this.state;
+    if(time !== nextState.time && !nextState.undo) {
       nextProps.addToast({
         text: `You have set your appoitment time to ${nextState.formattedTime}`,
         action: {
-          onClick: () => this.undo(this.state.time),
+          onClick: () => {
+            this.props.dismissToast();
+            this.undo(time);
+          },
           label: 'Undo',
         },
       });
@@ -45,7 +58,7 @@ export default class TimePickerExamples extends Component {
     });
   };
 
-  handleTimeChange = (time, formattedTime) => {
+  handleTimeChange = (formattedTime, time) => {
     this.setState({ time, formattedTime, undo: false });
   };
 

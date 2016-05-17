@@ -23,15 +23,6 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 /*eslint-env node*/
-if(!global.Intl) {
-  require.ensure([], require => {
-    require('intl');
-    require('intl/locale-data/jsonp/en-US');
-    require('intl/locale-data/jsonp/da-DK');
-  });
-}
-
-/*eslint-env node*/
 window.Perf = require('react-addons-perf');
 
 render(<Root store={store} history={history} />, document.getElementById('app'));
