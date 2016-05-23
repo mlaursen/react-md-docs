@@ -226,8 +226,8 @@ export function onUpdate() {
   }
 }
 
-function getComponentSearchObjects({ to }) {
-  const id = toPropTypeId(to);
+function getComponentSearchObjects(route) {
+  const id = toPropTypeId(route.to);
   const ids = [id];
   switch(id) {
     case 'card':
@@ -265,12 +265,15 @@ function getComponentSearchObjects({ to }) {
       key: id,
       component: Link,
       to: {
-        pathname: to,
+        pathname: route.to,
         hash: '#prop-types-' + id,
       },
-      primaryText: toTitle(id),
+      primaryText: toTitle(id).replace(/ /g, '') + ' - PropTypes',
     };
-  });
+  }).concat([Object.assign({}, route, {
+    key: route.key || `full-page-${route.to}`,
+    primaryText: toTitle(toPropTypeId(route.to)) + ' - Examples',
+  })]);
 }
 
 function getSearchObjects(route, objects = []) {
