@@ -5,6 +5,7 @@ import { Card, CardTitle } from 'react-md/lib/Cards';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
 
 import { sort, GITHUB_LINK } from '../../utils';
+import { toPropTypeId } from '../../utils/StringUtils';
 import Markdown from '../../containers/Markdown';
 import PropTypesRow from './PropTypesRow';
 
@@ -45,7 +46,7 @@ export default class DocgenPropTypes extends Component {
 
     return (
       <Card
-        id={`prop-types-${name}`}
+        id={`prop-types-${toPropTypeId(component)}`}
         className="component-prop-types"
         raise={false}
       >

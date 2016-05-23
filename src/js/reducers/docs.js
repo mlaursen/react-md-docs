@@ -9,9 +9,7 @@ import {
 import marked from 'marked';
 import Fuse from 'fuse.js';
 
-import { Link } from 'react-router';
-import { flatten } from '../utils';
-import { routes } from '../utils/RouteUtils';
+import { getRoutesFuse } from '../utils/RouteUtils';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -49,20 +47,9 @@ function dismissToast(state) {
   return Object.assign({}, state, { toasts });
 }
 
-function extractRoutes(route) {
-  return route.nestedItems ? route.nestedItems.map(extractRoutes) : {
-    component: Link,
-    key: route.key || route.to,
-    to: route.to,
-    primaryText: route.primaryText,
-  };
-}
-
 let routesFuse;
 function initializeRoutesFuse() {
-  const searchableRoutes = flatten(routes.map(extractRoutes)).filter(route => !!route.key);
-
-  routesFuse = new Fuse(searchableRoutes, {
+  routesFuse = new Fuse(getRoutesFuse(), {
     keys: [{
       name: 'primaryText',
       weight: 0.95,

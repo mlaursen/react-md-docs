@@ -20,6 +20,36 @@ export const toClassName = s => reduce(s, ' ', '-', s => s.toLowerCase());
 export const toPageName = s => reduce(s, '-', '', capitalizeFirst);
 export const tab = (amount = 1) => ' '.repeat(amount);
 
+/**
+ * Converts a path string or a full component name into a prop-type id to use
+ * in the routes fuse.
+ *
+ * @param {String} s the string to convert
+ * @return {String} a string to use for an id tag or the routes fuse search.
+ */
+export function toPropTypeId(s) {
+  if(s.indexOf('/') !== -1) {
+    s = s.replace('/components/', '')
+      .split('/')
+      .reduce((prev, curr) => capitalizeFirst(curr) + prev, '');
+  }
+
+  let id = s.split(/(?=[A-Z])/)
+    .map(s => s.toLowerCase())
+    .join('-')
+    .replace(/ /g, '')
+    .replace('-selection-controls', '');
+
+  let endIndex = id.length;
+  if(id.substring(id.length - 2, id.length) === 'es') {
+    endIndex = id.length - 2;
+  } else if(id !== 'tabs' && id.charAt(id.length - 1) === 's' && id.charAt(id.length - 2) !== 's') {
+    endIndex = id.length - 1;
+  }
+
+  return id.substring(0, endIndex);
+}
+
 /*eslint-disable no-use-before-define*/
 
 function getOneOfPropType(value, tabs) {
