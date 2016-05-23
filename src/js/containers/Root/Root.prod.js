@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
 import routes from '../../routes';
+import { onUpdate } from '../../utils/RouteUtils';
 
 export default class Root extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Root extends Component {
     const { store, history } = this.props;
     return (
       <Provider store={store}>
-        <Router history={history} routes={routes} onUpdate={() => { document.body.scrollTop = 0; }}/>
+        <Router history={history} routes={routes} onUpdate={onUpdate} />
       </Provider>
     );
   }

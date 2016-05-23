@@ -9,10 +9,7 @@ import {
 import marked from 'marked';
 import Fuse from 'fuse.js';
 
-import { Link } from 'react-router';
-import { flatten } from '../utils';
-import { toPropTypeId } from '../utils/StringUtils';
-import { routes } from '../utils/RouteUtils';
+import { getRoutesFuse } from '../utils/RouteUtils';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -50,41 +47,9 @@ function dismissToast(state) {
   return Object.assign({}, state, { toasts });
 }
 
-function extractRoutes(route) {
-  return route.nestedItems ? route.nestedItems.map(extractRoutes) : {
-    component: Link,
-    key: route.key || route.to,
-    to: route.to,
-    primaryText: route.primaryText,
-  };
-}
-
 let routesFuse;
 function initializeRoutesFuse() {
-  const searchableRoutes = flatten(routes.map(extractRoutes)).filter(route => !!route.key);
-  const propTypes = [];
-  searchableRoutes.forEach(({ to, primaryText }) => {
-    if(!to || to.indexOf('components') === -1) {
-      return;
-    }
-
-    const key = `pt-${primaryText}`;
-    switch(primaryText) {
-      default:
-        propTypes.push({
-          key,
-          component: Link,
-          to: {
-            pathname: to,
-            hash: '#prop-types-' + toPropTypeId(primaryText),
-          },
-          primaryText: `${primaryText} Prop Types`,
-        });
-    }
-  });
-  console.log('propTypes:', propTypes);
-
-  routesFuse = new Fuse(searchableRoutes.concat(propTypes), {
+  routesFuse = new Fuse(getRoutesFuse(), {
     keys: [{
       name: 'primaryText',
       weight: 0.95,

@@ -2,8 +2,9 @@ import React from 'react';
 import Avatar from 'react-md/lib/Avatars';
 import FontIcon from 'react-md/lib/FontIcons';
 import { Link } from 'react-router';
+import { flatten } from './index';
 
-import { toTitle } from './StringUtils';
+import { toTitle, toPropTypeId } from './StringUtils';
 
 const reactLogo = 'https://facebook.github.io/react/img/logo.svg';
 const googleLogo = 'https://i.ytimg.com/vi/PAKCgvprpQ8/maxresdefault.jpg';
@@ -201,6 +202,103 @@ function updateActiveRoutes(route, pathname) {
  */
 export function getNavItems(pathname = '') {
   return !pathname || pathname === '' ? routes : routes.map(route => updateActiveRoutes(route, pathname));
+}
+
+/**
+ * This function is called any time the browser's url changes. Currently
+ * it just scrolls to the top of the page or to a given hash after the
+ * page finishes animating.
+ */
+export function onUpdate() {
+  const { hash } = window.location;
+  if(hash) {
+    setTimeout(() => {
+      const { offsetHeight } = document.querySelector('.md-navigation-drawer-toolbar');
+      const el = document.getElementById(hash.replace('#', ''));
+      if(el) {
+        window.scrollTo(0, el.offsetTop - offsetHeight);
+      } else {
+        (document.body || document.documentElement).scrollTop = 0;
+      }
+    }, 300);
+  } else {
+    (document.body || document.documentElement).scrollTop = 0;
+  }
+}
+
+function getComponentSearchObjects({ to }) {
+  const id = toPropTypeId(to);
+  const ids = [id];
+  switch(id) {
+    case 'card':
+      ids.push('card-action-overlay');
+      ids.push('card-actions');
+      ids.push('card-media');
+      ids.push('card-text');
+      ids.push('card-title');
+      break;
+    case 'floating-button':
+      ids.push('speed-dial');
+      break;
+    case 'data-table':
+      ids.push('table-body');
+      ids.push('table-header');
+      ids.push('table-row');
+      ids.push('table-column');
+      ids.push('edit-dialog-column');
+      break;
+    case 'list':
+      ids.push('list-item');
+      ids.push('list-item-control');
+      break;
+    case 'radio':
+      ids.push('radio-group');
+      break;
+    case 'tab':
+      ids.push('tabs');
+      break;
+    default:
+  }
+
+  return ids.map(id => {
+    return {
+      key: id,
+      component: Link,
+      to: {
+        pathname: to,
+        hash: '#prop-types-' + id,
+      },
+      primaryText: toTitle(id),
+    };
+  });
+}
+
+function getSearchObjects(route, objects = []) {
+  if(route.nestedItems) {
+    objects = flatten(route.nestedItems.map(route => getSearchObjects(route)));
+  } else if(route.to && route.to.indexOf('components') !== -1) {
+    objects = objects.concat(getComponentSearchObjects(route));
+  }
+
+  return objects;
+}
+
+export function getRoutesFuse() {
+  return routes.reduce((searchables, route) => {
+    if(route.primaryText === 'Components') {
+      route.nestedItems.forEach(route => {
+        getSearchObjects(route).forEach(so => {
+          searchables.push(so);
+        });
+      });
+    } else if(route.nestedItems) {
+      route.nestedItems.forEach(route => {
+        searchables.push(Object.assign({}, route, { key: route.to }));
+      });
+    }
+
+    return searchables;
+  }, []);
 }
 
 // When webpack 2.x.x is released

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 import Menu from 'react-md/lib/Menus';
@@ -29,8 +30,11 @@ export default class QuickSearch extends Component {
   };
 
   handleKeyDown = (e) => {
-    const isTab = (e.which || e.keyCode) === TAB;
-    if((e.shiftKey && isTab) || (isTab && !this.props.matches.length)) {
+    if((e.which || e.keyCode) !== TAB) { return; }
+    const { target } = e;
+    const node = findDOMNode(this);
+    const tiles = node.querySelectorAll('.md-list-tile');
+    if(target === tiles[tiles.length - 1] || (e.shiftKey && target === node.querySelector('.md-text-field'))) {
       this.props.hideOverlay();
     }
   };
@@ -40,38 +44,28 @@ export default class QuickSearch extends Component {
 
     let items;
     if(isOverlayVisible) {
-      items = matches.map((props, i) => (
-        <ListItem
-          tabIndex={0}
-          {...props}
-          onClick={() => {
-            console.log('props:', props);
-            hideOverlay();
-          }}
-          onKeyDown={i + 1 >= matches.length ? this.handleItemKeyDown : null}
-        />
-      ));
+      items = matches.map(props => <ListItem {...props} onClick={hideOverlay} />);
     }
 
     return (
-      <span>
-        <TextField
-          label="Quick Search..."
-          block={true}
-          onFocus={showOverlay}
-          onKeyDown={this.handleKeyDown}
-          onChange={searchForComponent}
-          className="quick-search"
-        />
-        <Menu
-          isOpen={isOverlayVisible && matches.length > 0}
-          position={Menu.Positions.TOP_LEFT}
-          className="quick-search-menu-container"
-          listClassName="quick-search-menu"
-        >
-          {items}
-        </Menu>
-      </span>
+      <Menu
+        isOpen={isOverlayVisible && matches.length > 0}
+        position={Menu.Positions.TOP_LEFT}
+        className="quick-search-menu-container"
+        listClassName="quick-search-menu"
+        onKeyDown={this.handleKeyDown}
+        toggle={
+          <TextField
+            label="Quick Search..."
+            block={true}
+            onFocus={showOverlay}
+            onChange={searchForComponent}
+            className="quick-search"
+          />
+        }
+      >
+        {items}
+      </Menu>
     );
   }
 }

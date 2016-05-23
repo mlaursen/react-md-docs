@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { IconButton } from 'react-md/lib/Buttons';
 import { Card, CardTitle } from 'react-md/lib/Cards';
@@ -30,16 +29,6 @@ export default class DocgenPropTypes extends Component {
     description: PropTypes.string.isRequired,
     props: PropTypes.object.isRequired,
   };
-
-  componentDidMount() {
-    if(window.location.hash === `#prop-types-${toPropTypeId(this.props.component)}`) {
-      setTimeout(() => {
-        const { offsetHeight } = document.querySelector('.md-navigation-drawer-toolbar');
-        const { offsetTop } = findDOMNode(this);
-        window.scrollTo(0, offsetTop - offsetHeight);
-      }, 1000);
-    }
-  }
 
   sort = () => {
     const ascending = !this.state.ascending;

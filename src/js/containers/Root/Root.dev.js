@@ -5,6 +5,7 @@ import { Router } from 'react-router';
 
 import routes from '../../routes';
 import DevTools from '../DevTools';
+import { onUpdate } from '../../utils/RouteUtils';
 
 export default class Root extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Router history={history} routes={routes} onUpdate={() => { document.body.scrollTop = 0;}}/>
+          <Router history={history} routes={routes} onUpdate={onUpdate} />
           <DevTools />
         </div>
       </Provider>
