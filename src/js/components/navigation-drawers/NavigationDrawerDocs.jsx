@@ -5,6 +5,8 @@ import DocPage from 'react-doc-page';
 import about from './NavigationDrawers.md';
 import AppRaw from '!!raw!../../containers/App';
 import NavigationDrawerDemo from './NavigationDrawerDemo';
+import NewPageDemo from './NewPageDemo';
+import NewPageDemoRaw from '!!raw!./NewPageDemo';
 
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import NavigationDrawerDocgen from '!!json!docgen/NavigationDrawer.json';
@@ -24,6 +26,10 @@ export default class NavigationDrawerDocs extends Component {
         text={about}
         sectionName="Navigation Drawers"
         examples={[{
+          name: 'NavigationDrawer Demo',
+          code: NewPageDemoRaw,
+          children: <NewPageDemo />,
+        }, {
           name: 'About Navigation Drawers',
           code: AppRaw,
           children: <NavigationDrawerDemo />,

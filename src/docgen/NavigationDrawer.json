@@ -137,7 +137,7 @@
       "closeDrawer": {
         "type": {
           "name": "custom",
-          "raw": "(props, propName, component) => {\n  const { PERSISTENT, PERSISTENT_MINI } = NavigationDrawer.DrawerType;\n  const { drawerType } = props;\n  if(drawerType !== PERSISTENT && drawerType !== PERSISTENT_MINI) {\n    return;\n  }\n\n  return PropTypes.func.isRequired(props, propName, component)\n    || PropTypes.string.isRequired(props, 'closeIconClassName', component)\n    || PropTypes.node(props, 'closeIconChildren', component);\n}"
+          "raw": "(props, propName, component) => {\n  const { PERSISTENT, PERSISTENT_MINI } = NavigationDrawer.DrawerType;\n  const { drawerType } = props;\n  if(drawerType !== PERSISTENT && drawerType !== PERSISTENT_MINI) {\n    return;\n  }\n\n  return PropTypes.func.isRequired(props, propName, component)\n    || PropTypes.string(props, 'closeIconClassName', component)\n    || PropTypes.node(props, 'closeIconChildren', component);\n}"
         },
         "required": false,
         "description": "A function to call that will close the navigation drawer. If the drawer\nis persistent or persistent mini, this function is required."
