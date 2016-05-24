@@ -129,6 +129,8 @@ function extractNestedPropTypeDescriptions({ name, value, description, computed 
       });
       break;
     case 'union':
+      value.forEach(value => extractNestedPropTypeDescriptions(value, propName, descriptions));
+      break;
     case 'arrayOf':
     case 'enum':
       extractNestedPropTypeDescriptions(value, propName, descriptions);
