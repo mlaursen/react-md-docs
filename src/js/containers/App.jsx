@@ -14,6 +14,7 @@ import { hideOverlay } from '../actions/ui';
 import ThemeSwitcher from './ThemeSwitcher';
 import AppFooter from '../components/AppFooter';
 import QuickSearch from './QuickSearch';
+import QuickNav from './QuickNav';
 
 @connect(state => {
   return {
@@ -99,6 +100,11 @@ export default class App extends Component {
       toolbarChildren = <QuickSearch />;
     }
 
+    let quickNav;
+    if(!isHome) {
+      quickNav = <QuickNav />;
+    }
+
     return (
       <div className={isHome ? 'theme-1' : theme}>
         <NavigationDrawer
@@ -126,6 +132,7 @@ export default class App extends Component {
           >
             {React.cloneElement(children, { key: location.pathname })}
           </CSSTransitionGroup>
+          {quickNav}
           <AppFooter />
           <Snackbar toasts={toasts} dismiss={dismissToast} />
           <Overlay isOpen={isOverlayVisible} onClick={hideOverlay} className="quick-search" />

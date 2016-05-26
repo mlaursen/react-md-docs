@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { FlatButton } from 'react-md/lib/Buttons';
 import FontIcon from 'react-md/lib/FontIcons';
+import { FlatButton } from 'react-md/lib/Buttons';
 
 import { GITHUB_LINK } from '../utils';
 

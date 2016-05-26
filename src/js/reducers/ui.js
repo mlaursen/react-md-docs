@@ -10,7 +10,9 @@ import {
 import themes from '../constants/themes';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
-import { toTitle } from '../utils/StringUtils';
+import { toTitle, toPropTypeId } from '../utils/StringUtils';
+import { routes } from '../utils/RouteUtils';
+import { flatten } from '../utils';
 
 function updateDrawer(state, isOpen) {
   if(state.isDrawerOpen !== isOpen) {
@@ -57,6 +59,56 @@ function updateOverlay(state, isOverlayVisible) {
     : Object.assign({}, state, { isOverlayVisible });
 }
 
+let quickNavRoutes;
+function extractRealRoutes(route) {
+  if(route.nestedItems) {
+    return route.nestedItems.map(extractRealRoutes);
+  } else if(route.to && route.to !== '/') {
+    let primaryText = route.primaryText;
+    if(route.to.indexOf('components') !== -1) {
+      primaryText = toTitle(toPropTypeId(route.to));
+    }
+
+    return {
+      primaryText,
+      to: route.to,
+    };
+  } else {
+    return null;
+  }
+}
+
+function updateQuickNavLinks(state, pathname) {
+  if(!quickNavRoutes) {
+    quickNavRoutes = flatten(routes.map(extractRealRoutes)).filter(r => !!r);
+  }
+
+  let i = 0;
+  quickNavRoutes.some((r, index) => {
+    if(r.to === pathname) {
+      i = index;
+      return true;
+    }
+
+    return false;
+  });
+
+  const previous = quickNavRoutes[i - 1] || {};
+  const next = quickNavRoutes[i + 1] || {};
+  const nextState = {
+    previousTo: previous.to || null,
+    previousName: previous.primaryText || null,
+    nextTo: next.to || null,
+    nextName: next.primaryText || null,
+  };
+
+  if(state.previousTo === nextState.previousTo) {
+    return state;
+  } else {
+    return Object.assign({}, state, nextState);
+  }
+}
+
 const initialState = {
   isDrawerOpen: false,
   theme: typeof Storage !== 'undefined' && localStorage.getItem('theme') || themes[1],
@@ -81,6 +133,9 @@ export default function ui(state = initialState, action) {
       return updateOverlay(state, true);
     case UI_HIDE_OVERLAY:
       return updateOverlay(state, false);
+    case '@@router/LOCATION_CHANGE':
+      // probably shouldn't it do it this way. Oh well
+      return updateQuickNavLinks(state, action.payload.pathname);
     default:
       return state;
   }
