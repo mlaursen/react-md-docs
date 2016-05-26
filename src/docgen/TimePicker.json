@@ -3,12 +3,33 @@
     "source": "src/js/Pickers/TimePickerContainer.js",
     "description": "",
     "props": {
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the time picker's container."
+      },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "An optional className to apply to the year picker."
+        "description": "An optional className to apply to the time picker's container."
+      },
+      "pickerStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "An optional style to apply to the time picker."
+      },
+      "pickerClassName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "An optional className to apply to the time picker."
       },
       "icon": {
         "type": {
@@ -94,7 +115,7 @@
         "required": true,
         "description": "The locales to use for formatting the date. This will default to using\nthe user's language in the browser or `'en-US'` when server renering.",
         "defaultValue": {
-          "value": "window.navigator.userLanguage || window.navigator.language",
+          "value": "typeof window !== 'undefined'\n  ? window.navigator.userLanguage || window.navigator.language\n  : 'en-US'",
           "computed": false
         }
       },

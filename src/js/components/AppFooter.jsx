@@ -25,7 +25,7 @@ export default class AppFooter extends Component {
           <div className="contribute">
             <h4 className="md-title">Contributing</h4>
             <p className="md-body-2">
-              This project is currently developed by a single persion. Feel free
+              This project is currently developed by a single person. Feel free
               to contribute!
             </p>
             <FlatButton secondary={true} label="Github" href={GITHUB_LINK} type={null}>

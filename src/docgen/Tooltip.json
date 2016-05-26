@@ -50,6 +50,17 @@
           "computed": false
         }
       },
+      "tooltipTouchTimeout": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": "The timeout to use for displaying the tooltip when using a touch device.",
+        "defaultValue": {
+          "value": "500",
+          "computed": false
+        }
+      },
       "onKeyUp": {
         "type": {
           "name": "func"

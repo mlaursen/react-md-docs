@@ -45,6 +45,13 @@
         "required": false,
         "description": "An optional onTouchStart function to call along with the ink creation onTouchStart."
       },
+      "onTouchMove": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "An optional onTouchMove function to call along with the ink creation onTouchMove."
+      },
       "onTouchEnd": {
         "type": {
           "name": "func"

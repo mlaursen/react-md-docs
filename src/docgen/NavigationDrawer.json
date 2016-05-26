@@ -66,17 +66,6 @@
         "required": true,
         "description": "Boolean if the navigation drawer is currently open."
       },
-      "isMobile": {
-        "type": {
-          "name": "bool"
-        },
-        "required": true,
-        "description": "Boolean if the current device is mobile.",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
       "title": {
         "type": {
           "name": "string"
