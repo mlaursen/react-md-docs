@@ -7,7 +7,7 @@ import SnackbarExamplesRaw from '!!raw!./SnackbarExamples';
 import MobileFabExample from './MobileFabExample';
 import MobileFabExampleRaw from '!!raw!./MobileFabExample';
 
-import Snackbar from '!!json!docgen/Snackbar.json';
+import Snackbar from 'docgen/Snackbar.json';
 
 const text = `
 Snackbars provide lightweight feedback about an operation by showing a brief message

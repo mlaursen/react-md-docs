@@ -12,9 +12,9 @@ import UncontrolledNestedExampleRaw from '!!raw!./UncontrolledNestedExample';
 import ControlledNestedExample from './ControlledNestedExample';
 import ControlledNestedExampleRaw from '!!raw!./ControlledNestedExample';
 
-import List from '!!json!docgen/List.json';
-import ListItem from '!!json!docgen/ListItem.json';
-import ListItemControl from '!!json!docgen/ListItemControl.json';
+import List from 'docgen/List.json';
+import ListItem from 'docgen/ListItem.json';
+import ListItemControl from 'docgen/ListItemControl.json';
 
 const text = `
 Lists present multiple line items vertically as a single continuous element.

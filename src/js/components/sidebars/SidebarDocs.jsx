@@ -7,7 +7,7 @@ import SidebarExamplesRaw from '!!raw!./SidebarExamples';
 import ResponsiveSidebarExample from './ResponsiveSidebarExample';
 import ResponsiveSidebarExampleRaw from '!!raw!./ResponsiveSidebarExample';
 
-import Sidebar from '!!json!docgen/Sidebar.json';
+import Sidebar from 'docgen/Sidebar.json';
 
 const text = `
 The sidebar is responsive by default. This means that when it

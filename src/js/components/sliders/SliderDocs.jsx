@@ -6,7 +6,7 @@ import ContinuousSliderExamples from './ContinuousSliderExamples';
 import ContinuousSliderExamplesRaw from '!!raw!./ContinuousSliderExamples';
 import DiscreteSliderExamples from './DiscreteSliderExamples';
 import DiscreteSliderExamplesRaw from '!!raw!./DiscreteSliderExamples';
-import Slider from '!!json!docgen/Slider.json';
+import Slider from 'docgen/Slider.json';
 
 const text = `
 Sliders let users select a value from a continuous or discrete range of

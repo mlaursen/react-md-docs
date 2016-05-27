@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import FlatButtonExamples from './FlatButtonExamples';
 import FlatButtonExamplesRaw from '!!raw!./FlatButtonExamples';
 
-import FlatButton from '!!json!docgen/FlatButton.json';
+import FlatButton from 'docgen/FlatButton.json';
 
 const text = `
 A button clearly communicates what action will occur when the user touches it.

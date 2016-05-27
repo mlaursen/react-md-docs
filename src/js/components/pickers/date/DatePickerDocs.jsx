@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import DatePickerExamples from './DatePickerExamples';
 import DatePickerExamplesRaw from '!!raw!./DatePickerExamples';
-import DatePicker from '!!json!docgen/DatePicker.json';
+import DatePicker from 'docgen/DatePicker.json';
 DatePicker.props.DateTimeFormat.defaultValue = {
   computed: false,
   value: `Intl.DateTimeFormat || (locales, options) => { format: date => date }`,

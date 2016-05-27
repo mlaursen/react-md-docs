@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import TimePickerExamples from './TimePickerExamples';
 import TimePickerExamplesRaw from '!!raw!./TimePickerExamples';
-import TimePicker from '!!json!docgen/TimePicker.json';
+import TimePicker from 'docgen/TimePicker.json';
 TimePicker.props.DateTimeFormat.defaultValue = {
   computed: false,
   value: `Intl.DateTimeFormat || (locales, options) => { format: date => date }`,

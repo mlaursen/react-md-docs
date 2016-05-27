@@ -9,7 +9,7 @@ import ModalDialogExamplesRaw from '!!raw!./ModalDialogExamples';
 import FullPageDialogExamples from './FullPageDialogExamples';
 import FullPageDialogExamplesRaw from '!!raw!./FullPageDialogExamples';
 
-import Dialog from '!!json!docgen/DialogContainer.json';
+import Dialog from 'docgen/DialogContainer.json';
 Dialog.component = 'Dialog';
 
 const text = `

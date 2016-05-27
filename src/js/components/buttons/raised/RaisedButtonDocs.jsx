@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import RaisedButtonExamples from './RaisedButtonExamples';
 import RaisedButtonExamplesRaw from '!!raw!./RaisedButtonExamples';
 
-import RaisedButton from '!!json!docgen/RaisedButton.json';
+import RaisedButton from 'docgen/RaisedButton.json';
 
 const text = `
 A button clearly communicates what action will occur when the user touches it.

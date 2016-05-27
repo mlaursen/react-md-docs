@@ -8,7 +8,7 @@ import ToolbarExamplesRaw from '!!raw!./ToolbarExamples';
 //import FakeTextEditorExampleRaw from '!!raw!./FakeTextEditorExample';
 import ToolbarWithTabsExample from './ToolbarWithTabsExample';
 import ToolbarWithTabsExampleRaw from '!!raw!./ToolbarWithTabsExample';
-import Toolbar from '!!json!docgen/Toolbar.json';
+import Toolbar from 'docgen/Toolbar.json';
 
 const text = `
 A toolbar is a container that has an optional title and 1 to many actionable areas.

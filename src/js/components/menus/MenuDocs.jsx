@@ -7,7 +7,7 @@ import MenuExamplesRaw from '!!raw!./MenuExamples';
 import ToggleableMenuExamlples from './ToggleableMenuExamlples';
 import ToggleableMenuExamlplesRaw from '!!raw!./ToggleableMenuExamlples';
 
-import Menu from '!!json!docgen/Menu.json';
+import Menu from 'docgen/Menu.json';
 global.Menu = require('react-md/lib/Menus'); //eslint-disable-line no-undef
 
 const text = `

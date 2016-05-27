@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import IconButtonExamples from './IconButtonExamples';
 import IconButtonExamplesRaw from '!!raw!./IconButtonExamples';
 
-import IconButton from '!!json!docgen/IconButton.json';
+import IconButton from 'docgen/IconButton.json';
 
 const text = `
 An icon button is just a simple wrapper of a \`FontIcon\` inside of a button.

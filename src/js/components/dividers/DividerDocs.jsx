@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import DividerExamples from './DividerExamples';
 import DividerExamplesRaw from '!!raw!./DividerExamples';
 
-import Divider from '!!json!docgen/Divider.json';
+import Divider from 'docgen/Divider.json';
 
 const text = `
 Dividers group and separate content within lists and page layouts.

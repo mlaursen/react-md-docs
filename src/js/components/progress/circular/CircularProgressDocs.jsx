@@ -7,7 +7,7 @@ import DeterminateExampleRaw from '!!raw!./DeterminateExample';
 import IndeterminateExample from './IndeterminateExample';
 import IndeterminateExampleRaw from '!!raw!./IndeterminateExample';
 
-import CircularProgress from '!!json!docgen/CircularProgress.json';
+import CircularProgress from 'docgen/CircularProgress.json';
 
 const text = `
 Minimize visual changes that occur while your app loads content by representing each operation

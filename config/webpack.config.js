@@ -39,7 +39,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'raw',
     }, {
-      test: '/\.json$/',
+      test: /\.json$/,
       exclude: /node_modules/,
       loader: 'json',
     }],

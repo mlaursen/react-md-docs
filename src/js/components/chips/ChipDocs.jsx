@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import ChipExamples from './ChipExamples';
 import ChipExamplesRaw from '!!raw!./ChipExamples';
 
-import Chip from '!!json!docgen/Chip.json';
+import Chip from 'docgen/Chip.json';
 
 const text = `
 Chips represent complex entities in small blocks, such as a contact.

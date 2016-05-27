@@ -9,7 +9,7 @@ import IndeterminateExampleRaw from '!!raw!./IndeterminateExample';
 import QueryIndeterminateExample from './QueryIndeterminateExample';
 import QueryIndeterminateExampleRaw from '!!raw!./QueryIndeterminateExample';
 
-import LinearProgress from '!!json!docgen/LinearProgress.json';
+import LinearProgress from 'docgen/LinearProgress.json';
 
 const text = `
 Minimize visual changes that occur while your app loads content by representing each operation

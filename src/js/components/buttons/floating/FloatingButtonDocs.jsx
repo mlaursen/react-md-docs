@@ -7,8 +7,8 @@ import FloatingButtonExamplesRaw from '!!raw!./FloatingButtonExamples';
 import SpeedDialExample from './SpeedDialExample';
 import SpeedDialExampleRaw from '!!raw!./SpeedDialExample';
 
-import FloatingButton from '!!json!docgen/FloatingButton.json';
-import SpeedDial from '!!json!docgen/SpeedDial.json';
+import FloatingButton from 'docgen/FloatingButton.json';
+import SpeedDial from 'docgen/SpeedDial.json';
 
 const text = `
 A button clearly communicates what action will occur when the user touches it.

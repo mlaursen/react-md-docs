@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import InkExamples from './InkExamples';
 import InkExamplesRaw from '!!raw!./InkExamples';
-import Ink from '!!json!docgen/Ink.json';
+import Ink from 'docgen/Ink.json';
 
 const text = `
 Material design Ink is used to show that an element has been touched or has focus. You
