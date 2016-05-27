@@ -34,6 +34,7 @@ export default class QuickNav extends Component {
           name={previousName}
           icon="arrow_back"
           align="left"
+          className={!nextTo ? 'only' : null}
         />
       );
     } else {
@@ -50,6 +51,8 @@ export default class QuickNav extends Component {
           align="right"
         />
       );
+    } else {
+      next = <div className="quick-nav-link" />;
     }
     return (
       <section className="quick-nav">

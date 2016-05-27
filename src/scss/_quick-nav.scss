@@ -1,9 +1,11 @@
 @import '~helpers';
+$quick-nav-height: 88px;
 
 .quick-nav {
   background: $md-primary-color;
   display: flex;
   flex-wrap: nowrap;
+  height: $quick-nav-height;
   justify-content: space-around;
   padding: 1em;
   width: 100%;
@@ -45,11 +47,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .quick-nav-link.right {
+  .quick-nav-link.right,
+  .quick-nav-link.only {
     width: 80%;
   }
 
-  .quick-nav-link.left {
+  .quick-nav-link.left:not(.only) {
     align-items: flex-end;
     display: flex;
     margin-bottom: 6px;

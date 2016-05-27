@@ -6,7 +6,6 @@
 @import 'prop-types';
 @import 'markdown';
 @import 'themes';
-@import 'media-queries';
 @import 'phone-size';
 @import 'quick-search';
 @import 'quick-nav';
@@ -22,3 +21,5 @@
 @import 'pages/select-fields';
 @import 'pages/tooltips';
 @import 'pages/not-found';
+
+@import 'media-queries';

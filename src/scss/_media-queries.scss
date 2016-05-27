@@ -104,20 +104,20 @@
 @media only screen and (orientation: portrait) and (max-width: 599px) {
   .not-found,
   main {
-    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-mobile-portrait-height});
+    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-mobile-portrait-height + $quick-nav-height});
   }
 }
 
 @media only screen and (orientation: landscape) and (max-width: 599px) {
   .not-found,
   main {
-    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-mobile-landscape-height});
+    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-mobile-landscape-height + $quick-nav-height});
   }
 }
 
 @media only screen and (min-width: 600px) {
   .not-found,
   main {
-    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-desktop-height});
+    min-height: calc(100vh - #{$footer-min-height + $md-toolbar-desktop-height + $quick-nav-height});
   }
 }

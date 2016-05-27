@@ -8,7 +8,7 @@
     "start": "npm run build && node server.js",
     "prebuild": "rimraf dist",
     "scripts": "webpack --config config/webpack-prod.config.js --progress --colors",
-    "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline",
+    "browser": "webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline --host 0.0.0.0",
     "sassdoc": "sassdoc node_modules/react-md/src/scss -d dist/sassdoc",
     "build": "npm run scripts && npm run sassdoc"
   },
