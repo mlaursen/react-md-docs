@@ -10,7 +10,7 @@ import NewPageDemoRaw from '!!raw!./NewPageDemo';
 
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import NavigationDrawerDocgen from '!!json!docgen/NavigationDrawer.json';
-window.NavigationDrawer = NavigationDrawer;
+global.NavigationDrawer = NavigationDrawer;
 
 export default class NavigationDrawerDocs extends Component {
   constructor(props) {

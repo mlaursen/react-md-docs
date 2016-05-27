@@ -68,24 +68,24 @@ export default class Home extends Component {
           <img src={logo} alt="react-md logo" className="logo" />
           <RaisedButton onClick={this.viewDemo} label="View Demo" secondary />
         </section>
-        <Markdown markdown={about} className="about container text-container" />
+        <Markdown markdown={about} className="about container" />
         <section className="getting-started md-card-list">
           <ImgCard
             to="getting-started/prerequisites"
             src={gettingStarted}
-            alt="A person figure sitting at a desk looking at a laptop."
+            alt="A Mac and a Macbook with design mock ups."
             title="Getting Started"
           />
           <ImgCard
             to="customization/colors"
             src={customization}
-            alt="A person figure painting on a canvas."
+            alt="A chemistry set with material design colors flowing into a text editor."
             title="Customization"
           />
           <ImgCard
             to={FIRST_COMPONENT_LINK}
             src={components}
-            alt="Two person figures carrying a material item shaped like a pipe."
+            alt="A pickture of a data chip."
             title="Components"
           />
         </section>

@@ -16,7 +16,9 @@ secondary text. It also disables the hover effect on a list item.
 `;
 
 const formatDate = date => {
-  const lang = window.navigator.userLanguage || window.navigator.language;
+  const lang = typeof window !== 'undefined'
+    ? window.navigator.userLanguage || window.navigator.language
+    : 'en-US';
   return Intl.DateTimeFormat(lang, {
     month: '2-digit',
     year: '2-digit',

@@ -109,12 +109,14 @@ function updateQuickNavLinks(state, pathname) {
   }
 }
 
-const initialState = {
+export const initialState = {
   isDrawerOpen: false,
   theme: typeof Storage !== 'undefined' && localStorage.getItem('theme') || themes[1],
   drawerType: NavigationDrawer.DrawerType.FULL_HEIGHT,
   isOverlayVisible: false,
-  isMobile: window.matchMedia('only screen and (max-width: 599px)').matches,
+  isMobile: typeof window !== 'undefined'
+    ? window.matchMedia('only screen and (min-width: 320px) and (max-width: 1024px)').matches
+    : false,
 };
 
 export default function ui(state = initialState, action) {

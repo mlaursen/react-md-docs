@@ -23,6 +23,8 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 /*eslint-env node*/
-window.Perf = require('react-addons-perf');
+if(process.env.NODE_ENV !== 'production') {
+  window.Perf = require('react-addons-perf');
+}
 
 render(<Root store={store} history={history} />, document.getElementById('app'));

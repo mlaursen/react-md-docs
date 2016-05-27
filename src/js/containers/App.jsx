@@ -96,7 +96,7 @@ export default class App extends Component {
       navHeaderChildren = <ThemeSwitcher />;
     }
 
-    if(!isHome && window.matchMedia('only screen and (min-width: 600px)').matches) {
+    if(!isHome && !isMobile) {
       toolbarChildren = <QuickSearch />;
     }
 
