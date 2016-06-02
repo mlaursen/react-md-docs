@@ -26,8 +26,6 @@ config.plugins = config.plugins.concat([
       NODE_ENV: JSON.stringify('production'),
     },
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     compress: { warnings: false },

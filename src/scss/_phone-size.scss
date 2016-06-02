@@ -1,3 +1,5 @@
+@import '~helpers';
+
 .phone-size-container {
   @extend %centered;
   @include md-typography-mobile();
@@ -11,6 +13,10 @@
   overflow-y: auto;
   position: relative;
   width: 360px;
+
+  &.noscroll .phone-size-content {
+    overflow-y: hidden;
+  }
 
   .container {
     @extend %centered;
@@ -58,10 +64,17 @@
       max-height: calc(600px - #{$md-toolbar-mobile-portrait-height + 72px});
     }
   }
+
+  .md-bottom-navigation {
+    position: absolute;
+  }
 }
 
 .phone-size-container .container,
 .phone-size-content {
   height: calc(600px - #{$md-toolbar-mobile-portrait-height});
+}
+
+.phone-size-content {
   overflow-y: auto;
 }

@@ -5,6 +5,7 @@
 
 files=(
   'Avatars/Avatar'
+  'BottomNavigations/BottomNavigation'
   'Buttons/FlatButton'
   'Buttons/FloatingButton'
   'Buttons/IconButton'

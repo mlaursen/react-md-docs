@@ -54,6 +54,10 @@ export function getRandomBooleans(size) {
   return Array.apply(null, new Array(size)).map(() => getRandomBoolean());
 }
 
+export function getRandomInt({ min, max } = { min: 0, max: 10 }) {
+  return Math.floor(Math.random() * max) + min;
+}
+
 export function sort(arr, key, ascending) {
   const list = arr.slice();
   const multiplier = ascending ? 1 : -1;

@@ -19,3 +19,8 @@
 %justify-between {
   justify-content: space-between;
 }
+
+%inline-top {
+  display: inline-block;
+  vertical-align: top;
+}

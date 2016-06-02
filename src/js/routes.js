@@ -17,6 +17,7 @@ export default {
         require('./components/customization').default,
         require('./components/discover-more').default,
         require('./components/avatars').default,
+        require('./components/bottom-navigations').default,
         require('./components/buttons').default,
         require('./components/cards').default,
         require('./components/chips').default,

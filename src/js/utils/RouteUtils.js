@@ -97,7 +97,8 @@ export const routes = [{
   icon: 'build',
   path: 'components',
   nestedItems: [
-    'avatars', {
+    'avatars',
+    'bottom-navigations', {
       path: 'buttons',
       nestedItems: ['flat', 'raised', 'floating', 'icon'],
     },
