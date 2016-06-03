@@ -25,8 +25,8 @@ export function randomImages(amt, options = { width: 40 }) {
   });
 }
 
-export function randomAvatars(amt) {
-  return randomImages(amt).map(src => <Avatar key={src} src={src} />);
+export function randomAvatars(amt, className) {
+  return randomImages(amt).map(src => <Avatar key={src} src={src} className={className} />);
 }
 
 export function getViewSize() {

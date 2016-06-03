@@ -1,6 +1,4 @@
 import {
-  UI_OPEN_DRAWER,
-  UI_CLOSE_DRAWER,
   UI_UPDATE_TITLE,
   UI_UPDATE_THEME,
   UI_UPDATE_DRAWER_TYPE,
@@ -13,14 +11,6 @@ import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 import { toTitle, toPropTypeId } from '../utils/StringUtils';
 import { routes } from '../utils/RouteUtils';
 import { flatten } from '../utils';
-
-function updateDrawer(state, isOpen) {
-  if(state.isDrawerOpen !== isOpen) {
-    return Object.assign({}, state, { isDrawerOpen: isOpen });
-  }
-
-  return state;
-}
 
 function updateTitle(state, pathname) {
   const path = pathname.replace('/', '');
@@ -117,14 +107,13 @@ export const initialState = {
   isMobile: typeof window !== 'undefined'
     ? window.matchMedia('only screen and (min-width: 320px) and (max-width: 1024px)').matches
     : false,
+  isLandscapeTablet: typeof window !== 'undefined'
+    ? window.matchMedia('only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape)').matches
+    : false,
 };
 
 export default function ui(state = initialState, action) {
   switch(action.type) {
-    case UI_OPEN_DRAWER:
-      return updateDrawer(state, true);
-    case UI_CLOSE_DRAWER:
-      return updateDrawer(state, false);
     case UI_UPDATE_TITLE:
       return updateTitle(state, action.pathname);
     case UI_UPDATE_THEME:

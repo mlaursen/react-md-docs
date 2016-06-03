@@ -8,7 +8,7 @@ import Snackbar from 'react-md/lib/Snackbars';
 
 import Overlay from 'react-md/lib/Transitions/Overlay';
 import { getNavItems } from '../utils/RouteUtils';
-import { openDrawer, closeDrawer, updateTitle } from '../actions/ui';
+import { updateTitle } from '../actions/ui';
 import { dismissToast } from '../actions/docs';
 import { hideOverlay } from '../actions/ui';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -19,17 +19,15 @@ import QuickNav from './QuickNav';
 @connect(state => {
   return {
     marked: state.docs.marked,
-    isOpen: state.ui.isDrawerOpen,
     title: state.ui.title,
     theme: state.ui.theme,
     drawerType: state.ui.drawerType,
     toasts: state.docs.toasts,
     isOverlayVisible: state.ui.isOverlayVisible,
     isMobile: state.ui.isMobile,
+    isLandscapeTablet: state.ui.isLandscapeTablet,
   };
 }, {
-  openDrawer,
-  closeDrawer,
   updateTitle,
   dismissToast,
   hideOverlay,
@@ -42,14 +40,12 @@ export default class App extends Component {
   static propTypes = {
     // from redux
     marked: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool.isRequired,
+    isLandscapeTablet: PropTypes.bool.isRequired,
     isMobile: PropTypes.bool.isRequired,
     title: PropTypes.string,
     theme: PropTypes.string,
     drawerType: PropTypes.string.isRequired,
     toasts: PropTypes.array.isRequired,
-    openDrawer: PropTypes.func.isRequired,
-    closeDrawer: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
     dismissToast: PropTypes.func.isRequired,
     isOverlayVisible: PropTypes.bool.isRequired,
@@ -67,18 +63,15 @@ export default class App extends Component {
 
   componentWillUpdate(nextProps) {
     if(this.props.location.pathname !== nextProps.location.pathname) {
-      const { updateTitle, location, closeDrawer } = nextProps;
+      const { updateTitle, location } = nextProps;
       updateTitle(location.pathname);
-      closeDrawer();
     }
   }
 
   render() {
     const {
-      isOpen,
       isMobile,
-      openDrawer,
-      closeDrawer,
+      isLandscapeTablet,
       location,
       title,
       theme,
@@ -91,8 +84,9 @@ export default class App extends Component {
     } = this.props;
 
     const isHome = location.pathname === '/';
+    const { PERSISTENT, PERSISTENT_MINI } = NavigationDrawer.DrawerType;
     let navHeaderChildren, toolbarChildren;
-    if([NavigationDrawer.DrawerType.PERSISTENT, NavigationDrawer.DrawerType.PERSISTENT_MINI].indexOf(drawerType) === -1 && !isHome) {
+    if([PERSISTENT, PERSISTENT_MINI].indexOf(drawerType) === -1 && !isHome && !(isLandscapeTablet)) {
       navHeaderChildren = <ThemeSwitcher />;
     }
 
@@ -108,17 +102,14 @@ export default class App extends Component {
     return (
       <div className={isHome ? 'theme-1' : theme}>
         <NavigationDrawer
-          containerClassName="react-md-docs"
-          title="react-md"
+          className="react-md-docs"
+          drawerTitle="react-md"
           toolbarTitle={title}
           toolbarChildren={toolbarChildren}
-          isOpen={isOpen}
-          openDrawer={openDrawer}
-          closeDrawer={closeDrawer}
           navItems={getNavItems(location.pathname)}
-          drawerType={drawerType}
-          navHeaderChildren={navHeaderChildren}
-          isMobile={isMobile}
+          tabletDrawerType={drawerType}
+          desktopDrawerType={drawerType}
+          drawerChildren={navHeaderChildren}
         >
           <CSSTransitionGroup
             component="main"
@@ -133,9 +124,9 @@ export default class App extends Component {
             {React.cloneElement(children, { key: location.pathname })}
           </CSSTransitionGroup>
           {quickNav}
-          <AppFooter />
-          <Snackbar toasts={toasts} dismiss={dismissToast} />
-          <Overlay isOpen={isOverlayVisible} onClick={hideOverlay} className="quick-search" />
+          <AppFooter key="footer"/>
+          <Snackbar key="snackbar" toasts={toasts} dismiss={dismissToast} />
+          <Overlay key="overlay" isOpen={isOverlayVisible} onClick={hideOverlay} className="quick-search" />
         </NavigationDrawer>
       </div>
     );

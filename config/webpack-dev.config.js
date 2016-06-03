@@ -3,7 +3,7 @@
 const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 const devUrl = `http://localhost:${port}`;
 
 const config = require('./webpack.config.js');

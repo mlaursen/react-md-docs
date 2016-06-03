@@ -1,20 +1,10 @@
 import {
-  UI_OPEN_DRAWER,
-  UI_CLOSE_DRAWER,
   UI_UPDATE_TITLE,
   UI_UPDATE_THEME,
   UI_UPDATE_DRAWER_TYPE,
   UI_SHOW_OVERLAY,
   UI_HIDE_OVERLAY,
 } from '../constants/ActionTypes';
-
-export function openDrawer() {
-  return { type: UI_OPEN_DRAWER };
-}
-
-export function closeDrawer() {
-  return { type: UI_CLOSE_DRAWER };
-}
 
 export function updateTitle(pathname) {
   return {
