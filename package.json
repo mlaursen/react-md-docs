@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "scripts": "webpack --config config/webpack-prod.config.js --progress --colors",
     "browser": "npm run docgen && webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline --host 0.0.0.0",
-    "sassdoc": "sassdoc node_modules/react-md/src/scss -d dist/sassdoc",
+    "sassdoc": "scripts/sassdoc.js",
     "docgen": "scripts/docgen.js",
     "build": "npm run docgen && npm run scripts && npm run sassdoc"
   },
