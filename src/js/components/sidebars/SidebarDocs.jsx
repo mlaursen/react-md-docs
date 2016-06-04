@@ -7,7 +7,7 @@ import SidebarExamplesRaw from '!!raw!./SidebarExamples';
 import ResponsiveSidebarExample from './ResponsiveSidebarExample';
 import ResponsiveSidebarExampleRaw from '!!raw!./ResponsiveSidebarExample';
 
-import Sidebar from 'docgen/Sidebar.json';
+import Sidebar from './SidebarDocgen.json';
 
 const text = `
 The sidebar is responsive by default. This means that when it
@@ -50,7 +50,7 @@ export default class SidebarDocs extends Component {
           code: ResponsiveSidebarExampleRaw,
           children: <ResponsiveSidebarExample />,
         }]}
-        docgens={[Sidebar]}
+        docgens={Sidebar}
       />
     );
   }

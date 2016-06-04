@@ -7,7 +7,7 @@ import DeterminateExampleRaw from '!!raw!./DeterminateExample';
 import IndeterminateExample from './IndeterminateExample';
 import IndeterminateExampleRaw from '!!raw!./IndeterminateExample';
 
-import CircularProgress from 'docgen/CircularProgress.json';
+import CircularProgress from './CircularProgressDocgen.json';
 
 const text = `
 Minimize visual changes that occur while your app loads content by representing each operation
@@ -37,7 +37,7 @@ export default class CircularProgressDocs extends Component {
           code: IndeterminateExampleRaw,
           children: <IndeterminateExample />,
         }]}
-        docgens={[CircularProgress]}
+        docgens={CircularProgress}
       />
     );
   }

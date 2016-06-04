@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import FontIconExamples from './FontIconExamples';
 import FontIconExamplesRaw from '!!raw!./FontIconExamples';
 
-import FontIcon from 'docgen/FontIcon.json';
+import FontIcon from './FontIconDocgen.json';
 
 const text = `
 The \`FontIcon\` component is used to render different font libraries
@@ -30,7 +30,7 @@ export default class FontIconDocs extends Component {
           code: FontIconExamplesRaw,
           children: <FontIconExamples />,
         }]}
-        docgens={[FontIcon]}
+        docgens={FontIcon}
       />
     );
   }

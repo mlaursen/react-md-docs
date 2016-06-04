@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import RaisedButtonExamples from './RaisedButtonExamples';
 import RaisedButtonExamplesRaw from '!!raw!./RaisedButtonExamples';
 
-import RaisedButton from 'docgen/RaisedButton.json';
+import RaisedButton from './RaisedButtonDocgen.json';
 
 const text = `
 A button clearly communicates what action will occur when the user touches it.
@@ -39,7 +39,7 @@ export default class RaisedButtonDocs extends Component {
           code: RaisedButtonExamplesRaw,
           children: <RaisedButtonExamples />,
         }]}
-        docgens={[RaisedButton]}
+        docgens={RaisedButton}
       />
     );
   }

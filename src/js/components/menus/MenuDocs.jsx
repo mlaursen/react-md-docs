@@ -7,7 +7,7 @@ import MenuExamplesRaw from '!!raw!./MenuExamples';
 import ToggleableMenuExamlples from './ToggleableMenuExamlples';
 import ToggleableMenuExamlplesRaw from '!!raw!./ToggleableMenuExamlples';
 
-import Menu from 'docgen/Menu.json';
+import Menu from './MenuDocgen.json';
 global.Menu = require('react-md/lib/Menus'); //eslint-disable-line no-undef
 
 const text = `
@@ -36,7 +36,7 @@ export default class MenuDocs extends Component {
           code: ToggleableMenuExamlplesRaw,
           children: <ToggleableMenuExamlples />,
         }]}
-        docgens={[Menu]}
+        docgens={Menu}
       />
     );
   }

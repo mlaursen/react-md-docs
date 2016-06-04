@@ -7,7 +7,7 @@ import SelectFieldExamplesRaw from '!!raw!./SelectFieldExamples';
 import SelectFieldButtonExamples from './SelectFieldButtonExamples';
 import SelectFieldButtonExamplesRaw from '!!raw!./SelectFieldButtonExamples';
 
-import SelectField from 'docgen/SelectField.json';
+import SelectField from './SelectFieldDocgen.json';
 global.SelectField = require('react-md/lib/SelectFields'); //eslint-disable-line no-undef
 
 const text = `
@@ -46,7 +46,7 @@ export default class SelectFieldDocs extends Component {
           code: SelectFieldButtonExamplesRaw,
           children: <SelectFieldButtonExamples />,
         }]}
-        docgens={[SelectField]}
+        docgens={SelectField}
       />
     );
   }

@@ -4,8 +4,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import DatePickerExamples from './DatePickerExamples';
 import DatePickerExamplesRaw from '!!raw!./DatePickerExamples';
-import DatePicker from 'docgen/DatePicker.json';
-DatePicker.props.DateTimeFormat.defaultValue = {
+import DatePicker from './DatePickerDocgen.json';
+DatePicker[0].props.DateTimeFormat.defaultValue = {
   computed: false,
   value: `Intl.DateTimeFormat || (locales, options) => { format: date => date }`,
 };
@@ -32,7 +32,7 @@ export default class DatePickerDocs extends Component {
           code: DatePickerExamplesRaw,
           children: <DatePickerExamples />,
         }]}
-        docgens={[DatePicker]}
+        docgens={DatePicker}
       />
     );
   }

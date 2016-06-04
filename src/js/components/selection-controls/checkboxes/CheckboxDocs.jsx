@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import CheckboxExamples from './CheckboxExamples';
 import CheckboxExamplesRaw from '!!raw!./CheckboxExamples';
 
-import Checkbox from 'docgen/Checkbox.json';
+import Checkbox from './CheckboxDocgen.json';
 
 const text = `
 Checkboxes allow the user to select multiple options from a set.
@@ -37,7 +37,7 @@ export default class CheckboxDocs extends Component {
           code: CheckboxExamplesRaw,
           children: <CheckboxExamples />,
         }]}
-        docgens={[Checkbox]}
+        docgens={Checkbox}
       />
     );
   }

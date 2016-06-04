@@ -12,9 +12,7 @@ import UncontrolledNestedExampleRaw from '!!raw!./UncontrolledNestedExample';
 import ControlledNestedExample from './ControlledNestedExample';
 import ControlledNestedExampleRaw from '!!raw!./ControlledNestedExample';
 
-import List from 'docgen/List.json';
-import ListItem from 'docgen/ListItem.json';
-import ListItemControl from 'docgen/ListItemControl.json';
+import List from './ListDocgen.json';
 
 const text = `
 Lists present multiple line items vertically as a single continuous element.
@@ -74,7 +72,7 @@ export default class ListDocs extends Component {
             </div>
           ),
         }]}
-        docgens={[List, ListItem, ListItemControl]}
+        docgens={List}
       />
     );
   }

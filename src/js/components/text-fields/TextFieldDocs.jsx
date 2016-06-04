@@ -15,7 +15,7 @@ import FullWidthExamplesRaw from '!!raw!./FullWidthExamples';
 import InToolbarExample from './InToolbarExample';
 import InToolbarExampleRaw from '!!raw!./InToolbarExample';
 
-import TextField from 'docgen/TextField.json';
+import TextField from './TextFieldDocgen.json';
 
 const text = `
 Text fields allow the user to input text, select text, and lookup data via auto-completion.
@@ -59,7 +59,7 @@ export default class TextFieldDocs extends Component {
           code: InToolbarExampleRaw,
           children: <InToolbarExample />,
         }]}
-        docgens={[TextField]}
+        docgens={TextField}
       />
     );
   }

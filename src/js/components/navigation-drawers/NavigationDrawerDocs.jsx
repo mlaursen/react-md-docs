@@ -8,9 +8,7 @@ import NavigationDrawerDemo from './NavigationDrawerDemo';
 import NewPageDemo from './NewPageDemo';
 import NewPageDemoRaw from '!!raw!./NewPageDemo';
 
-import NavigationDrawer from 'react-md/lib/NavigationDrawers';
-import NavigationDrawerDocgen from 'docgen/NavigationDrawer.json';
-global.NavigationDrawer = NavigationDrawer;
+import NavigationDrawerDocgen from './NavigationDrawerDocgen.json';
 
 export default class NavigationDrawerDocs extends Component {
   constructor(props) {
@@ -34,7 +32,7 @@ export default class NavigationDrawerDocs extends Component {
           code: AppRaw,
           children: <NavigationDrawerDemo />,
         }]}
-        docgens={[NavigationDrawerDocgen]}
+        docgens={NavigationDrawerDocgen}
       />
     );
   }

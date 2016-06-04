@@ -9,12 +9,7 @@ import DataTableExampleRaw from '!!raw!./DataTableExample';
 import ComplexDataTableComments from './ComplexDataTableComments';
 import ComplexDataTableCommentsRaw from '!!raw!./ComplexDataTableComments';
 
-import DataTable from 'docgen/DataTable.json';
-import TableHeader from 'docgen/TableHeader.json';
-import TableBody from 'docgen/TableBody.json';
-import TableRow from 'docgen/TableRow.json';
-import TableColumn from 'docgen/TableColumn.json';
-import EditDialogColumn from 'docgen/EditDialogColumn.json';
+import DataTable from './DataTableDocgen.json';
 
 const text = `
 Data tables display raw data sets. They usually appear in desktop enterprise products.
@@ -67,7 +62,7 @@ export default class DataTableDocs extends Component {
           code: ComplexDataTableCommentsRaw,
           children: <ComplexDataTableComments />,
         }]}
-        docgens={[DataTable, TableHeader, TableBody, TableRow, TableColumn, EditDialogColumn]}
+        docgens={DataTable}
       />
     );
   }

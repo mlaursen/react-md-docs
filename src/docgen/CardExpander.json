@@ -1,5 +1,0 @@
-  {
-    "component": "CardExpander",
-    "source": "src/js/Cards/CardExpander.js",
-    "description": "The CardExpander component is just a simple `IconButton` that\ngets generated through the `Card`'s `contextTypes`. Props are not used\nat all.\n\nAny component below a component that has this component inject into it\nand has the prop `expandable={true}` will be toggleable when this is clicked.\n\nYou can manually inject the `CardExpander` component yourself if you want to\nuse a component that is not a `CardActions` or a `CardTitle`."
-  }

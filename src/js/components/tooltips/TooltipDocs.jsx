@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import TooltipExamples from './TooltipExamples';
 import TooltipExamplesRaw from '!!raw!./TooltipExamples';
-import Tooltip from 'docgen/Tooltip.json';
+import Tooltip from './TooltipDocgen.json';
 
 const text = `
 Tooltips are labels that appear on hover and focus when the user hovers
@@ -32,7 +32,7 @@ export default class TooltipDocs extends Component {
           code: TooltipExamplesRaw,
           children: <TooltipExamples />,
         }]}
-        docgens={[Tooltip]}
+        docgens={Tooltip}
       />
     );
   }

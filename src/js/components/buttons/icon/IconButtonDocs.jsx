@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import IconButtonExamples from './IconButtonExamples';
 import IconButtonExamplesRaw from '!!raw!./IconButtonExamples';
 
-import IconButton from 'docgen/IconButton.json';
+import IconButton from './IconButtonDocgen.json';
 
 const text = `
 An icon button is just a simple wrapper of a \`FontIcon\` inside of a button.
@@ -33,7 +33,7 @@ export default class IconButtonDocs extends Component {
           code: IconButtonExamplesRaw,
           children: <IconButtonExamples />,
         }]}
-        docgens={[IconButton]}
+        docgens={IconButton}
       />
     );
   }

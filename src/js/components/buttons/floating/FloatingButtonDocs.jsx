@@ -7,8 +7,7 @@ import FloatingButtonExamplesRaw from '!!raw!./FloatingButtonExamples';
 import SpeedDialExample from './SpeedDialExample';
 import SpeedDialExampleRaw from '!!raw!./SpeedDialExample';
 
-import FloatingButton from 'docgen/FloatingButton.json';
-import SpeedDial from 'docgen/SpeedDial.json';
+import FloatingButton from './FloatingButtonDocgen.json';
 
 const text = `
 A button clearly communicates what action will occur when the user touches it.
@@ -50,7 +49,7 @@ export default class FloatingButtonDocs extends Component {
           code: SpeedDialExampleRaw,
           children: <SpeedDialExample />,
         }]}
-        docgens={[FloatingButton, SpeedDial]}
+        docgens={FloatingButton}
       />
     );
   }

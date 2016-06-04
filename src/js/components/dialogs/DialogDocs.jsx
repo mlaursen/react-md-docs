@@ -9,8 +9,7 @@ import ModalDialogExamplesRaw from '!!raw!./ModalDialogExamples';
 import FullPageDialogExamples from './FullPageDialogExamples';
 import FullPageDialogExamplesRaw from '!!raw!./FullPageDialogExamples';
 
-import Dialog from 'docgen/DialogContainer.json';
-Dialog.component = 'Dialog';
+import Dialog from './DialogDocgen.json';
 
 const text = `
 Dialogs contain text and UI controls focused on a specific task.
@@ -44,7 +43,7 @@ export default class DialogDocs extends Component {
           code: FullPageDialogExamplesRaw,
           children: <FullPageDialogExamples />,
         }]}
-        docgens={[Dialog]}
+        docgens={Dialog}
       />
     );
   }

@@ -9,7 +9,7 @@ import IndeterminateExampleRaw from '!!raw!./IndeterminateExample';
 import QueryIndeterminateExample from './QueryIndeterminateExample';
 import QueryIndeterminateExampleRaw from '!!raw!./QueryIndeterminateExample';
 
-import LinearProgress from 'docgen/LinearProgress.json';
+import LinearProgress from './LinearProgressDocgen.json';
 
 const text = `
 Minimize visual changes that occur while your app loads content by representing each operation
@@ -43,7 +43,7 @@ export default class LinearProgressDocs extends Component {
           code: QueryIndeterminateExampleRaw,
           children: <QueryIndeterminateExample />,
         }]}
-        docgens={[LinearProgress]}
+        docgens={LinearProgress}
       />
     );
   }

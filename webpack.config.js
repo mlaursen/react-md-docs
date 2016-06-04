@@ -5,7 +5,6 @@ const autoprefixer = require('autoprefixer');
 
 const nodeModules = path.resolve(process.cwd(), 'node_modules');
 const js = path.resolve(process.cwd(), 'src', 'js');
-const docgen = path.resolve(process.cwd(), 'src', 'docgen');
 
 module.exports = () => ({
   devtool: '#cheap-module-source-map',
@@ -48,7 +47,6 @@ module.exports = () => ({
       'helpers': path.resolve(process.cwd(), 'node_modules', 'react-md', 'src', 'scss', 'helpers', '_all.scss'),
       'md-scss': path.resolve(process.cwd(), 'node_modules', 'react-md', 'src', 'scss', 'react-md.scss'),
       'react-doc-page': js + '/components/DocPage.jsx',
-      'docgen': docgen,
     },
 
     // Fixes the npm link issue so that it doesn't search for modules in react-md

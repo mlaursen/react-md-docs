@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import PaperExamples from './PaperExamples';
 import PaperExamplesRaw from '!!raw!./PaperExamples';
 
-import Paper from 'docgen/Paper.json';
+import Paper from './PaperDocgen.json';
 const text = `
 Paper is a wrapper component you can use to add the correct box
 shadow to different components.
@@ -28,7 +28,7 @@ export default class PaperDocs extends Component {
           code: PaperExamplesRaw,
           children: <PaperExamples />,
         }]}
-        docgens={[Paper]}
+        docgens={Paper}
       />
     );
   }

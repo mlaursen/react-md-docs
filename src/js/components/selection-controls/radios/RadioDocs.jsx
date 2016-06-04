@@ -7,8 +7,7 @@ import UncontrolledRadioExampleRaw from '!!raw!./UncontrolledRadioExample';
 import ControlledRadioExample from './ControlledRadioExample';
 import ControlledRadioExampleRaw from '!!raw!./ControlledRadioExample';
 
-import RadioGroup from 'docgen/RadioGroup.json';
-import Radio from 'docgen/Radio.json';
+import RadioDocgen from './RadioDocgen.json';
 
 const text = `
 Radio buttons allow the user to select one option from a set. Use radio buttons
@@ -38,7 +37,7 @@ export default class RadioDocs extends Component {
           code: ControlledRadioExampleRaw,
           children: <ControlledRadioExample />,
         }]}
-        docgens={[RadioGroup, Radio]}
+        docgens={RadioDocgen}
       />
     );
   }

@@ -7,7 +7,7 @@ import SnackbarExamplesRaw from '!!raw!./SnackbarExamples';
 import MobileFabExample from './MobileFabExample';
 import MobileFabExampleRaw from '!!raw!./MobileFabExample';
 
-import Snackbar from 'docgen/Snackbar.json';
+import Snackbar from './SnackbarDocgen.json';
 
 const text = `
 Snackbars provide lightweight feedback about an operation by showing a brief message
@@ -40,7 +40,7 @@ export default class SnackbarDocs extends Component {
           code: MobileFabExampleRaw,
           children: <MobileFabExample />,
         }]}
-        docgens={[Snackbar]}
+        docgens={Snackbar}
       />
     );
   }

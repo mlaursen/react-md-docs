@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import SwitchExamples from './SwitchExamples';
 import SwitchExamplesRaw from '!!raw!./SwitchExamples';
 
-import Switch from 'docgen/Switch.json';
+import Switch from './SwitchDocgen.json';
 
 const text = `
 On/off switches toggle the state of a single settings option. The option that the switch
@@ -30,7 +30,7 @@ export default class SwitchDocs extends Component {
           code: SwitchExamplesRaw,
           children: <SwitchExamples />,
         }]}
-        docgens={[Switch]}
+        docgens={Switch}
       />
     );
   }

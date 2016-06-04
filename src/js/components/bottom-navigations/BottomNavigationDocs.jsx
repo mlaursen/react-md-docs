@@ -6,7 +6,7 @@ import FixedBottomNavigationExample from './FixedBottomNavigationExample';
 import FixedBottomNavigationExampleRaw from '!!raw!./FixedBottomNavigationExample';
 import ShiftingBottomNavigationExample from './ShiftingBottomNavigationExample';
 import ShiftingBottomNavigationExampleRaw from '!!raw!./ShiftingBottomNavigationExample';
-import BottomNavigation from 'docgen/BottomNavigation.json';
+import BottomNavigation from './BottomNavigationDocgen.json';
 
 import './_bottom-nav.scss';
 
@@ -43,7 +43,7 @@ export default class BottomNavigationDocs extends Component {
           code: ShiftingBottomNavigationExampleRaw,
           children: <ShiftingBottomNavigationExample />,
         }]}
-        docgens={[BottomNavigation]}
+        docgens={BottomNavigation}
       />
     );
   }

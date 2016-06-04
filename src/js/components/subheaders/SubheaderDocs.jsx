@@ -5,7 +5,7 @@ import DocPage from 'react-doc-page';
 import SubheaderExamples from './SubheaderExamples';
 import SubheaderExamplesRaw from '!!raw!./SubheaderExamples';
 
-import Subheader from 'docgen/Subheader.json';
+import Subheader from './SubheaderDocgen.json';
 
 const text = `
 Subheaders are list tiles that delineate sections of a list or grid list.
@@ -28,7 +28,7 @@ export default class SubheaderDocs extends Component {
           code: SubheaderExamplesRaw,
           children: <SubheaderExamples />,
         }]}
-        docgens={[Subheader]}
+        docgens={Subheader}
       />
     );
   }

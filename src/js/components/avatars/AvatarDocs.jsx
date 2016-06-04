@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import DocPage from 'react-doc-page';
 import AvatarExamples from './AvatarExamples';
 import AvatarExamplesRaw from '!!raw!./AvatarExamples';
-import Avatar from 'docgen/Avatar.json';
+import Avatar from './AvatarDocgen.json';
 
 export default class AvatarDocs extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class AvatarDocs extends Component {
           code: AvatarExamplesRaw,
           children: <AvatarExamples />,
         }]}
-        docgens={[Avatar]}
+        docgens={Avatar}
       />
     );
   }
