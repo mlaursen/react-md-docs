@@ -30,8 +30,8 @@ any changes that happen in react-md will be reflected in the docs.
 
 
 ```bash
-$ npm start         # builds and starts the production server
-$ npm run browser   # starts the dev server and watches for changes
-```
+$ npm run browser    # compiles the server and enables hot module replacement for the client
 
-> Note: The prod server is actually run on apache, not node
+$ npm run build      # builds the prod server
+$ npm start          # runs the prod server
+```

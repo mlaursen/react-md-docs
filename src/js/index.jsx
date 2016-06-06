@@ -2,9 +2,10 @@ import '../scss/index.scss';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
+import { match, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import WebFont from 'webfontloader';
+import routes from './routes';
 
 import Root from './containers/Root';
 import configureStore from './stores/configureStore';
@@ -27,4 +28,6 @@ if(process.env.NODE_ENV !== 'production') {
   window.Perf = require('react-addons-perf');
 }
 
-render(<Root store={store} history={history} />, document.getElementById('app'));
+match({ history, routes }, (error, redirectLocation, renderProps) => {
+  render(<Root store={store} {...renderProps} />, document.getElementById('app'));
+});

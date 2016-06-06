@@ -8,7 +8,7 @@ const sassdoc = require('sassdoc');
 const reactMD = path.resolve(process.cwd(), 'node_modules', 'react-md');
 
 sassdoc(path.resolve(reactMD, 'src', 'scss'), {
-  dest: path.resolve(process.cwd(), 'dist', 'sassdoc'),
+  dest: path.resolve(process.cwd(), 'dist', 'client', 'sassdoc'),
   package: path.resolve(reactMD, 'package.json'),
   display: {
     alias: true,

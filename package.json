@@ -2,16 +2,18 @@
   "name": "react-md",
   "version": "0.3.0",
   "description": "",
-  "main": "src/js/index.jsx",
+  "main": "dist/server/server.js",
   "private": true,
   "scripts": {
-    "start": "npm run build && node server.js",
-    "prebuild": "rimraf dist",
-    "scripts": "webpack --config config/webpack-prod.config.js --progress --colors",
-    "browser": "npm run docgen && webpack-dev-server --config config/webpack-dev.config.js --progress --colors --inline --host 0.0.0.0",
     "sassdoc": "scripts/sassdoc.js",
     "docgen": "scripts/docgen.js",
-    "build": "npm run docgen && npm run scripts && npm run sassdoc"
+    "prebuild": "rimraf dist",
+    "build": "npm run docgen && npm run sassdoc && npm run scripts",
+    "build:dev": "npm run prebuild && npm run docgen && npm run sassdoc && npm run scripts:dev",
+    "scripts": "webpack --config webpack-prod.config.js --progress --colors",
+    "scripts:dev": "webpack --config webpack-dev.server.config.js --progress --colors",
+    "start:dev": "node dist/server/server.js",
+    "browser": "npm run scripts:dev && npm run start:dev"
   },
   "license": "MIT",
   "repository": {
@@ -70,6 +72,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gh-pages": "^0.11.0",
+    "html-webpack-harddisk-plugin": "0.0.2",
     "html-webpack-plugin": "^2.9.0",
     "image-webpack-loader": "^1.8.0",
     "json-loader": "^0.5.4",
@@ -91,6 +94,8 @@
     "sassdoc": "^2.1.20",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0"
   }
 }

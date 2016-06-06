@@ -30,8 +30,8 @@ client.entry = ['babel-polyfill', path.resolve(process.cwd(), 'src', 'js', 'inde
 client.name = 'client';
 client.target = 'web';
 client.output.filename = '[name]-[hash].min.js';
-client.output.path = path.resolve(process.cwd(), 'dist');
-client.module.loaders = client.module.loaders.concat([{
+client.output.path = path.resolve(process.cwd(), 'dist', 'client');
+client.module.loaders = client.module.loaders.concat([client.__imgLoader, {
   test: /\.scss$/,
   exclude: /node_modules/,
   loader: ExtractTextPlugin.extract('style', 'css!postcss!sass?outputStyle=compressed'),
@@ -43,12 +43,9 @@ client.plugins = client.plugins.concat([
     compress: { warnings: false },
     output: { comments: false },
   }),
-  new HtmlWebpackPlugin({
-    filename: 'index.ejs',
-    template: path.resolve(process.cwd(), 'src', 'server', 'views', 'index.ejs'),
-    inject: 'body',
-    favicon: path.resolve(process.cwd(), 'src', 'imgs', 'favicon.ico'),
-  }),
+  new HtmlWebpackPlugin(Object.assign({}, client.__htmlWebpackOptions, {
+    googleAnalytics: 'UA-76079335-1',
+  })),
 ]);
 
 
@@ -58,9 +55,10 @@ server.name = 'server';
 server.target = 'node';
 server.externals = [nodeExternals()];
 server.output.filename = 'server.js';
-server.output.path = path.resolve(process.cwd(), 'server');
+server.output.path = path.resolve(process.cwd(), 'dist', 'server');
 server.plugins = server.plugins.concat([
   new webpack.NormalModuleReplacementPlugin(/\.scss$/, 'node-noop'),
+  new webpack.NormalModuleReplacementPlugin(server.__imgLoader.test, 'node-noop'),
 ]);
 
 module.exports = [client, server];

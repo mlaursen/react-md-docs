@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
-import routes from '../../routes';
 import DevTools from '../DevTools';
 import { onUpdate } from '../../utils/RouteUtils';
 
@@ -20,11 +19,11 @@ export default class Root extends Component {
   };
 
   render() {
-    const { store, history } = this.props;
+    const { store, ...props } = this.props;
     return (
       <Provider store={store}>
         <div>
-          <Router history={history} routes={routes} onUpdate={onUpdate} />
+          <Router {...props} onUpdate={onUpdate} />
           <DevTools />
         </div>
       </Provider>
