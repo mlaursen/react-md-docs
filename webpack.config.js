@@ -22,13 +22,6 @@ module.exports = () => ({
     keywords: 'material design,react,sass,material,ui,components,material-design',
   },
 
-  // Only want the img loader to be enabled on clients.
-  __imgLoader: {
-    test: /\.(png|jpe?g|svg)$/,
-    exclude: /node_modules/,
-    loader: 'file?name=imgs/[hash].[ext]!image-webpack',
-  },
-
   eslint: {
     configFile: path.resolve(process.cwd(), '.eslintrc'),
   },
@@ -41,6 +34,10 @@ module.exports = () => ({
     }],
 
     loaders: [{
+      test: /\.(png|jpe?g|svg)$/,
+      exclude: /node_modules/,
+      loader: 'file?name=imgs/[hash].[ext]!image-webpack',
+    }, {
       test: /\.md$/,
       exclude: /node_modules/,
       loader: 'raw',

@@ -20,7 +20,6 @@ config.plugins = config.plugins.concat([
     },
   }),
   new webpack.NormalModuleReplacementPlugin(/\.scss$/, 'node-noop'),
-  new webpack.NormalModuleReplacementPlugin(config.__imgLoader.test, 'node-noop'),
 ]);
 
 module.exports = config;

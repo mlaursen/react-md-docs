@@ -31,7 +31,7 @@ client.name = 'client';
 client.target = 'web';
 client.output.filename = '[name]-[hash].min.js';
 client.output.path = path.resolve(process.cwd(), 'dist', 'client');
-client.module.loaders = client.module.loaders.concat([client.__imgLoader, {
+client.module.loaders = client.module.loaders.concat([{
   test: /\.scss$/,
   exclude: /node_modules/,
   loader: ExtractTextPlugin.extract('style', 'css!postcss!sass?outputStyle=compressed'),
@@ -58,7 +58,6 @@ server.output.filename = 'server.js';
 server.output.path = path.resolve(process.cwd(), 'dist', 'server');
 server.plugins = server.plugins.concat([
   new webpack.NormalModuleReplacementPlugin(/\.scss$/, 'node-noop'),
-  new webpack.NormalModuleReplacementPlugin(server.__imgLoader.test, 'node-noop'),
 ]);
 
 module.exports = [client, server];

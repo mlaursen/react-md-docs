@@ -55,7 +55,7 @@ export default class DocPage extends Component {
     }
     return (
       <div className={`react-doc doc-component-${toClassName(sectionName)} md-card-list`}>
-        <header className="component-info">
+        <header className="component-info text-container">
           <h1 className="md-display-1">{sectionName}</h1>
           <Divider />
           {details}
