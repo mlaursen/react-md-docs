@@ -22,14 +22,6 @@ export default class StatefulExamples extends Component {
             size={10}
           />
         </div>
-        <div>
-          <TextField
-            label="Password"
-            floatingLabel={false}
-            type="password"
-            icon={<FontIcon iconClassName="fa fa-key" />}
-          />
-        </div>
         <p>
           When a text field is set to required, the label is automatically
           updated to include the '*' icon for floating labels onl.

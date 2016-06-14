@@ -23,7 +23,10 @@ export default class FloatingLabelExamples extends Component {
           <TextField label="Title" lineDirection="center" />
         </div>
         <div>
-          <TextField label="Type many letters" rows={2} maxRows={4} />
+          <TextField label="Type many letters" lineDirection="right" rows={2} maxRows={4} />
+        </div>
+        <div>
+          <TextField label="Enter your password" type="password" />
         </div>
       </div>
     );

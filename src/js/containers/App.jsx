@@ -99,9 +99,18 @@ export default class App extends Component {
       quickNav = <QuickNav />;
     }
 
+    let initialDrawerType = 'desktop';
+    if(isLandscapeTablet) {
+      initialDrawerType = 'tablet';
+    } else if(isMobile) {
+      initialDrawerType = 'mobile';
+    }
+
     return (
       <div className={isHome ? 'theme-1' : theme}>
         <NavigationDrawer
+          initiallyOpen={!isMobile || isLandscapeTablet}
+          initialDrawerType={initialDrawerType}
           className="react-md-docs"
           drawerTitle="react-md"
           toolbarTitle={title}

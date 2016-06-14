@@ -32,6 +32,9 @@ export default class SingleLineExamples extends Component {
             floatingLabel={false}
           />
         </div>
+        <div>
+          <TextField label="Enter your password" type="password" floatingLabel={false} />
+        </div>
       </div>
     );
   }

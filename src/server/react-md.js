@@ -11,9 +11,10 @@ import { initialState } from '../js/reducers/ui';
 const reactMD = express.Router();
 
 reactMD.get('/*', (req, res) => {
+  const userAgent = req.header('user-agent');
   const store = configureStore({
     ui: Object.assign({}, initialState, {
-      isMobile: !!req.header('user-agent').match(/mobile/i),
+      isMobile: !!userAgent.match(/mobile/i) && !userAgent.match(/ipad/i),
     }),
   });
 
