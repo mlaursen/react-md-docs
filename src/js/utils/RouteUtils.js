@@ -107,6 +107,7 @@ export const routes = [{
     'data-tables',
     'dialogs',
     'dividers',
+    'file-inputs',
     'font-icons',
     'lists',
     'inks',

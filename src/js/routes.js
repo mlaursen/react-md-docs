@@ -24,6 +24,7 @@ export default {
         require('./components/data-tables').default,
         require('./components/dialogs').default,
         require('./components/dividers').default,
+        require('./components/file-inputs').default,
         require('./components/font-icons').default,
         require('./components/lists').default,
         require('./components/inks').default,

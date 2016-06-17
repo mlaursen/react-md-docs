@@ -36,6 +36,8 @@ const docgens = {};
   'Dialogs/DialogContainer',
   'Dividers/Divider',
   'FABTransitions/SpeedDial',
+  'FileInputs/FileInput',
+  'FileInputs/FileUpload',
   'FontIcons/FontIcon',
   'Inks/Ink',
   'Lists/List',
