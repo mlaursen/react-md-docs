@@ -20,7 +20,13 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  highlight: (code, lang) => require('highlight.js').highlight(lang, code).value, // eslint-disable-line no-undef
+  highlight: function(code, lang) {
+    if(lang) {
+      return require('highlight.js').highlight(lang, code).value;
+    } else {
+      return code;
+    }
+  },
 });
 
 const initialState = {
