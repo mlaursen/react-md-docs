@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./webpack.config')();
 
 config.cache = true;
+config.devtool = 'source-map';
 config.entry = [
   'webpack-hot-middleware/client',
   'babel-polyfill',

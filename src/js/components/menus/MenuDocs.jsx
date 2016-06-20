@@ -8,7 +8,7 @@ import ToggleableMenuExamlples from './ToggleableMenuExamlples';
 import ToggleableMenuExamlplesRaw from '!!raw!./ToggleableMenuExamlples';
 
 import Menu from './MenuDocgen.json';
-global.Menu = require('react-md/lib/Menus'); //eslint-disable-line no-undef
+global.Menu = require('react-md/lib/Menus').default; //eslint-disable-line no-undef
 
 const text = `
 Menus allow users to take an action by selecting from a list of choices revealed upon opening a temporary, new sheet of material.

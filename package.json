@@ -13,7 +13,8 @@
     "scripts": "webpack --config webpack-prod.config.js --progress --colors",
     "scripts:dev": "webpack --config webpack-dev.server.config.js --progress --colors",
     "start:dev": "node dist/server/server.js",
-    "browser": "npm run scripts:dev && npm run start:dev"
+    "browser": "npm run scripts:dev && npm run start:dev",
+    "start": "node dist/server/server.js"
   },
   "license": "MIT",
   "repository": {
