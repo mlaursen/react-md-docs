@@ -20,6 +20,7 @@ export default class SelectFieldButtonExamples extends Component {
           position={SelectField.Positions.BELOW}
         />
         <SelectField
+          label="Number"
           position={SelectField.Positions.BELOW}
           menuItems={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
         />
