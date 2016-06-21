@@ -13,13 +13,17 @@ module.exports = () => ({
     inject: false,
     template: path.resolve(process.cwd(), 'src', 'template.js'),
     favicon: path.resolve(process.cwd(), 'src', 'imgs', 'favicon.ico'),
-    alwaysWriteToDisk: true,
 
     title: 'react-md',
     appMountId: 'app',
-    isomorphic: 'html',
     description: 'Google\'s Material Design UI components built with React and sass.',
     keywords: 'material design,react,sass,material,ui,components,material-design',
+  },
+
+  __imgLoader: {
+    test: /\.(png|jpe?g|svg)$/,
+    exclude: /node_modules/,
+    loader: '?name=imgs/[hash].[ext]!image-webpack',
   },
 
   eslint: {
@@ -30,14 +34,10 @@ module.exports = () => ({
     preLoaders: [{
       test: /\.jsx?$/,
       loader: 'eslint',
-      exclude: /node_modules|react-md|tempate/,
+      exclude: /node_modules|react-md|template/,
     }],
 
     loaders: [{
-      test: /\.(png|jpe?g|svg)$/,
-      exclude: /node_modules/,
-      loader: 'file?name=imgs/[hash].[ext]!image-webpack',
-    }, {
       test: /\.md$/,
       exclude: /node_modules/,
       loader: 'raw',
