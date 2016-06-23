@@ -14,7 +14,7 @@ export default class FlatButtonExamples extends Component {
     return (
       <div>
         <p>Flat buttons can be unstyled or styled with the primary/secondary color.</p>
-        <FlatButton label="Hello, World!" />
+        <FlatButton label="Hello, World!" data-ink-target="true" />
         <FlatButton primary={true} label="Talk Dirty to Me">
           <FontIcon>chat_bubble_outline</FontIcon>
         </FlatButton>

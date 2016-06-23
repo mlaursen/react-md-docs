@@ -11,30 +11,22 @@ export default class SingleLineExamples extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <TextField
-            label="Title"
-            className="md-title-text-field"
-            size={10}
-            floatingLabel={false}
-            lineDirection="right"
-          />
-        </div>
-        <div>
-          <TextField label="Title" floatingLabel={false} />
-        </div>
-        <div>
-          <TextField
-            label="Type many letters"
-            rows={2}
-            maxRows={4}
-            floatingLabel={false}
-          />
-        </div>
-        <div>
-          <TextField label="Enter your password" type="password" floatingLabel={false} />
-        </div>
+      <div className="block-text-field-examples">
+        <TextField
+          label="Title"
+          className="md-title-text-field"
+          size={10}
+          floatingLabel={false}
+          lineDirection="right"
+        />
+        <TextField label="Title" floatingLabel={false} />
+        <TextField
+          label="Type many letters"
+          rows={2}
+          maxRows={4}
+          floatingLabel={false}
+        />
+        <TextField label="Enter your password" type="password" floatingLabel={false} />
       </div>
     );
   }

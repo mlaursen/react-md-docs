@@ -16,6 +16,7 @@ import InToolbarExample from './InToolbarExample';
 import InToolbarExampleRaw from '!!raw!./InToolbarExample';
 
 import TextField from './TextFieldDocgen.json';
+import './_text-fields.scss';
 
 const text = `
 Text fields allow the user to input text, select text, and lookup data via auto-completion.

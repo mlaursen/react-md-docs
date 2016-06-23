@@ -11,23 +11,16 @@ export default class FloatingLabelExamples extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <TextField
-            label="Title"
-            className="md-title-text-field"
-            size={10}
-          />
-        </div>
-        <div>
-          <TextField label="Title" lineDirection="center" />
-        </div>
-        <div>
-          <TextField label="Type many letters" lineDirection="right" rows={2} maxRows={4} />
-        </div>
-        <div>
-          <TextField label="Enter your password" type="password" />
-        </div>
+      <div className="block-text-field-examples">
+        <TextField
+          label="Title"
+          placeholder="Hello World"
+          className="md-title-text-field"
+          size={10}
+        />
+        <TextField label="Title" lineDirection="center" />
+        <TextField label="Type many letters" lineDirection="right" rows={2} maxRows={4} />
+        <TextField label="Enter your password" type="password" />
       </div>
     );
   }
