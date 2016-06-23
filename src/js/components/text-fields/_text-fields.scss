@@ -1,7 +1,33 @@
+@import '~helpers';
+@import '~react-md/src/scss/typography';
+
 .block-text-field-examples .md-text-field-container {
   display: block;
 
   .md-text-field-label {
     display: inline-block;
+  }
+}
+
+.md-autocomplete {
+  position: relative;
+}
+
+.md-autocomplete-suggestion {
+  @extend %md-secondary-text;
+
+  font-size: 13px;
+  position: absolute;
+
+  &.single-line {
+    bottom: 10px;
+  }
+
+  &.floating {
+    bottom: 9px;
+  }
+
+  &.block {
+    bottom: 14px;
   }
 }

@@ -3,6 +3,21 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import TextField from 'react-md/lib/TextFields';
 import FontIcon from 'react-md/lib/FontIcons';
 
+import Autocomplete from './Autocomplete';
+
+const data = [
+  { name: 'Apple pie', origin: 'Europe' },
+  { name: 'Apple strudel', origin: 'Central Europe' },
+  { name: 'Bear claw', origin: 'United States' },
+  { name: 'Berliner', origin: 'Germany' },
+  { name: 'Cannoli', origin: 'Italy' },
+  { name: 'Croissant', origin: 'France' },
+  { name: 'Kringle', origin: 'Scandinavia' },
+  { name: 'Schneeball', origin: 'Germany' },
+  { name: 'Schuxen', origin: 'Germany' },
+  { name: 'Viennoiserie', origin: 'France' },
+];
+
 export default class StatefulExamples extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +28,9 @@ export default class StatefulExamples extends Component {
   render() {
     return (
       <div className="block-text-field-examples">
+        <Autocomplete data={data} label="Pastries" />
+        <Autocomplete data={data} label="Pastries" block />
+        <Autocomplete data={data} label="Pastries" floatingLabel={false} />
         <p>Icons can be placed to the left of the text field as well.</p>
         <TextField
           label="Phone"
