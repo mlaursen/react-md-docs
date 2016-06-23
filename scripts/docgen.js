@@ -39,7 +39,7 @@ const docgens = {};
   'FileInputs/FileInput',
   'FileInputs/FileUpload',
   'FontIcons/FontIcon',
-  'Inks/Ink',
+  //'Inks/Ink',
   'Lists/List',
   'Lists/ListItem',
   'Lists/ListItemControl',

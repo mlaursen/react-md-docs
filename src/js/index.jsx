@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { match, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import WebFont from 'webfontloader';
+import InkInjector from 'react-md/lib/utils/InkInjector';
 import routes from './routes';
 
 import Root from './containers/Root';
@@ -22,6 +23,8 @@ WebFont.load({
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
+
+new InkInjector();
 
 /*eslint-env node*/
 if(process.env.NODE_ENV !== 'production') {
