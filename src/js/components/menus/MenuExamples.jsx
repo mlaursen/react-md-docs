@@ -29,7 +29,7 @@ export default class MenuExamples extends Component {
           <ListItem primaryText="Copy" disabled={true} />
           <ListItem primaryText="Paste" />
         </Menu>
-        <Menu isOpen={true} cascading={true} minWidth={1.5}>
+        <Menu isOpen={true} cascading={true}>
           <ListItem primaryText="Bold" rightIcon={<div>{command}B</div>} />
           <ListItem primaryText="Italic" rightIcon={<div>{command}I</div>} />
           <ListItem primaryText="Underline" rightIcon={<div>{command}U</div>} />
