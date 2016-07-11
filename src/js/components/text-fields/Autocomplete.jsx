@@ -28,11 +28,12 @@ export default class Autocomplete extends Component {
   };
 
   _handleChange = (value) => {
-    value = value.toLowerCase();
+    const lookup = value.toLowerCase();
+
     let suggestion = '', suggestionIndex = -1;
-    value && this.props.data.some(({ name }, i) => {
-      if(name.toLowerCase().indexOf(value) === 0) {
-        suggestion = name.substring(value.length, name.length);
+    lookup && this.props.data.some(({ name }, i) => {
+      if(name.toLowerCase().indexOf(lookup) === 0) {
+        suggestion = name.substring(lookup.length, name.length);
         suggestionIndex = i;
       }
 
