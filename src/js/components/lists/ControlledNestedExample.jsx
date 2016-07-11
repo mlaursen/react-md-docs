@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { List, ListItem } from 'react-md/lib/Lists';
 import Subheader from 'react-md/lib/Subheaders';
-import { Checkbox } from 'react-md/lib/SelectionControls';
 
 const ITEMS = Array.apply(null, new Array(5)).map(() => 'Single-line item');
 const NESTED_ITEMS = ['Revealed single-line item', 'Revealed single-line item'];
@@ -55,10 +54,6 @@ export default class ControlledNestedExample extends Component {
         onExpanderClick={this.toggleExpanded.bind(this, i)}
         primaryText={primaryText}
         expandOnClick={false}
-        primaryAction={this.toggleCheckbox.bind(this, i)}
-        primaryActionNode={(
-          <Checkbox checked={this.state[`li${i}`].checked} onChange={this.toggleCheckbox.bind(this, i)} />
-        )}
         nestedItems={NESTED_ITEMS.map((text, i) => <ListItem key={i} primaryText={text} />)}
       />
     ));

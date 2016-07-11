@@ -22,6 +22,9 @@ export default class Markdown extends Component {
 
   render() {
     const { component, markdown, marked, ...props } = this.props;
+    delete props.dispatch;
+    delete props.expandable;
+
     return React.createElement(component, {
       ...props,
       dangerouslySetInnerHTML: {

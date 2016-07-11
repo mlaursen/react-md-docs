@@ -105,7 +105,6 @@ export default class FileUploadExample extends Component {
         <FileUpload
           multiple
           secondary
-          displayFiles
           ref="upload"
           label="Select files to upload"
           onLoadStart={this._setFile}
