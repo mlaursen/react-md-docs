@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Divider from 'react-md/lib/Dividers';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import TextField from 'react-md/lib/TextFields';
 import { IconButton } from 'react-md/lib/Buttons';
 
@@ -9,8 +8,6 @@ import PhoneSize from '../PhoneSize';
 export default class FullWidthExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { RaisedButton } from 'react-md/lib/Buttons';
 import { setOverflow } from 'react-md/lib/utils';
@@ -10,13 +10,16 @@ export default class NewPage extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { isOpen: false };
   }
 
   static propTypes = {
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentWillUpdate(nextProps, nextState) {
     if(this.state.isOpen === nextState.isOpen) { return; }

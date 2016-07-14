@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { RaisedButton } from 'react-md/lib/Buttons';
@@ -23,9 +23,12 @@ export default class FileUploadExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { files: {} };
     this._timeout = null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {
@@ -33,14 +36,14 @@ export default class FileUploadExample extends Component {
   }
 
   _onLoad = (file, uploadResult) => {
-    const { name, size, type, lastModified } = file;
+    const { name, size, type, lastModifiedDate } = file;
 
     const files = Object.assign({}, this.state.files);
     files[name] = {
       name,
       type,
       size,
-      lastModified: new Date(lastModified),
+      lastModified: new Date(lastModifiedDate),
       uploadResult,
     };
 

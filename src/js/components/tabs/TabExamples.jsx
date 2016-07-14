@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Tabs, Tab } from 'react-md/lib/Tabs';
 import LoremIpsum from '../LoremIpsum';
 
 export default class TabExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { RaisedButton } from 'react-md/lib/Buttons';
 import FontIcon from 'react-md/lib/FontIcons';
 
 export default class RaisedButtonExamples extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

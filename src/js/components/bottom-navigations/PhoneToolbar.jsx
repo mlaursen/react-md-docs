@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 
 import { IconButton } from 'react-md/lib/Buttons';
@@ -12,8 +12,6 @@ const kebab = <IconButton key="kebab">more_vert</IconButton>;
 export default class PhoneToolbar extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -23,6 +21,10 @@ export default class PhoneToolbar extends Component {
   static defaultProps = {
     inset: false,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { inset } = this.props;

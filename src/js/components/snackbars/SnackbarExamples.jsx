@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import Snackbar from 'react-md/lib/Snackbars';
 import { RaisedButton } from 'react-md/lib/Buttons';
 
@@ -7,11 +7,14 @@ export default class SnackbarExamples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       toasts: [],
       autohide: true,
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   addToast = (text, action) => {

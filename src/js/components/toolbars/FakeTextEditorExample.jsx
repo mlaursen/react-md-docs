@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import SelectField from 'react-md/lib/SelectFields';
 import FontIcon from 'react-md/lib/FontIcons';
 import Paper from 'react-md/lib/Papers';
@@ -22,7 +22,6 @@ export default class FakeTextEditor extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       fontFamily: FONTS[2],
       fontSize: FONT_SIZES[3],
@@ -33,6 +32,10 @@ export default class FakeTextEditor extends Component {
       padding: '1em',
       transition: 'all .3s', //woop
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   changeTextAlign = (textAlign) => {

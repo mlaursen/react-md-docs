@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import QuickNavLink from '../components/QuickNavLink';
 
@@ -12,8 +12,6 @@ import QuickNavLink from '../components/QuickNavLink';
 export default class QuickNav extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -22,6 +20,10 @@ export default class QuickNav extends Component {
     nextTo: PropTypes.string,
     nextName: PropTypes.string,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { previousTo, previousName, nextTo, nextName } = this.props;

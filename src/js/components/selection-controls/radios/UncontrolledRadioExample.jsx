@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Radio, RadioGroup } from 'react-md/lib/SelectionControls';
 
 export default class UncontrolledRadioExample extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

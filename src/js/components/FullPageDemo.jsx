@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import Dialog from 'react-md/lib/Dialogs';
 import { RaisedButton, IconButton } from 'react-md/lib/Buttons';
@@ -8,7 +8,6 @@ export default class FullPageDemo extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { isOpen: false, pageX: null, pageY: null };
   }
 
@@ -17,6 +16,10 @@ export default class FullPageDemo extends Component {
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   launch = (e) => {
     const { pageX, pageY } = e.changedTouches ? e.changedTouches[0] : e;

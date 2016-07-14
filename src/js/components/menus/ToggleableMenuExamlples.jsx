@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import Menu from 'react-md/lib/Menus';
 import { RaisedButton, IconButton } from 'react-md/lib/Buttons';
 import { ListItem } from 'react-md/lib/Lists';
@@ -10,8 +10,11 @@ export default class ToggleableMenuExamlples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { open: false, open2: false };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   toggle = () => {

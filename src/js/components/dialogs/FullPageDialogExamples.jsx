@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import Dialog from 'react-md/lib/Dialogs';
 import { RaisedButton, IconButton, FlatButton } from 'react-md/lib/Buttons';
 import Divider from 'react-md/lib/Dividers';
@@ -22,8 +22,11 @@ export default class FullPageDialogExamples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { isOpen: false };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   openDialog = (e) => {

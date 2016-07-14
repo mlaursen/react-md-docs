@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { LinearProgress } from 'react-md/lib/Progress';
 import { RaisedButton } from 'react-md/lib/Buttons';
@@ -25,7 +25,6 @@ export default class QueryIndeterminateExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       active: false,
       content: [fakeContent[0], fakeContent[3]],
@@ -36,6 +35,10 @@ export default class QueryIndeterminateExample extends Component {
     className: PropTypes.string,
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentWillUnmount() {
     if(this.state.interval) { clearInterval(this.state.interval); }

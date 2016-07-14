@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { RaisedButton } from 'react-md/lib/Buttons';
 
 import Markdown from '../containers/Markdown';
@@ -19,14 +19,16 @@ be used with React Native.
 export default class Home extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static contextTypes = {
     // from react-router
     router: PropTypes.object.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentDidMount() {
     window.addEventListener('scroll', this.updateToolbar);

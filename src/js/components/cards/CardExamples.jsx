@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Card, CardMedia, CardTitle, CardActions, CardText } from 'react-md/lib/Cards';
 import Avatar from 'react-md/lib/Avatars';
 import { FlatButton, IconButton } from 'react-md/lib/Buttons';
@@ -9,8 +8,6 @@ import { randomImage } from '../../utils';
 export default class CardExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

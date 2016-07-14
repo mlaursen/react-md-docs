@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import DocPage from 'react-doc-page';
 import FileInputExamples from './FileInputExamples';
@@ -21,8 +20,6 @@ ajax implementation or force the \`fetch\` api polyfill.
 export default class FileInputDocs extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

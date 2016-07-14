@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import { RaisedButton } from 'react-md/lib/Buttons';
 import FileInput from 'react-md/lib/FileInputs';
@@ -18,7 +18,6 @@ export default class FileConverterExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       file: null,
       fileName: '',
@@ -27,6 +26,10 @@ export default class FileConverterExample extends Component {
     };
 
     this._interval = null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {

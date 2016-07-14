@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import Menu from 'react-md/lib/Menus';
 import TextField from 'react-md/lib/TextFields';
@@ -17,8 +17,6 @@ import { showOverlay, hideOverlay } from '../actions/ui';
 export default class QuickSearch extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -28,6 +26,10 @@ export default class QuickSearch extends Component {
     showOverlay: PropTypes.func.isRequired,
     hideOverlay: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   handleKeyDown = (e) => {
     if((e.which || e.keyCode) !== TAB) { return; }

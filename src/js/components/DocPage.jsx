@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import Divider from 'react-md/lib/Dividers';
 
 import { toClassName } from '../utils/StringUtils';
@@ -10,8 +10,6 @@ import DocgenPropTypes from './Docgen/DocgenPropTypes';
 export default class DocPage extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static context = {
@@ -42,6 +40,10 @@ export default class DocPage extends Component {
     docgens: [],
     text: '',
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { sectionName, text, examples, docgens } = this.props;

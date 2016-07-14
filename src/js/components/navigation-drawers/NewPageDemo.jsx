@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 import NavigationDrawer from 'react-md/lib//NavigationDrawers';
 import { IconButton } from 'react-md/lib/Buttons';
@@ -14,7 +14,6 @@ export default class NewPageDemo extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { page: 1 };
   }
 
@@ -22,6 +21,10 @@ export default class NewPageDemo extends Component {
     className: PropTypes.string,
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   closeDemo = () => {
     this.refs.newPage.closeDemo();

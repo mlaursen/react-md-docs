@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 import Paper from 'react-md/lib/Papers';
 import { isTouchDevice } from 'react-md/lib/utils';
@@ -11,7 +11,6 @@ export default class PhoneDemo extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { scrollTop: 0 };
   }
 
@@ -21,6 +20,10 @@ export default class PhoneDemo extends Component {
     children: PropTypes.node,
     bottomNav: PropTypes.object,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentDidMount() {
     if(isTouchDevice()) {
