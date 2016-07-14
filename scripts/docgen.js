@@ -13,6 +13,7 @@ const reactMD = path.resolve(process.cwd(), 'node_modules', 'react-md', 'src', '
 const docgens = {};
 
 [
+  'Autocompletes/Autocomplete',
   'Avatars/Avatar',
   'BottomNavigations/BottomNavigation',
   'Buttons/FlatButton',

@@ -13,6 +13,7 @@ export default {
   getChildRoutes(location, cb) {
     require.ensure([], require => {
       cb(null, [
+        require('./components/autocompletes').default,
         require('./components/getting-started').default,
         require('./components/customization').default,
         require('./components/discover-more').default,

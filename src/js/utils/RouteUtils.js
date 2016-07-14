@@ -97,6 +97,7 @@ export const routes = [{
   icon: 'build',
   path: 'components',
   nestedItems: [
+    'autocompletes',
     'avatars',
     'bottom-navigations', {
       path: 'buttons',
