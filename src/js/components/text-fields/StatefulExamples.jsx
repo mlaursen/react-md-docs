@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import TextField from 'react-md/lib/TextFields';
 import FontIcon from 'react-md/lib/FontIcons';
 import Fuse from 'fuse.js';
@@ -30,8 +29,6 @@ function filter(hayStack, filterText) {
 export default class StatefulExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { IconButton } from 'react-md/lib/Buttons';
 import { Card, CardTitle } from 'react-md/lib/Cards';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn } from 'react-md/lib/DataTables';
@@ -12,8 +12,6 @@ import PropTypesRow from './PropTypesRow';
 export default class DocgenPropTypes extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 
     const propList = Object.keys(props.props).map(name => ({ name, ...props.props[name] }));
 
@@ -29,6 +27,10 @@ export default class DocgenPropTypes extends Component {
     description: PropTypes.string.isRequired,
     props: PropTypes.object.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   sort = () => {
     const ascending = !this.state.ascending;

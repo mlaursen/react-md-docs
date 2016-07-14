@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Tabs, Tab } from 'react-md/lib/Tabs';
 import Toolbar from 'react-md/lib/Toolbars';
 import { IconButton } from 'react-md/lib/Buttons';
@@ -11,8 +10,6 @@ import LoremIpsum from '../LoremIpsum';
 export default class TabInToolbarExample extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

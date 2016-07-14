@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import DocPage from 'react-doc-page';
 import FloatingButtonExamples from './FloatingButtonExamples';
@@ -25,14 +25,16 @@ morphing, launching, and a transferring anchor point.
 export default class FloatingButtonDocs extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     return (

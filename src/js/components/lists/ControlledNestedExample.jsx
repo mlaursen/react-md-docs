@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { List, ListItem } from 'react-md/lib/Lists';
 import Subheader from 'react-md/lib/Subheaders';
 
@@ -10,7 +10,6 @@ export default class ControlledNestedExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 
     // Horrible example of nested state.. It's easier to use initiallyOpen instead
     // of controlling everything.
@@ -28,6 +27,10 @@ export default class ControlledNestedExample extends Component {
     className: PropTypes.string,
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   toggle = (i, bool) => {
     const key = `li${i}`;

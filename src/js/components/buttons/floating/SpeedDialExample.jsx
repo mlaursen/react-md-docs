@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 import { RaisedButton } from 'react-md/lib/Buttons';
 import { SpeedDial } from 'react-md/lib/FABTransitions';
@@ -14,12 +14,15 @@ export default class SpeedDialExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       demoActive: false,
       isOpen: false,
       moving: false,
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUpdate(nextProps, nextState) {

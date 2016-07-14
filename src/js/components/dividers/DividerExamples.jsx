@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { Component } from 'react';
 import Divider from 'react-md/lib/Dividers';
 import TextField from 'react-md/lib/TextFields';
 import { List, ListItem } from 'react-md/lib/Lists';
@@ -12,14 +11,7 @@ const avatars = randomAvatars(3);
 export default class DividerExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-  };
 
   render() {
     return (

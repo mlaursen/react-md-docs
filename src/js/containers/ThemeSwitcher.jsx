@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import SelectField from 'react-md/lib/SelectFields';
 
@@ -12,14 +12,16 @@ import themes from '../constants/themes';
 export default class ThemeSwitcher extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
     theme: PropTypes.string,
     updateTheme: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { theme, updateTheme } = this.props;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { DatePicker } from 'react-md/lib/Pickers';
 import { connect } from 'react-redux';
 
@@ -26,7 +26,6 @@ export default class DatePickerExamples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { formattedDate: '', date: null };
   }
 
@@ -34,6 +33,10 @@ export default class DatePickerExamples extends Component {
     addToast: PropTypes.func.isRequired,
     dismissToast: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentWillUpdate(nextProps, nextState) {
     const { date, formattedDate } = this.state;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 import { IconButton, FloatingButton } from 'react-md/lib/Buttons';
 import FontIcon from 'react-md/lib/FontIcons';
@@ -9,8 +9,6 @@ import injectTooltip from 'react-md/lib/Tooltips';
 class TooltipFontIcon extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -20,6 +18,10 @@ class TooltipFontIcon extends Component {
     iconClassName: PropTypes.string,
     tooltip: PropTypes.node.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { tooltip, iconClassName, children, ...props } = this.props;
@@ -49,8 +51,6 @@ const TooltipLink = injectTooltip(({ tooltip, children, className, ...props }) =
 export default class TooltipExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

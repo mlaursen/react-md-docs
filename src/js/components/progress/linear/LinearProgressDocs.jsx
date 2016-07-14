@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import DocPage from 'react-doc-page';
 import DeterminateExample from './DeterminateExample';
@@ -20,8 +20,10 @@ refresh bar or an activity circle, but not both.
 export default class LinearProgressDocs extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

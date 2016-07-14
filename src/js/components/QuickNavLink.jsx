@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { Link } from 'react-router';
 import FontIcon from 'react-md/lib/FontIcons';
 import classnames from 'classnames';
@@ -7,8 +7,6 @@ import classnames from 'classnames';
 export default class QuickNavLink extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -19,6 +17,10 @@ export default class QuickNavLink extends Component {
     align: PropTypes.oneOf(['left', 'right']).isRequired,
     className: PropTypes.string,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { to, icon, label, name, align, className } = this.props;

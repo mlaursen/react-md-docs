@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import Avatar from 'react-md/lib/Avatars';
 import FontIcon from 'react-md/lib/FontIcons';
@@ -9,14 +9,11 @@ import { randomImage } from '../../utils';
 export default class AvatarExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-  };
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     return (

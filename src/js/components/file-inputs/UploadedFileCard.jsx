@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 
 import { IconButton } from 'react-md/lib/Buttons';
@@ -18,8 +18,6 @@ if(!global.Intl) {
 export default class UploadedFileCard extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -34,6 +32,10 @@ export default class UploadedFileCard extends Component {
       ]).isRequired,
     }).isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   _extractLang = () => {
     const { type, uploadResult } = this.props.file;

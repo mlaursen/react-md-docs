@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { Component } from 'react';
 import Menu from 'react-md/lib/Menus';
 import { ListItem } from 'react-md/lib/Lists';
 import Divider from 'react-md/lib/Dividers';
@@ -9,14 +8,7 @@ const command = <span>&#x2318;</span>;
 export default class MenuExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-  };
 
   render() {
     return (

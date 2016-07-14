@@ -1,6 +1,6 @@
 /*eslint-env node*/
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 
 import { Card, CardTitle, CardText } from 'react-md/lib/Cards';
@@ -10,8 +10,6 @@ import { toClassName } from '../utils/StringUtils';
 export default class DocExample extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -21,6 +19,10 @@ export default class DocExample extends Component {
     children: PropTypes.node.isRequired,
     fallbackId: PropTypes.string.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   render() {
     const { code, children, className, name, fallbackId, ...props } = this.props;

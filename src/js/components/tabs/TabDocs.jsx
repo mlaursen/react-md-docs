@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import DocPage from 'react-doc-page';
 import TabExamples from './TabExamples';
@@ -16,8 +16,10 @@ Tabs make it easy to explore and switch between different views or functional as
 export default class TabDocs extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

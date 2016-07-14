@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import loremIpsum from 'lorem-ipsum';
 
 import { setOverflow } from 'react-md/lib/utils';
@@ -20,7 +20,6 @@ export default class SidebarExamples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { isOpen: false, align: 'left' };
   }
 

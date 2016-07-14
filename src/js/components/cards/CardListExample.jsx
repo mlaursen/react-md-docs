@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Card, CardMedia, CardTitle, CardActions } from 'react-md/lib/Cards';
 import { IconButton } from 'react-md/lib/Buttons';
 
@@ -19,8 +18,6 @@ You can also force all the cards to be equal size if you apply
 export default class CardListExample extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

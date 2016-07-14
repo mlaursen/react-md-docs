@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import DocPage from 'react-doc-page';
 import SwitchExamples from './SwitchExamples';
@@ -16,8 +16,10 @@ label. Switches take on the same visual properties of the radio button.
 export default class SwitchDocs extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

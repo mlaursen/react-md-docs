@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import loremIpsum from 'lorem-ipsum';
 
@@ -24,7 +24,6 @@ export default class InToolbarExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { focus: false, value: '' };
   }
 
@@ -32,6 +31,10 @@ export default class InToolbarExample extends Component {
     className: PropTypes.string,
     children: PropTypes.node,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   handleChange = value => this.setState({ value });
   resetValue = () => this.setState({ value: '' });

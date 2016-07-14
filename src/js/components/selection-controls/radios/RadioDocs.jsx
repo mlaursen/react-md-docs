@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import DocPage from 'react-doc-page';
 import UncontrolledRadioExample from './UncontrolledRadioExample';
@@ -19,7 +19,6 @@ export default class RadioDocs extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

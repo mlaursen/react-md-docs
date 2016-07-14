@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { CircularProgress } from 'react-md/lib/Progress';
 import { RaisedButton } from 'react-md/lib/Buttons';
@@ -17,12 +17,15 @@ export default class IndeterminateExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       // awh
       refreshing: false,
       content: [fakeContent[2], fakeContent[4]],
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {

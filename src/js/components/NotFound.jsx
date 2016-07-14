@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 
 import { Card, CardTitle, CardMedia, CardActions } from 'react-md/lib/Cards';
@@ -14,8 +14,6 @@ import { updateTitle } from '../actions/ui';
 export default class NotFound extends Component {
   constructor(props, context) {
     super(props, context);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
@@ -28,6 +26,10 @@ export default class NotFound extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentDidMount() {
     this.props.updateTitle('404 Not Found');

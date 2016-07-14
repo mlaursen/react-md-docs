@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import { TimePicker } from 'react-md/lib/Pickers';
 
@@ -26,7 +26,6 @@ export default class TimePickerExamples extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = { undo: false, time: null };
   }
 
@@ -34,6 +33,10 @@ export default class TimePickerExamples extends Component {
     addToast: PropTypes.func.isRequired,
     dismissToast: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentWillUpdate(nextProps, nextState) {
     const { time } = this.state;

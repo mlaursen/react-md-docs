@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
@@ -11,14 +11,16 @@ const PRIMARY_INDEX = 5;
 export default class ColorPalette extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   static propTypes = {
     colors: PropTypes.array.isRequired,
     initializeColors: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentWillMount() {
     this.props.initializeColors();

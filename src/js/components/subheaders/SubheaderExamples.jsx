@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import Subheader from 'react-md/lib/Subheaders';
 import { List, ListItem } from 'react-md/lib/Lists';
@@ -10,8 +9,6 @@ import { randomImage } from '../../utils';
 export default class SubheaderExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {

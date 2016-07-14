@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 import { capitalizeFirst } from '../../utils/StringUtils';
 import { randomImage, randomImages, getRandomInt, getRandomBoolean } from '../../utils';
 import NewsItem from './NewsItem';
@@ -62,8 +62,10 @@ news.forEach((news, i) => {
 export default class NewsStand extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

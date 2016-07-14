@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import SelectField from 'react-md/lib/SelectFields';
 import states from '../../constants/states';
 
 export default class SelectFieldButtonExamples extends Component {
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   render() {
