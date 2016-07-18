@@ -1,26 +1,94 @@
-import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
+import { connect } from 'react-redux';
 
 import Autocomplete from 'react-md/lib/Autocompletes';
+import TextField from 'react-md/lib/TextFields';
 import { RaisedButton } from 'react-md/lib/Buttons';
-import pastries from './pastries';
 
+import pastries from './pastries';
+import { addToast } from '../../actions/docs';
+
+
+import './_style.scss';
+
+@connect(() => ({}), { addToast })
 export default class InlineAutocompleteExample extends Component {
   constructor(props) {
     super(props);
 
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.state = { errorText: '', quantity: 1, pastry: '' };
   }
 
+  static propTypes = {
+    addToast: PropTypes.func.isRequired,
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
+  _handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { quantity, pastry } = this.state;
+    if(!pastry || !quantity) {
+      return this.setState({
+        errorText: 'A pastry is required!',
+      });
+    }
+    this.props.addToast({
+      text: `You have ordered ${quantity} '${pastry}'`,
+    });
+  };
+
+  _handleBlur = (e) => {
+    let errorText = '';
+    if(!e.target.value) {
+      errorText = 'A pastry is required!';
+    }
+
+    this.setState({ errorText, pastry: e.target.value });
+  };
+
+  _updateQuantity = (value) => {
+    this.setState({ quantity: value });
+  };
+
+  _fixQuantity = () => {
+    this.setState({ quantity: Math.min(50, Math.max(1, this.state.quantity) )});
+  };
+
+  _selectPastry = (pastry) => {
+    this.setState({ pastry });
+  };
+
   render() {
+    const { quantity } = this.state;
     return (
-      <form onSubmit={this._handleSubmit}>
+      <form onSubmit={this._handleSubmit} className="never-gonna-bake-you-up-form">
         <h3 className="md-title">Never Gonna Bake You Up</h3>
-        <Autocomplete
-          label="Specify your pastry"
-          data={pastries}
-          fullWidth={true}
-        />
+        <div className="form-block">
+          <Autocomplete
+            label="Specify your pastry"
+            data={pastries}
+            inline={true}
+            required
+            onBlur={this._handleBlur}
+            errorText={this.state.errorText}
+            onAutocomplete={this._selectPastry}
+            onChange={this._selectPastry}
+          />
+          <TextField
+            type="number"
+            label="Quantity"
+            min={1}
+            max={50}
+            value={quantity}
+            onChange={this._updateQuantity}
+            onBlur={this._fixQuantity}
+          />
+        </div>
         <RaisedButton label="Order" type="submit" secondary />
       </form>
     );

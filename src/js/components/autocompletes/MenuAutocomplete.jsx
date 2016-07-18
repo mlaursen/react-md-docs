@@ -5,8 +5,7 @@ import Fuse from 'fuse.js';
 import Autocomplete from 'react-md/lib/Autocompletes';
 import { RadioGroup, Radio } from 'react-md/lib/SelectionControls';
 
-const programmingLanguages = require('./programmingLanguages').default
-  .map(pl => ({ primaryText: pl }));
+import programmingLanguages from './programmingLanguages';
 
 export default class MenuAutocomplete extends Component {
   constructor(props) {
@@ -18,7 +17,9 @@ export default class MenuAutocomplete extends Component {
     };
   }
 
-  _fuse = new Fuse(programmingLanguages, { keys: [{ name: 'primaryText', weight: 1 }]});
+  _fuse = new Fuse(programmingLanguages.map(pl => ({ primaryText: pl })), {
+    keys: [{ name: 'primaryText', weight: 1 }],
+  });
 
   /**
    * A custom filter function to use if the default `caseInsensitiveFilter`
