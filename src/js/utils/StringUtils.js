@@ -41,7 +41,7 @@ export function toPropTypeId(s) {
     .replace('-selection-controls', '');
 
   let endIndex = id.length;
-  if(id.substring(id.length - 2, id.length) === 'es' && id !== 'data-tables') {
+  if(id.substring(id.length - 2, id.length) === 'es' && id !== 'data-tables' && id !== 'autocompletes') {
     endIndex = id.length - 2;
   } else if(id !== 'tabs' && id.charAt(id.length - 1) === 's' && id.charAt(id.length - 2) !== 's') {
     endIndex = id.length - 1;

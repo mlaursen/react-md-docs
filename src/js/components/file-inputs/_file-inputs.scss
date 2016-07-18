@@ -27,27 +27,6 @@
   }
 }
 
-.upload-enter {
-  transform: scaleY(0);
-  transform-origin: top left;
-
-  &.upload-enter-active {
-    transform: scaleY(1);
-    transition: transform $md-transition-time;
-  }
-}
-
-.upload-leave {
-  transform: scaleY(1);
-  transform-origin: top left;
-
-
-  &.upload-leave-active {
-    transform: scaleY(0);
-    transition: transform $md-transition-time;
-  }
-}
-
 .close-btn {
   background: $md-secondary-text-color;
   color: $md-white-base;
