@@ -3,6 +3,7 @@ import express from 'express';
 import compress from 'compression';
 import vhost from 'vhost';
 import reactMD from './react-md';
+import logger from 'morgan';
 
 const app = express();
 
@@ -18,6 +19,7 @@ const client = express.static(path.resolve(process.cwd(), 'dist', 'client'), {
 let port = process.env.PORT || 8080;
 if(process.env.NODE_ENV === 'production') {
   port = 80;
+  app.use(logger('combined'));
   app.use(vhost('react-md.mlaursen.com', client));
   app.use(vhost('react-md.mlaursen.com', reactMD));
 } else {
@@ -33,6 +35,7 @@ if(process.env.NODE_ENV === 'production') {
 
   app.use(webpackHotMiddleware(compiler));
 
+  app.use(logger('dev'));
   app.use(vhost('localhost', client));
   app.use(vhost('localhost', reactMD));
 }
