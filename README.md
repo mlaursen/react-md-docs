@@ -5,7 +5,7 @@ This is done as a separate repositority as a lazy way of checking that the react
 
 # Getting Started
 
-If you want to test most recent changes from the react-md it is ideal to follow the steps below
+If you want to test the most recent changes from the react-md it is ideal to follow the steps below:
 
 
 ```bash
