@@ -1,3 +1,6 @@
+NOTE: This is no longer in use as it has been merged back into the main react-md project.
+
+
 # react-md-docs
 The documentation website for [react-md](https://github.com/mlaursen/react-md)
 
